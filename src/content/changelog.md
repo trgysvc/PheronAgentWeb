@@ -1,8 +1,32 @@
-# CHANGELOG
+# Changelog
 
-All notable changes to EliteAgent will be documented in this file.
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [7.9.2] - 2026-06-02
+
+### Added
+- **Model Hub** — tam model kataloğu: 30+ yerel MLX modeli (Qwen3, Llama 4, Gemma 3/4, Mistral, Devstral, Phi-4, DeepSeek), 3 sütunlu grid, donanım desteğine göre pasif/aktif gösterim
+- **VLM (Vision) desteği** genişletildi: 48 GB+ için Qwen2.5-VL 7B eklendi; otomatik RAM tier seçimi (24/32/48 GB)
+- **Help → Model Catalog** yeni dokümantasyon bölümü: tüm modeller için tam dosya listesi, shard sayısı, RAM gereksinimleri
+- Qwen3 Dense: 0.6B · 1.7B · 4B · 8B · 14B · 32B
+- Qwen3 MoE: 30B-A3B · Coder-30B-A3B · Next-80B-A3B · 235B-A22B · Coder-480B-A35B
+- Llama 4 Maverick (512 GB)
+- Mistral Small 3.2 24B · Devstral Small 24B · Mistral Large 123B · Devstral 2 123B
+- DeepSeek V4 Flash (192 GB)
+- VLM: Qwen2.5-VL 7B (48 GB+)
+
+### Changed
+- **Model Hub — VLM bölümü** ayrı section olarak görünür
+- **Model Hub — Cloud Providers** bölümü FeatureFlag ile gizlendi
+- **Settings AI sekmesi** — Configuration bölümü Privacy sekmesinden AI sekmesine taşındı
 
 ## [7.9.1] - 2026-06-01
+
+### Changed
+- Minimum RAM updated to 16 GB across all docs and Info.plist
 
 ### Fixed
 - Profile pane private relay Apple ID display (shows "Apple Account" + Apple logo)
@@ -10,29 +34,23 @@ All notable changes to EliteAgent will be documented in this file.
 - Help menu missing Refund Policy item
 - In-app Help bundle path (documents were not loading)
 - Documentation UI navigation paths corrected throughout
-- Minimum RAM updated to 16 GB across all docs and Info.plist
 
 ## [7.9.0] - 2026-06-01
-### Public Release
+Public Release
 
+### Added
 - Apple Sign In with Supabase authentication
 - License activation via Lemon Squeezy
+
+### Fixed
 - Settings window auto-resizes per tab content
 - Analytics tab window sizing fix (async data load)
 - Profile pane window sizing fix
 
 ## [9.0.0] - 2026-05-07
-### "Stability Sprint" Release
+"Stability Sprint" Release
 
 Six confirmed production failure modes resolved across the orchestration, memory, safety, and web tool layers.
-
-### Fixed
-- **LogicGate false positive (P0):** `cmd.contains("top")` blocked `cp ~/Desktop/...` with a spurious "Accessing top is unsafe" rejection. All `suggestions` keys now matched with `NSRegularExpression` `\b...\b` word boundaries via `matchesWholeWord(_:pattern:)`.
-- **Model load race (P0):** Three concurrent callers on startup (`ModelStateManager`, `VaultManager`, `ModelPicker`) hit `ModelManager.load()` simultaneously, producing noise logs. `activeLoadModelID` guard deduplicates before the first `await`.
-- **Unbounded memory injection (P1):** `MemoryContextBuilder` claimed ≤1800 chars but had no enforcement — context grew 343→1991 chars. Per-layer hard caps (400/400/700) now enforced. `SessionSummaryStore` outcome snippets truncated 250→120 chars.
-- **Hardware query misclassification (P2):** Turkish hardware terms ("işlemci", "bellek", "hafıza") inside `simpleQuestionMarkers` fired before hardware priority, routing "mac'imin işlemci bilgilerini ver" to `.chat`. Restructured `ANEInferenceActor.classifyIntent()` with PRIORITY 0–3 tiers.
-- **Web tool 14-turn cascade (P3):** `web_fetch` threw `AgentToolError` on network failure → Critic scored UNOB:FAIL → model retried indefinitely. Network errors now return `[WEB_UNAVAILABLE]` soft-failure string. `safari_automation` gains `read` action (URLSession → Safari fallback) to eliminate hallucinated `action='read'` errors.
-- **Critic retry loop (P4):** `handleReview()` called LLM Critic even for terminal observations. Added `trivialPassSignals` early-return for `[WEB_UNAVAILABLE]`, `EMAIL_SENT`, `FILE_SAVED_SUCCESSFULLY`.
 
 ### Added
 - **SubagentRegistry depth tracking (P5):** `register(id:runtime:depth:)` tracks `maxDepthReached` and `totalSpawnCount`. Accessors: `getMaxDepth()`, `getTotalSpawns()`.
@@ -43,10 +61,16 @@ Six confirmed production failure modes resolved across the orchestration, memory
 - `PluginCraftEngine.init()` force-unwrap removed; uses `PathConfiguration.shared.applicationSupportURL`.
 - `PluginCraftEngine.runShell()` blocking `waitUntilExit()` replaced with async `terminationHandler` continuation.
 
----
+### Fixed
+- **LogicGate false positive (P0):** `cmd.contains("top")` blocked `cp ~/Desktop/...` with a spurious "Accessing top is unsafe" rejection. All `suggestions` keys now matched with `NSRegularExpression` `\b...\b` word boundaries via `matchesWholeWord(_:pattern:)`.
+- **Model load race (P0):** Three concurrent callers on startup (`ModelStateManager`, `VaultManager`, `ModelPicker`) hit `ModelManager.load()` simultaneously, producing noise logs. `activeLoadModelID` guard deduplicates before the first `await`.
+- **Unbounded memory injection (P1):** `MemoryContextBuilder` claimed ≤1800 chars but had no enforcement — context grew 343→1991 chars. Per-layer hard caps (400/400/700) now enforced. `SessionSummaryStore` outcome snippets truncated 250→120 chars.
+- **Hardware query misclassification (P2):** Turkish hardware terms ("işlemci", "bellek", "hafıza") inside `simpleQuestionMarkers` fired before hardware priority, routing "mac'imin işlemci bilgilerini ver" to `.chat`. Restructured `ANEInferenceActor.classifyIntent()` with PRIORITY 0–3 tiers.
+- **Web tool 14-turn cascade (P3):** `web_fetch` threw `AgentToolError` on network failure → Critic scored UNOB:FAIL → model retried indefinitely. Network errors now return `[WEB_UNAVAILABLE]` soft-failure string. `safari_automation` gains `read` action (URLSession → Safari fallback) to eliminate hallucinated `action='read'` errors.
+- **Critic retry loop (P4):** `handleReview()` called LLM Critic even for terminal observations. Added `trivialPassSignals` early-return for `[WEB_UNAVAILABLE]`, `EMAIL_SENT`, `FILE_SAVED_SUCCESSFULLY`.
 
 ## [7.0.0] - 2026-05-01
-### "Native Sovereign" Release
+"Native Sovereign" Release
 
 This major release marks the transition of EliteAgent into a production-ready, hardware-native autonomous system. The architecture has been completely overhauled to prioritize performance, privacy, and Apple Silicon optimization.
 

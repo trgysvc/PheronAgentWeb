@@ -8,7 +8,7 @@ In the Pheron Agent ecosystem, the **Music DNA** tool leverages this library to 
 
 ## 🚀 Key Advantages & Features
 
-While legacy libraries like Librosa are excellent for python-based research, AudioIntelligence is engineered for Industrial-Grade local production on macOS:
+While legacy Python-based competitor libraries are excellent for research, AudioIntelligence is engineered for Industrial-Grade local production on macOS:
 
 * ⚡ **Sub-millisecond Latency:** Utilizes native AMX (Apple Matrix Extension) and custom Metal kernels for real-time professional workflows.
 * 🎨 **Native SwiftUI UI:** Includes `AudioIntelligenceUI` for hardware-accelerated, real-time spectrograms, waveforms, and meters.
@@ -19,10 +19,10 @@ While legacy libraries like Librosa are excellent for python-based research, Aud
 
 ---
 
-## 🌉 The Librosa Bridge
+## 🌉 Seamless Python Migration
 
-AudioIntelligence provides 1:1 functional parity with the Python Librosa package while delivering **10x performance improvements** on Apple Silicon:
-* **Migration Guide:** A seamless Rosetta stone for Librosa users converting code to Swift.
+AudioIntelligence provides 1:1 functional parity with popular legacy Python packages while delivering **10x performance improvements** on Apple Silicon:
+* **Migration Guide:** A seamless Rosetta stone for users of legacy audio libraries converting code to Swift.
 * **Format Support:** Native decoding support for WAV, MP3, FLAC, and more.
 
 ---
@@ -34,7 +34,7 @@ The Infinity Engine is formally validated against industry "Gold Standards":
 * **Forensic True Peak:** 511-tap high-precision inter-sample detection (BT.1770 compliant).
 * **EBU Tech 3341/3342:** Verified Integrated, Momentary, Short-term, and LRA compliance.
 * **SQAM Level A:** Comprehensive 70-track scientific audit completed with 100% stability.
-* **Scientific Integrity:** Verified mathematical parity with Librosa (Mean Squared Error: $\text{MSE} < 0.00018$).
+* **Scientific Integrity:** Verified mathematical parity with industry-standard legacy libraries (Mean Squared Error: $\text{MSE} < 0.00018$).
 
 ---
 

@@ -102,16 +102,25 @@ export default function Ecosystem() {
       {/* Navigation Header */}
       <header className={styles.header}>
         <div className={styles.nav}>
-          <div className={styles.logoContainer}>
+          <Link href="/" className={styles.logoContainer} style={{textDecoration: "none", color: "inherit"}}>
+
             <Image 
+
               src="/assets/logo-perfect.png" 
+
               alt="Pheron Logo" 
+
               width={32} 
+
               height={32} 
+
               className={styles.logoImg}
+
             />
+
             <span>Pheron Agent</span>
-          </div>
+
+          </Link>
           <nav className={styles.navLinks}>
             {/* Product with Dropdown */}
             <div className={styles.navItemWithDropdown}>
