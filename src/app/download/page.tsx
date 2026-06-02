@@ -45,7 +45,7 @@ export default function DownloadPage() {
         <div className={styles.nav}>
           <div className={styles.logoContainer}>
             <Image 
-              src="/assets/logo.png" 
+              src="/assets/logo-perfect.png" 
               alt="Pheron Logo" 
               width={32} 
               height={32} 
@@ -60,8 +60,8 @@ export default function DownloadPage() {
                 Product
               </button>
               <div className={styles.navDropdown}>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/cli" className={styles.dropdownItem}>CLI</Link>
+                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
+                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
                 <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
               </div>
             </div>
@@ -98,9 +98,9 @@ export default function DownloadPage() {
       {/* Main Download Section */}
       <section className={styles.downloadPageContainer}>
         <h1 className={styles.downloadTitle}>Download macOS</h1>
-        <p className={styles.downloadSubtitle}>Requires macOS 15.0+, Apple Silicon Chips</p>
+        <p className={styles.downloadSubtitle}>Requires macOS 15.0+, Apple Silicon — 16 GB RAM minimum, 24 GB+ recommended</p>
         
-        <div style={{ marginBottom: "50px" }}>
+        <div style={{ marginBottom: "50px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <a 
             href="https://app.pheronagent.com/PheronAgent.dmg" 
             className={styles.downloadPillBtn}
@@ -111,6 +111,19 @@ export default function DownloadPage() {
               <polyline points="19 12 12 19 5 12" />
             </svg>
           </a>
+
+          <div style={{ marginTop: "24px", padding: "16px 24px", background: "rgba(0, 242, 254, 0.05)", border: "1px solid rgba(0, 242, 254, 0.2)", borderRadius: "12px", display: "inline-block", maxWidth: "500px", textAlign: "left" }}>
+            <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "20px", height: "20px", flexShrink: 0, marginTop: "2px" }}>
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: 0, lineHeight: "1.5" }}>
+                <strong style={{ color: "var(--text-primary)" }}>Download first, buy later.</strong> You can download and install Pheron Agent for free. Upon opening the app, you will be prompted to securely purchase a license or enter an existing key.
+              </p>
+            </div>
+          </div>
         </div>
 
         <h2 className={styles.downloadReleaseHeading}>
@@ -124,7 +137,7 @@ export default function DownloadPage() {
               onClick={() => setVersionExpanded(!versionExpanded)}
             >
               <div className={styles.versionLeft}>
-                <span className={styles.versionNum}>7.9.0</span>
+                <span className={styles.versionNum}>7.9.1</span>
                 <span className={styles.versionLatestBadge}>Latest</span>
               </div>
               <svg 
@@ -142,19 +155,52 @@ export default function DownloadPage() {
             {versionExpanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v7.9.0 is the active, stable release for macOS (Apple Silicon).
+                  Pheron Agent v7.9.1 is the active, stable release for macOS (Apple Silicon).
                 </p>
                 <div>
                   <a 
                     href="https://app.pheronagent.com/PheronAgent.dmg" 
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent.dmg directly (v7.9.0)
+                    Download PheronAgent.dmg directly (v7.9.1)
                   </a>
                 </div>
               </div>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* System Requirements */}
+      <section style={{
+        maxWidth: "900px",
+        width: "100%",
+        margin: "0 auto",
+        padding: "0 24px 80px 24px",
+      }}>
+        <h2 style={{ fontSize: "18px", fontWeight: 500, color: "var(--text-primary)", marginBottom: "24px", letterSpacing: "-0.2px" }}>
+          System Requirements
+        </h2>
+        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+          {[
+            ["Operating System", "macOS 15.0 Sequoia or later"],
+            ["Processor", "Apple Silicon (M1 or later)"],
+            ["RAM — Minimum", "16 GB unified memory"],
+            ["RAM — Recommended", "24 GB+ unified memory"],
+            ["Storage", "~6 GB free space (per model)"],
+            ["GPU", "Metal (built into Apple Silicon)"],
+          ].map(([label, value]) => (
+            <div key={label} style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: "16px 0",
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
+            }}>
+              <span style={{ fontSize: "14px", color: "var(--text-secondary)" }}>{label}</span>
+              <span style={{ fontSize: "14px", color: "var(--text-primary)", fontWeight: 500 }}>{value}</span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -166,7 +212,7 @@ export default function DownloadPage() {
             <div className={styles.footerBrand}>
               <div className={styles.logoContainer} style={{ background: "none", WebkitTextFillColor: "unset", color: "var(--text-primary)" }}>
                 <Image 
-                  src="/assets/logo.png" 
+                  src="/assets/logo-perfect.png" 
                   alt="Pheron Logo" 
                   width={24} 
                   height={24} 
@@ -181,8 +227,8 @@ export default function DownloadPage() {
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Product</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/ecosystem" className={styles.footerLink}>Agent</Link></li>
-                  <li><Link href="/resources/docs/cli" className={styles.footerLink}>CLI</Link></li>
+                  <li><Link href="/product/agent" className={styles.footerLink}>Agent</Link></li>
+                  <li><Link href="/resources/docs/api" className={styles.footerLink}>API</Link></li>
                   <li><Link href="/ecosystem" className={styles.footerLink}>Ecosystem</Link></li>
                   <li><Link href="/pricing" className={styles.footerLink}>Pricing</Link></li>
                 </ul>
@@ -225,6 +271,7 @@ export default function DownloadPage() {
                   <li><a href="#" className={styles.footerLink}>X</a></li>
                   <li><a href="#" className={styles.footerLink}>Linkedin</a></li>
                   <li><a href="#" className={styles.footerLink}>IG</a></li>
+                  <li><Link href="/get-in-touch" className={styles.footerLink}>Get in Touch</Link></li>
                 </ul>
               </div>
             </div>

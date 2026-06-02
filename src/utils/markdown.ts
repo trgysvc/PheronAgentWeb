@@ -32,8 +32,8 @@ export function rewriteMarkdownLinks(html: string): string {
     if (cleanedPath === "index") {
       return 'href="/resources/docs"';
     }
-    if (cleanedPath === "wiki/cli" || cleanedPath === "cli") {
-      return 'href="/resources/docs/cli"';
+    if (cleanedPath === "wiki/api" || cleanedPath === "api") {
+      return 'href="/resources/docs/api"';
     }
     if (cleanedPath === "wiki/future" || cleanedPath === "future") {
       return 'href="/resources/docs/future"';

@@ -22,7 +22,6 @@ export default function PricingPage() {
   const [activeTheme, setActiveTheme] = useState("system");
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
-  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annually">("monthly");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown on click outside
@@ -38,9 +37,6 @@ export default function PricingPage() {
     };
   }, []);
 
-  const getPrice = (monthly: number) => {
-    return billingPeriod === "annually" ? Math.floor(monthly * 0.8) : monthly;
-  };
 
   return (
     <div className={styles.container}>
@@ -50,7 +46,7 @@ export default function PricingPage() {
           <div className={styles.logoContainer}>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", color: "inherit" }}>
               <Image 
-                src="/assets/logo.png" 
+                src="/assets/logo-perfect.png" 
                 alt="Pheron Logo" 
                 width={32} 
                 height={32} 
@@ -66,8 +62,8 @@ export default function PricingPage() {
                 Product
               </button>
               <div className={styles.navDropdown}>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/cli" className={styles.dropdownItem}>CLI</Link>
+                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
+                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
                 <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
               </div>
             </div>
@@ -112,102 +108,74 @@ export default function PricingPage() {
             Pheron Agent runs fully on-device on Apple Silicon. Select a plan that matches your memory allocation and workflow needs.
           </p>
 
-          {/* Billing Switcher */}
-          <div style={{ display: "inline-flex", background: "rgba(255, 255, 255, 0.03)", border: "1px solid var(--border-glass)", borderRadius: "9999px", padding: "4px", marginBottom: "50px" }}>
-            <button 
-              onClick={() => setBillingPeriod("monthly")}
-              style={{ background: billingPeriod === "monthly" ? "rgba(255, 255, 255, 0.08)" : "transparent", color: billingPeriod === "monthly" ? "#fff" : "var(--text-secondary)", border: "none", borderRadius: "9999px", padding: "8px 24px", fontSize: "14px", fontWeight: "600", cursor: "pointer", transition: "all 0.15s" }}
-            >
-              Monthly
-            </button>
-            <button 
-              onClick={() => setBillingPeriod("annually")}
-              style={{ background: billingPeriod === "annually" ? "rgba(255, 255, 255, 0.08)" : "transparent", color: billingPeriod === "annually" ? "#fff" : "var(--text-secondary)", border: "none", borderRadius: "9999px", padding: "8px 24px", fontSize: "14px", fontWeight: "600", cursor: "pointer", transition: "all 0.15s" }}
-            >
-              Annually (Save 20%)
-            </button>
-          </div>
+          {/* Pricing Card */}
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "40px", padding: "0 24px" }}>
+            <div className="glass-card" style={{ padding: "40px", display: "flex", flexDirection: "column", gap: "24px", width: "100%", maxWidth: "500px", border: "1px solid var(--color-cyan)", position: "relative", overflow: "hidden" }}>
+              
+              {/* Launch Badge */}
+              <div style={{ position: "absolute", top: "16px", right: "-32px", background: "var(--color-cyan)", color: "#000", fontSize: "12px", fontWeight: "800", padding: "6px 40px", transform: "rotate(45deg)", textTransform: "uppercase" }}>
+                Launch Special
+              </div>
 
-          {/* Cards Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px", textAlign: "left" }}>
-            
-            {/* Personal Tier */}
-            <div className="glass-card" style={{ padding: "40px 30px", display: "flex", flexDirection: "column", gap: "24px" }}>
-              <div>
-                <h3 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "8px" }}>Personal</h3>
-                <p style={{ fontSize: "14px", color: "var(--text-tertiary)" }}>Perfect for individual power users and researchers.</p>
-              </div>
-              <div>
-                <span style={{ fontSize: "48px", fontWeight: "800", color: "#fff" }}>${getPrice(15)}</span>
-                <span style={{ fontSize: "14px", color: "var(--text-secondary)" }}> / month</span>
-              </div>
-              <button className="btn-secondary" style={{ width: "100%", padding: "12px", justifyContent: "center" }}>
-                Start 14-Day Free Trial
-              </button>
-              <div style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "20px" }}>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px", fontSize: "14px", color: "var(--text-secondary)", padding: 0, margin: 0 }}>
-                  <li>✓ Complete local MLX 4-bit inference</li>
-                  <li>✓ ANE Intent Classifier routing</li>
-                  <li>✓ L1 & L2 Memory management</li>
-                  <li>✓ Unlimited custom SkillVault creations</li>
-                  <li>✓ Access to 35+ native system tools</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Pro Tier (Featured) */}
-            <div className="glass-card" style={{ padding: "40px 30px", display: "flex", flexDirection: "column", gap: "24px", border: "1px solid var(--color-cyan)" }}>
               <div>
                 <div style={{ display: "inline-block", padding: "4px 10px", borderRadius: "9999px", background: "rgba(0, 242, 254, 0.08)", border: "1px solid rgba(0, 242, 254, 0.2)", color: "var(--color-cyan)", fontSize: "11px", fontWeight: "600", textTransform: "uppercase", marginBottom: "12px" }}>
-                  Most Popular
+                  One-Time Purchase
                 </div>
-                <h3 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "8px" }}>Developer Pro</h3>
-                <p style={{ fontSize: "14px", color: "var(--text-tertiary)" }}>For engineers needing advanced debugging & swarms.</p>
+                <h3 style={{ fontSize: "28px", fontWeight: "700", marginBottom: "8px", color: "var(--text-primary)" }}>Standard License</h3>
+                <p style={{ fontSize: "15px", color: "var(--text-tertiary)", lineHeight: "1.5" }}>A perpetual license for Pheron Agent. Pay once, use forever on your Mac.</p>
               </div>
-              <div>
-                <span style={{ fontSize: "48px", fontWeight: "800", color: "#fff" }}>${getPrice(30)}</span>
-                <span style={{ fontSize: "14px", color: "var(--text-secondary)" }}> / month</span>
+              
+              <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginTop: "8px" }}>
+                <span style={{ fontSize: "56px", fontWeight: "800", color: "#fff", lineHeight: "1" }}>$69</span>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px" }}>
+                  <span style={{ fontSize: "20px", color: "var(--text-tertiary)", textDecoration: "line-through", fontWeight: "600" }}>$99</span>
+                  <span style={{ fontSize: "14px", color: "var(--text-secondary)" }}>one-time payment</span>
+                </div>
               </div>
-              <button className="btn-primary" style={{ width: "100%", padding: "12px", justifyContent: "center" }}>
-                Upgrade to Pro
-              </button>
-              <div style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "20px" }}>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px", fontSize: "14px", color: "var(--text-secondary)", padding: 0, margin: 0 }}>
-                  <li><strong>Everything in Personal, plus:</strong></li>
-                  <li>✓ Multi-Agent Swarm execution (`spawn`)</li>
-                  <li>✓ Unlimited 8-bit model inference</li>
-                  <li>✓ Local Powermetrics energy profiling</li>
-                  <li>✓ Semantic vision VLM support (24 GB+ RAM)</li>
-                  <li>✓ Headless Blender 3D integration</li>
-                  <li>✓ Priority GitHub & Discord support</li>
+
+              <Link href="/download" style={{ textDecoration: "none" }}>
+                <button className="btn-primary" style={{ width: "100%", padding: "16px", justifyContent: "center", fontSize: "16px", marginTop: "8px" }}>
+                  Download for macOS
+                </button>
+              </Link>
+              
+              <div style={{ textAlign: "center", fontSize: "13px", color: "var(--text-tertiary)", fontStyle: "italic", marginTop: "-8px" }}>
+                * Purchasing is securely handled via Lemon Squeezy from within the app after download.
+              </div>
+
+              <div style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "24px", marginTop: "8px" }}>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "16px", fontSize: "15px", color: "var(--text-secondary)", padding: 0, margin: 0 }}>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span><strong>12 months of free updates</strong> included</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span>Yours forever — no subscription required</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span>Future major versions offered at a discount</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span>Complete local MLX 4-bit inference</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span>Multi-Agent Swarm execution</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span>ANE Intent Classifier routing</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span>All 35+ native system tools</span>
+                  </li>
                 </ul>
               </div>
             </div>
-
-            {/* Enterprise Tier */}
-            <div className="glass-card" style={{ padding: "40px 30px", display: "flex", flexDirection: "column", gap: "24px" }}>
-              <div>
-                <h3 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "8px" }}>Enterprise</h3>
-                <p style={{ fontSize: "14px", color: "var(--text-tertiary)" }}>For corporations requiring bespoke security and APIs.</p>
-              </div>
-              <div>
-                <span style={{ fontSize: "48px", fontWeight: "800", color: "#fff" }}>Custom</span>
-              </div>
-              <button className="btn-secondary" style={{ width: "100%", padding: "12px", justifyContent: "center" }}>
-                Contact Sales
-              </button>
-              <div style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "20px" }}>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px", fontSize: "14px", color: "var(--text-secondary)", padding: 0, margin: 0 }}>
-                  <li><strong>Everything in Pro, plus:</strong></li>
-                  <li>✓ Customized Metal GPU kernels</li>
-                  <li>✓ Private LLM server integrations</li>
-                  <li>✓ Biometric isolation sentinel hooks</li>
-                  <li>✓ Dedicated deployment assistance</li>
-                  <li>✓ SLA guaranteed enterprise support</li>
-                </ul>
-              </div>
-            </div>
-
           </div>
         </div>
       </main>
@@ -219,7 +187,7 @@ export default function PricingPage() {
             <div className={styles.footerBrand}>
               <div className={styles.logoContainer} style={{ background: "none", WebkitTextFillColor: "unset", color: "var(--text-primary)" }}>
                 <Image 
-                  src="/assets/logo.png" 
+                  src="/assets/logo-perfect.png" 
                   alt="Pheron Logo" 
                   width={24} 
                   height={24} 
@@ -233,8 +201,8 @@ export default function PricingPage() {
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Product</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/ecosystem" className={styles.footerLink}>Agent</Link></li>
-                  <li><Link href="/resources/docs/cli" className={styles.footerLink}>CLI</Link></li>
+                  <li><Link href="/product/agent" className={styles.footerLink}>Agent</Link></li>
+                  <li><Link href="/resources/docs/api" className={styles.footerLink}>API</Link></li>
                   <li><Link href="/ecosystem" className={styles.footerLink}>Ecosystem</Link></li>
                   <li><Link href="/pricing" className={styles.footerLink}>Pricing</Link></li>
                 </ul>
@@ -277,6 +245,7 @@ export default function PricingPage() {
                   <li><a href="#" className={styles.footerLink}>X</a></li>
                   <li><a href="#" className={styles.footerLink}>Linkedin</a></li>
                   <li><a href="#" className={styles.footerLink}>IG</a></li>
+                  <li><Link href="/get-in-touch" className={styles.footerLink}>Get in Touch</Link></li>
                 </ul>
               </div>
             </div>

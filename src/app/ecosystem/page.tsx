@@ -5,56 +5,57 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../page.module.css";
 
-// 39 tools categorized and described
+// 38 tools categorized and described
 const TOOLS = [
-  { name: "file_manager", icon: "📁", desc: "Native file explorer and controller", category: "File" },
-  { name: "read_file", icon: "📖", desc: "Read local file contents without sandbox limits", category: "File" },
-  { name: "write_file", icon: "✍️", desc: "Safe file creation with auto-directory building", category: "File" },
-  { name: "patch_file", icon: "🩹", desc: "Line-by-line diff and semantic patching", category: "File" },
-  { name: "id3_editor", icon: "🏷️", desc: "Audio file metadata editor", category: "File" },
+  { name: "File Manager", icon: "📁", desc: "Native file explorer and controller", category: "File" },
+  { name: "Read File", icon: "📖", desc: "Read local file contents without sandbox limits", category: "File" },
+  { name: "Write File", icon: "✍️", desc: "Safe file creation with auto-directory building", category: "File" },
+  { name: "Patch File", icon: "🩹", desc: "Line-by-line diff and semantic patching", category: "File" },
+  { name: "ID3 Editor", icon: "🏷️", desc: "Audio file metadata editor", category: "File" },
   
-  { name: "shell_exec", icon: "💻", desc: "Secure local shell commands in zsh", category: "System" },
-  { name: "volume_control", icon: "🔊", desc: "AppleScript native volume controller", category: "System" },
-  { name: "brightness_control", icon: "🔆", desc: "Screen brightness modifier", category: "System" },
-  { name: "sleep_control", icon: "🌙", desc: "Control mac sleep, lock, and display cycles", category: "System" },
-  { name: "sys_info", icon: "📊", desc: "Hardware metrics, temperature, and RAM allocation", category: "System" },
-  { name: "telemetry", icon: "📡", desc: "Local session telemetry logs", category: "System" },
-  { name: "date_time", icon: "⏰", desc: "True timezone dates for precise tasks", category: "System" },
-  { name: "app_discovery", icon: "🔍", desc: "Finds installed macOS applications", category: "System" },
-  { name: "shortcut_scan", icon: "🗂️", desc: "Scans available Siri Shortcuts", category: "System" },
-  { name: "shortcut_run", icon: "🏃", desc: "Runs Siri Shortcuts with typed parameters", category: "System" },
-  { name: "accessibility_ax", icon: "♿", desc: "Direct control via Accessibility API (click, drag, type)", category: "System" },
+  { name: "Shell Exec", icon: "💻", desc: "Secure local shell commands in zsh", category: "System" },
+  { name: "Volume Control", icon: "🔊", desc: "AppleScript native volume controller", category: "System" },
+  { name: "Brightness Control", icon: "🔆", desc: "Screen brightness modifier", category: "System" },
+  { name: "Sleep Control", icon: "🌙", desc: "Control mac sleep, lock, and display cycles", category: "System" },
+  { name: "Sys Info", icon: "📊", desc: "Hardware metrics, temperature, and RAM allocation", category: "System" },
+  { name: "Telemetry", icon: "📡", desc: "Local session telemetry logs", category: "System" },
+  { name: "Date Time", icon: "⏰", desc: "True timezone dates for precise tasks", category: "System" },
+  { name: "App Discovery", icon: "🔍", desc: "Finds installed macOS applications", category: "System" },
+  { name: "Shortcut Scan", icon: "🗂️", desc: "Scans available Siri Shortcuts", category: "System" },
+  { name: "Shortcut Run", icon: "🏃", desc: "Runs Siri Shortcuts with typed parameters", category: "System" },
+  { name: "Accessibility AX", icon: "♿", desc: "Direct control via Accessibility API (click, drag, type)", category: "System" },
   
-  { name: "web_search", icon: "🔍", desc: "Brave Search API integration for real-time web context", category: "Web" },
-  { name: "web_fetch", icon: "📥", desc: "Direct HTTP downloader and Markdown formatter", category: "Web" },
-  { name: "safari_automation", icon: "🧭", desc: "Automate Safari: search, scrape, click, close", category: "Web" },
+  { name: "Web Search", icon: "🔍", desc: "Brave Search API integration for real-time web context", category: "Web" },
+  { name: "Web Fetch", icon: "📥", desc: "Direct HTTP downloader and Markdown formatter", category: "Web" },
+  { name: "Safari Automation", icon: "🧭", desc: "Automate Safari: search, scrape, click, close", category: "Web" },
+  { name: "Browser Native", icon: "🌐", desc: "Interactive native Safari controller with navigate, fill, inspect_ax, and tab management", category: "Web" },
   
-  { name: "whatsapp", icon: "💬", desc: "Send and read messages via WhatsApp Desktop", category: "Communication" },
-  { name: "messenger", icon: "✉️", desc: "Automate Messenger replies", category: "Communication" },
-  { name: "email_send", icon: "📧", desc: "Draft and dispatch Apple Mail messages", category: "Communication" },
-  { name: "mail_search", icon: "🔎", desc: "Index and search local Apple Mail mailboxes", category: "Communication" },
+  { name: "WhatsApp", icon: "💬", desc: "Send and read messages via WhatsApp Desktop", category: "Communication" },
+  { name: "Messenger", icon: "✉️", desc: "Automate Messenger replies", category: "Communication" },
+  { name: "Email Send", icon: "📧", desc: "Draft and dispatch Apple Mail messages", category: "Communication" },
+  { name: "Mail Search", icon: "🔎", desc: "Index and search local Apple Mail mailboxes", category: "Communication" },
   
-  { name: "media_control", icon: "⏯️", desc: "System-wide media playback hooks", category: "Media" },
-  { name: "music_dna", icon: "🎵", desc: "Extract acoustic features and BPM from audio files", category: "Media" },
+  { name: "Media Control", icon: "⏯️", desc: "System-wide media playback hooks", category: "Media" },
+  { name: "Music DNA", icon: "🎵", desc: "Forensic acoustic analysis and EBU R128 loudness reporting via AudioIntelligence Infinity Engine", category: "Media" },
   
-  { name: "image_analysis", icon: "🖼️", desc: "Local vision models analyzing screenshots", category: "Vision" },
-  { name: "chicago_vision", icon: "👁️", desc: "Fine-tuned local OCR screen reading engine", category: "Vision" },
-  { name: "semantic_vision", icon: "👁️‍🗨️", desc: "Hardware VLM analyzing complex UI layouts (24GB+ Macs)", category: "Vision" },
+  { name: "Image Analysis", icon: "🖼️", desc: "Local vision models analyzing screenshots", category: "Vision" },
+  { name: "Chicago Vision", icon: "👁️", desc: "Fine-tuned local OCR screen reading engine", category: "Vision" },
+  { name: "Semantic Vision", icon: "👁️‍🗨️", desc: "Hardware VLM analyzing complex UI layouts (24GB+ Macs)", category: "Vision" },
   
-  { name: "git_action", icon: "🌿", desc: "Native Git execution: commit, branch, push, conflicts", category: "Development" },
-  { name: "xcode_engine", icon: "🛠️", desc: "Xcode build, run, debug, and test harness execution", category: "Development" },
-  { name: "blender_3d", icon: "🧊", desc: "Automates Blender 3D rendering and meshes via Python", category: "Development" },
-  { name: "subagent_spawn", icon: "👥", desc: "Spawn child actors to solve parallel tasks", category: "Development" },
+  { name: "Git Action", icon: "🌿", desc: "Native Git execution: commit, branch, push, conflicts", category: "Development" },
+  { name: "Xcode Engine", icon: "🛠️", desc: "Xcode build, run, debug, and test harness execution", category: "Development" },
+  { name: "Blender 3D", icon: "🧊", desc: "Automates Blender 3D rendering and meshes via Python", category: "Development" },
+  { name: "Subagent Spawn", icon: "👥", desc: "Spawn child actors to solve parallel tasks", category: "Development" },
   
-  { name: "contacts", icon: "📇", desc: "Access and search local Contacts database", category: "Productivity" },
-  { name: "calendar", icon: "📅", desc: "Create, view, and modify Calendar events", category: "Productivity" },
-  { name: "calculator", icon: "🧮", desc: "Compile mathematical computations", category: "Productivity" },
-  { name: "weather", icon: "🌤️", desc: "Fetch local weather data via Apple WeatherKit", category: "Productivity" },
-  { name: "timer", icon: "⏳", desc: "Native timers and reminders", category: "Productivity" },
-  { name: "markdown_report", icon: "📝", desc: "Generate formatted HTML/PDF executive summaries", category: "Productivity" },
+  { name: "Contacts", icon: "📇", desc: "Access and search local Contacts database", category: "Productivity" },
+  { name: "Calendar", icon: "📅", desc: "Create, view, and modify Calendar events", category: "Productivity" },
+  { name: "Calculator", icon: "🧮", desc: "Compile mathematical computations", category: "Productivity" },
+  { name: "Weather", icon: "🌤️", desc: "Fetch local weather data via Apple WeatherKit", category: "Productivity" },
+  { name: "Timer", icon: "⏳", desc: "Native timers and reminders", category: "Productivity" },
+  { name: "Markdown Report", icon: "📝", desc: "Generate formatted HTML/PDF executive summaries", category: "Productivity" },
   
-  { name: "memory_vault", icon: "🧠", desc: "Manage L1 hot, L2 medium, and L3 DreamBank long-term memory", category: "Self-Improvement" },
-  { name: "skill_patch", icon: "🦾", desc: "Write, patch, test, and archive custom skills (.skill.md)", category: "Self-Improvement" },
+  { name: "Memory Vault", icon: "🧠", desc: "Manage L1 hot, L2 medium, and L3 DreamBank long-term memory", category: "Self-Improvement" },
+  { name: "Skill Patch", icon: "🦾", desc: "Write, patch, test, and archive custom skills (.skill.md)", category: "Self-Improvement" },
 ];
 
 const CATEGORIES = ["All", "System", "File", "Web", "Vision", "Development", "Communication", "Productivity", "Self-Improvement"];
@@ -103,7 +104,7 @@ export default function Ecosystem() {
         <div className={styles.nav}>
           <div className={styles.logoContainer}>
             <Image 
-              src="/assets/logo.png" 
+              src="/assets/logo-perfect.png" 
               alt="Pheron Logo" 
               width={32} 
               height={32} 
@@ -118,8 +119,8 @@ export default function Ecosystem() {
                 Product
               </button>
               <div className={styles.navDropdown}>
-                <Link href="/#tools" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/cli" className={styles.dropdownItem}>CLI</Link>
+                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
+                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
                 <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
               </div>
             </div>
@@ -153,11 +154,11 @@ export default function Ecosystem() {
         </div>
       </header>
 
-      {/* 39 Tools Showcase Section */}
+      {/* 38 Tools Showcase Section */}
       <section id="tools" className={styles.section} style={{ minHeight: "60vh", paddingTop: "120px" }}>
         <div className={styles.sectionHeader}>
           <span className={styles.sectionTag}>Unrivaled Access</span>
-          <h2 className={styles.sectionTitle}>39 Integrated Native Tools</h2>
+          <h2 className={styles.sectionTitle}>Integrated Native Tools</h2>
           <p className={styles.sectionSubtitle}>
             Pheron Agent interacts directly with macOS, local applications, and files. 
             Filter through the tool inventory below.
@@ -198,7 +199,7 @@ export default function Ecosystem() {
             <div className={styles.footerBrand}>
               <div className={styles.logoContainer} style={{ background: "none", WebkitTextFillColor: "unset", color: "var(--text-primary)" }}>
                 <Image 
-                  src="/assets/logo.png" 
+                  src="/assets/logo-perfect.png" 
                   alt="Pheron Logo" 
                   width={24} 
                   height={24} 
@@ -213,8 +214,8 @@ export default function Ecosystem() {
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Product</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/#tools" className={styles.footerLink}>Agent</Link></li>
-                  <li><Link href="/resources/docs/cli" className={styles.footerLink}>CLI</Link></li>
+                  <li><Link href="/product/agent" className={styles.footerLink}>Agent</Link></li>
+                  <li><Link href="/resources/docs/api" className={styles.footerLink}>API</Link></li>
                   <li><Link href="/ecosystem" className={styles.footerLink}>Ecosystem</Link></li>
                   <li><Link href="/pricing" className={styles.footerLink}>Pricing</Link></li>
                 </ul>
@@ -257,6 +258,7 @@ export default function Ecosystem() {
                   <li><a href="#" className={styles.footerLink}>X</a></li>
                   <li><a href="#" className={styles.footerLink}>Linkedin</a></li>
                   <li><a href="#" className={styles.footerLink}>IG</a></li>
+                  <li><Link href="/get-in-touch" className={styles.footerLink}>Get in Touch</Link></li>
                 </ul>
               </div>
             </div>

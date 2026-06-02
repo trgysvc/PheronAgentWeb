@@ -10,7 +10,7 @@ The project leverages a multi-target structure with clear separation of concerns
 - **PheronAgentCore:** The heart of the system. Manages LLM inference, the Agent Engine (Orchestrator, Planner, Executor), memory architecture, and security protocols.
 - **PheronAgentUI:** Library containing shared UI components used across the app (such as `NeuralSightCards`, `TulparView`).
 - **PheronAgentXPC:** Secure and sandboxed inter-process communication (IPC) executable helper for privileged tasks.
-- **pheron (CLI):** Command line interface runner for native terminal execution.
+- **Titan Hub (Local API Server):** Native HTTP/REST service with Ollama and OpenAI endpoint compatibility.
 - **uma-bench:** Benchmark tool measuring Apple Silicon Unified Memory Architecture (UMA) performance.
 
 ## 2. Swift 6 and Concurrency

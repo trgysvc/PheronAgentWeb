@@ -49,7 +49,7 @@ export default function LegalClient({ htmlContent }: LegalClientProps) {
           <div className={styles.logoContainer}>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", color: "inherit" }}>
               <Image 
-                src="/assets/logo.png" 
+                src="/assets/logo-perfect.png" 
                 alt="Pheron Logo" 
                 width={32} 
                 height={32} 
@@ -65,8 +65,8 @@ export default function LegalClient({ htmlContent }: LegalClientProps) {
                 Product
               </button>
               <div className={styles.navDropdown}>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/cli" className={styles.dropdownItem}>CLI</Link>
+                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
+                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
                 <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function LegalClient({ htmlContent }: LegalClientProps) {
             <div className={styles.footerBrand}>
               <div className={styles.logoContainer} style={{ background: "none", WebkitTextFillColor: "unset", color: "var(--text-primary)" }}>
                 <Image 
-                  src="/assets/logo.png" 
+                  src="/assets/logo-perfect.png" 
                   alt="Pheron Logo" 
                   width={24} 
                   height={24} 
@@ -128,8 +128,8 @@ export default function LegalClient({ htmlContent }: LegalClientProps) {
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Product</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/ecosystem" className={styles.footerLink}>Agent</Link></li>
-                  <li><Link href="/resources/docs/cli" className={styles.footerLink}>CLI</Link></li>
+                  <li><Link href="/product/agent" className={styles.footerLink}>Agent</Link></li>
+                  <li><Link href="/resources/docs/api" className={styles.footerLink}>API</Link></li>
                   <li><Link href="/ecosystem" className={styles.footerLink}>Ecosystem</Link></li>
                   <li><Link href="/pricing" className={styles.footerLink}>Pricing</Link></li>
                 </ul>
@@ -172,6 +172,7 @@ export default function LegalClient({ htmlContent }: LegalClientProps) {
                   <li><a href="#" className={styles.footerLink}>X</a></li>
                   <li><a href="#" className={styles.footerLink}>Linkedin</a></li>
                   <li><a href="#" className={styles.footerLink}>IG</a></li>
+                  <li><Link href="/get-in-touch" className={styles.footerLink}>Get in Touch</Link></li>
                 </ul>
               </div>
             </div>

@@ -103,7 +103,7 @@ export default function Home() {
         <div className={styles.nav}>
           <div className={styles.logoContainer}>
             <Image 
-              src="/assets/logo.png" 
+              src="/assets/logo-perfect.png" 
               alt="Pheron Logo" 
               width={32} 
               height={32} 
@@ -118,8 +118,8 @@ export default function Home() {
                 Product
               </button>
               <div className={styles.navDropdown}>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/cli" className={styles.dropdownItem}>CLI</Link>
+                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
+                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
                 <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
               </div>
             </div>
@@ -170,6 +170,19 @@ export default function Home() {
             <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.37.13-9.13-1.84-14.3-5.9-3.58-2.83-7.5-7.66-11.75-14.53-8.61-13.9-15.02-30.88-19.23-50.96-2.58-12.35-3.87-24-3.87-34.98 0-16.14 3.87-29.21 11.62-39.22 7.74-10.02 17.5-15.15 29.27-15.4 5.37-.12 11.02 1.63 16.94 5.25 5.92 3.63 9.94 5.44 12.06 5.44 1.79 0 5.44-1.5 10.96-4.5 5.51-3 10.9-4.57 16.16-4.7 11.96-.13 22.01 4.22 30.15 13.06 6.04 6.57 10.37 14.53 13 23.86-13.5 8.16-20.12 18.91-19.87 32.26.25 10.39 4.17 19.1 11.75 26.13 7.58 7.03 16.42 11 26.54 11.9-2.61 7.62-5.78 15.17-9.5 22.65zM119.22 30.3c0-7.85 2.8-15.34 8.4-22.5 7.64-9.39 16.94-14.3 27.9-14.7 1.06 8.36-1.92 16.32-8.94 23.87-7.02 7.55-15.82 12.22-26.4 13.01-.63-.94-.96-1.74-.96-2.68z" />
           </svg>
           <span>Requires macOS 15.0+, Apple Silicon Chips</span>
+        </div>
+
+        <div style={{ marginTop: "40px", display: "flex", justifyContent: "center", gap: "16px" }}>
+          <Link href="/download" style={{ textDecoration: "none" }}>
+            <button className="btn-primary" style={{ padding: "16px 32px", fontSize: "16px" }}>
+              Download for macOS
+            </button>
+          </Link>
+          <Link href="/pricing" style={{ textDecoration: "none" }}>
+            <button className="btn-secondary" style={{ padding: "16px 32px", fontSize: "16px" }}>
+              View Pricing
+            </button>
+          </Link>
         </div>
 
       </section>
@@ -314,47 +327,6 @@ export default function Home() {
       </section>
 
 
-      {/* Enterprise & Licensing Section */}
-      <section className={styles.section} style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "80px" }}>
-        <div className={styles.sectionHeader} style={{ marginBottom: "40px" }}>
-          <span className={styles.sectionTag}>Enterprise & Licensing</span>
-          <h2 className={styles.sectionTitle}>Get in Touch</h2>
-          <p className={styles.sectionSubtitle}>
-            Pheron Agent is built for power users and enterprise teams. Select the appropriate contact channel below.
-          </p>
-        </div>
-        <div className={styles.featuresGrid} style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
-          <div className={`${styles.featureCard} glass-card`} style={{ padding: "24px" }}>
-            <div className={styles.featureIcon} style={{ fontSize: "16px", width: "36px", height: "36px" }}>💬</div>
-            <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "8px" }}>General & Partnerships</h4>
-            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.5", marginTop: "8px" }}>
-              For general inquiries or custom integration opportunities, reach out to <a href="mailto:info@pheronagent.com" style={{ color: "var(--color-cyan)", textDecoration: "underline" }}>info@pheronagent.com</a> or <a href="mailto:collaborations@pheronagent.com" style={{ color: "var(--color-cyan)", textDecoration: "underline" }}>collaborations@pheronagent.com</a>.
-            </p>
-          </div>
-          <div className={`${styles.featureCard} glass-card`} style={{ padding: "24px" }}>
-            <div className={styles.featureIcon} style={{ fontSize: "16px", width: "36px", height: "36px" }}>🛠️</div>
-            <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "8px" }}>Help & Support</h4>
-            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.5", marginTop: "8px" }}>
-              Our support engineers are ready to assist with setup, configurations, or bugs at <a href="mailto:support@pheronagent.com" style={{ color: "var(--color-cyan)", textDecoration: "underline" }}>support@pheronagent.com</a>.
-            </p>
-          </div>
-          <div className={`${styles.featureCard} glass-card`} style={{ padding: "24px" }}>
-            <div className={styles.featureIcon} style={{ fontSize: "16px", width: "36px", height: "36px" }}>💳</div>
-            <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "8px" }}>Billing & Payments</h4>
-            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.5", marginTop: "8px" }}>
-              For single-payment queries, bulk licensing invoices, or payment inquiries, email <a href="mailto:billing@pheronagent.com" style={{ color: "var(--color-cyan)", textDecoration: "underline" }}>billing@pheronagent.com</a> or <a href="mailto:payments@pheronagent.com" style={{ color: "var(--color-cyan)", textDecoration: "underline" }}>payments@pheronagent.com</a>.
-            </p>
-          </div>
-          <div className={`${styles.featureCard} glass-card`} style={{ padding: "24px" }}>
-            <div className={styles.featureIcon} style={{ fontSize: "16px", width: "36px", height: "36px" }}>⚖️</div>
-            <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "8px" }}>Legal & Compliance</h4>
-            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.5", marginTop: "8px" }}>
-              For licensing agreements, terms, or regulatory matters, contact <a href="mailto:legal@pheronagent.com" style={{ color: "var(--color-cyan)", textDecoration: "underline" }}>legal@pheronagent.com</a>.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
@@ -363,13 +335,13 @@ export default function Home() {
             <div className={styles.footerBrand}>
               <div className={styles.logoContainer} style={{ background: "none", WebkitTextFillColor: "unset", color: "var(--text-primary)" }}>
                 <Image 
-                  src="/assets/logo.png" 
+                  src="/assets/logo-perfect.png" 
                   alt="Pheron Logo" 
                   width={24} 
                   height={24} 
                   className={styles.logoImg}
                 />
-                <span style={{ fontSize: "16px", fontWeight: "700" }}>Pheron Agent</span>
+                <span style={{ fontSize: "20px", fontWeight: "800" }}>Pheron Agent</span>
               </div>
             </div>
 
@@ -378,8 +350,8 @@ export default function Home() {
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Product</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/ecosystem" className={styles.footerLink}>Agent</Link></li>
-                  <li><Link href="/resources/docs/cli" className={styles.footerLink}>CLI</Link></li>
+                  <li><Link href="/product/agent" className={styles.footerLink}>Agent</Link></li>
+                  <li><Link href="/resources/docs/api" className={styles.footerLink}>API</Link></li>
                   <li><Link href="/ecosystem" className={styles.footerLink}>Ecosystem</Link></li>
                   <li><Link href="/pricing" className={styles.footerLink}>Pricing</Link></li>
                 </ul>
@@ -422,6 +394,7 @@ export default function Home() {
                   <li><a href="#" className={styles.footerLink}>X</a></li>
                   <li><a href="#" className={styles.footerLink}>Linkedin</a></li>
                   <li><a href="#" className={styles.footerLink}>IG</a></li>
+                  <li><Link href="/get-in-touch" className={styles.footerLink}>Get in Touch</Link></li>
                 </ul>
               </div>
             </div>

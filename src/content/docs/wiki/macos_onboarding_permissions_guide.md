@@ -14,6 +14,7 @@
 5. [App Store & Notarization Requirements](#5-app-store--notarization-requirements)
 6. [System Settings Deep-Link URL Schemes](#6-system-settings-deep-link-url-schemes)
 7. [Implementation Reference](#7-implementation-reference)
+8. [Model Setup & Local File Verification Guide](#8-model-setup--local-file-verification-guide)
 
 ---
 
@@ -894,3 +895,139 @@ extension UserDefaults {
 - [Accessibility Permission in macOS (jano.dev, Jan 2025)](https://jano.dev/apple/macos/swift/2025/01/08/Accessibility-Permission.html)
 - [PermissionFlow library (jaywcjlove)](https://github.com/jaywcjlove/PermissionFlow)
 - [User Privacy and Data Use — App Store](https://developer.apple.com/app-store/user-privacy-and-data-use/)
+
+---
+
+## 8. Model Setup & Local File Verification Guide
+
+This section outlines the setup procedures, hardware requirements, VLM configurations, and exact file verification checks for Pheron Agent local model execution.
+
+### 8.1 mlx-community — Apple Silicon Model Catalog
+
+Pheron Agent downloads pre-quantized 4-bit models directly from the **[mlx-community](https://huggingface.co/mlx-community)** organization on Hugging Face. The following tables contain the verified model catalogs:
+
+#### Qwen3 Dense
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Qwen3-0.6B-4bit** | `mlx-community/Qwen3-0.6B-4bit` | 0.35 GB | 1 GB | ✓ | ✓ |
+| **Qwen3-1.7B-4bit** | `mlx-community/Qwen3-1.7B-4bit` | 0.97 GB | 2 GB | ✓ | ✓ |
+| **Qwen3-4B-4bit** | `mlx-community/Qwen3-4B-Instruct-2507-4bit` | 2.28 GB | 4 GB | ✓ | ✓ |
+| **Qwen3-8B-4bit** | `mlx-community/Qwen3-8B-4bit` | 4.62 GB | 6 GB | ✓ | ✓ |
+| **Qwen3-14B-4bit** | `mlx-community/Qwen3-14B-4bit` | 8.32 GB | 10 GB | ✓ | ✓ |
+| **Qwen3-32B-4bit** | `mlx-community/Qwen3-32B-4bit` | 18.4 GB | 22 GB | ✓ | ✓ |
+
+#### Qwen3 MoE
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Qwen3-30B-A3B-4bit** | `mlx-community/Qwen3-30B-A3B-Instruct-2507-4bit` | 17.2 GB | 21 GB | ✓ | ✓ |
+| **Qwen3-Coder-30B-A3B-4bit** | `mlx-community/Qwen3-Coder-30B-A3B-Instruct-4bit` | 17.2 GB | 21 GB | ✓ | — |
+| **Qwen3-235B-A22B-4bit** | `mlx-community/Qwen3-235B-A22B-4bit` | 132 GB | 158 GB | ✓ | ✓ |
+| **Qwen3-Coder-480B-A35B-4bit** | `mlx-community/Qwen3-Coder-480B-A35B-Instruct-4bit` | 270 GB | 324 GB | ✓ | — |
+
+#### Llama
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Llama-3.2-1B-4bit** | `mlx-community/Llama-3.2-1B-Instruct-4bit` | 0.71 GB | 1 GB | ✓ | — |
+| **Llama-3.2-3B-4bit** | `mlx-community/Llama-3.2-3B-Instruct-4bit` | 1.82 GB | 3 GB | ✓ | — |
+| **Llama-3.1-8B-4bit** | `mlx-community/Meta-Llama-3.1-8B-Instruct-4bit` | 4.53 GB | 6 GB | ✓ | — |
+| **Llama-3.3-70B-4bit** | `mlx-community/Llama-3.3-70B-Instruct-4bit` | 39.7 GB | 48 GB | ✓ | — |
+| **Llama-4-Scout-4bit** | `mlx-community/Llama-4-Scout-17B-16E-Instruct-4bit` | 61.1 GB | 73 GB | ✓ | — |
+| **Llama-4-Maverick-4bit** | `mlx-community/Llama-4-Maverick-17B-128E-Instruct-4bit` | 226 GB | 271 GB | ✓ | — |
+
+#### Gemma
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Gemma-3-1B-4bit** | `mlx-community/gemma-3-1b-it-4bit` | 0.77 GB | 1 GB | Kısmi | — |
+| **Gemma-3-4B-4bit** | `mlx-community/gemma-3-4b-it-4bit` | 3.44 GB | 5 GB | Kısmi | — |
+| **Gemma-3-12B-4bit** | `mlx-community/gemma-3-12b-it-4bit` | 8.07 GB | 10 GB | Kısmi | — |
+| **Gemma-3-27B-4bit** | `mlx-community/gemma-3-27b-it-4bit` | 16.9 GB | 20 GB | Kısmi | — |
+| **Gemma-4-E4B-4bit** | `mlx-community/gemma-4-e4b-it-4bit` | 5.25 GB | 7 GB | ✓ | ✓ |
+| **Gemma-4-26B-MoE-4bit** | `mlx-community/gemma-4-26b-a4b-it-4bit` | 15.6 GB | 19 GB | ✓ | ✓ |
+
+#### Mistral
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Mistral-7B-v0.3-4bit** | `mlx-community/Mistral-7B-Instruct-v0.3-4bit` | 4.08 GB | 5 GB | ✓ | — |
+| **Mistral-Nemo-12B-4bit** | `mlx-community/Mistral-Nemo-Instruct-2407-4bit` | 6.91 GB | 9 GB | Kısmi | — |
+| **Mistral-Small-24B-4bit** | `mlx-community/Mistral-Small-24B-Instruct-2501-4bit` | 13.3 GB | 16 GB | ✓ | — |
+| **Mistral-Small-3.2-24B-4bit** | `mlx-community/Mistral-Small-3.2-24B-Instruct-2506-4bit` | 13.3 GB | 16 GB | ✓ | — |
+| **Mistral-Large-123B-4bit** | `mlx-community/Mistral-Large-Instruct-2407-4bit` | 69 GB | 83 GB | ✓ | — |
+
+#### Phi & DeepSeek
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Phi-4-mini-4bit** | `mlx-community/Phi-4-mini-instruct-4bit` | 2.18 GB | 3 GB | ✓ | — |
+| **Phi-4-14B-4bit** | `mlx-community/phi-4-4bit` | 8.25 GB | 10 GB | Kısmi | — |
+| **DeepSeek-Coder-V2-Lite-4bit** | `mlx-community/DeepSeek-Coder-V2-Lite-Instruct-4bit-mlx` | 8.84 GB | 11 GB | Kısmi | — |
+
+### 8.2 Apple Silicon RAM Allocation Profiles
+
+Pheron Agent enforces a strict **65% model weight allocation budget** from the device's unified memory, reserving the rest for system processes and the KV cache. The following table maps RAM tiers to recommended working models:
+
+* **8 GB RAM:** Qwen3-0.6B, Qwen3-1.7B, Qwen3-4B, Qwen3-8B · Llama-3.2-1B, Llama-3.2-3B, Llama-3.1-8B · Gemma-3-1B, Gemma-3-4B, Gemma-4-E4B · Mistral-7B · Phi-4-mini.
+* **16 GB RAM:** *All 8 GB models plus* Qwen3-14B · Gemma-3-12B · Mistral-Nemo-12B, Mistral-Small-24B · Phi-4-14B · DeepSeek-Coder-V2-Lite.
+* **24 GB RAM:** *All 16 GB models plus* Qwen3-32B, Qwen3-30B-A3B · Gemma-3-27B, Gemma-4-26B · Mistral-Small-3.2-24B.
+* **32 GB RAM:** *All 24 GB models plus* Qwen3-Coder-30B.
+* **48 GB RAM:** *All 32 GB models plus* Llama-3.3-70B.
+* **64 GB RAM:** *All 48 GB models* (Note: Qwen3-72B was not released as dense, so it is absent).
+* **128 GB RAM:** *All 64 GB models plus* Mistral-Large-123B · Llama-4-Scout.
+* **192 GB RAM:** *All 128 GB models plus* Qwen3-235B-A22B.
+* **512 GB RAM:** *All 192 GB models plus* Qwen3-Coder-480B · Llama-4-Maverick.
+
+### 8.3 VLM (Vision Language Model) System Integration
+
+Pheron Agent's `VLMInferenceActor.swift` coordinates multimodal image-understanding capabilities (leveraged by the `semantic_vision` tool / UBID 84):
+
+1. **Hardware Memory Threshold:** Requires a minimum of **24 GB unified memory** to run the VLM engine concurrently alongside the primary text orchestrator.
+2. **Graceful Fallback:** If RAM is **less than 24 GB**, VLM stays disabled and calls dynamically fall back to local Optical Character Recognition (OCR), warning the user without crashes.
+3. **Automatic Model Selection:**
+   * **RAM 24–31 GB:** Automatically resolves to **`mlx-community/Qwen2.5-VL-3B-Instruct-4bit`** (~2.0 GB disk size).
+   * **RAM 32 GB+:** Automatically resolves to **`mlx-community/Qwen3-VL-4B-Instruct-MLX-4bit`** (~2.5 GB disk size).
+4. **User Override Key:** You can override VLM checks manually using:
+   ```swift
+   UserDefaults.standard.set(true, forKey: "vlmEnabled")
+   ```
+   *Note: Manual activation on low-RAM profiles may trigger VRAM bottlenecks.*
+5. **Catalog Selection Gaps:** The current Swift catalog does not recommend larger models like `Qwen2.5-VL-7B`, `Qwen2.5-VL-72B`, or `Llama-4-Scout` for memory configurations over 48 GB+. To select them, future updates to the hardcoded `recommendedModelID()` function are required.
+
+### 8.4 Local Model Execution File Manifest
+
+When troubleshooting local models or verifying offline setups, check that the corresponding directory contains all required files. 
+
+#### Local Storage Path
+Models must reside in:
+```bash
+~/Library/Application Support/PheronAgent/Models/[model-id]/
+```
+*(Where `[model-id]` matches the identifier registered in the catalog, e.g. `qwen3.5-9b-4bit`)*
+
+#### Download Source URL
+Files are fetched from the respective Hugging Face repo via:
+```bash
+https://huggingface.co/[HF_Repo]/resolve/main/[file_name]
+```
+
+#### Required File Checklist
+
+Verify that all of the following are fully downloaded and not corrupted (HTML error pages instead of files):
+
+* `[ ]` **`config.json` (Required)**
+  * Contains neural dimensions, head counts, layers, and model architecture type.
+* `[ ]` **`tokenizer.json` (Required)**
+  * Contains vocabulary maps and merge lists.
+* `[ ]` **`tokenizer_config.json` (Required)**
+  * Defines prompt formatting and chat templates.
+* `[ ]` **`generation_config.json` (Highly Recommended)**
+  * Details generation bounds and stop tokens (critical for Qwen3.5/MLX v3 to prevent runaway output loops).
+* `[ ]` **`special_tokens_map.json` (Recommended)**
+  * Maps control tags (e.g. `<|im_start|>`, `<|im_end|>`).
+* `[ ]` **`preprocessor_config.json` (VLM/Vision Only)**
+  * **Absolutely required** for multimodal VLM layers (`Qwen2.5-VL-3B` and `Qwen3-VL-4B`) to initialize vision grids.
+* `[ ]` **Weights (`.safetensors` files) (Required)**
+  * **Single-file weights:** Used by light models (<4B parameters). Requires:
+    * `model.safetensors`
+  * **Sharded weights:** Large models split parameters into multiple files named `model-XXXXX-of-YYYYY.safetensors`.
+    * **Crucial:** All shards from `00001` through `YYYYY` must be present. If even one shard is missing or incomplete, VRAM loading fails and the engine rolls back.
+    * *Example (Qwen3-14B):* Requires `model-00001-of-00002.safetensors` and `model-00002-of-00002.safetensors`.
+    * *Example (Llama-3.3-70B):* Requires shards `model-00001-of-00008.safetensors` through `model-00008-of-00008.safetensors`.
+

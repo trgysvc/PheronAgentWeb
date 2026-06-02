@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Pheron Agent | Native Autonomous AI Agent for macOS",
-  description: "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 39 native tools. Privacy by design, autonomy by nature.",
+  description: "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 38 native tools. Privacy by design, autonomy by nature.",
   keywords: ["AI Agent", "macOS Agent", "Apple Silicon", "MLX Inference", "Local LLM", "Autonomous Agent", "Privacy AI", "Swift 6"],
   authors: [{ name: "Pheron Team" }],
   openGraph: {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   icons: {
-    icon: "/assets/logo.png",
+    icon: "/assets/logo-perfect.png",
   },
 };
 

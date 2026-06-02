@@ -4,14 +4,15 @@ Pheron Agent is built with a **Privacy by Design** and **Sovereignty First** app
 
 ## 1. On-Device Local Isolation
 
-By default, all planning, monologue, memory lookup, and execution loops run entirely on-device using local MLX models.
-- **Zero Cloud Leakage**: Your files, screenshots, clipboard contents, and execution logs never leave your physical computer.
-- **No Analytics Tracking**: Pheron Agent has no tracking endpoints. Telemetry logs are stored locally at `~/Library/Application Support/PheronAgent/Telemetry/`.
+Pheron Agent is designed to run all planning, memory lookup, and execution loops on-device using local MLX models. When a local model is loaded and active, no prompt data or execution context leaves your machine.
+- **Local-First Default**: All inference defaults to the on-device Titan Engine. A cloud fallback (OpenRouter) is only triggered when no local model is available. To enforce strict local-only operation, enable **Local-Only Mode** in Settings.
+- **Zero Telemetry**: Pheron Agent has no tracking endpoints. Telemetry logs are stored locally at `~/Library/Application Support/PheronAgent/Telemetry/`.
+- **Your files stay local**: Screenshots, clipboard contents, and execution logs are never uploaded.
 
 ## 2. Privacy Guard
 
 For workflows that request cloud integrations or use external fallback models, Pheron Agent routes requests through a security interceptor called **Privacy Guard**:
-- **PII Detection**: An on-device classifier scans prompt inputs for Personally Identifiable Information (such as names, addresses, credit cards, and system paths).
+- **PII Detection**: A rule-based on-device scanner inspects prompt inputs for Personally Identifiable Information (such as names, addresses, credit cards, and system paths) before any external routing occurs.
 - **Enforcement Levels**:
   - `PASS`: The prompt contains no sensitive info and continues.
   - `DESENSITIZE`: Automatically masks or replaces PII with placeholder strings (e.g. replacing actual names with `[USER_NAME]`).
