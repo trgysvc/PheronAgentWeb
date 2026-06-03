@@ -5,12 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [7.9.2] - 2026-06-02
+## [7.9.2] - 2026-06-03
 
 ### Added
-- **Model Hub** — tam model kataloğu: 30+ yerel MLX modeli (Qwen3, Llama 4, Gemma 3/4, Mistral, Devstral, Phi-4, DeepSeek), 3 sütunlu grid, donanım desteğine göre pasif/aktif gösterim
-- **VLM (Vision) desteği** genişletildi: 48 GB+ için Qwen2.5-VL 7B eklendi; otomatik RAM tier seçimi (24/32/48 GB)
-- **Help → Model Catalog** yeni dokümantasyon bölümü: tüm modeller için tam dosya listesi, shard sayısı, RAM gereksinimleri
+- **Background task processing** — start a new conversation while a task is still running; the old conversation stays in the sidebar with a ⟳ indicator and continues in the background
+- **Task interruption** — Stop button (and Escape key) cancels a running task mid-execution
+- **Model Hub** — full model catalogue: 30+ local MLX models (Qwen3, Llama 4, Gemma 3/4, Mistral, Devstral, Phi-4, DeepSeek) in a 3-column grid; hardware-adaptive display
+- **VLM (Vision) support** expanded: Qwen2.5-VL 7B added for 48 GB+ systems
+- **Help → Model Catalog** documentation section with full file lists and RAM requirements
+- **License deep link** — `pheron://activate?key=...` URL scheme for one-click activation
 - Qwen3 Dense: 0.6B · 1.7B · 4B · 8B · 14B · 32B
 - Qwen3 MoE: 30B-A3B · Coder-30B-A3B · Next-80B-A3B · 235B-A22B · Coder-480B-A35B
 - Llama 4 Maverick (512 GB)
@@ -19,9 +22,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - VLM: Qwen2.5-VL 7B (48 GB+)
 
 ### Changed
-- **Model Hub — VLM bölümü** ayrı section olarak görünür
-- **Model Hub — Cloud Providers** bölümü FeatureFlag ile gizlendi
-- **Settings AI sekmesi** — Configuration bölümü Privacy sekmesinden AI sekmesine taşındı
+- Session titles now use the first message instead of the model name
+- Model Hub VLM section shown separately
+- Settings → AI tab now contains the Configuration section
+- WebSearchTool reliability improvements
+
+### Fixed
+- License activation window recreates correctly when opened with a pre-filled key
 
 ## [7.9.1] - 2026-06-01
 
