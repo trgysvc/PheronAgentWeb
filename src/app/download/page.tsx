@@ -24,6 +24,7 @@ export default function DownloadPage() {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [versionExpanded, setVersionExpanded] = useState(false);
+  const [version791Expanded, setVersion791Expanded] = useState(false);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -111,7 +112,7 @@ export default function DownloadPage() {
         
         <div style={{ marginBottom: "50px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <a 
-            href="https://app.pheronagent.com/PheronAgent.dmg" 
+            href="https://app.pheronagent.com/PheronAgent792.dmg" 
             className={styles.downloadPillBtn}
           >
             <span>Download for macOS</span>
@@ -146,7 +147,7 @@ export default function DownloadPage() {
               onClick={() => setVersionExpanded(!versionExpanded)}
             >
               <div className={styles.versionLeft}>
-                <span className={styles.versionNum}>7.9.1</span>
+                <span className={styles.versionNum}>7.9.2</span>
                 <span className={styles.versionLatestBadge}>Latest</span>
               </div>
               <svg 
@@ -164,15 +165,59 @@ export default function DownloadPage() {
             {versionExpanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v7.9.1 is the active, stable release for macOS (Apple Silicon).
+                  Pheron Agent v7.9.2 is the active, stable release for macOS (Apple Silicon).
                 </p>
-                <div>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
                   <a 
-                    href="https://app.pheronagent.com/PheronAgent.dmg" 
+                    href="https://app.pheronagent.com/PheronAgent792.dmg" 
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent.dmg directly (v7.9.1)
+                    Download PheronAgent792.dmg directly (v7.9.2)
                   </a>
+                  <Link href="/changelog#v7.9.2" className={styles.versionDetailsLink}>
+                    View Changelog
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className={styles.versionItem}>
+            <div 
+              className={styles.versionRow} 
+              onClick={() => setVersion791Expanded(!version791Expanded)}
+            >
+              <div className={styles.versionLeft}>
+                <span className={styles.versionNum}>7.9.1</span>
+                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>Previous</span>
+              </div>
+              <svg 
+                className={`${styles.versionCaret} ${version791Expanded ? styles.versionCaretOpen : ""}`} 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            {version791Expanded && (
+              <div className={styles.versionDetails}>
+                <p>
+                  Pheron Agent v7.9.1 is a previous release for macOS (Apple Silicon).
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
+                  <a 
+                    href="https://app.pheronagent.com/PheronAgent791.dmg" 
+                    className={styles.versionDetailsLink}
+                  >
+                    Download PheronAgent791.dmg directly (v7.9.1)
+                  </a>
+                  <Link href="/changelog#v7.9.1" className={styles.versionDetailsLink}>
+                    View Changelog
+                  </Link>
                 </div>
               </div>
             )}
