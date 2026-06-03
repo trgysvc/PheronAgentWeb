@@ -169,9 +169,9 @@ export default function ChangelogClient({ htmlContent }: ChangelogClientProps) {
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Connect</span>
                 <ul className={styles.columnList}>
-                  <li><a href="#" className={styles.footerLink}>X</a></li>
-                  <li><a href="#" className={styles.footerLink}>Linkedin</a></li>
-                  <li><a href="#" className={styles.footerLink}>IG</a></li>
+                  <li><a href="https://x.com/PheronAgent" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>X</a></li>
+                  <li><a href="https://www.linkedin.com/company/pheron-agent/" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Linkedin</a></li>
+                  <li><a href="https://www.instagram.com/pheronagent/" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>IG</a></li>
                   <li><Link href="/get-in-touch" className={styles.footerLink}>Get in Touch</Link></li>
                 </ul>
               </div>
