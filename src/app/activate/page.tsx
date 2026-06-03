@@ -97,7 +97,7 @@ export default function ActivatePage() {
           <div className={styles.logoContainer}>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", color: "inherit" }}>
               <Image 
-                src="/assets/logo-perfect.png" 
+                src="/assets/PheronAgentLOGO2.png" 
                 alt="Pheron Logo" 
                 width={32} 
                 height={32} 

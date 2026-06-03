@@ -49,7 +49,7 @@ export default function ChangelogClient({ htmlContent }: ChangelogClientProps) {
           <div className={styles.logoContainer}>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none", color: "inherit" }}>
               <Image 
-                src="/assets/logo-perfect.png" 
+                src="/assets/PheronAgentLOGO2.png" 
                 alt="Pheron Logo" 
                 width={32} 
                 height={32} 
@@ -114,10 +114,10 @@ export default function ChangelogClient({ htmlContent }: ChangelogClientProps) {
             <div className={styles.footerBrand}>
               <div className={styles.logoContainer} style={{ background: "none", WebkitTextFillColor: "unset", color: "var(--text-primary)" }}>
                 <Image 
-                  src="/assets/logo-perfect.png" 
+                  src="/assets/PheronAgentLOGO2.png" 
                   alt="Pheron Logo" 
-                  width={24} 
-                  height={24} 
+                  width={32} 
+                  height={32} 
                   className={styles.logoImg}
                 />
                 <span style={{ fontSize: "16px", fontWeight: "700" }}>Pheron Agent</span>

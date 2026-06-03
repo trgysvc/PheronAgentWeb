@@ -125,8 +125,9 @@
 
 .logoImg {
   border-radius: 8px;
-  background: #000;
-  border: 1px solid var(--border-glass);
+  background: transparent;
+  border: none;
+  object-fit: contain;
 }
 
 .title {

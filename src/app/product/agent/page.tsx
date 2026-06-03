@@ -385,7 +385,7 @@ export default function AgentPage() {
       <header className={styles.header}>
         <div className={styles.nav}>
           <Link href="/" className={styles.logoContainer}>
-            <Image src="/assets/logo-perfect.png" alt="Pheron Logo" width={40} height={40} className={styles.logoImg} />
+            <Image src="/assets/PheronAgentLOGO2.png" alt="Pheron Logo" width={40} height={40} className={styles.logoImg} />
             <span>Pheron Agent</span>
           </Link>
           <nav className={styles.navLinks}>

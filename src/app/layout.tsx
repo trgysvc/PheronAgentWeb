@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   icons: {
-    icon: "/assets/logo-perfect.png",
+    icon: "/assets/PheronAgentLOGO2.png",
   },
 };
 

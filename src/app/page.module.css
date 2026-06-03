@@ -40,6 +40,7 @@
   border-radius: 8px;
   background: transparent;
   border: none;
+  object-fit: contain;
 }
 
 .navLinks {

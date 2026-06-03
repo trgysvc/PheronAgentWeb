@@ -41,7 +41,7 @@ export default function SiteFooter() {
           {/* Left side brand */}
           <div className={styles.footerBrand}>
             <div className={styles.logoContainer} style={{ background: "none", WebkitTextFillColor: "unset", color: "var(--text-primary)" }}>
-              <Image src="/assets/logo-perfect.png" alt="Pheron Logo" width={32} height={32} className={styles.logoImg} />
+              <Image src="/assets/PheronAgentLOGO2.png" alt="Pheron Logo" width={32} height={32} className={styles.logoImg} />
               <span style={{ fontSize: "20px", fontWeight: "800" }}>Pheron Agent</span>
             </div>
           </div>
