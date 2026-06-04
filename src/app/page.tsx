@@ -594,15 +594,15 @@ export default function Home() {
             
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>7.9.2</span>
-                <span>Jun 2, 2026</span>
+                <span className={styles.changelogBadge}>1.0.2</span>
+                <span>Jun 3, 2026</span>
               </div>
               <span className={styles.changelogTitle}>Model Hub & VLM Expansion</span>
             </div>
 
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>7.9.1</span>
+                <span className={styles.changelogBadge}>1.0.1</span>
                 <span>Jun 1, 2026</span>
               </div>
               <span className={styles.changelogTitle}>RAM & UI Fixes</span>
@@ -610,18 +610,10 @@ export default function Home() {
 
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>7.9.0</span>
+                <span className={styles.changelogBadge}>1.0.0</span>
                 <span>Jun 1, 2026</span>
               </div>
               <span className={styles.changelogTitle}>Public Release</span>
-            </div>
-
-            <div className={styles.changelogCard}>
-              <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>9.0.0</span>
-                <span>May 7, 2026</span>
-              </div>
-              <span className={styles.changelogTitle}>Stability Sprint</span>
             </div>
 
           </div>

@@ -47,7 +47,11 @@ If you cannot deactivate (lost or damaged device), contact support for a manual 
 
 ## 5. Updates
 
-Your license includes free updates for **12 months** from the date of purchase. After 12 months, your installed version continues to work without interruption — no subscription, no forced upgrade. Future major versions may be offered at a discounted upgrade price for existing license holders.
+Your license grants perpetual use of the major version of Pheron Agent available at the time of purchase (e.g., if you purchase while v1.x is current, your license covers all v1.x releases). This includes all minor updates, bug fixes, and security patches for that major version at no additional cost. The version you purchased remains fully functional indefinitely — no subscription, no forced upgrade.
+
+Future major versions (e.g., v2.0 and beyond) are not included in this license and may be offered to existing license holders at a discounted upgrade price. Upgrade offers do not expire.
+
+**Major version defined:** A new major version is denoted by a change in the leading version number (e.g., v1.x → v2.0). Updates within the same leading number (e.g., v1.9 → v1.10) are always free.
 
 ---
 

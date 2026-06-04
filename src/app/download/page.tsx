@@ -147,7 +147,7 @@ export default function DownloadPage() {
               onClick={() => setVersionExpanded(!versionExpanded)}
             >
               <div className={styles.versionLeft}>
-                <span className={styles.versionNum}>7.9.2</span>
+                <span className={styles.versionNum}>1.0.2</span>
                 <span className={styles.versionLatestBadge}>Latest</span>
               </div>
               <svg 
@@ -165,16 +165,16 @@ export default function DownloadPage() {
             {versionExpanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v7.9.2 is the active, stable release for macOS (Apple Silicon).
+                  Pheron Agent v1.0.2 is the active, stable release for macOS (Apple Silicon).
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
                   <a 
                     href="https://app.pheronagent.com/PheronAgent792.dmg" 
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent792.dmg directly (v7.9.2)
+                    Download PheronAgent102.dmg directly (v1.0.2)
                   </a>
-                  <Link href="/changelog#v7.9.2" className={styles.versionDetailsLink}>
+                  <Link href="/changelog#v1.0.2" className={styles.versionDetailsLink}>
                     View Changelog
                   </Link>
                 </div>
@@ -188,7 +188,7 @@ export default function DownloadPage() {
               onClick={() => setVersion791Expanded(!version791Expanded)}
             >
               <div className={styles.versionLeft}>
-                <span className={styles.versionNum}>7.9.1</span>
+                <span className={styles.versionNum}>1.0.1</span>
                 <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>Previous</span>
               </div>
               <svg 
@@ -206,16 +206,16 @@ export default function DownloadPage() {
             {version791Expanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v7.9.1 is a previous release for macOS (Apple Silicon).
+                  Pheron Agent v1.0.1 is a previous release for macOS (Apple Silicon).
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
                   <a 
                     href="https://app.pheronagent.com/PheronAgent791.dmg" 
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent791.dmg directly (v7.9.1)
+                    Download PheronAgent101.dmg directly (v1.0.1)
                   </a>
-                  <Link href="/changelog#v7.9.1" className={styles.versionDetailsLink}>
+                  <Link href="/changelog#v1.0.1" className={styles.versionDetailsLink}>
                     View Changelog
                   </Link>
                 </div>

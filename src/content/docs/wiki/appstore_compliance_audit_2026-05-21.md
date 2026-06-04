@@ -1,4 +1,4 @@
-# App Store Compliance Audit — EliteAgent
+# App Store Compliance Audit — Pheron Agent
 **Date:** 2026-05-21  
 **Auditor:** Claude Code (automated analysis)  
 **Scope:** Mac App Store submission readiness  
@@ -18,7 +18,7 @@
 
 **Overall verdict: NOT READY for Mac App Store submission.**
 
-EliteAgent has **4 critical blockers** that will cause automatic rejection. The most fundamental is that the app runs with `ENABLE_APP_SANDBOX = NO`, which violates Guideline 2.4.5(i) — a hard, non-negotiable requirement for Mac App Store listing. The app's architectural design (broad filesystem access, arbitrary shell execution, System Events automation) is fundamentally incompatible with App Sandbox without a major rearchitecting effort. Additionally, the XPC helper carries Hardened Runtime exceptions (`cs.allow-jit`, `cs.disable-library-validation`) that are incompatible with App Store distribution.
+Pheron Agent has **4 critical blockers** that will cause automatic rejection. The most fundamental is that the app runs with `ENABLE_APP_SANDBOX = NO`, which violates Guideline 2.4.5(i) — a hard, non-negotiable requirement for Mac App Store listing. The app's architectural design (broad filesystem access, arbitrary shell execution, System Events automation) is fundamentally incompatible with App Sandbox without a major rearchitecting effort. Additionally, the XPC helper carries Hardened Runtime exceptions (`cs.allow-jit`, `cs.disable-library-validation`) that are incompatible with App Store distribution.
 
 **Bottom line:** The current build can only be distributed via Developer ID (direct/notarized). A path to the Mac App Store exists but requires significant architectural changes estimated at 4–8 weeks of work.
 
@@ -28,7 +28,7 @@ EliteAgent has **4 critical blockers** that will cause automatic rejection. The 
 
 ### 1.1 Objectionable Content
 **Status: ✅ PASS**  
-EliteAgent is a utility/AI agent app. No objectionable content, violent imagery, sexual content, or inflammatory material in scope.
+Pheron Agent is a utility/AI agent app. No objectionable content, violent imagery, sexual content, or inflammatory material in scope.
 
 ### 1.2 User-Generated Content
 **Status: ✅ PASS**  
@@ -76,7 +76,7 @@ Local LLM inference (Qwen3.5-9B via MLX) is inherently GPU/ANE-intensive. The co
 ### 2.4.5(i) — MAC APP STORE SANDBOXING
 **Status: ❌ CRITICAL BLOCKER**  
 **Requirement (Guideline 2.4.5(i)):** "Mac App Store apps must be appropriately sandboxed."  
-**Current state:** `ENABLE_APP_SANDBOX = NO` in both Debug and Release build configurations for the main app target AND the XPC helper target. This is verified in `EliteAgent.xcodeproj/project.pbxproj`.  
+**Current state:** `ENABLE_APP_SANDBOX = NO` in both Debug and Release build configurations for the main app target AND the XPC helper target. This is verified in `Pheron Agent.xcodeproj/project.pbxproj`.  
 **Impact:** This is a hard rejection. The App Store review system performs automated technical checks and will reject any app not compiled with App Sandbox entitlement (`com.apple.security.app-sandbox = true`).  
 **What to change:** Enable App Sandbox. This requires a full audit of all capabilities:
 - `ShellTool` (arbitrary `/bin/zsh` execution) — incompatible with sandbox; must be removed or replaced with specific entitlement-backed APIs
@@ -84,7 +84,7 @@ Local LLM inference (Qwen3.5-9B via MLX) is inherently GPU/ANE-intensive. The co
 - `SafariAutomationTool` — AppleScript automation of Safari requires `com.apple.security.automation.apple-events` (already present) but sandbox restricts what other apps can be controlled
 - `MessengerTool` / `WhatsAppTool` — System Events keystroke injection requires Accessibility permission; App Store apps using Accessibility for automation are scrutinized heavily
 - Writing to `/tmp/` directly (seen in `MessengerTool.sendWhatsApp`) — forbidden under sandbox; use `FileManager.default.temporaryDirectory`  
-**Effort:** High (4–8 weeks of fundamental rearchitecting). The shell execution tool is architecturally central to EliteAgent and has no sandboxed equivalent.
+**Effort:** High (4–8 weeks of fundamental rearchitecting). The shell execution tool is architecturally central to Pheron Agent and has no sandboxed equivalent.
 
 ### 2.4.5(ii) — Packaging
 **Status: ✅ PASS**  
@@ -93,7 +93,7 @@ The app uses standard Xcode/SPM build tooling and appears to be a self-contained
 ### 2.4.5(iii) — Auto-launch
 **Status: ⚠️ WARNING**  
 **Requirement:** Cannot auto-launch or run code automatically at startup/login without explicit user consent.  
-**Current state:** Not verified whether EliteAgent registers a Login Item. The app is a background agent (`LSUIElement = true`) that may be configured for auto-start. If a Login Item is registered, it must be controlled entirely by explicit user toggle within the app (macOS Settings → General → Login Items API or `SMAppService`).  
+**Current state:** Not verified whether Pheron Agent registers a Login Item. The app is a background agent (`LSUIElement = true`) that may be configured for auto-start. If a Login Item is registered, it must be controlled entirely by explicit user toggle within the app (macOS Settings → General → Login Items API or `SMAppService`).  
 **What to change:** Ensure any auto-start behavior uses `SMAppService.mainApp.register()` and is presented to the user as an opt-in setting. Never silently add to Login Items.  
 **Effort:** Low-medium (if not already implemented correctly).
 
@@ -147,7 +147,7 @@ No advertising, cryptocurrency mining, or other business model concerns detected
 
 ### 4.1 Copycats / Originality
 **Status: ✅ PASS**  
-EliteAgent is an original autonomous AI agent application with a distinct identity and unique technical architecture (UNO/MLX).
+Pheron Agent is an original autonomous AI agent application with a distinct identity and unique technical architecture (UNO/MLX).
 
 ### 4.2 Minimum Functionality
 **Status: ✅ PASS**  
@@ -241,7 +241,7 @@ Not a VPN app. The network server entitlement is for local inference serving (lo
 
 **NSPrivacyCollectedDataTypes:**  
 **Status: ❌ CRITICAL BLOCKER**  
-**Requirement:** `NSPrivacyCollectedDataTypes` must declare all data types the app collects. An empty array (`<array/>`) is valid only if the app collects zero user data. EliteAgent accesses Contacts, Calendar, Microphone, Screen content, Location, and Music library. Even if this data is not "collected" in the sense of being transmitted to servers by the app itself, the agent's purpose is to read and act on this data. If any of it is sent to cloud inference (OpenRouter), it constitutes data collection/sharing that must be declared.  
+**Requirement:** `NSPrivacyCollectedDataTypes` must declare all data types the app collects. An empty array (`<array/>`) is valid only if the app collects zero user data. Pheron Agent accesses Contacts, Calendar, Microphone, Screen content, Location, and Music library. Even if this data is not "collected" in the sense of being transmitted to servers by the app itself, the agent's purpose is to read and act on this data. If any of it is sent to cloud inference (OpenRouter), it constitutes data collection/sharing that must be declared.  
 **What to change:** Populate `NSPrivacyCollectedDataTypes` with appropriate entries covering:
 - Contact info (if contacts data is sent to cloud)
 - Location (if location is sent to cloud)
@@ -325,7 +325,7 @@ macOS 15+ (Sequoia) is a current shipping OS version. Acceptable.
 | # | Issue | File(s) | Effort |
 |---|---|---|---|
 | C1 | Enable App Sandbox — rearchitect ShellTool, FileManagerTool, and /tmp writes | `project.pbxproj`, `ShellTool.swift`, `MessengerTool.swift`, `ProductivityTools.swift` | 4–8 weeks |
-| C2 | Remove `cs.allow-jit` and `cs.disable-library-validation` from XPC helper — identify and resolve dependency requiring unsigned library loading | `EliteAgentXPC-Release.entitlements` | 1–3 weeks |
+| C2 | Remove `cs.allow-jit` and `cs.disable-library-validation` from XPC helper — identify and resolve dependency requiring unsigned library loading | `Pheron AgentXPC-Release.entitlements` | 1–3 weeks |
 | C3 | Remove Sparkle from App Store build target (keep for Developer ID builds) | `Package.swift`, Xcode targets | 1 day |
 | C4 | Populate `NSPrivacyCollectedDataTypes` in PrivacyInfo.xcprivacy with accurate data declarations | `PrivacyInfo.xcprivacy` | 1–2 days |
 

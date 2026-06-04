@@ -39,7 +39,7 @@ If a local LLM generation takes 12.5 seconds and the average of all 100ms sample
 This means the processor exerted 187.5 Joules of physical energy to process and generate those tokens.
 
 ## Architectural Constraint: Root Privileges
-The `powermetrics` binary strictly requires `root` (sudo) privileges. A standard macOS application (like EliteAgent) cannot execute this tool directly without prompting the user for an administrator password on every single request, which ruins the user experience.
+The `powermetrics` binary strictly requires `root` (sudo) privileges. A standard macOS application (like Pheron Agent) cannot execute this tool directly without prompting the user for an administrator password on every single request, which ruins the user experience.
 
 ### The Solution: XPC Privileged Helper Daemon
 To seamlessly integrate this powerful metric into the app:
@@ -48,5 +48,5 @@ To seamlessly integrate this powerful metric into the app:
 3. **Background Daemon**: The daemon runs continuously as `root` in the background.
 4. **XPC Communication**: The main application communicates with this daemon via XPC. When a task starts, it requests the daemon to begin profiling. When the task ends, the daemon stops, parses the `powermetrics` output, and returns the consumed Joules.
 
-## Integration in EliteAgent
+## Integration in Pheron Agent
 This approach perfectly aligns with the UNO (Unified Native Orchestration) architecture. We leverage a native macOS capability, completely bypassing JSON or web-based logging, ensuring secure, compiled, and highly accurate telemetry for the Agent's hardware effort.

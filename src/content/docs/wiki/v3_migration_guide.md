@@ -1,12 +1,12 @@
-# v3-Native Migration Guide (EliteAgent v7.1)
+# v3-Native Migration Guide (Pheron Agent v7.1)
 
 ## Overview
-EliteAgent v7.1 "Native Sovereign" completes the transition from the legacy `mlx-swift-lm` v2 architecture to the official **v3.31.3 Stable** ecosystem. This migration decouples the core inference engine from specific tokenizer and downloader implementations, achieving higher modularity and Swift 6 concurrency safety.
+Pheron Agent v7.1 "Native Sovereign" completes the transition from the legacy `mlx-swift-lm` v2 architecture to the official **v3.31.3 Stable** ecosystem. This migration decouples the core inference engine from specific tokenizer and downloader implementations, achieving higher modularity and Swift 6 concurrency safety.
 
 ## Key Architectural Changes
 
 ### 1. Modular Dependency Stack
-In v3, dependencies are no longer bundled into a single package. EliteAgent now explicitly integrates:
+In v3, dependencies are no longer bundled into a single package. Pheron Agent now explicitly integrates:
 - **MLXLMTokenizers**: Handles tokenizer orchestration via `AutoTokenizer`.
 - **MLXLMHFAPI**: Provides Hugging Face Hub client integration.
 - **MLXHuggingFace**: Enables official macros like `#huggingFaceTokenizerLoader()`.
@@ -22,8 +22,8 @@ v3.31.3 requires **Swift 6.1+** to support the new SPM **Traits** feature utiliz
 - **Toolchain**: macOS 15.0+ with Xcode 16.1+ is mandatory for Titan Engine optimization.
 
 ### 4. Model Context Protocol (MCP) Integration
-EliteAgent now officially supports the **Model Context Protocol (MCP)** via the `swift-sdk`.
-- **EliteAgentCore**: Integrates `MCP` products for standardized tool-calling and resource sharing.
+Pheron Agent now officially supports the **Model Context Protocol (MCP)** via the `swift-sdk`.
+- **Pheron AgentCore**: Integrates `MCP` products for standardized tool-calling and resource sharing.
 - **Architectural Shift**: Moving towards a protocol-first tool orchestration model, decoupling AI logic from local tool implementations.
 
 ### 5. yyjson Module Stabilization

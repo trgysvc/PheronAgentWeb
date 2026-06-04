@@ -7,7 +7,7 @@
 
 ## Overview
 
-EliteAgent v8.0 implements native tool calling via the mlx-swift-lm `xmlFunction` format. Qwen 3.5 (and compatible models) emit `<tool_call>` blocks directly; the framework parses them into `Generation.toolCall` events, which are converted to `InferenceChunk.toolCall` and dispatched by `OrchestratorRuntime`.
+Pheron Agent v8.0 implements native tool calling via the mlx-swift-lm `xmlFunction` format. Qwen 3.5 (and compatible models) emit `<tool_call>` blocks directly; the framework parses them into `Generation.toolCall` events, which are converted to `InferenceChunk.toolCall` and dispatched by `OrchestratorRuntime`.
 
 This replaces the legacy UBID-string parsing path (`CALL([UBID]) WITH {...}`) for local model inference.
 

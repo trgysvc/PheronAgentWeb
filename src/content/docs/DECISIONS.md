@@ -1,4 +1,4 @@
-# Architectural Decisions: EliteAgent v7.0 Stability Sprint
+# Architectural Decisions: Pheron Agent v7.0 Stability Sprint
 
 ## [2026-04-30] ADR-001: Global Session Control for UMA Watchdog
 - **Decision:** Implement `pauseAllSessions()` and `resumeAllSessions()` as `@MainActor` static methods in `OrchestratorRuntime`.
@@ -43,7 +43,7 @@
 - **Impact:** Higher fidelity automation for sites like Gmail, GitHub, and Google Drive.
 
 ## [2026-05-02] ADR-009: Swift 6.1 Toolchain Adoption
-- **Decision:** Mandatory upgrade to Swift 6.1 toolchain for all EliteAgent components.
+- **Decision:** Mandatory upgrade to Swift 6.1 toolchain for all Pheron Agent components.
 - **Rationale:** Required to support the new SPM **Traits** feature utilized by `swift-tokenizers-mlx` in the MLX-LM v3.31.3 ecosystem.
 - **Impact:** Ensures compatibility with v3-Native architectures while enabling finer control over package feature flags.
 
@@ -59,7 +59,7 @@
 
 ---
 
-# Architectural Decisions: EliteAgent v8.x Sprint (2026-05-04)
+# Architectural Decisions: Pheron Agent v8.x Sprint (2026-05-04)
 
 ## [2026-05-04] ADR-012: Native Tool Calling via xmlFunction Format (Solution A)
 
@@ -108,7 +108,7 @@
 
 ---
 
-# Architectural Decisions: EliteAgent v10.x Sprint (2026-05-17 – 2026-05-19)
+# Architectural Decisions: Pheron Agent v10.x Sprint (2026-05-17 – 2026-05-19)
 
 ## [2026-05-17] ADR-018: HardwareAdaptiveParams as Single Source of Truth
 
@@ -149,6 +149,6 @@
 
 ## [2026-05-20] ADR-023: XPC Hardened Runtime & Entitlements
 
-- **Decision:** Enable Hardened Runtime for the `EliteAgentXPC` target in `project.pbxproj` and explicitly grant `disable-library-validation`, `allow-jit`, and `automation.apple-events` in its entitlements file.
+- **Decision:** Enable Hardened Runtime for the `Pheron AgentXPC` target in `project.pbxproj` and explicitly grant `disable-library-validation`, `allow-jit`, and `automation.apple-events` in its entitlements file.
 - **Rationale:** Apple requires Hardened Runtime for Notarization of all executables, including XPC services. However, enabling it breaks dynamic loading of third-party SPM dependencies (like `mlx-swift`) and blocks AppleEvents automation unless explicit exceptions are granted. By enabling it and providing these specific entitlements, we satisfy Notarization without breaking the orchestrator agent's capability to load models or interact with macOS.
 - **Impact:** Allows successful archiving and Notarization. The XPC service remains robust without sandboxing restrictions (`ENABLE_APP_SANDBOX = NO`).

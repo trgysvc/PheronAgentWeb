@@ -155,15 +155,15 @@ export default function PricingPage() {
                   </li>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
-                    <span><strong>12 months of free updates</strong> included</span>
+                    <span><strong>Lifetime license</strong> — use your version forever</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
-                    <span>Yours forever — no subscription required</span>
+                    <span>Free updates, bug fixes &amp; security patches for your major version</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
-                    <span>Future major versions offered at a discount</span>
+                    <span>Discounted upgrades to future major versions</span>
                   </li>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>

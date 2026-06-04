@@ -126,10 +126,10 @@ The system alert shows your `NSxxxUsageDescription` string. Apple's rules:
 - **Do not replicate the system alert UI** with a pre-prompt screen that looks like a system dialog.
 
 Good example:
-> "EliteAgent uses your microphone to transcribe voice commands and generate audio notes."
+> "Pheron Agent uses your microphone to transcribe voice commands and generate audio notes."
 
 Bad example:
-> "ELITEAGENT REQUIRES MICROPHONE ACCESS. Please tap Allow or the app will not function."
+> "PHERON AGENT REQUIRES MICROPHONE ACCESS. Please tap Allow or the app will not function."
 
 ### What Apple Says About Requesting Multiple Permissions at Once
 
@@ -350,7 +350,7 @@ func openAccessibilitySettings() {
 **Info.plist (required for Hardened Runtime):**
 ```xml
 <key>NSAccessibilityUsageDescription</key>
-<string>EliteAgent uses accessibility features to observe and control other applications on your behalf.</string>
+<string>Pheron Agent uses accessibility features to observe and control other applications on your behalf.</string>
 ```
 
 ---
@@ -487,11 +487,11 @@ UserDefaults.standard.hasCompletedOnboarding = true
 
 ```swift
 @main
-struct EliteAgentApp: App {
+struct Pheron AgentApp: App {
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     
     var body: some Scene {
-        WindowGroup("EliteAgent") {
+        WindowGroup("Pheron Agent") {
             Group {
                 if hasCompletedOnboarding {
                     ContentView()
@@ -787,12 +787,12 @@ func openSystemSettings(for permission: Permission) {
 
 ## 7. Implementation Reference
 
-### 7.1 Recommended Onboarding Architecture for EliteAgent
+### 7.1 Recommended Onboarding Architecture for Pheron Agent
 
-Given that EliteAgent is an autonomous agent that needs several permissions to function, the recommended approach is a **lightweight permission setup page** at first launch — justified because multiple permissions are core to the app's function, not incidental features.
+Given that Pheron Agent is an autonomous agent that needs several permissions to function, the recommended approach is a **lightweight permission setup page** at first launch — justified because multiple permissions are core to the app's function, not incidental features.
 
 **Principles to follow:**
-1. Show a brief value proposition screen first (what EliteAgent can do for you), then the permissions page
+1. Show a brief value proposition screen first (what Pheron Agent can do for you), then the permissions page
 2. Each permission card explains exactly what feature it enables
 3. All permissions are individually skippable (the agent degrades gracefully without each one)
 4. Denied permissions show a "Grant Access" button that opens the relevant System Settings pane

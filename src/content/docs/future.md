@@ -1,6 +1,6 @@
 # Future and Roadmap
 
-Pheron Agent (EliteAgent) is constantly evolving to push the boundaries of native, on-device AI orchestration. Here is the upcoming feature and performance optimization roadmap.
+Pheron Agent (Pheron Agent) is constantly evolving to push the boundaries of native, on-device AI orchestration. Here is the upcoming feature and performance optimization roadmap.
 
 ## Upcoming Milestones
 
