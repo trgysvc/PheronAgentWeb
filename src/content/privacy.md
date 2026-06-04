@@ -15,7 +15,7 @@
 
 ## What Pheron Agent Requires
 
-**Apple ID sign-in is required** to use Pheron Agent. Your Apple ID is authenticated via Supabase (our backend), which stores a unique user ID and your email address. Your conversations and files are never sent to Supabase — only authentication state is stored there.
+**Sign in with Apple is required** to use Pheron Agent. Apple verifies your identity and issues a secure token to Pheron Agent — only your unique user ID and email address are stored in our backend (Supabase). Your Apple ID credentials are never shared with us or Supabase. Your conversations and files are never sent to Supabase — only authentication state is stored there.
 
 If you enable anonymous usage reporting in Settings, aggregated usage events (tool names, duration, error codes — no content) are also stored in Supabase. You can disable this at any time, and the data is deleted on request.
 
@@ -91,6 +91,8 @@ When you activate your license key, Pheron Agent sends to Lemon Squeezy:
 - A device name (e.g., "Pheron on MacBook Pro") — derived from your Mac's hostname
 
 This happens once at activation. Every 14 days, only the license key and a device identifier are sent to verify the license is still valid. Your name, email, or any personal data is not sent from the app — Lemon Squeezy already has your email from the purchase, and we do not re-send it.
+
+If your device is offline for more than 14 days, the license will be re-validated automatically the next time an internet connection is available. Offline use does not lock or disable the app — validation simply resumes when connectivity is restored.
 
 Lemon Squeezy's privacy policy: [lemonsqueezy.com/privacy](https://www.lemonsqueezy.com/privacy)
 

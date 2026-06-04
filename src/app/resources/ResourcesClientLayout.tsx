@@ -121,9 +121,9 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                   <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
                 </div>
                 <div className={styles.dropdownCol}>
-                  <a href="#" className={styles.dropdownItem}>Blog</a>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
                   <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
-                  <a href="#" className={styles.dropdownItem}>Community</a>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
                 </div>
               </div>
             </div>
@@ -206,8 +206,8 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Company</span>
                 <ul className={styles.columnList}>
-                  <li><a href="#" className={styles.footerLink}>Blog</a></li>
-                  <li><a href="#" className={styles.footerLink}>Community</a></li>
+                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Blog</span></li>
+                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Community</span></li>
                   <li><Link href="/resources/docs/future" className={styles.footerLink}>Future</Link></li>
                   <li><Link href="/" className={styles.footerLink}>Pheron Agent</Link></li>
                 </ul>

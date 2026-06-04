@@ -407,9 +407,9 @@ export default function AgentPage() {
                   <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
                 </div>
                 <div className={styles.dropdownCol}>
-                  <a href="#" className={styles.dropdownItem}>Blog</a>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
                   <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
-                  <a href="#" className={styles.dropdownItem}>Community</a>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
                 </div>
               </div>
             </div>

@@ -189,9 +189,9 @@ export default function Home() {
                   <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
                 </div>
                 <div className={styles.dropdownCol}>
-                  <a href="#" className={styles.dropdownItem}>Blog</a>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
                   <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
-                  <a href="#" className={styles.dropdownItem}>Community</a>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
                 </div>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function Home() {
         <p className={styles.heroSubtitle}>
           Pheron Agent is a fully autonomous, hardware-native AI agent for macOS. 
           Built on the Swift 6 UNO architecture, it runs entirely on your Apple Silicon 
-          with local MLX inference. Zero cloud required, zero data leaks.
+          with local MLX inference. Your conversations never touch the cloud. Zero data leaks.
         </p>
 
         {/* Hero Screenshot */}
@@ -685,8 +685,8 @@ export default function Home() {
               <div className={styles.footerColumn}>
                 <span className={styles.columnTitle}>Company</span>
                 <ul className={styles.columnList}>
-                  <li><a href="#" className={styles.footerLink}>Blog</a></li>
-                  <li><a href="#" className={styles.footerLink}>Community</a></li>
+                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Blog</span></li>
+                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Community</span></li>
                   <li><Link href="/resources/docs/future" className={styles.footerLink}>Future</Link></li>
                   <li><Link href="/" className={styles.footerLink}>Pheron Agent</Link></li>
                 </ul>

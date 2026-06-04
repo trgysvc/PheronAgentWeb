@@ -27,7 +27,6 @@ Refunds are not available after the 14-day window has passed.
 Refunds are not available if:
 
 - Your license key has been **shared with others** or used in violation of the License Agreement.
-- You are requesting a refund because a specific AI model did not perform as expected — model quality varies by hardware and use case. Please review the **Hardware Requirements** before purchasing.
 
 ---
 
