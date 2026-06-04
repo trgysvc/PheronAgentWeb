@@ -143,8 +143,16 @@ export default function PricingPage() {
                 * Purchasing is securely handled via Lemon Squeezy from within the app after download.
               </div>
 
+              <div style={{ textAlign: "center", fontSize: "12px", color: "var(--text-tertiary)", marginTop: "-4px" }}>
+                Requires <strong>Apple Silicon (M1 or later)</strong> · macOS 15 Sequoia or later
+              </div>
+
               <div style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "24px", marginTop: "8px" }}>
                 <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "16px", fontSize: "15px", color: "var(--text-secondary)", padding: 0, margin: 0 }}>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
+                    <span><strong>14-day money-back guarantee</strong> — no questions asked (<Link href="/refund" style={{ color: "var(--color-cyan)", textDecoration: "none" }}>Refund Policy</Link>)</span>
+                  </li>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
                     <span><strong>12 months of free updates</strong> included</span>
@@ -234,6 +242,7 @@ export default function PricingPage() {
                 <ul className={styles.columnList}>
                   <li><Link href="/terms" className={styles.footerLink}>Terms of Service</Link></li>
                   <li><Link href="/privacy" className={styles.footerLink}>Privacy Policy</Link></li>
+                  <li><Link href="/refund" className={styles.footerLink}>Refund Policy</Link></li>
                   <li><Link href="/data-use" className={styles.footerLink}>Data Use</Link></li>
                   <li><Link href="/resources/docs/security" className={styles.footerLink}>Security</Link></li>
                 </ul>

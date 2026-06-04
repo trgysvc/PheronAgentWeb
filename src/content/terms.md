@@ -10,7 +10,7 @@ Please read this agreement before using Pheron Agent. By activating your license
 
 ## 1. License Grant
 
-Turgay Savacı ("Developer") grants you a personal, non-exclusive, non-transferable license to install and use Pheron Agent on **one (1) Mac computer** that you own or directly control.
+Turgay Savacı ("Developer") grants you a personal, non-exclusive, non-transferable license to install and use Pheron Agent on **one (1) Mac computer at a time** that you own or directly control.
 
 ---
 
@@ -112,7 +112,7 @@ This license is effective until terminated. It terminates automatically if you b
 
 ## 14. Entire Agreement
 
-This agreement, together with the Privacy Policy, constitutes the entire agreement between you and the Developer regarding Pheron Agent and supersedes all prior agreements or understandings.
+This agreement, together with the Privacy Policy and the Refund Policy, constitutes the entire agreement between you and the Developer regarding Pheron Agent and supersedes all prior agreements or understandings.
 
 ---
 

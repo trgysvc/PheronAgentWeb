@@ -84,6 +84,7 @@ export default function SiteFooter() {
               <ul className={styles.columnList}>
                 <li><Link href="/terms" className={styles.footerLink}>Terms of Service</Link></li>
                 <li><Link href="/privacy" className={styles.footerLink}>Privacy Policy</Link></li>
+                <li><Link href="/refund" className={styles.footerLink}>Refund Policy</Link></li>
                 <li><Link href="/data-use" className={styles.footerLink}>Data Use</Link></li>
                 <li><Link href="/resources/docs/security" className={styles.footerLink}>Security</Link></li>
               </ul>

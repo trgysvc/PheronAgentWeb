@@ -94,6 +94,8 @@ This happens once at activation. Every 14 days, only the license key and a devic
 
 Lemon Squeezy's privacy policy: [lemonsqueezy.com/privacy](https://www.lemonsqueezy.com/privacy)
 
+> **Note:** Your name and email address are collected by Lemon Squeezy at the time of purchase and are governed by their privacy policy. If you request account deletion from us (support@pheronagent.com), we will remove your data from our systems; however, you must contact Lemon Squeezy separately to remove your purchase and billing records from their platform.
+
 ### 5. Cloud Inference (Optional — Off by Default)
 
 By default, Pheron Agent uses a fully local model. If you choose to add an OpenRouter API key in **Settings → AI → Cloud**, your prompts are sent to OpenRouter's servers for processing. This is:
