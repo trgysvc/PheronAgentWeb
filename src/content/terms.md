@@ -16,7 +16,7 @@ Turgay Savacı ("Developer") grants you a personal, non-exclusive, non-transfera
 
 ## 2. Permitted Uses
 
-- Install and run Pheron Agent on one Mac.
+- Install and run Pheron Agent on one Mac at a time.
 - Use the application for personal projects, freelance work, or internal business tasks on your own behalf.
 - Make one backup copy for archival purposes.
 
@@ -41,7 +41,7 @@ Your license key is valid for one Mac at a time. To transfer to a new machine:
 1. Go to **Settings → Profile → Deactivate on This Mac…** on the current Mac.
 2. Activate on the new Mac using the same key.
 
-If you cannot deactivate (lost or damaged device), contact support for a manual reset. Abuse of the activation system may result in license revocation without refund.
+If you cannot deactivate (lost or damaged device), contact **support@pheronagent.com** for a manual reset. Abuse of the activation system may result in license revocation without refund.
 
 ---
 

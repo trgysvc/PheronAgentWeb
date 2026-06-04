@@ -30,7 +30,7 @@ To ensure maximum security on macOS, all sensitive configuration keys and creden
 The only instances where network connections are established include:
 
 1. **Authentication**: App sign-in uses Apple Sign In, which securely stores only your email and a unique user ID on our backend (Supabase) to verify your account state.
-2. **License Validation**: Lemon Squeezy processes key validation every 14 days, verifying only the license key string and your device's hostname.
+2. **License Validation**: Lemon Squeezy processes key validation every 14 days, verifying only the license key string and your device's hostname. Your purchase and billing records are stored by Lemon Squeezy under their own privacy policy; to remove that data, contact Lemon Squeezy directly in addition to any deletion request sent to us.
 3. **Update Checks**: The Sparkle framework polls for new releases. You may disable automatic updates inside the settings menu.
 4. **Cloud Inference (Opt-In)**: If you explicitly add and configure external API providers, prompt payloads will be sent to the respective third-party models. This is disabled by default and clearly visualised.
 
