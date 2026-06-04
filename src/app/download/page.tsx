@@ -112,7 +112,7 @@ export default function DownloadPage() {
         
         <div style={{ marginBottom: "50px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <a 
-            href="https://app.pheronagent.com/PheronAgent792.dmg" 
+            href="https://app.pheronagent.com/PheronAgent102.dmg" 
             className={styles.downloadPillBtn}
           >
             <span>Download for macOS</span>
@@ -169,7 +169,7 @@ export default function DownloadPage() {
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
                   <a 
-                    href="https://app.pheronagent.com/PheronAgent792.dmg" 
+                    href="https://app.pheronagent.com/PheronAgent102.dmg" 
                     className={styles.versionDetailsLink}
                   >
                     Download PheronAgent102.dmg directly (v1.0.2)
@@ -210,7 +210,7 @@ export default function DownloadPage() {
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
                   <a 
-                    href="https://app.pheronagent.com/PheronAgent791.dmg" 
+                    href="https://app.pheronagent.com/PheronAgent101.dmg" 
                     className={styles.versionDetailsLink}
                   >
                     Download PheronAgent101.dmg directly (v1.0.1)
