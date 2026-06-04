@@ -163,7 +163,7 @@ export default function Ecosystem() {
         </div>
       </header>
 
-      {/* 38 Tools Showcase Section */}
+      {/* 40+ Tools Showcase Section */}
       <section id="tools" className={styles.section} style={{ minHeight: "60vh", paddingTop: "120px" }}>
         <div className={styles.sectionHeader}>
           <span className={styles.sectionTag}>Unrivaled Access</span>
