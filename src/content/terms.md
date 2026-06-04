@@ -1,4 +1,4 @@
-# License Agreement
+# Terms of Service
 
 *End User License Agreement (EULA) — Pheron Agent*
 *Effective date: June 1, 2026*
