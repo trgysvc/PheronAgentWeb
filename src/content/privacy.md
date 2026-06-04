@@ -15,7 +15,7 @@
 
 ## What Pheron Agent Requires
 
-**Sign in with Apple is required** to use Pheron Agent. Apple verifies your identity and issues a secure token to Pheron Agent — only your unique user ID and email address are stored in our backend (Supabase). Your Apple ID credentials are never shared with us or Supabase. Your conversations and files are never sent to Supabase — only authentication state is stored there.
+Pheron Agent uses **Supabase Auth** for account management, with **Sign in with Apple** as the authentication method. When you sign in, you authenticate directly with Apple (Face ID, Touch ID, or password) — your Apple ID credentials are never shared with us. Apple confirms your identity to Supabase, which creates your account and issues a session token to the app. Only your unique user ID and email address are stored in our Supabase backend. Your conversations and files are never sent to Supabase — only your authentication session is stored there.
 
 If you enable anonymous usage reporting in Settings, aggregated usage events (tool names, duration, error codes — no content) are also stored in Supabase. You can disable this at any time, and the data is deleted on request.
 
@@ -53,14 +53,15 @@ The app reads standard macOS system information to function. None of this is tra
 
 ## What Gets Transmitted — The Full List
 
-### 1. Authentication (Apple Sign In + Supabase) — Always On
+### 1. Authentication (Supabase Auth + Sign in with Apple) — Always On
 
-When you sign in with Apple, Pheron Agent sends to our Supabase backend:
+Pheron Agent uses Supabase Auth with Sign in with Apple as the provider. The flow when you sign in:
 
-- An Apple-issued identity token (verifies your Apple ID without sharing your password)
-- Your name and email address (only on first sign-in; Apple provides this once)
+1. You authenticate with Apple (Face ID, Touch ID, or password).
+2. Apple returns a token to the app — your Apple ID credentials never leave Apple.
+3. The app forwards that token to Supabase, which verifies it and issues a session token back to the app.
 
-Supabase stores your **user ID** and **email** to maintain your session. Your session is kept locally in the macOS Keychain and refreshed automatically every hour. We do not sell or share this data.
+Supabase stores your **user ID** and **email** to maintain your session. Your session is kept locally in the macOS Keychain and refreshed automatically. We do not sell or share this data.
 
 ### 2. Automatic Update Check (Sparkle)
 
