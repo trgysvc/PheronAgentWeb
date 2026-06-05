@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -52,6 +52,7 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <body>{children}</body>
       <GoogleAnalytics gaId="G-X27N6PXYTL" />
+      <GoogleTagManager gtmId="GTM-5HWMNTDM" />
     </html>
   );
 }
