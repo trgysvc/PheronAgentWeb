@@ -91,7 +91,6 @@ export default function PricingPage() {
             </div>
           </nav>
           <div className={styles.navActions}>
-            <Link href="/auth" className={`${styles.navBtn} btn-secondary`}>Sign In</Link>
             <Link href="/download" className={`${styles.navBtn} btn-primary`}>Download</Link>
           </div>
         </div>
