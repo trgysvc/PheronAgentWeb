@@ -99,6 +99,7 @@ export default function DownloadPage() {
             </div>
           </nav>
           <div className={styles.navActions}>
+            <Link href="/auth" className={`${styles.navBtn} btn-secondary`} style={{ display: "none" }}>Sign In</Link>
             <Link href="/download" className={`${styles.navBtn} btn-primary`}>Download</Link>
           </div>
         </div>
