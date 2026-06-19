@@ -57,7 +57,7 @@ const nextConfig: NextConfig = {
       base-uri 'self';
       form-action 'self';
       frame-ancestors 'none';
-      connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;
+      connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net;
       manifest-src 'self';
       media-src 'self';
       worker-src 'self';
