@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-06-19
+
+### Added
+- **Personal memory & recall** — the agent now reliably remembers and surfaces facts you've explicitly shared (background, CV, preferences) when you ask about them; closed a deep retrieval gap where saved facts could become effectively unsearchable
+- **Multi-language file/folder commands** — "organize this folder" style requests now recognized in 13 languages (added ES, FR, DE, PT, IT, RU, ZH, JA, KO, AR alongside TR/EN), not just Turkish/English
+- **MusicDNA report actions** — analysis results now include "Open Report" and "Show in Finder" buttons to jump straight to the generated `.dna.md` / `.report.plist` files
+- **Telemetry — Supabase integration:** all telemetry events now flow through `telemetry_events` with authenticated requests, retry logic, and a synchronous flush on quit
+- **Energy tracking — IOKit-based:** real CPU+GPU+ANE joule measurements via `powermetrics`, shown live in the menu bar effort indicator
+- **Analytics default-on:** analytics now defaults to enabled when no explicit preference is set
+
+### Fixed
+- **Lost context after a clarifying question** — answering the agent's follow-up question (e.g. "which date format?") could previously derail the conversation into unrelated results (a stray "ram" substring match was misrouting these replies); the agent now stays on the original task after you answer
+- **Faster personal-recall responses** — eliminated a wasted reasoning turn when the agent looks up something you previously told it
+- Apple Music playback and volume control: confirmation now reflects the actual player state, fixing silent failures when Music wasn't already running
+- Telemetry: RAM/inference metrics and authentication no longer report stale or zero values; failed analytics batches no longer fail silently
+- Debug builds now sign with the correct development team, fixing missing entitlements
+
 ## [1.0.2] - 2026-06-03
 
 ### Added

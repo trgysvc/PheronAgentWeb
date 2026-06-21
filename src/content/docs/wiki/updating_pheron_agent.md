@@ -4,39 +4,35 @@ Pheron Agent receives regular updates to improve performance, add new features, 
 
 ---
 
-## 1. Automatic Updates (Sparkle Framework)
+## 1. Automatic Updates
 
-For the direct distribution (DMG) version of Pheron Agent, the application features built-in automatic update delivery using the secure **Sparkle** framework.
+Pheron Agent features built-in automatic update delivery to keep your application up to date seamlessly.
 
 ### How it works:
 * **Background Check:** By default, Pheron Agent checks for updates in the background when the application launches.
-* **Update Prompts:** If a newer version is available on the update server, you will see a prompt with the release notes detailing what's new and what has been fixed.
+* **Update Prompts:** If a newer version is available, you will see a prompt with the release notes detailing what's new and what has been fixed.
 * **One-Click Install:** You can choose to download and install the update immediately, skip that specific version, or request to be reminded later.
 * **Manual Check:** You can manually trigger an update check at any time by selecting **Pheron Agent > Check for Updates...** from the macOS menu bar or via the Help menu.
 
 ---
 
-## 2. Manual Updates (DMG)
+## 2. Manual Updates
 
-If you prefer to update manually or if the automatic updater is blocked by network policies:
+If you prefer to update manually:
 
-1. **Download the Latest Release:** Go to the [Download Page](/download) or fetch the DMG directly from our secure distribution server:
-   ```
-   https://app.pheronagent.com/PheronAgentXYZ.dmg
-   ```
-   *(Where `XYZ` represents the version number, e.g., `103` for version `1.0.3`)*
-2. **Mount the DMG:** Double-click the downloaded `.dmg` file to mount it on your desktop.
+1. **Download the Latest Release:** Go to the [Download Page](/download) to download the latest version of Pheron Agent.
+2. **Mount the DMG:** Double-click the downloaded `.dmg` file to mount it on your Mac.
 3. **Replace the App:** Drag the **Pheron Agent** application icon into your `/Applications` directory. 
 4. **Approve Replacement:** macOS will ask if you want to replace the existing version. Click **Replace** to complete the update.
 
 > [!NOTE]
-> **Gatekeeper & Security:** All official DMG releases are signed with a valid Apple Developer ID Application certificate (`Developer ID Application: Turgay Savaci (RDCY864LPJ)`) and notarized by Apple's notary service. This ensures the app is free of malware and complies with macOS Gatekeeper policies.
+> **Gatekeeper & Security:** All official releases are signed with a valid Apple Developer certificate and notarized by Apple's notary service. This ensures the app is free of malware and complies with macOS Gatekeeper security policies.
 
 ---
 
 ## 3. System Requirements & Compatibility
 
-Before upgrading to a major new version of Pheron Agent, please verify that your Mac meets the system requirements:
+Before upgrading, please verify that your Mac meets the system requirements:
 
 * **Processor:** Apple Silicon M-series (M1, M2, M3, M4, or later). Intel Macs are not supported.
 * **Memory:** Minimum **16 GB of unified memory (RAM)**, with **24 GB+ recommended** for optimal performance and larger local models.
@@ -46,11 +42,8 @@ Before upgrading to a major new version of Pheron Agent, please verify that your
 
 ---
 
-## 4. Release Notes and Changelog Source of Truth
+## 4. Viewing Release Notes
 
-The single source of truth for all changes across releases is the `CHANGELOG.md` file in the project's root repository. 
-
-* The release notes displayed in the in-app updater (Sparkle `appcast.xml` description) and on the website's Changelog section are copied directly from the corresponding version section in `CHANGELOG.md`.
-* Each release details newly added features (**Added**), changes to behavior (**Changed**), and resolved issues (**Fixed**).
-
-If you have custom subagents or specific configurations, check the changelog prior to updating to see if there are any migration steps required (such as changes to configuration schemas or memory paths).
+You can view the release notes for any version of Pheron Agent in two places:
+* **In-App Updater:** The update dialog box displays a list of additions, changes, and fixes before you download.
+* **Official Website:** Visit the [Changelog Page](/changelog) to view the complete history of updates.
