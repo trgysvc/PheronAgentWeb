@@ -179,7 +179,7 @@ export default function PricingPage() {
                   </li>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
-                    <span>All 40+ native system tools</span>
+                    <span>All 50+ native system tools</span>
                   </li>
                 </ul>
               </div>

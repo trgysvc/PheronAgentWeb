@@ -6,59 +6,82 @@ import Link from "next/link";
 import styles from "../page.module.css";
 
 // 40+ tools categorized and described
+// 50+ tools categorized and described
 const TOOLS = [
-  { name: "File Manager", icon: "📁", desc: "Native file explorer and controller", category: "File" },
-  { name: "Read File", icon: "📖", desc: "Read local file contents without sandbox limits", category: "File" },
-  { name: "Write File", icon: "✍️", desc: "Safe file creation with auto-directory building", category: "File" },
-  { name: "Patch File", icon: "🩹", desc: "Line-by-line diff and semantic patching", category: "File" },
-  { name: "ID3 Editor", icon: "🏷️", desc: "Audio file metadata editor", category: "File" },
-  
-  { name: "Shell Exec", icon: "💻", desc: "Secure local shell commands in zsh", category: "System" },
-  { name: "Volume Control", icon: "🔊", desc: "AppleScript native volume controller", category: "System" },
-  { name: "Brightness Control", icon: "🔆", desc: "Screen brightness modifier", category: "System" },
-  { name: "Sleep Control", icon: "🌙", desc: "Control mac sleep, lock, and display cycles", category: "System" },
-  { name: "Sys Info", icon: "📊", desc: "Hardware metrics, temperature, and RAM allocation", category: "System" },
-  { name: "Telemetry", icon: "📡", desc: "Local session telemetry logs", category: "System" },
-  { name: "Date Time", icon: "⏰", desc: "True timezone dates for precise tasks", category: "System" },
-  { name: "App Discovery", icon: "🔍", desc: "Finds installed macOS applications", category: "System" },
-  { name: "Shortcut Scan", icon: "🗂️", desc: "Scans available Siri Shortcuts", category: "System" },
-  { name: "Shortcut Run", icon: "🏃", desc: "Runs Siri Shortcuts with typed parameters", category: "System" },
-  { name: "Accessibility AX", icon: "♿", desc: "Direct control via Accessibility API (click, drag, type)", category: "System" },
-  
-  { name: "Web Search", icon: "🔍", desc: "Brave Search API integration for real-time web context", category: "Web" },
-  { name: "Web Fetch", icon: "📥", desc: "Direct HTTP downloader and Markdown formatter", category: "Web" },
-  { name: "Safari Automation", icon: "🧭", desc: "Automate Safari: search, scrape, click, close", category: "Web" },
-  { name: "Browser Native", icon: "🌐", desc: "Interactive native Safari controller with navigate, fill, inspect_ax, and tab management", category: "Web" },
-  
-  { name: "WhatsApp", icon: "💬", desc: "Send and read messages via WhatsApp Desktop", category: "Communication" },
-  { name: "Messenger", icon: "✉️", desc: "Automate Messenger replies", category: "Communication" },
-  { name: "Email Send", icon: "📧", desc: "Draft and dispatch Apple Mail messages", category: "Communication" },
-  { name: "Mail Search", icon: "🔎", desc: "Index and search local Apple Mail mailboxes", category: "Communication" },
-  
-  { name: "Media Control", icon: "⏯️", desc: "System-wide media playback hooks", category: "Media" },
-  { name: "Music DNA", icon: "🎵", desc: "Forensic acoustic analysis and EBU R128 loudness reporting via AudioIntelligence Infinity Engine", category: "Media" },
-  
-  { name: "Image Analysis", icon: "🖼️", desc: "Local vision models analyzing screenshots", category: "Vision" },
-  { name: "Chicago Vision", icon: "👁️", desc: "Fine-tuned local OCR screen reading engine", category: "Vision" },
-  { name: "Semantic Vision", icon: "👁️‍🗨️", desc: "Hardware VLM analyzing complex UI layouts (24GB+ Macs)", category: "Vision" },
-  
-  { name: "Git Action", icon: "🌿", desc: "Native Git execution: commit, branch, push, conflicts", category: "Development" },
-  { name: "Xcode Engine", icon: "🛠️", desc: "Xcode build, run, debug, and test harness execution", category: "Development" },
-  { name: "Blender 3D", icon: "🧊", desc: "Automates Blender 3D rendering and meshes via Python", category: "Development" },
-  { name: "Subagent Spawn", icon: "👥", desc: "Spawn child actors to solve parallel tasks", category: "Development" },
-  
-  { name: "Contacts", icon: "📇", desc: "Access and search local Contacts database", category: "Productivity" },
-  { name: "Calendar", icon: "📅", desc: "Create, view, and modify Calendar events", category: "Productivity" },
-  { name: "Calculator", icon: "🧮", desc: "Compile mathematical computations", category: "Productivity" },
-  { name: "Weather", icon: "🌤️", desc: "Fetch local weather data via Apple WeatherKit", category: "Productivity" },
-  { name: "Timer", icon: "⏳", desc: "Native timers and reminders", category: "Productivity" },
-  { name: "Markdown Report", icon: "📝", desc: "Generate formatted HTML/PDF executive summaries", category: "Productivity" },
-  
-  { name: "Memory Vault", icon: "🧠", desc: "Manage L1 hot, L2 medium, and L3 DreamBank long-term memory", category: "Self-Improvement" },
-  { name: "Skill Patch", icon: "🦾", desc: "Write, patch, test, and archive custom skills (.skill.md)", category: "Self-Improvement" },
+  // File (5 tools)
+  { name: "File Manager", icon: "📁", desc: "Native file explorer: scan large files, copy, move, and delete items securely", category: "File" },
+  { name: "Read File", icon: "📖", desc: "Read local documents: PDF, DOCX, TXT, MD, Swift, JSON, Plist without sandbox limits", category: "File" },
+  { name: "Write File", icon: "✍️", desc: "Atomically write or overwrite local files with auto-directory path building", category: "File" },
+  { name: "Patch File", icon: "🩹", desc: "Line-by-line diff match and semantic file patching without external dependencies", category: "File" },
+  { name: "ID3 Processor", icon: "🏷️", desc: "Recursive ID3 tagger embedding metadata from JSON/TXT with manual overrides", category: "File" },
+
+  // System (12 tools)
+  { name: "Shell Exec", icon: "💻", desc: "Secure local shell and zsh terminal execution engine for arbitrary commands", category: "System" },
+  { name: "Volume Control", icon: "🔊", desc: "Native Core Audio output volume controller (0-100) bypassing AppleScript", category: "System" },
+  { name: "Brightness Control", icon: "🔆", desc: "Screen brightness controller matching system display parameters", category: "System" },
+  { name: "Sleep Control", icon: "🌙", desc: "Put system to sleep, lock display, or control lock status instantly", category: "System" },
+  { name: "Sys Info", icon: "📊", desc: "Retrieve hardware specs, CPU cores, and memory capacity using native APIs", category: "System" },
+  { name: "Telemetry", icon: "📡", desc: "Real-time thermal diagnostics, RAM usage, memory pressure, and CPU activity", category: "System" },
+  { name: "Date Time", icon: "⏰", desc: "Fetch local system date and time to parse relative user timeframes", category: "System" },
+  { name: "App UI Learner", icon: "🔍", desc: "List running apps and map AXUIElement trees into the experience vault", category: "System" },
+  { name: "Shortcut Scan", icon: "🗂️", desc: "Scan and list all installed Siri Shortcuts on the macOS host system", category: "System" },
+  { name: "Shortcut Run", icon: "🏃", desc: "Invoke siri shortcuts asynchronously with dynamic text arguments", category: "System" },
+  { name: "App Launcher", icon: "🚀", desc: "Securely launch macOS applications by name or bundle ID", category: "System" },
+  { name: "Accessibility AX", icon: "♿", desc: "Interact directly with application UI controls via Accessibility APIs", category: "System" },
+
+  // Web (4 tools)
+  { name: "Web Search", icon: "🔍", desc: "Live web searching using Brave and Google Search APIs for real-time facts", category: "Web" },
+  { name: "Web Fetch", icon: "📥", desc: "HTTP document retriever formatting raw web text into clean Markdown", category: "Web" },
+  { name: "Safari Automation", icon: "🧭", desc: "Control active Safari sessions: search, scrape, read, and close tabs", category: "Web" },
+  { name: "Browser Native", icon: "🌐", desc: "High-fidelity interactive Safari controller for filling forms and navigating", category: "Web" },
+
+  // Communication (4 tools)
+  { name: "WhatsApp Send", icon: "💬", desc: "Automate sending WhatsApp messages using Desktop app scripting", category: "Communication" },
+  { name: "Unified Messaging", icon: "💬", desc: "Send messages over iMessage or WhatsApp dynamically based on destination", category: "Communication" },
+  { name: "Email Send", icon: "📧", desc: "Draft and dispatch emails through Apple Mail with biometric safeguards", category: "Communication" },
+  { name: "Apple Mail Manager", icon: "📧", desc: "Retrieve unread mail, create drafts, and send messages via Apple Mail", category: "Communication" },
+
+  // Media (2 tools)
+  { name: "Media Control", icon: "⏯️", desc: "System-wide media playback controls for Apple Music track searching", category: "Media" },
+  { name: "Music DNA", icon: "🎵", desc: "Forensic acoustic analysis: SNR, THD+N, EBU R128 loudness, key, and tempo", category: "Media" },
+
+  // Vision (3 tools)
+  { name: "Image Analysis", icon: "🖼️", desc: "Local screen analysis for OCR and interactive UI element detection", category: "Vision" },
+  { name: "Semantic Vision", icon: "👁️‍🗨️", desc: "On-device VLM for semantic visual audits and diagram parsing (24GB+ Mac)", category: "Vision" },
+  { name: "Chicago Vision", icon: "👁️", desc: "Visual OCR and UI layout auditing with ScreenCaptureKit integration", category: "Vision" },
+
+  // Development (5 tools)
+  { name: "Git Action", icon: "🌿", desc: "Basic local Git operations: commit, status, diff, log, and revert", category: "Development" },
+  { name: "Xcode Engine", icon: "🛠️", desc: "Automated Xcode project building, error tracking, and simulator control", category: "Development" },
+  { name: "Blender 3D", icon: "🧊", desc: "Automate Blender 3D rendering and meshes via custom background Python bridge", category: "Development" },
+  { name: "Higgsfield Video", icon: "🎥", desc: "Generate generative AI video and motion dynamics via Higgsfield REST API", category: "Development" },
+  { name: "Subagent Spawn", icon: "👥", desc: "Delegate recursive sub-tasks to child orchestrator runtimes", category: "Development" },
+
+  // Productivity (6 tools)
+  { name: "Contacts", icon: "📇", desc: "Query and retrieve contact details from the local Contacts database", category: "Productivity" },
+  { name: "Calendar", icon: "📅", desc: "Create, list, and manage local calendar events via EventKit", category: "Productivity" },
+  { name: "Calculator", icon: "🧮", desc: "High-precision math evaluations with safe expression parsing", category: "Productivity" },
+  { name: "Weather", icon: "🌤️", desc: "Fetch weather conditions and UV index using Apple WeatherKit", category: "Productivity" },
+  { name: "Timer", icon: "⏳", desc: "Set native async timers and reminders with custom messages", category: "Productivity" },
+  { name: "Research Report", icon: "📝", desc: "Finalize strategic research tasks into publication-quality Markdown sections", category: "Productivity" },
+
+  // Self-Improvement (2 tools)
+  { name: "Memory Vault", icon: "🧠", desc: "Access local long-term experiential memory for past task solutions", category: "Self-Improvement" },
+  { name: "Skill Patch", icon: "🦾", desc: "Manage, patch, and search custom agent skills and procedural rules", category: "Self-Improvement" },
+
+  // MCP Bridges (9 tools)
+  { name: "Git MCP Bridge", icon: "🌿", desc: "Anthropic Model Context Protocol bridge for full Git control (12 actions)", category: "MCP Bridges" },
+  { name: "Memory MCP Bridge", icon: "🧠", desc: "Official Knowledge-Graph MCP server for entity-relation observation CRUD", category: "MCP Bridges" },
+  { name: "Browser MCP Bridge", icon: "🌐", desc: "Microsoft Playwright MCP server offering headless web testing (22 actions)", category: "MCP Bridges" },
+  { name: "Perplexity MCP Bridge", icon: "🔍", desc: "Official Perplexity search engine integration via standard MCP model", category: "MCP Bridges" },
+  { name: "Stripe MCP Bridge", icon: "💳", desc: "Manage payments, customers, subscriptions, and refunds via Stripe's MCP", category: "MCP Bridges" },
+  { name: "GitHub MCP Bridge", icon: "🐙", desc: "Comprehensive GitHub API MCP server: issues, PRs, actions, and projects", category: "MCP Bridges" },
+  { name: "Zapier MCP Bridge", icon: "⚡", desc: "Connect over 9000 apps using Zapier's dynamic action invocation protocol", category: "MCP Bridges" },
+  { name: "Notion MCP Bridge", icon: "📓", desc: "Official Notion workspace integration: pages, databases, and comments", category: "MCP Bridges" },
+  { name: "Unreal Engine MCP Bridge", icon: "🎮", desc: "Control actors, material instances, and attributes inside Unreal Engine 5.8+", category: "MCP Bridges" },
 ];
 
-const CATEGORIES = ["All", "System", "File", "Web", "Vision", "Development", "Communication", "Productivity", "Self-Improvement"];
+const CATEGORIES = ["All", "System", "File", "Web", "Vision", "Development", "Communication", "Productivity", "Self-Improvement", "Media", "MCP Bridges"];
 
 const LANGUAGES = [
   "English",
@@ -163,7 +186,7 @@ export default function Ecosystem() {
         </div>
       </header>
 
-      {/* 40+ Tools Showcase Section */}
+      {/* 50+ Tools Showcase Section */}
       <section id="tools" className={styles.section} style={{ minHeight: "60vh", paddingTop: "120px" }}>
         <div className={styles.sectionHeader}>
           <span className={styles.sectionTag}>Unrivaled Access</span>
