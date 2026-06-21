@@ -32,7 +32,8 @@ export const RESOURCES_MENU = [
     title: "Setup & Onboarding",
     items: [
       { name: "macOS Permissions & Setup", path: "/resources/docs/wiki/macos_onboarding_permissions_guide" },
-      { name: "Models & Hardware Tiers", path: "/resources/docs/wiki/models_and_hardware" }
+      { name: "Models & Hardware Tiers", path: "/resources/docs/wiki/models_and_hardware" },
+      { name: "Updating Pheron Agent", path: "/resources/docs/wiki/updating_pheron_agent" }
     ]
   },
   {

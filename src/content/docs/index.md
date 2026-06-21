@@ -10,6 +10,7 @@ Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple S
 
 - [macOS Permissions & Setup](wiki/macos_onboarding_permissions_guide.md) — Grant required permissions and download your first local model
 - [Models & Hardware Tiers](wiki/models_and_hardware.md) — Find the right model for your chip
+- [Updating Pheron Agent](wiki/updating_pheron_agent.md) — Keep your application up to date
 
 ## Architecture
 
