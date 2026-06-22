@@ -442,6 +442,8 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 20;
 }
 
 .filterBtn {
@@ -454,6 +456,8 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
+  position: relative;
+  z-index: 20;
 }
 
 .filterBtnActive {

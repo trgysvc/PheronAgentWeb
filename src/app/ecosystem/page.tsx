@@ -202,6 +202,7 @@ export default function Ecosystem() {
             {CATEGORIES.map(cat => (
               <button
                 key={cat}
+                type="button"
                 className={`${styles.filterBtn} ${selectedCategory === cat ? styles.filterBtnActive : ""}`}
                 onClick={() => setSelectedCategory(cat)}
               >
