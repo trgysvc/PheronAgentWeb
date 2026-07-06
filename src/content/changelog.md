@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### [1.0.4] - 2026-07-06
+
+### Added
+- **MCP Tool Bridges** — Pheron Agent now integrates with external Model Context Protocol (MCP) servers including Git, Playwright browser automation, Perplexity web search, Stripe, GitHub, Notion, Unreal Engine, and Zapier.
+- **MCP Hub & Connections** — Added a dedicated card-grid wizard in Settings > Connections to easily configure, save, and test credentials for external tool connections.
+- **Context-Aware Recommendations** — The agent now suggests connecting missing integrations in Settings > Connections when a task requires a credential-gated tool.
+- **Unified Screen & Accessibility Reasoning** — Chained screen-capture descriptions, OCR, and AX tree analysis for more cohesive and reliable browser/screen-related actions.
+- **Local User Profile** — Preferences discovered by the agent and user identity information are now saved in a readable Markdown profile (`UserProfile.md`).
+- **Performance Tab Redesign** — Merged Health and Analytics tabs under Settings into a single tab featuring real-time CPU, memory, and speed usage trend charts.
+- **Disk Telemetry Support** — Telemetry reports now include boot volume free space alongside CPU and memory stats.
+
+### Fixed
+- **Multi-Turn Conversation Context** — Fixed context loss between consecutive turns in the same conversation thread, ensuring the agent remembers the immediate context.
+- **Model Context Limits** — Corrected local model context budget scaling issues that artificially restricted usable token windows on higher-RAM systems.
+- **Memory Loop Fixes** — Resolved a tool-calling loop trigger when looking up user-recall details (e.g., "do you remember my name?").
+- **Keychain & Authentication Stability** — Fixed OAuth flow callbacks for Notion/Zapier and restored deleted Keychain entries during local test executions.
+- **Task Switch Performance** — Stopped background processes and command executions immediately on timeout or task cancellation to prevent CPU leakages.
+- **Turkish Command Preposition Routing** — Fixed a misrouting bug where Turkish prompts containing "üzerinden" (via) were incorrectly sent to the math/calculation path.
+
 ## [1.0.3] - 2026-06-19
 
 ### Added

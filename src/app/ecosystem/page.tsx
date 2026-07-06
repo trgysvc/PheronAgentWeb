@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../page.module.css";
 
-// 40+ tools categorized and described
 // 50+ tools categorized and described
 const TOOLS = [
   // File (5 tools)
