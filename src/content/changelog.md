@@ -5,7 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### [1.0.4] - 2026-07-06
+## [1.0.5] - 2026-07-24
+
+### Fixed
+- **Source Citation Safety** — Fixed an issue where the agent could cite non-existent source URLs, dates, or version numbers by moving citation safety checks to the active execution path.
+- **Compound Request Execution** — Fixed an issue where compound multi-part requests (e.g. asking for telemetry and OS version together) could return with only half the answer by enforcing missing tool calls.
+- **Shell Output Redirect Safety** — Prevented bare single-file shell redirects (`command > file`) from bypassing binary protection and write safety checks.
+- **Bot Detection & CAPTCHA Filtering** — Web search now detects and filters out CAPTCHA/bot-challenge pages from search engines to prevent reasoning from challenge text.
+- **Google Search JS Stabilization** — Improved Google search result fetching by waiting for client-side JavaScript rendering to complete.
+- **Safari Fallback Resilience** — Genuinely opens visible Safari tabs for search fallback with clear permission guidance when required.
+- **Biometric & Keychain Concurrency** — Fixed Touch ID timeout handling and unblocked background Keychain reads from blocking tool-availability checks.
+- **Daemon Retry Limits** — Prevented failing background daemon connections from retrying indefinitely.
+
+### Added
+- **Authoritative Source Researching** — Agent now prioritizes official project data, structured specs, and direct documentation over third-party search snippets.
+- **Expanded GitHub Toolsets** — Added access for GitHub Actions, code security, Dependabot, discussions, advisories, gists, projects, labels, and notifications.
+
+## [1.0.4] - 2026-07-06
 
 ### Added
 - **MCP Tool Bridges** — Pheron Agent now integrates with external Model Context Protocol (MCP) servers including Git, Playwright browser automation, Perplexity web search, Stripe, GitHub, Notion, Unreal Engine, and Zapier.

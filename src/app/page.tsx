@@ -594,26 +594,26 @@ export default function Home() {
             
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>1.0.2</span>
-                <span>Jun 3, 2026</span>
+                <span className={styles.changelogBadge}>1.0.5</span>
+                <span>Jul 24, 2026</span>
               </div>
-              <span className={styles.changelogTitle}>Model Hub & VLM Expansion</span>
+              <span className={styles.changelogTitle}>Citation Safety & Expanded MCP Tools</span>
             </div>
 
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>1.0.1</span>
-                <span>Jun 1, 2026</span>
+                <span className={styles.changelogBadge}>1.0.4</span>
+                <span>Jul 6, 2026</span>
               </div>
-              <span className={styles.changelogTitle}>RAM & UI Fixes</span>
+              <span className={styles.changelogTitle}>Multi-Turn Continuity & MCP Hub</span>
             </div>
 
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>1.0.0</span>
-                <span>Jun 1, 2026</span>
+                <span className={styles.changelogBadge}>1.0.3</span>
+                <span>Jun 19, 2026</span>
               </div>
-              <span className={styles.changelogTitle}>Public Release</span>
+              <span className={styles.changelogTitle}>Personal Memory & Recall</span>
             </div>
 
           </div>
