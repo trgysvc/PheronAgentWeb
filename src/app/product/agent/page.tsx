@@ -54,7 +54,7 @@ const MODELS = [
     speed: "~80 tok/s",
     toolCall: "✓",
     thinking: "✓",
-    note: "Hibrit GatedDeltaNet + full-attention mimarisi.",
+    note: "Hybrid GatedDeltaNet + full-attention architecture.",
   },
   {
     name: "Qwen3.5 9B",
@@ -64,7 +64,7 @@ const MODELS = [
     speed: "~50 tok/s",
     toolCall: "✓",
     thinking: "✓",
-    note: "16 GB cihazlar için varsayılan model.",
+    note: "Default model for 16 GB devices.",
   },
   {
     name: "Qwen3.5 9B OptiQ",
@@ -74,7 +74,7 @@ const MODELS = [
     speed: "~50 tok/s",
     toolCall: "✓",
     thinking: "✓",
-    note: "Karma-hassasiyetli, daha yüksek kalite.",
+    note: "Mixed-precision quantization for higher quality.",
   },
   {
     name: "Qwen3.5 27B",
@@ -84,7 +84,7 @@ const MODELS = [
     speed: "~20 tok/s",
     toolCall: "✓",
     thinking: "✓",
-    note: "24–32 GB Mac'ler için ideal.",
+    note: "Ideal for 24–32 GB Macs.",
   },
 
   // Llama Series
@@ -106,7 +106,7 @@ const MODELS = [
     speed: "~120 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "M1/M2 base cihazlar için varsayılan fallback.",
+    note: "Default fallback for base M1/M2 chips.",
   },
   {
     name: "Llama 3.1 8B",
@@ -116,7 +116,7 @@ const MODELS = [
     speed: "~35 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "Standart Llama 3.1 8B instruct.",
+    note: "Standard Llama 3.1 8B instruct.",
   },
   {
     name: "Llama 3.3 70B",
@@ -126,7 +126,7 @@ const MODELS = [
     speed: "~10 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "İleri düzey akıl yürütme, Workstation seviyesi.",
+    note: "Advanced reasoning for Workstation-class systems.",
   },
   {
     name: "Llama 4 Scout",
@@ -136,7 +136,7 @@ const MODELS = [
     speed: "~8 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "⚠️ Experimental — Pinned mlx-swift-lm sürümünde llama4 tipi kayıtsızdır.",
+    note: "⚠️ Experimental — Pending mlx-swift-lm llama4 model type support.",
   },
   {
     name: "Llama 4 Maverick",
@@ -146,7 +146,7 @@ const MODELS = [
     speed: "~3 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "⚠️ Experimental — Dev MoE model (72 shard). Llama4 tipi kayıtsızdır.",
+    note: "⚠️ Experimental — Massive MoE model (72 shards). Pending mlx-swift-lm update.",
   },
 
   // Gemma Series
@@ -158,7 +158,7 @@ const MODELS = [
     speed: "~250 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "Hafif ve son derece hızlı Gemma model.",
+    note: "Lightweight and fast Gemma model.",
   },
   {
     name: "Gemma 3 4B",
@@ -168,7 +168,7 @@ const MODELS = [
     speed: "~85 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "Dengeli Gemma 3 performansı.",
+    note: "Balanced Gemma 3 performance.",
   },
   {
     name: "Gemma 3 12B",
@@ -178,7 +178,7 @@ const MODELS = [
     speed: "~35 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "16 GB RAM için yüksek başarımlı Gemma.",
+    note: "High-capability Gemma for 16 GB RAM systems.",
   },
   {
     name: "Gemma 3 27B",
@@ -188,7 +188,7 @@ const MODELS = [
     speed: "~20 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "Karmaşık görevler için Gemma 3.",
+    note: "Gemma 3 model for complex tasks.",
   },
   {
     name: "Gemma 4 E4B",
@@ -198,7 +198,7 @@ const MODELS = [
     speed: "~60 tok/s",
     toolCall: "✓",
     thinking: "✓",
-    note: "Yeni nesil dense 4.5B model, tool calling ve thinking destekli.",
+    note: "Next-gen dense 4.5B model with tool calling & thinking.",
   },
   {
     name: "Gemma 4 26B",
@@ -208,7 +208,7 @@ const MODELS = [
     speed: "~25 tok/s",
     toolCall: "✓",
     thinking: "✓",
-    note: "⚠️ Experimental — experts/router desteği kısıtlıdır (mlx-swift-lm#282).",
+    note: "⚠️ Experimental — Pending mlx-swift-lm MoE router fix (mlx-swift-lm#282).",
   },
 
   // Mistral Series
@@ -220,7 +220,7 @@ const MODELS = [
     speed: "~45 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "Güvenilir Mistral 7B aracı.",
+    note: "Reliable Mistral 7B model.",
   },
   {
     name: "Mistral Nemo 12B",
@@ -230,7 +230,7 @@ const MODELS = [
     speed: "~30 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "Geniş 128K bağlam pencereli dengeli model.",
+    note: "Balanced model with large 128K context window.",
   },
   {
     name: "Mistral Small 24B",
@@ -240,7 +240,7 @@ const MODELS = [
     speed: "~18 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "Genel görevler için Mistral Small.",
+    note: "Mistral Small for general-purpose tasks.",
   },
   {
     name: "Mistral Small 3.2 24B",
@@ -250,7 +250,7 @@ const MODELS = [
     speed: "~18 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "Mistral Small 3.2, geliştirilmiş tool calling.",
+    note: "Mistral Small 3.2 with enhanced tool calling.",
   },
   {
     name: "Devstral Small 24B",
@@ -260,7 +260,7 @@ const MODELS = [
     speed: "~17 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "⚠️ Experimental — mlx-vlm ile dönüştürülmüş geliştirici odaklı model.",
+    note: "⚠️ Experimental — Developer-focused model converted via mlx-vlm.",
   },
   {
     name: "Mistral Large 123B",
@@ -270,7 +270,7 @@ const MODELS = [
     speed: "~6 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "Büyük ölçekli Mistral Large model.",
+    note: "Large-scale Mistral Large model.",
   },
   {
     name: "Devstral 2 123B",
@@ -280,7 +280,7 @@ const MODELS = [
     speed: "~6 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "⚠️ Experimental — ministral3 mimari tipi şu an kayıtsızdır.",
+    note: "⚠️ Experimental — Pending ministral3 architecture registration in mlx-swift-lm.",
   },
 
   // Phi-4 Series
@@ -292,7 +292,7 @@ const MODELS = [
     speed: "~150 tok/s",
     toolCall: "✓",
     thinking: "—",
-    note: "Microsoft'un native function calling yetenekli akıl yürütme modeli.",
+    note: "Microsoft reasoning model with native function calling.",
   },
   {
     name: "Phi-4 14B",
@@ -314,7 +314,7 @@ const MODELS = [
     speed: "~30 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "⚠️ Experimental — deepseek_v2 mimari tipi şu an kayıtsızdır.",
+    note: "⚠️ Experimental — Pending deepseek_v2 architecture registration in mlx-swift-lm.",
   },
   {
     name: "DeepSeek V4 Flash",
@@ -324,7 +324,7 @@ const MODELS = [
     speed: "~4 tok/s",
     toolCall: "✓",
     thinking: "✓",
-    note: "⚠️ Experimental — deepseek_v4 mimari tipi şu an kayıtsızdır.",
+    note: "⚠️ Experimental — Pending deepseek_v4 architecture registration in mlx-swift-lm.",
   },
 
   // Vision-Language Models (VLM)
@@ -336,7 +336,7 @@ const MODELS = [
     speed: "~20 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "24GB+ bellek gerektiren Vision-Language modeli.",
+    note: "Vision-Language model requiring 24 GB+ UMA.",
   },
   {
     name: "Qwen3-VL 4B",
@@ -346,7 +346,7 @@ const MODELS = [
     speed: "~18 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "32GB+ bellek gerektiren Vision-Language modeli.",
+    note: "Vision-Language model requiring 32 GB+ UMA.",
   },
   {
     name: "Qwen2.5-VL 7B",
@@ -356,7 +356,7 @@ const MODELS = [
     speed: "~10 tok/s",
     toolCall: "—",
     thinking: "—",
-    note: "48GB+ bellek gerektiren Vision-Language modeli.",
+    note: "Vision-Language model requiring 48 GB+ UMA.",
   },
 ];
 

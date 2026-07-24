@@ -2,7 +2,7 @@
 
 Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple Silicon. It runs local LLM inference via MLX, orchestrates multi-step tasks through the UNO (Unified Native Orchestration) architecture, and operates without sending your data to the cloud.
 
-**Current version:** v10.5.7 · **Requires:** macOS 15.0+, Apple Silicon (M1 or later)
+**Current version:** v1.0.5 · **Requires:** macOS 15.0+, Apple Silicon (M1 or later)
 
 ---
 
@@ -19,6 +19,8 @@ Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple S
 
 ## Core Features
 
+- [Full Tool Inventory](wiki/full_tool_inventory.md) — Comprehensive inventory of all 52 native & MCP tools with UBIDs
+- [External Tool Integrations Reference](wiki/external_tool_integrations_reference.md) — Detailed setup, auth, and action reference for MCP, REST, and Blender bridges
 - [SkillVault](wiki/skill_vault.md) — Self-improving procedural memory
 - [Native Tool Calling](wiki/native_tool_calling.md) — How the agent selects and executes tools
 - [AudioIntelligence DSP](wiki/audio_intelligence.md) — Music DNA and audio analysis

@@ -39,6 +39,8 @@ export const RESOURCES_MENU = [
   {
     title: "Core Concepts",
     items: [
+      { name: "Full Tool Inventory", path: "/resources/docs/wiki/full_tool_inventory" },
+      { name: "External Tool Integrations", path: "/resources/docs/wiki/external_tool_integrations_reference" },
       { name: "SkillVault Memory", path: "/resources/docs/wiki/skill_vault" },
       { name: "Native Tool Calling", path: "/resources/docs/wiki/native_tool_calling" },
       { name: "AudioIntelligence DSP", path: "/resources/docs/wiki/audio_intelligence" },

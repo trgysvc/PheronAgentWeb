@@ -8,23 +8,13 @@ Pheron Agent is designed exclusively for on-device inference using Apple Silicon
 
 Pheron Agent relies on a local model catalog registered in `ModelRegistry` (specifically under the `mlx-community` Hugging Face organization). Below are the verified models categorized by family:
 
-### Qwen3 Dense
+### Qwen3.5 Series
 | Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| **Qwen3-0.6B-4bit** | `mlx-community/Qwen3-0.6B-4bit` | 0.35 GB | 1 GB | ✓ | ✓ |
-| **Qwen3-1.7B-4bit** | `mlx-community/Qwen3-1.7B-4bit` | 0.97 GB | 2 GB | ✓ | ✓ |
-| **Qwen3-4B-4bit** | `mlx-community/Qwen3-4B-Instruct-2507-4bit` | 2.28 GB | 4 GB | ✓ | ✓ |
-| **Qwen3-8B-4bit** | `mlx-community/Qwen3-8B-4bit` | 4.62 GB | 6 GB | ✓ | ✓ |
-| **Qwen3-14B-4bit** | `mlx-community/Qwen3-14B-4bit` | 8.32 GB | 10 GB | ✓ | ✓ |
-| **Qwen3-32B-4bit** | `mlx-community/Qwen3-32B-4bit` | 18.4 GB | 22 GB | ✓ | ✓ |
-
-### Qwen3 MoE
-| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| **Qwen3-30B-A3B-4bit** | `mlx-community/Qwen3-30B-A3B-Instruct-2507-4bit` | 17.2 GB | 21 GB | ✓ | ✓ |
-| **Qwen3-Coder-30B-A3B-4bit** | `mlx-community/Qwen3-Coder-30B-A3B-Instruct-4bit` | 17.2 GB | 21 GB | ✓ | — |
-| **Qwen3-235B-A22B-4bit** | `mlx-community/Qwen3-235B-A22B-4bit` | 132 GB | 158 GB | ✓ | ✓ |
-| **Qwen3-Coder-480B-A35B-4bit** | `mlx-community/Qwen3-Coder-480B-A35B-Instruct-4bit` | 270 GB | 324 GB | ✓ | — |
+| **Qwen3.5-4B-4bit** | `mlx-community/Qwen3.5-4B-Instruct-4bit` | 2.28 GB | 6 GB | ✓ | ✓ |
+| **Qwen3.5-9B-4bit** | `mlx-community/Qwen3.5-9B-Instruct-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
+| **Qwen3.5-9B-OptiQ** | `mlx-community/Qwen3.5-9B-Instruct-OptiQ-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
+| **Qwen3.5-27B-4bit** | `mlx-community/Qwen3.5-27B-Instruct-4bit` | 15.2 GB | 18 GB | ✓ | ✓ |
 
 ### Llama
 | Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |

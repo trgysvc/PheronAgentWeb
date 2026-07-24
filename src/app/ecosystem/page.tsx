@@ -7,12 +7,10 @@ import styles from "../page.module.css";
 
 // 50+ tools categorized and described
 const TOOLS = [
-  // File (5 tools)
+  // File (3 tools)
   { name: "File Manager", icon: "📁", desc: "Native file explorer: scan large files, copy, move, and delete items securely", category: "File" },
   { name: "Read File", icon: "📖", desc: "Read local documents: PDF, DOCX, TXT, MD, Swift, JSON, Plist without sandbox limits", category: "File" },
   { name: "Write File", icon: "✍️", desc: "Atomically write or overwrite local files with auto-directory path building", category: "File" },
-  { name: "Patch File", icon: "🩹", desc: "Line-by-line diff match and semantic file patching without external dependencies", category: "File" },
-  { name: "ID3 Processor", icon: "🏷️", desc: "Recursive ID3 tagger embedding metadata from JSON/TXT with manual overrides", category: "File" },
 
   // System (12 tools)
   { name: "Shell Exec", icon: "💻", desc: "Secure local shell and zsh terminal execution engine for arbitrary commands", category: "System" },
@@ -40,20 +38,22 @@ const TOOLS = [
   { name: "Email Send", icon: "📧", desc: "Draft and dispatch emails through Apple Mail with biometric safeguards", category: "Communication" },
   { name: "Apple Mail Manager", icon: "📧", desc: "Retrieve unread mail, create drafts, and send messages via Apple Mail", category: "Communication" },
 
-  // Media (2 tools)
+  // Media (3 tools)
   { name: "Media Control", icon: "⏯️", desc: "System-wide media playback controls for Apple Music track searching", category: "Media" },
   { name: "Music DNA", icon: "🎵", desc: "Forensic acoustic analysis: SNR, THD+N, EBU R128 loudness, key, and tempo", category: "Media" },
+  { name: "ID3 Processor", icon: "🏷️", desc: "Recursive ID3 tagger embedding metadata from JSON/TXT with manual overrides", category: "Media" },
 
   // Vision (3 tools)
   { name: "Image Analysis", icon: "🖼️", desc: "Local screen analysis for OCR and interactive UI element detection", category: "Vision" },
   { name: "Semantic Vision", icon: "👁️‍🗨️", desc: "On-device VLM for semantic visual audits and diagram parsing (24GB+ Mac)", category: "Vision" },
   { name: "Chicago Vision", icon: "👁️", desc: "Visual OCR and UI layout auditing with ScreenCaptureKit integration", category: "Vision" },
 
-  // Development (5 tools)
+  // Development (6 tools)
   { name: "Git Action", icon: "🌿", desc: "Basic local Git operations: commit, status, diff, log, and revert", category: "Development" },
+  { name: "Patch File", icon: "🩹", desc: "Line-by-line diff match and semantic file patching without external dependencies", category: "Development" },
   { name: "Xcode Engine", icon: "🛠️", desc: "Automated Xcode project building, error tracking, and simulator control", category: "Development" },
-  { name: "Blender 3D", icon: "🧊", desc: "Automate Blender 3D rendering and meshes via custom background Python bridge", category: "Development" },
-  { name: "Higgsfield Video", icon: "🎥", desc: "Generate generative AI video and motion dynamics via Higgsfield REST API", category: "Development" },
+  { name: "Blender 3D", icon: "🧊", desc: "Automate Blender 3D rendering and meshes via custom background Python process bridge (Non-MCP)", category: "Development" },
+  { name: "Higgsfield Video", icon: "🎥", desc: "Generate generative AI video and motion dynamics via direct Higgsfield REST API (Non-MCP)", category: "Development" },
   { name: "Subagent Spawn", icon: "👥", desc: "Delegate recursive sub-tasks to child orchestrator runtimes", category: "Development" },
 
   // Productivity (6 tools)
@@ -69,15 +69,15 @@ const TOOLS = [
   { name: "Skill Patch", icon: "🦾", desc: "Manage, patch, and search custom agent skills and procedural rules", category: "Self-Improvement" },
 
   // MCP Bridges (9 tools)
-  { name: "Git MCP Bridge", icon: "🌿", desc: "Anthropic Model Context Protocol bridge for full Git control (12 actions)", category: "MCP Bridges" },
-  { name: "Memory MCP Bridge", icon: "🧠", desc: "Official Knowledge-Graph MCP server for entity-relation observation CRUD", category: "MCP Bridges" },
-  { name: "Browser MCP Bridge", icon: "🌐", desc: "Microsoft Playwright MCP server offering headless web testing (22 actions)", category: "MCP Bridges" },
-  { name: "Perplexity MCP Bridge", icon: "🔍", desc: "Official Perplexity search engine integration via standard MCP model", category: "MCP Bridges" },
-  { name: "Stripe MCP Bridge", icon: "💳", desc: "Manage payments, customers, subscriptions, and refunds via Stripe's MCP", category: "MCP Bridges" },
-  { name: "GitHub MCP Bridge", icon: "🐙", desc: "Comprehensive GitHub API MCP server: issues, PRs, actions, and projects", category: "MCP Bridges" },
-  { name: "Zapier MCP Bridge", icon: "⚡", desc: "Connect over 9000 apps using Zapier's dynamic action invocation protocol", category: "MCP Bridges" },
-  { name: "Notion MCP Bridge", icon: "📓", desc: "Official Notion workspace integration: pages, databases, and comments", category: "MCP Bridges" },
-  { name: "Unreal Engine MCP Bridge", icon: "🎮", desc: "Control actors, material instances, and attributes inside Unreal Engine 5.8+", category: "MCP Bridges" },
+  { name: "Git MCP Bridge", icon: "🌿", desc: "Anthropic Model Context Protocol bridge for full Git control (12 actions) · Live-Verified", category: "MCP Bridges" },
+  { name: "Memory MCP Bridge", icon: "🧠", desc: "Official Knowledge-Graph MCP server for entity-relation observation CRUD · Live-Verified", category: "MCP Bridges" },
+  { name: "Browser MCP Bridge", icon: "🌐", desc: "Microsoft Playwright MCP server offering headless web testing (22 actions) · Live-Verified", category: "MCP Bridges" },
+  { name: "Perplexity MCP Bridge", icon: "🔍", desc: "Official Perplexity search engine integration via standard MCP model · Live-Verified", category: "MCP Bridges" },
+  { name: "Stripe MCP Bridge", icon: "💳", desc: "Manage payments, customers, subscriptions, and refunds via Stripe's MCP · Live-Verified", category: "MCP Bridges" },
+  { name: "GitHub MCP Bridge", icon: "🐙", desc: "Comprehensive GitHub API MCP server: issues, PRs, actions, and projects · Live-Verified", category: "MCP Bridges" },
+  { name: "Zapier MCP Bridge", icon: "⚡", desc: "Connect over 9000 apps using Zapier's dynamic action invocation protocol (Pending URL Setup)", category: "MCP Bridges" },
+  { name: "Notion MCP Bridge", icon: "📓", desc: "Official Notion workspace integration: pages, databases, and comments (OAuth Integration)", category: "MCP Bridges" },
+  { name: "Unreal Engine MCP Bridge", icon: "🎮", desc: "Control actors, material instances, and attributes inside Unreal Engine 5.8+ (Experimental, Editor-embedded)", category: "MCP Bridges" },
 ];
 
 const CATEGORIES = ["All", "System", "File", "Web", "Vision", "Development", "Communication", "Productivity", "Self-Improvement", "Media", "MCP Bridges"];

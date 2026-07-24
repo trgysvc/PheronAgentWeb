@@ -1,6 +1,6 @@
 # SkillVault — Self-Improving Procedural Memory
 
-**Added:** 2026-05-10 | **Version:** v10.5.7
+**Added:** 2026-05-10 | **Version:** v1.0.5
 
 ---
 
