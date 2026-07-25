@@ -32,7 +32,7 @@ Refunds are not available if:
 
 ## Hardware Compatibility
 
-Pheron Agent requires **Apple Silicon (M1 or later)** running **macOS 15 Sequoia or later**. Please verify your system meets these requirements before purchasing. Purchases made on incompatible hardware are not eligible for exceptions outside the standard 14-day window.
+Pheron Agent requires **Apple Silicon (M1 or later)** running **macOS 26 Tahoe or later**. Please verify your system meets these requirements before purchasing. Purchases made on incompatible hardware are not eligible for exceptions outside the standard 14-day window.
 
 ---
 

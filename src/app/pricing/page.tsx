@@ -144,7 +144,7 @@ export default function PricingPage() {
               </div>
 
               <div style={{ textAlign: "center", fontSize: "12px", color: "var(--text-tertiary)", marginTop: "-4px" }}>
-                Requires <strong>Apple Silicon (M1 or later)</strong> · macOS 15 Sequoia or later
+                Requires <strong>Apple Silicon (M1 or later)</strong> · macOS 26 Tahoe or later
               </div>
 
               <div style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "24px", marginTop: "8px" }}>

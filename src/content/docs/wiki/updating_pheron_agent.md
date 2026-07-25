@@ -37,8 +37,8 @@ Before upgrading, please verify that your Mac meets the system requirements:
 * **Processor:** Apple Silicon M-series (M1, M2, M3, M4, or later). Intel Macs are not supported.
 * **Memory:** Minimum **16 GB of unified memory (RAM)**, with **24 GB+ recommended** for optimal performance and larger local models.
 * **Operating System:** 
-  * **v1.0.x releases:** Require **macOS 15.0 (Sequoia)** or later.
-  * **v2.0.0+ releases (Planned):** Require **macOS 26+** due to integration with modern on-device Speech APIs (such as `SpeechAnalyzer` and `SpeechTranscriber` for native voice input).
+  * **v1.0.x releases:** Require **macOS 26.0 (Tahoe)** or later.
+  * **v2.0.0+ releases (Planned):** Require **macOS 27+ (Golden Gate)** due to integration with modern on-device Speech APIs (such as `SpeechAnalyzer` and `SpeechTranscriber` for native voice input).
 
 ---
 

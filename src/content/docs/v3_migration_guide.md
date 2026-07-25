@@ -19,7 +19,7 @@ The legacy `LLMModelFactory.loadContainer` pattern has been replaced with the of
 ### 3. Swift 6.1 & SPM Traits
 v3.31.3 requires **Swift 6.1+** to support the new SPM **Traits** feature utilized by `swift-tokenizers-mlx`.
 - **Package.swift**: `swift-tools-version` must be set to `6.1`.
-- **Toolchain**: macOS 15.0+ with Xcode 16.1+ is mandatory for Titan Engine optimization.
+- **Toolchain**: macOS 26.0+ with Xcode 17.0+ is mandatory for Titan Engine optimization.
 
 ### 4. Model Context Protocol (MCP) Integration
 Pheron Agent now officially supports the **Model Context Protocol (MCP)** via the `swift-sdk`.

@@ -314,7 +314,7 @@ Apple does not explicitly prohibit AI agents or local LLM inference apps. The ap
 
 ### macOS Version Requirement
 **Status: ✅ PASS**  
-macOS 15+ (Sequoia) is a current shipping OS version. Acceptable.
+macOS 26+ (Tahoe) is a current shipping OS version. Acceptable.
 
 ---
 

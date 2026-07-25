@@ -111,7 +111,7 @@ export default function DownloadPage() {
       {/* Main Download Section */}
       <section className={styles.downloadPageContainer}>
         <h1 className={styles.downloadTitle}>Download macOS</h1>
-        <p className={styles.downloadSubtitle}>Requires macOS 15.0+, Apple Silicon — 16 GB RAM minimum, 24 GB+ recommended</p>
+        <p className={styles.downloadSubtitle}>Requires macOS 26.0+ (Tahoe or later), Apple Silicon — 16 GB RAM minimum, 24 GB+ recommended</p>
         
         <div style={{ marginBottom: "50px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <a 
@@ -363,7 +363,7 @@ export default function DownloadPage() {
         </h2>
         <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
           {[
-            ["Operating System", "macOS 15.0 Sequoia or later"],
+            ["Operating System", "macOS 26.0 Tahoe or later"],
             ["Processor", "Apple Silicon (M1 or later)"],
             ["RAM — Minimum", "16 GB unified memory"],
             ["RAM — Recommended", "24 GB+ unified memory"],

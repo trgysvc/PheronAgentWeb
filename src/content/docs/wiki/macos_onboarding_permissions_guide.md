@@ -752,7 +752,7 @@ func openSystemSettings(for permission: Permission) {
 }
 ```
 
-**Complete Privacy & Security deep-link table (verified through macOS Sequoia 15.2):**
+**Complete Privacy & Security deep-link table (verified through macOS 26 Tahoe):**
 
 | Setting | URL Anchor |
 |---|---|
@@ -781,7 +781,7 @@ func openSystemSettings(for permission: Permission) {
 | Speech Recognition | `?Privacy_SpeechRecognition` |
 | System Events | `?Privacy_SystemPolicySysAdminFiles` |
 
-> **Version note:** These URL anchors use the `com.apple.preference.security?` prefix which has been stable through macOS Monterey, Ventura, Sonoma, and Sequoia. Apple does not officially document these and they can change between major OS versions. Test on each new macOS release. An alternative new format seen in macOS 14+ is `com.apple.settings.PrivacySecurity.extension?Privacy_*` — both currently work.
+> **Version note:** These URL anchors use the `com.apple.preference.security?` prefix which has been stable through macOS Monterey, Ventura, Sonoma, Sequoia, and Tahoe (macOS 26). Apple does not officially document these and they can change between major OS versions. Test on each new macOS release. An alternative new format seen in macOS 14+ is `com.apple.settings.PrivacySecurity.extension?Privacy_*` — both currently work.
 
 ---
 

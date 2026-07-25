@@ -145,7 +145,7 @@ swift test           # Regression tests
 
 - Zero Regression policy applies.
 - Code that fails to build must not be committed.
-- Swift 6.3.0, macOS 15+, Xcode 16+, Apple Silicon.
+- Swift 6.3.0, macOS 26+, Xcode 17+, Apple Silicon.
 
 ---
 
