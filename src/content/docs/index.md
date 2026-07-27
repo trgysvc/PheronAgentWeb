@@ -19,7 +19,7 @@ Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple S
 
 ## Core Features
 
-- [Full Tool Inventory](wiki/full_tool_inventory.md) — Comprehensive inventory of all 52 native & MCP tools with UBIDs
+- [Full Tool Inventory](wiki/full_tool_inventory.md) — Comprehensive inventory of all 59 native & MCP tools with UBIDs
 - [External Tool Integrations Reference](wiki/external_tool_integrations_reference.md) — Detailed setup, auth, and action reference for MCP, REST, and Blender bridges
 - [SkillVault](wiki/skill_vault.md) — Self-improving procedural memory
 - [Native Tool Calling](wiki/native_tool_calling.md) — How the agent selects and executes tools

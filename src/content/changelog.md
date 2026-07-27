@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- **Audacity integration (`audacity_control`)** — the agent can now control a running Audacity instance (import/export audio, edit, apply 40+ effects) via Audacity's own official scripting protocol (`mod-script-pipe`). Requires enabling that module once in Audacity's own Preferences. Rather than hand-coding a subset of Audacity's 250+ scriptable commands, the tool is a general-purpose passthrough to Audacity's own text command protocol — giving access to the full command set through one mechanism, with a categorized on-demand command reference (`action: "help"`) instead of bloating every request with the full list. Known limitation, confirmed to be an Audacity-side bug (open upstream issue, not fixable here): exporting to `.wav` currently produces an AIFF-format file on macOS regardless of the requested extension; `.flac`/`.mp3` are unaffected.
+- **Apple Notes and Apple Reminders support** (`notes_action`, `reminders_action`), plus real Office document creation — Numbers/Keynote/Pages documents exported to genuine Excel/PowerPoint/Word (`.xlsx`/`.pptx`/`.docx`) — and image background removal (`remove_background`, on-device Vision framework, no cloud upload).
+
+### Fixed
+- **Six newly-added tools (Notes, Reminders, background removal, and the three Office-document tools) were completely unreachable for any simple, single-step request** — the overwhelming majority of real usage. They were correctly registered but never added to the internal category→tool-visibility mapping the model actually reads from for simple requests, so asking to "create a note" would silently fall back to writing a plain text file instead. Found via a full live GUI test pass; fixed by adding all six to their correct categories and adding deterministic routing keywords so the request classifier recognizes them reliably instead of guessing.
+- **A tool-use chain could silently stop one step short of completion.** After successfully reading a file, the model could describe its next intended step ("...then I'll use patch_file to update it...") without ever actually calling it, and the task would end there with no error. The safety check that catches this ("you described a plan instead of acting") only ever looked at the very first step of a task — extended to catch a stated-but-never-executed next step at any point in the chain.
+- **A research question could still return a specific version number or a source URL that was never actually confirmed by any search/fetch result**, despite dedicated safety checks existing for exactly this. Root cause was two separate gaps: the version-number check's own pattern didn't match Turkish grammatical suffixes ("sürümü", "sürümünün" — it only matched the bare, unsuffixed word), so it silently never fired for Turkish questions; and the URL-citation check only activated when the answer explicitly used the word "source:"/"kaynak:", missing a fabricated link embedded directly in a sentence. Both fixed, and the URL check now also checks across the whole conversation, not just the single most recent step.
+- **A "write me a report" request could be marked done after the agent merely listed some files, without ever writing an actual report.** Added a check that blocks finishing a report-creation request until a real report has actually been produced.
+
 ## [1.0.5] - 2026-07-24
 
 ### Fixed

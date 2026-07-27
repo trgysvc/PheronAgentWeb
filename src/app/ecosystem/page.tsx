@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../page.module.css";
 
-// 50+ tools categorized and described
+// 59 integrated native tools categorized and described
 const TOOLS = [
   // File (3 tools)
   { name: "File Manager", icon: "📁", desc: "Native file explorer: scan large files, copy, move, and delete items securely", category: "File" },
@@ -38,15 +38,17 @@ const TOOLS = [
   { name: "Email Send", icon: "📧", desc: "Draft and dispatch emails through Apple Mail with biometric safeguards", category: "Communication" },
   { name: "Apple Mail Manager", icon: "📧", desc: "Retrieve unread mail, create drafts, and send messages via Apple Mail", category: "Communication" },
 
-  // Media (3 tools)
+  // Media (4 tools)
   { name: "Media Control", icon: "⏯️", desc: "System-wide media playback controls for Apple Music track searching", category: "Media" },
   { name: "Music DNA", icon: "🎵", desc: "Forensic acoustic analysis: SNR, THD+N, EBU R128 loudness, key, and tempo", category: "Media" },
   { name: "ID3 Processor", icon: "🏷️", desc: "Recursive ID3 tagger embedding metadata from JSON/TXT with manual overrides", category: "Media" },
+  { name: "Audacity Control", icon: "🎙️", desc: "Control running Audacity instance via mod-script-pipe protocol: import/export audio, edit, apply 40+ effects", category: "Media" },
 
-  // Vision (3 tools)
+  // Vision (4 tools)
   { name: "Image Analysis", icon: "🖼️", desc: "Local screen analysis for OCR and interactive UI element detection", category: "Vision" },
   { name: "Semantic Vision", icon: "👁️‍🗨️", desc: "On-device VLM for semantic visual audits and diagram parsing (24GB+ Mac)", category: "Vision" },
   { name: "Chicago Vision", icon: "👁️", desc: "Visual OCR and UI layout auditing with ScreenCaptureKit integration", category: "Vision" },
+  { name: "Background Removal", icon: "✂️", desc: "On-device Vision framework background isolation exporting transparent PNGs", category: "Vision" },
 
   // Development (6 tools)
   { name: "Git Action", icon: "🌿", desc: "Basic local Git operations: commit, status, diff, log, and revert", category: "Development" },
@@ -56,13 +58,18 @@ const TOOLS = [
   { name: "Higgsfield Video", icon: "🎥", desc: "Generate generative AI video and motion dynamics via direct Higgsfield REST API (Non-MCP)", category: "Development" },
   { name: "Subagent Spawn", icon: "👥", desc: "Delegate recursive sub-tasks to child orchestrator runtimes", category: "Development" },
 
-  // Productivity (6 tools)
+  // Productivity (11 tools)
   { name: "Contacts", icon: "📇", desc: "Query and retrieve contact details from the local Contacts database", category: "Productivity" },
   { name: "Calendar", icon: "📅", desc: "Create, list, and manage local calendar events via EventKit", category: "Productivity" },
   { name: "Calculator", icon: "🧮", desc: "High-precision math evaluations with safe expression parsing", category: "Productivity" },
   { name: "Weather", icon: "🌤️", desc: "Fetch weather conditions and UV index using Apple WeatherKit", category: "Productivity" },
   { name: "Timer", icon: "⏳", desc: "Set native async timers and reminders with custom messages", category: "Productivity" },
   { name: "Research Report", icon: "📝", desc: "Finalize strategic research tasks into publication-quality Markdown sections", category: "Productivity" },
+  { name: "Apple Notes", icon: "📝", desc: "Create, list, search, and read Apple Notes natively", category: "Productivity" },
+  { name: "Apple Reminders", icon: "🔔", desc: "Create, list, and complete Apple Reminders natively", category: "Productivity" },
+  { name: "Excel (Numbers)", icon: "📊", desc: "Build structured spreadsheets and export genuine .xlsx files via Apple Numbers", category: "Productivity" },
+  { name: "PowerPoint (Keynote)", icon: "📑", desc: "Build slide presentations and export genuine .pptx files via Apple Keynote", category: "Productivity" },
+  { name: "Word (Pages)", icon: "📄", desc: "Build documents and export genuine .docx files via Apple Pages", category: "Productivity" },
 
   // Self-Improvement (2 tools)
   { name: "Memory Vault", icon: "🧠", desc: "Access local long-term experiential memory for past task solutions", category: "Self-Improvement" },
