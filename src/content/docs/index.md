@@ -2,7 +2,7 @@
 
 Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple Silicon. It runs local LLM inference via MLX, orchestrates multi-step tasks through the UNO (Unified Native Orchestration) architecture, and operates without sending your data to the cloud.
 
-**Current version:** v1.0.5 · **Requires:** macOS 26.0+ (Tahoe or later), Apple Silicon (M1 or later)
+**Current version:** v1.0.6 · **Requires:** macOS 26.0+ (Tahoe or later), Apple Silicon (M1 or later)
 
 ---
 

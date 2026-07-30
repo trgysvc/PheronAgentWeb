@@ -594,6 +594,14 @@ export default function Home() {
             
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
+                <span className={styles.changelogBadge}>1.0.6</span>
+                <span>Jul 31, 2026</span>
+              </div>
+              <span className={styles.changelogTitle}>Audacity, Notes, Reminders & 22 Fixes</span>
+            </div>
+
+            <div className={styles.changelogCard}>
+              <div className={styles.changelogMeta}>
                 <span className={styles.changelogBadge}>1.0.5</span>
                 <span>Jul 24, 2026</span>
               </div>
@@ -606,14 +614,6 @@ export default function Home() {
                 <span>Jul 6, 2026</span>
               </div>
               <span className={styles.changelogTitle}>Multi-Turn Continuity & MCP Hub</span>
-            </div>
-
-            <div className={styles.changelogCard}>
-              <div className={styles.changelogMeta}>
-                <span className={styles.changelogBadge}>1.0.3</span>
-                <span>Jun 19, 2026</span>
-              </div>
-              <span className={styles.changelogTitle}>Personal Memory & Recall</span>
             </div>
 
           </div>
