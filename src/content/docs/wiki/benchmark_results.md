@@ -1,6 +1,6 @@
 # Pheron Agent — Benchmark & Evaluation Results
 
-**Methodology Version:** v7 · **Reference Model:** `Qwen3.5-9B` (`mlx-community/Qwen3.5-9B-Instruct-4bit`)  
+**Methodology Version:** v7 · **Reference Model:** `Qwen3.5-9B` (`mlx-community/Qwen3.5-9B-MLX-4bit`)  
 **Execution Environment:** macOS 26.0+ · Apple Silicon UMA · Local MLX Engine  
 **Certified Snapshot ID:** `run_qwen3.5-9b_20260730_k5_autorun0707`
 
@@ -8,7 +8,7 @@
 
 > [!IMPORTANT]
 > **Inspect Raw Execution Traces & Verification Logs**
-> All 98 raw test execution run files (`.json`, `.jsonl`, `.log`, `.md`), golden dataset schemas (`golden_dataset_86.json`), and automated runner traces are published open-source for full community auditability:
+> All 98 raw test execution run files (`.json`, `.jsonl`, `.log`, `.md`), golden dataset schemas (`golden_dataset_94.json`), and automated runner traces are published open-source for full community auditability:
 > 
 > 🔗 **[Browse Raw Test Run Artifacts on GitHub ↗](https://github.com/trgysvc/AgentTestMethodology/tree/main/results/PheronAgent)**
 
@@ -98,7 +98,7 @@ To maintain scientific integrity and avoid cherry-picked metrics, below are the 
 > **Identified Edge-Case Failures in Local 9B Inference:**
 > 1. **L1-SANDBOX-02 (%0 Pass Rate):** Under high RAM load, local sandbox process creation occasionally times out before completing the initial environment handshake.
 > 2. **L2-WEB-01 (%0 Pass Rate):** Web browsing tasks requiring multi-step DOM selector resolution fail when dynamic JavaScript elements load asynchronously past 5 seconds.
-> 3. **L2-ZINCIR-06 (%16.7 Pass^k Rate):** Complex chained tool calls spanning 4+ sequential steps experience context degradation when intermediate tool outputs exceed token limits.
+> 3. **L2-ZINCIR-06 (%60.0 Pass^k Rate):** Complex chained tool calls spanning 4+ sequential steps experience context degradation when intermediate tool outputs exceed token limits.
 > 4. **HR-01 & HR-04 (%0 Pass Rate / JUDGE):** Error recovery handling for non-standard JSON error payloads requires human review to confirm whether retry prompts adhered to policy boundaries.
 
 ---
@@ -107,7 +107,7 @@ To maintain scientific integrity and avoid cherry-picked metrics, below are the 
 
 > [!NOTE]
 > **Disclaimer on Evaluation Origin:**
-> All benchmark results presented on this page were generated using Pheron Agent's internal automated evaluation harness in local Apple Silicon test environments (`mlx-community/Qwen3.5-9B-Instruct-4bit`).
+> All benchmark results presented on this page were generated using Pheron Agent's internal automated evaluation harness in local Apple Silicon test environments (`mlx-community/Qwen3.5-9B-MLX-4bit`).
 > 
 > While these results have not yet been certified by an independent third-party audit firm, **every single log trace, JSON trajectory file, and shell output is published open-source** under the [AgentTestMethodology Repository](https://github.com/trgysvc/AgentTestMethodology) for community inspection and verification.
 

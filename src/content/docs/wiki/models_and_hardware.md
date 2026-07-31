@@ -11,10 +11,10 @@ Pheron Agent relies on a local model catalog registered in `ModelRegistry` (spec
 ### Qwen3.5 Series
 | Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| **Qwen3.5-4B-4bit** | `mlx-community/Qwen3.5-4B-Instruct-4bit` | 2.28 GB | 6 GB | ✓ | ✓ |
-| **Qwen3.5-9B-4bit** | `mlx-community/Qwen3.5-9B-Instruct-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
-| **Qwen3.5-9B-OptiQ** | `mlx-community/Qwen3.5-9B-Instruct-OptiQ-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
-| **Qwen3.5-27B-4bit** | `mlx-community/Qwen3.5-27B-Instruct-4bit` | 15.2 GB | 18 GB | ✓ | ✓ |
+| **Qwen3.5-4B-4bit** | `mlx-community/Qwen3.5-4B-MLX-4bit` | 2.28 GB | 6 GB | ✓ | ✓ |
+| **Qwen3.5-9B-4bit** | `mlx-community/Qwen3.5-9B-MLX-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
+| **Qwen3.5-9B-OptiQ** | `mlx-community/Qwen3.5-9B-OptiQ-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
+| **Qwen3.5-27B-4bit** | `mlx-community/Qwen3.5-27B-4bit` | 15.2 GB | 18 GB | ✓ | ✓ |
 
 ### Llama
 | Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
