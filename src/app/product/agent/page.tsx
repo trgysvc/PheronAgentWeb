@@ -418,11 +418,11 @@ export default function AgentPage() {
                   <Link href="/resources/help" className={styles.dropdownItem}>Help</Link>
                   <Link href="/resources/docs" className={styles.dropdownItem}>Docs</Link>
                   <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
+                  <Link href="/resources/docs/wiki/benchmark_results" className={styles.dropdownItem}>Benchmarks</Link>
                 </div>
                 <div className={styles.dropdownCol}>
-                  <Link href="/resources/docs/wiki/benchmark_results" className={styles.dropdownItem}>Benchmarks</Link>
-                  <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
                   <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
+                  <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
                   <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
                 </div>
               </div>
