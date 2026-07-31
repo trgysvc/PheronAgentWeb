@@ -49,6 +49,12 @@ export const RESOURCES_MENU = [
     ]
   },
   {
+    title: "Benchmarks & Evaluation",
+    items: [
+      { name: "Benchmark & Test Results", path: "/resources/docs/wiki/benchmark_results" }
+    ]
+  },
+  {
     title: "Security & Roadmap",
     items: [
       { name: "Security & Privacy", path: "/resources/docs/security" },
@@ -124,8 +130,9 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                   <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
                 </div>
                 <div className={styles.dropdownCol}>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
+                  <Link href="/resources/docs/wiki/benchmark_results" className={styles.dropdownItem}>Benchmarks</Link>
                   <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
                   <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
                 </div>
               </div>
@@ -202,6 +209,7 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                   <li><Link href="/changelog" className={styles.footerLink}>Changelog</Link></li>
                   <li><Link href="/resources/docs" className={styles.footerLink}>Docs</Link></li>
                   <li><Link href="/resources/learn" className={styles.footerLink}>Learn</Link></li>
+                  <li><Link href="/resources/docs/wiki/benchmark_results" className={styles.footerLink}>Benchmarks</Link></li>
                   <li><Link href="/resources/help" className={styles.footerLink}>Help</Link></li>
                 </ul>
               </div>

@@ -28,6 +28,7 @@ Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple S
 
 ## Advanced & Reference
 
+- [Benchmark & Test Results](wiki/benchmark_results.md) — Universal AgentTestMethodology v7 evaluation metrics & OWASP security matrix
 - [Security & Privacy](security.md) — On-device isolation, Privacy Guard, XPC sandboxing
 - [Product Roadmap](future.md) — Upcoming features
 - [v3 Migration Guide](wiki/v3_migration_guide.md) — Upgrading from mlx-swift-lm v2
