@@ -679,6 +679,7 @@ export default function Home() {
                   <li><Link href="/changelog" className={styles.footerLink}>Changelog</Link></li>
                   <li><Link href="/resources/docs" className={styles.footerLink}>Docs</Link></li>
                   <li><Link href="/resources/learn" className={styles.footerLink}>Learn</Link></li>
+                  <li><Link href="/resources/docs/wiki/benchmark_results" className={styles.footerLink}>Benchmarks</Link></li>
                   <li><Link href="/resources/help" className={styles.footerLink}>Help</Link></li>
                 </ul>
               </div>
