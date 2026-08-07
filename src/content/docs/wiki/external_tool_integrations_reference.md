@@ -3,7 +3,7 @@
 **Purpose:** Single reference document for ALL external tool integrations in PheronAgent.
 
 ## Architecture Overview
-1. **Model Context Protocol (MCP) Servers** — Official JSON-RPC 2.0 servers (`Git`, `Memory`, `Playwright`, `Perplexity`, `Stripe`, `GitHub`, `Zapier`, `Notion`, `Unreal Engine`).
+1. **Model Context Protocol (MCP) Servers** — Official JSON-RPC 2.0 servers (`Git`, `Memory`, `Playwright`, `Perplexity`, `Stripe`, `GitHub`, `Zapier`, `Notion`, `Unreal Engine`, `Lark`).
 2. **Direct REST API** — Authentication via Keychain HTTP headers (`Higgsfield`).
 3. **Custom Process Bridge** — Headless Python script execution (`Blender 3D`).
 
@@ -51,6 +51,12 @@
 ## A.9 — `unreal_engine_tool` (UBID 104) — Official Unreal Engine 5.8+ Editor MCP Server
 - **Transport:** Streamable HTTP (Localhost `http://127.0.0.1:8000/mcp`)
 - **Status:** ⚠️ Experimental (Requires Unreal Engine 5.8+ editor plugin enabled).
+
+## A.10 — `lark_tool` (UBID 112) — Official Lark/Feishu OpenAPI MCP Server
+- **Command:** `npx -y @larksuiteoapi/lark-mcp mcp -a <appID> -s <appSecret> --domain https://open.larksuite.com -t preset.im.default,preset.base.default,preset.doc.default,preset.task.default,preset.calendar.default`
+- **Auth:** Bring-your-own app (App ID + App Secret from a custom app at open.larksuite.com), tenant_access_token mode — no OAuth. See [Lark Suite Setup](../lark_suite_setup.md).
+- **Status:** ✅ Live-Verified (2026-08-07, real app credentials, 27 tools returned via `tools/list`).
+- **Actions:** `im_v1_message_create/list`, `im_v1_chat_create/list`, `im_v1_chatMembers_get`, `calendar_v4_calendarEvent_create/get/patch`, `calendar_v4_calendar_primary`, `calendar_v4_freebusy_list`, `contact_v3_user_batchGetId`, `bitable_v1_app_create`, `bitable_v1_appTable_create/list`, `bitable_v1_appTableField_list`, `bitable_v1_appTableRecord_create/search/update`, `docx_v1_document_rawContent`, `docx_builtin_search/import`, `task_v2_task_create/patch/addMembers/addReminders`, `wiki_v1_node_search`, `wiki_v2_space_getNode`, `drive_v1_permissionMember_create`.
 
 ---
 
