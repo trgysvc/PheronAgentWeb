@@ -1,11 +1,11 @@
-# PheronAgent — Full Tool Inventory & Capability Reference (59 Tools)
-**Last updated:** 2026-07-27  
-**Verification method:** Verified against `UBIDCoverageTests.swift` (`allKnownTools` array + `dependencyInjectedToolUBIDs` (`memory`, `subagent_spawn`) = **59 total**). 7 newly added tools since 2026-07-06: `notes_action` (105), `reminders_action` (106), `remove_background` (107), `numbers_office` (108), `keynote_office` (109), `pages_office` (110), `audacity_control` (111).
+# PheronAgent — Full Tool Inventory & Capability Reference (62 Tools)
+**Last updated:** 2026-08-08  
+**Verification method:** Verified against `UBIDCoverageTests.swift` (`allKnownTools` array + `dependencyInjectedToolUBIDs` (`memory`, `subagent_spawn`) = **62 total**). 3 newly added tools since 2026-07-27: `lark_tool` (112, official Lark/Feishu MCP), `lemonsqueezy_tool` (113, direct REST — no official MCP exists), `kit_tool` (114, direct REST — official MCP exists but needs OAuth dynamic client registration not yet supported).
 
-This document details the capabilities of ALL 59 PheronAgent tools across 3 distinct architectures:
+This document details the capabilities of ALL 62 PheronAgent tools across 3 distinct architectures:
 1. **Native System Tools** (48 tools) — Built directly in Swift using Apple APIs (Core Audio, WeatherKit, Vision, Accessibility, AppleScript, Vision framework, etc.).
-2. **Model Context Protocol (MCP)** (9 tools) — Official JSON-RPC 2.0 servers (`initialize`, `tools/list`, `tools/call`).
-3. **Direct REST API & Process Bridges** (2 tools) — Higgsfield (REST) and Blender 3D (headless process spawn).
+2. **Model Context Protocol (MCP)** (10 tools) — Official JSON-RPC 2.0 servers (`initialize`, `tools/list`, `tools/call`).
+3. **Direct REST API & Process Bridges** (4 tools) — Higgsfield, LemonSqueezy, Kit (REST) and Blender 3D (headless process spawn).
 
 ---
 
@@ -203,7 +203,7 @@ Builds formatted documents in Apple Pages via AppleScript and exports a genuine 
 
 ---
 
-## 12. Model Context Protocol (MCP) Server Bridges (9 tools)
+## 12. Model Context Protocol (MCP) Server Bridges (10 tools)
 
 | Tool Name | UBID | Status | Capability Summary |
 |---|---|---|---|
@@ -216,9 +216,19 @@ Builds formatted documents in Apple Pages via AppleScript and exports a genuine 
 | `zapier_tool` | 102 | ⚠️ Pending Setup | Official Zapier MCP server — 9000+ app integrations via dynamic actions |
 | `notion_tool` | 103 | ⚠️ Pending Auth | Official Notion hosted MCP server — 17 actions (pages, databases, comments) |
 | `unreal_engine_tool` | 104 | ⚠️ Experimental | Epic Games Unreal Engine 5.8+ editor-embedded MCP server |
+| `lark_tool` | 112 | ✅ Live-Verified | Official Lark/Feishu OpenAPI MCP server — 27 actions (messaging, chats, calendar, Base, docs, tasks, wiki) |
 
 ---
 
-## Summary Total: 59 Tools
+## 13. Direct REST API Bridges — no official MCP server (2 tools)
+
+| Tool Name | UBID | Status | Capability Summary |
+|---|---|---|---|
+| `lemonsqueezy_tool` | 113 | ✅ Live-Verified | LemonSqueezy REST API — orders, customers, subscriptions, discounts, license keys (bring-your-own key) |
+| `kit_tool` | 114 | ✅ Live-Verified | Kit (ConvertKit) V4 REST API — subscribers, broadcasts, sequences, tags, forms (bring-your-own key) |
+
+---
+
+## Summary Total: 62 Tools
 - **48 Native System Tools** (Written natively in Swift connecting directly to macOS system APIs)
-- **11 External MCP / REST / Bridge Tools** (9 official MCP servers + 1 REST API + 1 Python process bridge)
+- **14 External MCP / REST / Bridge Tools** (10 official MCP servers + 3 REST APIs + 1 Python process bridge)

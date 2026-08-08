@@ -22,6 +22,7 @@ Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple S
 - [Full Tool Inventory](wiki/full_tool_inventory.md) — Comprehensive inventory of all 59 native & MCP tools with UBIDs
 - [External Tool Integrations Reference](wiki/external_tool_integrations_reference.md) — Detailed setup, auth, and action reference for MCP, REST, and Blender bridges
 - [Lark Suite Setup](wiki/lark_suite_setup.md) — Step-by-step guide to connecting your Lark Suite app to Pheron Agent
+- [LemonSqueezy & Kit Setup](wiki/lemonsqueezy_kit_setup.md) — Connect your LemonSqueezy store and Kit (ConvertKit) email list to Pheron Agent
 - [SkillVault](wiki/skill_vault.md) — Self-improving procedural memory
 - [Native Tool Calling](wiki/native_tool_calling.md) — How the agent selects and executes tools
 - [AudioIntelligence DSP](wiki/audio_intelligence.md) — Music DNA and audio analysis

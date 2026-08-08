@@ -75,7 +75,7 @@ const TOOLS = [
   { name: "Memory Vault", icon: "🧠", desc: "Access local long-term experiential memory for past task solutions", category: "Self-Improvement" },
   { name: "Skill Patch", icon: "🦾", desc: "Manage, patch, and search custom agent skills and procedural rules", category: "Self-Improvement" },
 
-  // MCP Bridges (9 tools)
+  // MCP Bridges (10 tools) + Direct REST Bridges (2 tools)
   { name: "Git MCP Bridge", icon: "🌿", desc: "Anthropic Model Context Protocol bridge for full Git control (12 actions) · Live-Verified", category: "MCP Bridges" },
   { name: "Memory MCP Bridge", icon: "🧠", desc: "Official Knowledge-Graph MCP server for entity-relation observation CRUD · Live-Verified", category: "MCP Bridges" },
   { name: "Browser MCP Bridge", icon: "🌐", desc: "Microsoft Playwright MCP server offering headless web testing (22 actions) · Live-Verified", category: "MCP Bridges" },
@@ -85,6 +85,11 @@ const TOOLS = [
   { name: "Zapier MCP Bridge", icon: "⚡", desc: "Connect over 9000 apps using Zapier's dynamic action invocation protocol (Pending URL Setup)", category: "MCP Bridges" },
   { name: "Notion MCP Bridge", icon: "📓", desc: "Official Notion workspace integration: pages, databases, and comments (OAuth Integration)", category: "MCP Bridges" },
   { name: "Unreal Engine MCP Bridge", icon: "🎮", desc: "Control actors, material instances, and attributes inside Unreal Engine 5.8+ (Experimental, Editor-embedded)", category: "MCP Bridges" },
+  { name: "Lark MCP Bridge", icon: "🐦", desc: "Official Lark/Feishu OpenAPI MCP: messaging, chats, calendar, Base, docs, tasks, wiki (27 tools) · Live-Verified", category: "MCP Bridges" },
+
+  // Direct REST Bridges (non-MCP)
+  { name: "LemonSqueezy", icon: "🍋", desc: "Manage orders, customers, subscriptions, discounts, and license keys via direct REST API (Non-MCP) · Live-Verified", category: "Development" },
+  { name: "Kit (ConvertKit)", icon: "📮", desc: "Email marketing: subscribers, broadcasts, sequences, and tags via Kit's V4 REST API (Non-MCP) · Live-Verified", category: "Communication" },
 ];
 
 const CATEGORIES = ["All", "System", "File", "Web", "Vision", "Development", "Communication", "Productivity", "Self-Improvement", "Media", "MCP Bridges"];
