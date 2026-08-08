@@ -596,9 +596,9 @@ export default function Home() {
             <div className={styles.changelogCard}>
               <div className={styles.changelogMeta}>
                 <span className={styles.changelogBadge}>1.0.6</span>
-                <span>Jul 31, 2026</span>
+                <span>Aug 1, 2026</span>
               </div>
-              <span className={styles.changelogTitle}>Audacity, Notes, Reminders & 22 Fixes</span>
+              <span className={styles.changelogTitle}>Lark, LemonSqueezy & Kit Integrations, Audacity, Notes, Reminders & 22 Fixes</span>
             </div>
 
             <div className={styles.changelogCard}>
