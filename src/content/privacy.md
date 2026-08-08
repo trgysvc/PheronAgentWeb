@@ -91,9 +91,9 @@ When you activate your license key, Pheron Agent sends to Lemon Squeezy:
 - Your license key string
 - A device name (e.g., "Pheron on MacBook Pro") — derived from your Mac's hostname
 
-This happens once at activation. Every 14 days, only the license key and a device identifier are sent to verify the license is still valid. Your name, email, or any personal data is not sent from the app — Lemon Squeezy already has your email from the purchase, and we do not re-send it.
+This happens once at activation, then again on every app launch while you're online — only the license key and a device identifier are sent to verify the license is still valid. Your name, email, or any personal data is not sent from the app — Lemon Squeezy already has your email from the purchase, and we do not re-send it.
 
-If your device is offline for more than 14 days, the license will be re-validated automatically the next time an internet connection is available. Offline use does not lock or disable the app — validation simply resumes when connectivity is restored.
+If your device is offline, Pheron Agent keeps working normally for up to 24 hours since the last successful check. Offline use does not lock or disable the app — validation simply resumes the next time an internet connection is available.
 
 Lemon Squeezy's privacy policy: [lemonsqueezy.com/privacy](https://www.lemonsqueezy.com/privacy)
 
