@@ -11,7 +11,7 @@ export function slugify(text: string): string {
 }
 
 // Rewrites markdown relative links (.md) and normalizes hash anchors (#)
-export function rewriteMarkdownLinks(html: string): string {
+export function rewriteMarkdownLinks(html: string, lang: string = "en"): string {
   // 1. Rewrite relative links ending with .md
   let cleaned = html.replace(/href="([^"]+)\.md"/g, (match, p1) => {
     if (p1.startsWith("http://") || p1.startsWith("https://") || p1.startsWith("mailto:") || p1.startsWith("#")) {
@@ -30,19 +30,19 @@ export function rewriteMarkdownLinks(html: string): string {
       return 'href="/resources/learn"';
     }
     if (cleanedPath === "index") {
-      return 'href="/resources/docs"';
+      return `href="/resources/docs/${lang}"`;
     }
     if (cleanedPath === "wiki/api" || cleanedPath === "api") {
-      return 'href="/resources/docs/api"';
+      return `href="/resources/docs/${lang}/api"`;
     }
     if (cleanedPath === "wiki/future" || cleanedPath === "future") {
-      return 'href="/resources/docs/future"';
+      return `href="/resources/docs/${lang}/future"`;
     }
     if (cleanedPath === "wiki/security" || cleanedPath === "security") {
-      return 'href="/resources/docs/security"';
+      return `href="/resources/docs/${lang}/security"`;
     }
     
-    return `href="/resources/docs/${cleanedPath}"`;
+    return `href="/resources/docs/${lang}/${cleanedPath}"`;
   });
 
   // 2. Normalize link anchor hashes to match slugified IDs (e.g. href="#1-apple-hig--onboarding" -> href="#1-apple-hig-onboarding")
@@ -54,7 +54,7 @@ export function rewriteMarkdownLinks(html: string): string {
 }
 
 // Configures marked and parses markdown content to HTML
-export async function parseMarkdown(content: string): Promise<string> {
+export async function parseMarkdown(content: string, lang: string = "en"): Promise<string> {
   // Configure marked custom renderer for headings
   marked.use({
     renderer: {
@@ -68,5 +68,5 @@ export async function parseMarkdown(content: string): Promise<string> {
   });
 
   const html = await marked.parse(content);
-  return rewriteMarkdownLinks(html);
+  return rewriteMarkdownLinks(html, lang);
 }

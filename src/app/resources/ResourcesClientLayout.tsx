@@ -5,19 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "../page.module.css";
-
-const LANGUAGES = [
-  "English",
-  "简体中文",
-  "日本語",
-  "繁體中文",
-  "Español",
-  "Français",
-  "Português",
-  "한국어",
-  "Deutsch",
-  "हिन्दी"
-];
+import { useLanguage } from "../../context/LanguageContext";
+import { LANGUAGES } from "../../i18n";
 
 export const RESOURCES_MENU = [
   {
@@ -67,12 +56,11 @@ export const RESOURCES_MENU = [
 
 export default function ResourcesClientLayout({ children }: { children: React.ReactNode }) {
   const [activeTheme, setActiveTheme] = useState("system");
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
 
-  // Close dropdown on click outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -84,6 +72,19 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const getDocPath = (path: string) => {
+    if (path === "/resources/docs") {
+      return `/resources/docs/${language}`;
+    }
+    if (path.startsWith("/resources/docs/")) {
+      const rest = path.replace("/resources/docs/", "");
+      return `/resources/docs/${language}/${rest}`;
+    }
+    return path;
+  };
+
+  const currentLangObj = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0];
 
   return (
     <div className={styles.container}>
@@ -106,41 +107,40 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
             {/* Product with Dropdown */}
             <div className={styles.navItemWithDropdown}>
               <button className={styles.navLinkButton}>
-                Product
+                {t("nav.product", "Product")}
               </button>
               <div className={styles.navDropdown}>
-                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
+                <Link href="/product/agent" className={styles.dropdownItem}>{t("nav.agent", "Agent")}</Link>
+                <Link href={getDocPath("/resources/docs/api")} className={styles.dropdownItem}>{t("footer.api", "API")}</Link>
+                <Link href="/ecosystem" className={styles.dropdownItem}>{t("nav.ecosystem", "Ecosystem")}</Link>
               </div>
             </div>
 
             {/* Pricing */}
-            <Link href="/pricing" className={styles.navLink}>Pricing</Link>
+            <Link href="/pricing" className={styles.navLink}>{t("nav.pricing", "Pricing")}</Link>
 
             {/* Resources with 2-Column Dropdown */}
             <div className={styles.navItemWithDropdown}>
               <button className={`${styles.navLinkButton} ${styles.docsLinkActive}`}>
-                Resources
+                {t("nav.resources", "Resources")}
               </button>
               <div className={`${styles.navDropdown} ${styles.navDropdownTwoCol}`}>
                 <div className={styles.dropdownCol}>
-                  <Link href="/resources/help" className={styles.dropdownItem}>Help</Link>
-                  <Link href="/resources/docs" className={styles.dropdownItem}>Docs</Link>
-                  <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
-                  <Link href="/resources/docs/wiki/benchmark_results" className={styles.dropdownItem}>Benchmarks</Link>
+                  <Link href="/resources/help" className={styles.dropdownItem}>{t("footer.help", "Help")}</Link>
+                  <Link href={getDocPath("/resources/docs")} className={styles.dropdownItem}>{t("footer.docs", "Docs")}</Link>
+                  <Link href="/resources/learn" className={styles.dropdownItem}>{t("footer.learn", "Learn")}</Link>
+                  <Link href={getDocPath("/resources/docs/wiki/benchmark_results")} className={styles.dropdownItem}>Benchmarks</Link>
                 </div>
                 <div className={styles.dropdownCol}>
                   <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
-                  <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
+                  <Link href="/changelog" className={styles.dropdownItem}>{t("nav.changelog", "Changelog")}</Link>
                   <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
                 </div>
               </div>
             </div>
           </nav>
           <div className={styles.navActions}>
-            <Link href="/auth" className={`${styles.navBtn} btn-secondary`} style={{ display: "none" }}>Sign In</Link>
-            <Link href="/download" className={`${styles.navBtn} btn-primary`}>Download</Link>
+            <Link href="/download" className={`${styles.navBtn} btn-primary`}>{t("nav.download", "Download")}</Link>
           </div>
         </div>
       </header>
@@ -153,11 +153,12 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
             <div key={group.title} className={styles.docsGroup}>
               <div className={styles.docsGroupTitle}>{group.title}</div>
               {group.items.map((item) => {
-                const isActive = pathname === item.path;
+                const targetPath = getDocPath(item.path);
+                const isActive = pathname === targetPath;
                 return (
                   <Link 
                     key={item.path} 
-                    href={item.path}
+                    href={targetPath}
                     className={`${styles.docsLink} ${isActive ? styles.docsLinkActive : ""}`}
                   >
                     {item.name}
@@ -193,24 +194,24 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
 
             <div className={styles.footerLinksGrid}>
               <div className={styles.footerColumn}>
-                <span className={styles.columnTitle}>Product</span>
+                <span className={styles.columnTitle}>{t("footer.product", "Product")}</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/product/agent" className={styles.footerLink}>Agent</Link></li>
-                  <li><Link href="/resources/docs/api" className={styles.footerLink}>API</Link></li>
-                  <li><Link href="/ecosystem" className={styles.footerLink}>Ecosystem</Link></li>
-                  <li><Link href="/pricing" className={styles.footerLink}>Pricing</Link></li>
+                  <li><Link href="/product/agent" className={styles.footerLink}>{t("nav.agent", "Agent")}</Link></li>
+                  <li><Link href={getDocPath("/resources/docs/api")} className={styles.footerLink}>{t("footer.api", "API")}</Link></li>
+                  <li><Link href="/ecosystem" className={styles.footerLink}>{t("nav.ecosystem", "Ecosystem")}</Link></li>
+                  <li><Link href="/pricing" className={styles.footerLink}>{t("nav.pricing", "Pricing")}</Link></li>
                 </ul>
               </div>
               
               <div className={styles.footerColumn}>
-                <span className={styles.columnTitle}>Resources</span>
+                <span className={styles.columnTitle}>{t("footer.resources", "Resources")}</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/download" className={styles.footerLink}>Download</Link></li>
-                  <li><Link href="/changelog" className={styles.footerLink}>Changelog</Link></li>
-                  <li><Link href="/resources/docs" className={styles.footerLink}>Docs</Link></li>
-                  <li><Link href="/resources/learn" className={styles.footerLink}>Learn</Link></li>
-                  <li><Link href="/resources/docs/wiki/benchmark_results" className={styles.footerLink}>Benchmarks</Link></li>
-                  <li><Link href="/resources/help" className={styles.footerLink}>Help</Link></li>
+                  <li><Link href="/download" className={styles.footerLink}>{t("nav.download", "Download")}</Link></li>
+                  <li><Link href="/changelog" className={styles.footerLink}>{t("nav.changelog", "Changelog")}</Link></li>
+                  <li><Link href={getDocPath("/resources/docs")} className={styles.footerLink}>{t("footer.docs", "Docs")}</Link></li>
+                  <li><Link href="/resources/learn" className={styles.footerLink}>{t("footer.learn", "Learn")}</Link></li>
+                  <li><Link href={getDocPath("/resources/docs/wiki/benchmark_results")} className={styles.footerLink}>Benchmarks</Link></li>
+                  <li><Link href="/resources/help" className={styles.footerLink}>{t("footer.help", "Help")}</Link></li>
                 </ul>
               </div>
 
@@ -219,19 +220,19 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                 <ul className={styles.columnList}>
                   <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Blog</span></li>
                   <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Community</span></li>
-                  <li><Link href="/resources/docs/future" className={styles.footerLink}>Future</Link></li>
+                  <li><Link href={getDocPath("/resources/docs/future")} className={styles.footerLink}>Future</Link></li>
                   <li><Link href="/" className={styles.footerLink}>Pheron Agent</Link></li>
                 </ul>
               </div>
 
               <div className={styles.footerColumn}>
-                <span className={styles.columnTitle}>Legal</span>
+                <span className={styles.columnTitle}>{t("footer.legal", "Legal")}</span>
                 <ul className={styles.columnList}>
-                  <li><Link href="/terms" className={styles.footerLink}>Terms of Service</Link></li>
-                  <li><Link href="/privacy" className={styles.footerLink}>Privacy Policy</Link></li>
-                  <li><Link href="/refund" className={styles.footerLink}>Refund Policy</Link></li>
-                  <li><Link href="/data-use" className={styles.footerLink}>Data Use</Link></li>
-                  <li><Link href="/resources/docs/security" className={styles.footerLink}>Security</Link></li>
+                  <li><Link href="/terms" className={styles.footerLink}>{t("footer.terms", "Terms of Service")}</Link></li>
+                  <li><Link href="/privacy" className={styles.footerLink}>{t("footer.privacy", "Privacy Policy")}</Link></li>
+                  <li><Link href="/refund" className={styles.footerLink}>{t("footer.refund", "Refund Policy")}</Link></li>
+                  <li><Link href="/data-use" className={styles.footerLink}>{t("footer.dataUse", "Data Use")}</Link></li>
+                  <li><Link href={getDocPath("/resources/docs/security")} className={styles.footerLink}>{t("footer.security", "Security")}</Link></li>
                 </ul>
               </div>
 
@@ -241,7 +242,7 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                   <li><a href="https://x.com/PheronAgent" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>X</a></li>
                   <li><a href="https://www.linkedin.com/company/pheron-agent/" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Linkedin</a></li>
                   <li><a href="https://www.instagram.com/pheronagent/" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>IG</a></li>
-                  <li><Link href="/get-in-touch" className={styles.footerLink}>Get in Touch</Link></li>
+                  <li><Link href="/get-in-touch" className={styles.footerLink}>{t("nav.getInTouch", "Get in Touch")}</Link></li>
                 </ul>
               </div>
             </div>
@@ -251,13 +252,14 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
 
           <div className={styles.footerBottom}>
             <div className={styles.footerBottomLeft}>
-              <span>© {new Date().getFullYear()} Pheron Agent. All rights reserved.</span>
+              <span>© {new Date().getFullYear()} Pheron Agent. {t("footer.copyright", "All rights reserved.")}</span>
             </div>
 
             <div className={styles.footerBottomRight}>
+              {/* Theme Selector */}
               <div className={styles.themeSelector}>
-                <button 
-                  className={`${styles.themeBtn} ${activeTheme === "system" ? styles.themeBtnActive : ""}`} 
+                <button
+                  className={`${styles.themeBtn} ${activeTheme === "system" ? styles.themeBtnActive : ""}`}
                   onClick={() => setActiveTheme("system")}
                   title="System Theme"
                 >
@@ -267,8 +269,8 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                     <line x1="12" y1="17" x2="12" y2="21" />
                   </svg>
                 </button>
-                <button 
-                  className={`${styles.themeBtn} ${activeTheme === "light" ? styles.themeBtnActive : ""}`} 
+                <button
+                  className={`${styles.themeBtn} ${activeTheme === "light" ? styles.themeBtnActive : ""}`}
                   onClick={() => setActiveTheme("light")}
                   title="Light Theme"
                 >
@@ -284,8 +286,8 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                   </svg>
                 </button>
-                <button 
-                  className={`${styles.themeBtn} ${activeTheme === "dark" ? styles.themeBtnActive : ""}`} 
+                <button
+                  className={`${styles.themeBtn} ${activeTheme === "dark" ? styles.themeBtnActive : ""}`}
                   onClick={() => setActiveTheme("dark")}
                   title="Dark Theme"
                 >
@@ -295,9 +297,10 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                 </button>
               </div>
 
+              {/* Language Selector */}
               <div className={styles.languageContainer} ref={dropdownRef}>
-                <button 
-                  className={styles.languageBtn} 
+                <button
+                  className={styles.languageBtn}
                   onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
                 >
                   <svg className={styles.globeIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "14px", height: "14px" }}>
@@ -305,7 +308,7 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                     <line x1="2" y1="12" x2="22" y2="12" />
                     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                   </svg>
-                  <span>{selectedLanguage}</span>
+                  <span>{currentLangObj.label}</span>
                   <svg className={`${styles.caretIcon} ${languageDropdownOpen ? styles.caretIconOpen : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "12px", height: "12px" }}>
                     <polyline points="6 9 12 15 18 9" />
                   </svg>
@@ -313,17 +316,17 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
 
                 {languageDropdownOpen && (
                   <div className={styles.languageDropdown}>
-                    {LANGUAGES.map((lang) => (
-                      <button 
-                        key={lang} 
-                        className={`${styles.languageOption} ${selectedLanguage === lang ? styles.languageOptionActive : ""}`}
+                    {LANGUAGES.map((langItem) => (
+                      <button
+                        key={langItem.code}
+                        className={`${styles.languageOption} ${language === langItem.code ? styles.languageOptionActive : ""}`}
                         onClick={() => {
-                          setSelectedLanguage(lang);
+                          setLanguage(langItem.code);
                           setLanguageDropdownOpen(false);
                         }}
                       >
-                        <span>{lang}</span>
-                        {selectedLanguage === lang && (
+                        <span>{langItem.label}</span>
+                        {language === langItem.code && (
                           <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "12px", height: "12px" }}>
                             <polyline points="20 6 9 17 4 12" />
                           </svg>

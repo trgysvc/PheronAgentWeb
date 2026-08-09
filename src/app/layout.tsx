@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
+import ClientProviders from "../context/ClientProviders";
 import "./globals.css";
 
 const outfit = { variable: "font-outfit" };
@@ -50,7 +51,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
+        <ClientProviders>
+          {children}
+        </ClientProviders>
         <GoogleAnalytics gaId="G-X27N6PXYTL" />
         <GoogleTagManager gtmId="GTM-5HWMNTDM" />
         <Analytics />
