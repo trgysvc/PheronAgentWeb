@@ -5,12 +5,30 @@ import { usePathname, useRouter } from "next/navigation";
 import { LANGUAGES, DEFAULT_LANGUAGE } from "../i18n";
 import en from "../i18n/translations/en";
 import tr from "../i18n/translations/tr";
+import zhCN from "../i18n/translations/zh-CN";
+import ja from "../i18n/translations/ja";
+import zhTW from "../i18n/translations/zh-TW";
+import es from "../i18n/translations/es";
+import fr from "../i18n/translations/fr";
+import pt from "../i18n/translations/pt";
+import ko from "../i18n/translations/ko";
+import de from "../i18n/translations/de";
+import hi from "../i18n/translations/hi";
 
 type Dictionaries = Record<string, Record<string, string>>;
 
 const dictionaries: Dictionaries = {
   en,
   tr,
+  "zh-CN": zhCN,
+  ja,
+  "zh-TW": zhTW,
+  es,
+  fr,
+  pt,
+  ko,
+  de,
+  hi,
 };
 
 interface LanguageContextType {
@@ -54,10 +72,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     } else if (savedCookie && LANGUAGES.some((l) => l.code === savedCookie)) {
       initialLang = savedCookie;
     } else if (typeof navigator !== "undefined" && navigator.language) {
-      const browserLang = navigator.language.toLowerCase();
-      if (browserLang.startsWith("tr")) {
-        initialLang = "tr";
-      }
+      const bLang = navigator.language.toLowerCase();
+      if (bLang.startsWith("tr")) initialLang = "tr";
+      else if (bLang.startsWith("zh-tw") || bLang.startsWith("zh-hant") || bLang.startsWith("zh-hk")) initialLang = "zh-TW";
+      else if (bLang.startsWith("zh")) initialLang = "zh-CN";
+      else if (bLang.startsWith("ja")) initialLang = "ja";
+      else if (bLang.startsWith("es")) initialLang = "es";
+      else if (bLang.startsWith("fr")) initialLang = "fr";
+      else if (bLang.startsWith("de")) initialLang = "de";
+      else if (bLang.startsWith("pt")) initialLang = "pt";
+      else if (bLang.startsWith("ko")) initialLang = "ko";
+      else if (bLang.startsWith("hi")) initialLang = "hi";
+      else initialLang = "en";
     }
 
     setLanguageState(initialLang);

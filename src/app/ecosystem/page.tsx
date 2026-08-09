@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../page.module.css";
 import SiteFooter from "../components/SiteFooter";
+import SiteHeader from "../components/SiteHeader";
 import { useLanguage } from "../../context/LanguageContext";
 import { LANGUAGES } from "../../i18n";
 
@@ -123,78 +124,15 @@ export default function Ecosystem() {
   return (
     <div className={styles.container}>
       {/* Navigation Header */}
-      <header className={styles.header}>
-        <div className={styles.nav}>
-          <Link href="/" className={styles.logoContainer} style={{textDecoration: "none", color: "inherit"}}>
-
-            <Image 
-
-              src="/assets/PheronAgentLOGO2.png" 
-
-              alt="Pheron Logo" 
-
-              width={32} 
-
-              height={32} 
-
-              className={styles.logoImg}
-
-            />
-
-            <span>Pheron Agent</span>
-
-          </Link>
-          <nav className={styles.navLinks}>
-            {/* Product with Dropdown */}
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>
-                Product
-              </button>
-              <div className={styles.navDropdown}>
-                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
-              </div>
-            </div>
-
-            {/* Pricing */}
-            <Link href="/pricing" className={styles.navLink}>Pricing</Link>
-
-            {/* Resources with 2-Column Dropdown */}
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>
-                Resources
-              </button>
-              <div className={`${styles.navDropdown} ${styles.navDropdownTwoCol}`}>
-                <div className={styles.dropdownCol}>
-                  <Link href="/resources/help" className={styles.dropdownItem}>Help</Link>
-                  <Link href="/resources/docs" className={styles.dropdownItem}>Docs</Link>
-                  <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
-                  <Link href="/resources/docs/wiki/benchmark_results" className={styles.dropdownItem}>Benchmarks</Link>
-                </div>
-                <div className={styles.dropdownCol}>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
-                  <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
-                </div>
-              </div>
-            </div>
-          </nav>
-          <div className={styles.navActions}>
-            <Link href="/auth" className={`${styles.navBtn} btn-secondary`} style={{ display: "none" }}>Sign In</Link>
-            <Link href="/download" className={`${styles.navBtn} btn-primary`}>Download</Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* 50+ Tools Showcase Section */}
       <section id="tools" className={styles.section} style={{ minHeight: "60vh", paddingTop: "120px" }}>
         <div className={styles.sectionHeader}>
-          <span className={styles.sectionTag}>Unrivaled Access</span>
-          <h2 className={styles.sectionTitle}>Integrated Native Tools</h2>
+          <span className={styles.sectionTag}>{t("ecosystem.title", "Integrated Native Tools")}</span>
+          <h2 className={styles.sectionTitle}>{t("ecosystem.title", "Native Tool Ecosystem")}</h2>
           <p className={styles.sectionSubtitle}>
-            Pheron Agent interacts directly with macOS, local applications, and files. 
-            Filter through the tool inventory below.
+            {t("ecosystem.subtitle", "59 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.")}
           </p>
         </div>
 
@@ -207,7 +145,7 @@ export default function Ecosystem() {
                 className={`${styles.filterBtn} ${selectedCategory === cat ? styles.filterBtnActive : ""}`}
                 onClick={() => setSelectedCategory(cat)}
               >
-                {cat}
+                {t(`ecosystem.cat${cat.replace(/[^a-zA-Z]/g, "")}`, cat)}
               </button>
             ))}
           </div>

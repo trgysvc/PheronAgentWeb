@@ -391,49 +391,16 @@ const HW_TIERS = [
   },
 ];
 
+import { useLanguage } from "../../../context/LanguageContext";
+import SiteHeader from "../../components/SiteHeader";
+
 export default function AgentPage() {
+  const { language, t } = useLanguage();
+
   return (
     <div className={styles.container}>
       {/* Navigation */}
-      <header className={styles.header}>
-        <div className={styles.nav}>
-          <Link href="/" className={styles.logoContainer}>
-            <Image src="/assets/PheronAgentLOGO2.png" alt="Pheron Logo" width={40} height={40} className={styles.logoImg} />
-            <span>Pheron Agent</span>
-          </Link>
-          <nav className={styles.navLinks}>
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>Product</button>
-              <div className={styles.navDropdown}>
-                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
-              </div>
-            </div>
-            <Link href="/pricing" className={styles.navLink}>Pricing</Link>
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>Resources</button>
-              <div className={`${styles.navDropdown} ${styles.navDropdownTwoCol}`}>
-                <div className={styles.dropdownCol}>
-                  <Link href="/resources/help" className={styles.dropdownItem}>Help</Link>
-                  <Link href="/resources/docs" className={styles.dropdownItem}>Docs</Link>
-                  <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
-                  <Link href="/resources/docs/wiki/benchmark_results" className={styles.dropdownItem}>Benchmarks</Link>
-                </div>
-                <div className={styles.dropdownCol}>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
-                  <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
-                </div>
-              </div>
-            </div>
-          </nav>
-          <div className={styles.navActions}>
-            <Link href="/auth" className={`${styles.navBtn} btn-secondary`} style={{ display: "none" }}>Sign In</Link>
-            <Link href="/download" className={`${styles.navBtn} btn-primary`}>Download</Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader activeTab="product" />
 
       {/* Hero */}
       <section className={styles.hero} style={{ paddingBottom: "60px" }}>

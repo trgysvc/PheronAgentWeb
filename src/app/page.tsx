@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import SiteFooter from "./components/SiteFooter";
+import SiteHeader from "./components/SiteHeader";
 import { useLanguage } from "../context/LanguageContext";
 import { LANGUAGES } from "../i18n";
 
@@ -131,67 +132,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {/* Navigation Header */}
-      <header className={styles.header}>
-        <div className={styles.nav}>
-          <Link href="/" className={styles.logoContainer} style={{textDecoration: "none", color: "inherit"}}>
-
-            <Image 
-
-              src="/assets/PheronAgentLOGO2.png" 
-
-              alt="Pheron Logo" 
-
-              width={32} 
-              height={32} 
-
-              className={styles.logoImg}
-
-            />
-
-            <span>Pheron Agent</span>
-
-          </Link>
-          <nav className={styles.navLinks}>
-            {/* Product with Dropdown */}
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>
-                {t("nav.product", "Product")}
-              </button>
-              <div className={styles.navDropdown}>
-                <Link href="/product/agent" className={styles.dropdownItem}>{t("nav.agent", "Agent")}</Link>
-                <Link href={`/resources/docs/${language}/api`} className={styles.dropdownItem}>{t("footer.api", "API")}</Link>
-                <Link href="/ecosystem" className={styles.dropdownItem}>{t("nav.ecosystem", "Ecosystem")}</Link>
-              </div>
-            </div>
-
-            {/* Pricing */}
-            <Link href="/pricing" className={styles.navLink}>{t("nav.pricing", "Pricing")}</Link>
-
-            {/* Resources with 2-Column Dropdown */}
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>
-                {t("nav.resources", "Resources")}
-              </button>
-              <div className={`${styles.navDropdown} ${styles.navDropdownTwoCol}`}>
-                <div className={styles.dropdownCol}>
-                  <Link href="/resources/help" className={styles.dropdownItem}>{t("footer.help", "Help")}</Link>
-                  <Link href={`/resources/docs/${language}`} className={styles.dropdownItem}>{t("footer.docs", "Docs")}</Link>
-                  <Link href="/resources/learn" className={styles.dropdownItem}>{t("footer.learn", "Learn")}</Link>
-                  <Link href={`/resources/docs/${language}/wiki/benchmark_results`} className={styles.dropdownItem}>Benchmarks</Link>
-                </div>
-                <div className={styles.dropdownCol}>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
-                  <Link href="/changelog" className={styles.dropdownItem}>{t("nav.changelog", "Changelog")}</Link>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
-                </div>
-              </div>
-            </div>
-          </nav>
-          <div className={styles.navActions}>
-            <Link href="/download" className={`${styles.navBtn} btn-primary`}>{t("nav.download", "Download")}</Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -217,105 +158,93 @@ export default function Home() {
 
       </section>
 
-
-
       {/* Core Capabilities Section */}
       <section id="features" className={styles.section}>
         <div className={styles.sectionHeader} style={{ alignItems: "flex-start", textAlign: "left" }}>
-          <span className={styles.sectionTag}>Under the Hood</span>
-          <h2 className={styles.sectionTitle}>Built for Extreme Performance</h2>
+          <span className={styles.sectionTag}>{t("features.tag", "Under the Hood")}</span>
+          <h2 className={styles.sectionTitle}>{t("features.title", "Built for Extreme Performance")}</h2>
           <p className={styles.sectionSubtitle} style={{ textAlign: "left", maxWidth: "100%", margin: "0" }}>
-            Pheron Agent is built with native Apple hardware components to achieve 
-            speeds unmatched by cloud-based alternatives.
+            {t("features.subtitle", "Pheron Agent is built with native Apple hardware components to achieve speeds unmatched by cloud-based alternatives.")}
           </p>
         </div>
 
         <div className={styles.featuresGrid}>
           <div className={`${styles.featureCard} glass-card`}>
             <div className={styles.featureIcon}>🚀</div>
-            <h3 className={styles.featureTitle}>Titan Engine</h3>
+            <h3 className={styles.featureTitle}>{t("features.titan_title", "Titan Engine")}</h3>
             <p className={styles.featureDesc}>
-              On-device MLX inference featuring wired memory pinning, 4-bit KV quantization, 
-              rotating cache (up to 131K context), and speculative decoding via custom draft models.
+              {t("features.titan_desc", "On-device MLX inference featuring wired memory pinning, 4-bit KV quantization, rotating cache (up to 131K context), and speculative decoding via custom draft models.")}
             </p>
             <div className={styles.featureMeta}>
-              <span className={styles.featureMetaDot} /> Local Inference
+              <span className={styles.featureMetaDot} /> {t("features.titan_meta", "Local Inference")}
             </div>
           </div>
 
           <div className={`${styles.featureCard} glass-card`}>
             <div className={styles.featureIcon}>🧠</div>
-            <h3 className={styles.featureTitle}>ANE Intent Classifier</h3>
+            <h3 className={styles.featureTitle}>{t("features.ane_title", "ANE Intent Classifier")}</h3>
             <p className={styles.featureDesc}>
-              Hardware-accelerated task routing executed directly on the Apple Neural Engine. 
-              Routes prompts to tools, weather, chat, or LLM fallback in milliseconds.
+              {t("features.ane_desc", "Hardware-accelerated task routing executed directly on the Apple Neural Engine. Routes prompts to tools, weather, chat, or LLM fallback in milliseconds.")}
             </p>
             <div className={styles.featureMeta}>
-              <span className={styles.featureMetaDot} /> Neural Engine
+              <span className={styles.featureMetaDot} /> {t("features.ane_meta", "Neural Engine")}
             </div>
           </div>
 
           <div className={`${styles.featureCard} glass-card`}>
             <div className={styles.featureIcon}>💾</div>
-            <h3 className={styles.featureTitle}>Three-Layer Memory</h3>
+            <h3 className={styles.featureTitle}>{t("features.memory_title", "Three-Layer Memory")}</h3>
             <p className={styles.featureDesc}>
-              Structured memory layers: L1 Hot Cache (12 messages), L2 Daily Notes, and L3 
-              DreamBank long-term summaries coupled with Metal-accelerated RAG via custom Metal kernels.
+              {t("features.memory_desc", "Structured memory layers: L1 Hot Cache (12 messages), L2 Daily Notes, and L3 DreamBank long-term summaries coupled with Metal-accelerated RAG via custom Metal kernels.")}
             </p>
             <div className={styles.featureMeta}>
-              <span className={styles.featureMetaDot} /> Metal RAG
+              <span className={styles.featureMetaDot} /> {t("features.memory_meta", "Metal RAG")}
             </div>
           </div>
 
           <div className={`${styles.featureCard} glass-card`}>
             <div className={styles.featureIcon}>⚡</div>
-            <h3 className={styles.featureTitle}>Energy Profiling</h3>
+            <h3 className={styles.featureTitle}>{t("features.energy_title", "Energy Profiling")}</h3>
             <p className={styles.featureDesc}>
-              Monitored via `PheronEnergyDaemon` XPC helper utilizing `powermetrics` at 100ms 
-              intervals for exact, hardware-level Joule accounting per task execution.
+              {t("features.energy_desc", "Monitored via `PheronEnergyDaemon` XPC helper utilizing `powermetrics` at 100ms intervals for exact, hardware-level Joule accounting per task execution.")}
             </p>
             <div className={styles.featureMeta}>
-              <span className={styles.featureMetaDot} /> true joule accounting
+              <span className={styles.featureMetaDot} /> {t("features.energy_meta", "true joule accounting")}
             </div>
           </div>
 
           <div className={`${styles.featureCard} glass-card`}>
             <div className={styles.featureIcon}>🔒</div>
-            <h3 className={styles.featureTitle}>Privacy Guard</h3>
+            <h3 className={styles.featureTitle}>{t("features.privacy_title", "Privacy Guard")}</h3>
             <p className={styles.featureDesc}>
-              Rule-based + local LLM PII (Personally Identifiable Information) detection before 
-              any external routing, executing PASS, DESENSITIZE, or BLOCK decisions. Direct inquiries 
-              regarding security audits can be sent to privacy@pheronagent.com.
+              {t("features.privacy_desc", "Rule-based + local LLM PII (Personally Identifiable Information) detection before any external routing, executing PASS, DESENSITIZE, or BLOCK decisions.")}
             </p>
             <div className={styles.featureMeta}>
-              <span className={styles.featureMetaDot} /> Privacy Centric
+              <span className={styles.featureMetaDot} /> {t("features.privacy_meta", "Privacy Centric")}
             </div>
           </div>
 
           <div className={`${styles.featureCard} glass-card`}>
             <div className={styles.featureIcon}>🛠️</div>
-            <h3 className={styles.featureTitle}>SkillVault</h3>
+            <h3 className={styles.featureTitle}>{t("features.skillvault_title", "SkillVault")}</h3>
             <p className={styles.featureDesc}>
-              Self-improving procedural memory. The agent writes and patches its own `.skill.md` 
-              tool scripts, while a background curator Actor consolidates skills across sessions.
+              {t("features.skillvault_desc", "Self-improving procedural memory. The agent writes and patches its own `.skill.md` tool scripts, while a background curator Actor consolidates skills across sessions.")}
             </p>
             <div className={styles.featureMeta}>
-              <span className={styles.featureMetaDot} /> Self-improving
+              <span className={styles.featureMetaDot} /> {t("features.skillvault_meta", "Self-improving")}
             </div>
           </div>
         </div>
       </section>
 
-
-
       {/* Chat Simulation Section */}
       <section id="chat-demo" className={styles.section}>
         
         <div className={styles.sectionHeader} style={{ alignItems: "flex-start", textAlign: "left" }}>
-          <span className={styles.sectionTag}>Live Simulation</span>
-          <h2 className={styles.sectionTitle}>Agent Workflow in Action</h2>
+          <span className={styles.sectionTag}>{t("sim.tag", "Live Simulation")}</span>
+          <h2 className={styles.sectionTitle}>{t("sim.title", "Agent Workflow in Action")}</h2>
           <p className={styles.sectionSubtitle} style={{ textAlign: "left", maxWidth: "100%", margin: "0" }}>
-            Watch Pheron Agent plan and execute a multi-step workflow locally using native macOS integrations.
+            {t("sim.subtitle", "Watch Pheron Agent plan and execute a multi-step workflow locally using native macOS integrations.")}
           </p>
         </div>
 
@@ -347,7 +276,7 @@ export default function Home() {
                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                   </svg>
-                  New Chat
+                  {t("sim.newChat", "New Chat")}
                 </button>
               </div>
             </div>
@@ -370,7 +299,7 @@ export default function Home() {
                 
                 <div className={styles.statusIndicator}>
                   <div style={{width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f'}}></div>
-                  Ready
+                  {t("sim.ready", "Ready")}
                 </div>
                 
                 <div className={styles.topRightArea}>
@@ -392,7 +321,7 @@ export default function Home() {
                 {/* User Prompt Bubble */}
                 {simState !== "idle" && simState !== "sending" && (
                   <div className={`${styles.chatBubbleUserPremium} ${styles.animSlideUpFade}`}>
-                    Hey Pheron, what is currently playing on Apple Music? Find the artist's Wikipedia page, summarize it, and message it to Sarah.
+                    {t("sim.userPrompt", "Hey Pheron, what is currently playing on Apple Music? Find the artist's Wikipedia page, summarize it, and message it to Sarah.")}
                   </div>
                 )}
 
@@ -457,11 +386,11 @@ export default function Home() {
                       <div className={`${styles.actionBar} ${styles.animStaggerFadeIn}`}>
                         <div className={styles.actionBtn}>
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width: '14px', height: '14px'}}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                          Copy
+                          {t("sim.copy", "Copy")}
                         </div>
                         <div className={styles.actionBtn}>
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width: '14px', height: '14px'}}><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                          Read
+                          {t("sim.read", "Read")}
                         </div>
                       </div>
                     )}
@@ -481,9 +410,9 @@ export default function Home() {
                   </div>
                   
                   {simState === "idle" ? (
-                     <input type="text" className={styles.inputField} placeholder="Ask PheronAgent..." value="Hey Pheron, what is currently playing on Apple Music? Find the artist's Wikipedia page, summarize it, and message it to Sarah." readOnly />
+                     <input type="text" className={styles.inputField} placeholder={t("sim.askPlaceholder", "Ask PheronAgent...")} value={t("sim.userPrompt", "Hey Pheron, what is currently playing on Apple Music? Find the artist's Wikipedia page, summarize it, and message it to Sarah.")} readOnly />
                   ) : (
-                     <input type="text" className={`${styles.inputField} ${simState === "sending" ? styles.inputFadeOut : ''}`} placeholder="Ask PheronAgent..." value="" readOnly />
+                     <input type="text" className={`${styles.inputField} ${simState === "sending" ? styles.inputFadeOut : ''}`} placeholder={t("sim.askPlaceholder", "Ask PheronAgent...")} value="" readOnly />
                   )}
 
                   <div className={`${styles.inputSendBtn} ${isBtnBouncing ? styles.btnSpringBounce : ''}`} onClick={runPremiumSimulation}>
@@ -506,17 +435,17 @@ export default function Home() {
         </div>
         
         <div style={{ maxWidth: "1000px", margin: "12px auto 0", width: "100%", textAlign: "right", fontSize: "12px", color: "#888" }}>
-          * Design elements may vary in the actual application.
+          {t("sim.disclaimer", "* Design elements may vary in the actual application.")}
         </div>
       </section>
 
       {/* Frontier Grid Section */}
       <section className={styles.section}>
         <div className={styles.sectionHeader} style={{ alignItems: "flex-start", textAlign: "left" }}>
-          <span className={styles.sectionTag}>VERSATILITY</span>
-          <h2 className={styles.sectionTitle}>Learn the details</h2>
+          <span className={styles.sectionTag}>{t("frontier.tag", "VERSATILITY")}</span>
+          <h2 className={styles.sectionTitle}>{t("frontier.title", "Learn the details")}</h2>
           <p className={styles.sectionSubtitle} style={{ textAlign: "left", maxWidth: "100%", margin: "0" }}>
-            Pheron Agent seamlessly integrates with the world's leading AI models and your entire local codebase to accelerate development at scale.
+            {t("frontier.subtitle", "Pheron Agent seamlessly integrates with the world's leading AI models and your entire local codebase to accelerate development at scale.")}
           </p>
         </div>
           
@@ -524,14 +453,14 @@ export default function Home() {
             
             {/* Card 1 */}
             <div className={styles.frontierCard}>
-              <h3 className={styles.frontierCardTitle}>MLX Optimized Local Models</h3>
+              <h3 className={styles.frontierCardTitle}>{t("frontier.card1_title", "MLX Optimized Local Models")}</h3>
               <p className={styles.frontierCardDesc}>
-                Run cutting-edge AI models natively on Apple Silicon with MLX optimization.
+                {t("frontier.card1_desc", "Run cutting-edge AI models natively on Apple Silicon with MLX optimization.")}
               </p>
-              <a href="/resources/docs/wiki/models_and_hardware" className={styles.frontierCardLink}>
-                Explore models 
+              <Link href={`/resources/docs/${language}/wiki/models_and_hardware`} className={styles.frontierCardLink}>
+                {t("frontier.card1_link", "Explore models")} 
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
+              </Link>
               <div className={styles.frontierCardVisual} style={{ padding: 0 }}>
                 <Image src="/assets/mlx_chip_visual.png" alt="MLX Hardware Processing" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </div>
@@ -539,14 +468,14 @@ export default function Home() {
 
             {/* Card 2 */}
             <div className={styles.frontierCard}>
-              <h3 className={styles.frontierCardTitle}>SkillVault Procedural Memory</h3>
+              <h3 className={styles.frontierCardTitle}>{t("frontier.card2_title", "SkillVault Procedural Memory")}</h3>
               <p className={styles.frontierCardDesc}>
-                Converts past experiences into refined procedural skills, teaching the agent how to solve similar tasks automatically.
+                {t("frontier.card2_desc", "Converts past experiences into refined procedural skills, teaching the agent how to solve similar tasks automatically.")}
               </p>
-              <a href="/resources/docs/wiki/skill_vault" className={styles.frontierCardLink}>
-                Explore SkillVault 
+              <Link href={`/resources/docs/${language}/wiki/skill_vault`} className={styles.frontierCardLink}>
+                {t("frontier.card2_link", "Explore SkillVault")} 
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
+              </Link>
               <div className={styles.frontierCardVisual} style={{ padding: 0 }}>
                 <Image src="/assets/skill_vault_visual.png" alt="SkillVault Visual" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </div>
@@ -554,14 +483,14 @@ export default function Home() {
 
             {/* Card 3 */}
             <div className={styles.frontierCard}>
-              <h3 className={styles.frontierCardTitle}>System Stability</h3>
+              <h3 className={styles.frontierCardTitle}>{t("frontier.card3_title", "System Stability")}</h3>
               <p className={styles.frontierCardDesc}>
-                Experience uninterrupted performance with autonomous self-healing and intelligent hardware-aware protection.
+                {t("frontier.card3_desc", "Experience uninterrupted performance with autonomous self-healing and intelligent hardware-aware protection.")}
               </p>
-              <a href="/resources/docs/wiki/system_stability" className={styles.frontierCardLink}>
-                Explore Stability 
+              <Link href={`/resources/docs/${language}/wiki/system_stability`} className={styles.frontierCardLink}>
+                {t("frontier.card3_link", "Explore Stability")} 
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
+              </Link>
               <div className={styles.frontierCardVisual} style={{ padding: 0 }}>
                 <Image src="/assets/system_stability_visual.png" alt="System Stability Visual" width={400} height={300} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </div>
@@ -570,13 +499,12 @@ export default function Home() {
           </div>
       </section>
 
-
       {/* Bottom Content Section (Changelog & About) */}
       <section className={styles.section} style={{ paddingTop: "20px" }}>
         
         {/* Changelog */}
         <div>
-          <h2 className={styles.changelogHeader}>Changelog</h2>
+          <h2 className={styles.changelogHeader}>{t("changelog.header", "Changelog")}</h2>
           <div className={styles.changelogGrid}>
             
             <div className={styles.changelogCard}>
@@ -604,22 +532,22 @@ export default function Home() {
             </div>
 
           </div>
-          <a href="/changelog" className={styles.changelogLink}>
-            See all notable changes 
+          <Link href="/changelog" className={styles.changelogLink}>
+            {t("changelog.seeAll", "See all notable changes")} 
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px" }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
+          </Link>
         </div>
 
         {/* About Banner */}
         <div className={styles.aboutBanner}>
           <div className={styles.aboutContent}>
             <p className={styles.aboutText}>
-              Pheron Agent is your sovereign, on-device AI companion. It runs 100% locally on your Apple Silicon, ensuring absolute privacy while autonomously automating your daily workflows.
+              {t("about.text", "Pheron Agent is your sovereign, on-device AI companion. It runs 100% locally on your Apple Silicon, ensuring absolute privacy while autonomously automating your daily workflows.")}
             </p>
-            <a href="/download" className={styles.changelogLink}>
-              Try it for yourself 
+            <Link href="/download" className={styles.changelogLink}>
+              {t("about.try", "Try it for yourself")} 
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px" }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
+            </Link>
           </div>
           <div className={styles.aboutVisual}>
             <Image src="/assets/private_ai_visual.png" alt="Pheron Agent" fill sizes="(max-width: 1024px) 100vw, 65vw" style={{ objectFit: "cover" }} />

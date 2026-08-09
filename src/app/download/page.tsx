@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../page.module.css";
 import SiteFooter from "../components/SiteFooter";
+import SiteHeader from "../components/SiteHeader";
 import { useLanguage } from "../../context/LanguageContext";
-import { LANGUAGES } from "../../i18n";
 
 export default function DownloadPage() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, t } = useLanguage();
   const [version106Expanded, setVersion106Expanded] = useState(false);
   const [versionExpanded, setVersionExpanded] = useState(false);
   const [version104Expanded, setVersion104Expanded] = useState(false);
@@ -20,81 +20,19 @@ export default function DownloadPage() {
   return (
     <div className={styles.container}>
       {/* Navigation Header */}
-      <header className={styles.header}>
-        <div className={styles.nav}>
-          <Link href="/" className={styles.logoContainer} style={{textDecoration: "none", color: "inherit"}}>
-
-            <Image 
-
-              src="/assets/PheronAgentLOGO2.png" 
-
-              alt="Pheron Logo" 
-
-              width={32} 
-
-              height={32} 
-
-              className={styles.logoImg}
-
-            />
-
-            <span>Pheron Agent</span>
-
-          </Link>
-          <nav className={styles.navLinks}>
-            {/* Product with Dropdown */}
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>
-                Product
-              </button>
-              <div className={styles.navDropdown}>
-                <Link href="/product/agent" className={styles.dropdownItem}>Agent</Link>
-                <Link href="/resources/docs/api" className={styles.dropdownItem}>API</Link>
-                <Link href="/ecosystem" className={styles.dropdownItem}>Ecosystem</Link>
-              </div>
-            </div>
-
-            {/* Pricing */}
-            <Link href="/pricing" className={styles.navLink}>Pricing</Link>
-
-            {/* Resources with 2-Column Dropdown */}
-            <div className={styles.navItemWithDropdown}>
-              <button className={styles.navLinkButton}>
-                Resources
-              </button>
-              <div className={`${styles.navDropdown} ${styles.navDropdownTwoCol}`}>
-                <div className={styles.dropdownCol}>
-                  <Link href="/resources/help" className={styles.dropdownItem}>Help</Link>
-                  <Link href="/resources/docs" className={styles.dropdownItem}>Docs</Link>
-                  <Link href="/resources/learn" className={styles.dropdownItem}>Learn</Link>
-                  <Link href="/resources/docs/wiki/benchmark_results" className={styles.dropdownItem}>Benchmarks</Link>
-                </div>
-                <div className={styles.dropdownCol}>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
-                  <Link href="/changelog" className={styles.dropdownItem}>Changelog</Link>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
-                </div>
-              </div>
-            </div>
-          </nav>
-          <div className={styles.navActions}>
-            <Link href="/auth" className={`${styles.navBtn} btn-secondary`} style={{ display: "none" }}>Sign In</Link>
-            <Link href="/download" className={`${styles.navBtn} btn-primary`}>Download</Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Main Download Section */}
       <section className={styles.downloadPageContainer}>
-        <h1 className={styles.downloadTitle}>Download macOS</h1>
-        <p className={styles.downloadSubtitle}>Requires macOS 26.0+ (Tahoe or later), Apple Silicon — 16 GB RAM minimum, 24 GB+ recommended</p>
+        <h1 className={styles.downloadTitle}>{t("download.pageTitle", "Download macOS")}</h1>
+        <p className={styles.downloadSubtitle}>{t("download.pageSubtitle", "Requires macOS 26.0+ (Tahoe or later), Apple Silicon — 16 GB RAM minimum, 24 GB+ recommended")}</p>
         
         <div style={{ marginBottom: "50px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <a 
             href="https://app.pheronagent.com/PheronAgent106.dmg" 
             className={styles.downloadPillBtn}
           >
-            <span>Download for macOS</span>
+            <span>{t("download.downloadBtn", "Download for macOS")}</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px" }}>
               <line x1="12" y1="5" x2="12" y2="19" />
               <polyline points="19 12 12 19 5 12" />
@@ -109,14 +47,14 @@ export default function DownloadPage() {
                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
               </svg>
               <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: 0, lineHeight: "1.5" }}>
-                <strong style={{ color: "var(--text-primary)" }}>Download first, buy later.</strong> You can download and install Pheron Agent for free. Upon opening the app, you will be prompted to securely purchase a license or enter an existing key.
+                <strong style={{ color: "var(--text-primary)" }}>{t("download.noticeTitle", "Download first, buy later.")}</strong> {t("download.noticeDesc", "You can download and install Pheron Agent for free. Upon opening the app, you will be prompted to securely purchase a license or enter an existing key.")}
               </p>
             </div>
           </div>
         </div>
 
         <h2 className={styles.downloadReleaseHeading}>
-          The Pheron Agent desktop app is available for macOS Release;
+          {t("download.releaseHeading", "The Pheron Agent desktop app is available for macOS Release;")}
         </h2>
 
         <div className={styles.versionList}>
