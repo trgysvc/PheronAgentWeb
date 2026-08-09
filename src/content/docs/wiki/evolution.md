@@ -27,9 +27,7 @@ A phase focused on tightening the agent's interfaces (tools) with the external w
 ---
 
 ### Detailed Records and Logs
-- **Version History:** Specific technical changes in each release are listed in the [[CHANGELOG]] document.
-- **Technical Evolution:** Micro-decisions during development and daily progress are tracked in the [[devlog]] file.
-- **Brainstorming Archives:** Design-phase dialogues and strategic shifts are preserved in the [[DevelopmentConversations]] archive.
+- **Version History:** Specific technical changes in each release are listed in the [Changelog](/changelog).
 
 ---
 

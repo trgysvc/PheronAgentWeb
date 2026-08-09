@@ -43,7 +43,7 @@ export default function SiteFooter() {
               <span className={styles.columnTitle}>{t("footer.product", "Product")}</span>
               <ul className={styles.columnList}>
                 <li><Link href="/product/agent" className={styles.footerLink}>{t("nav.agent", "Agent")}</Link></li>
-                <li><Link href="/resources/docs/api" className={styles.footerLink}>{t("footer.api", "API")}</Link></li>
+                <li><Link href={`/resources/docs/${language}/api`} className={styles.footerLink}>{t("footer.api", "API")}</Link></li>
                 <li><Link href="/ecosystem" className={styles.footerLink}>{t("nav.ecosystem", "Ecosystem")}</Link></li>
                 <li><Link href="/pricing" className={styles.footerLink}>{t("nav.pricing", "Pricing")}</Link></li>
               </ul>
@@ -54,19 +54,19 @@ export default function SiteFooter() {
               <ul className={styles.columnList}>
                 <li><Link href="/download" className={styles.footerLink}>{t("nav.download", "Download")}</Link></li>
                 <li><Link href="/changelog" className={styles.footerLink}>{t("nav.changelog", "Changelog")}</Link></li>
-                <li><Link href="/resources/docs" className={styles.footerLink}>{t("footer.docs", "Docs")}</Link></li>
+                <li><Link href={`/resources/docs/${language}`} className={styles.footerLink}>{t("footer.docs", "Docs")}</Link></li>
                 <li><Link href="/resources/learn" className={styles.footerLink}>{t("footer.learn", "Learn")}</Link></li>
-                <li><Link href="/resources/docs/wiki/benchmark_results" className={styles.footerLink}>Benchmarks</Link></li>
+                <li><Link href={`/resources/docs/${language}/wiki/benchmark_results`} className={styles.footerLink}>{t("nav.benchmarks", "Benchmarks")}</Link></li>
                 <li><Link href="/resources/help" className={styles.footerLink}>{t("footer.help", "Help")}</Link></li>
               </ul>
             </div>
 
             <div className={styles.footerColumn}>
-              <span className={styles.columnTitle}>Company</span>
+              <span className={styles.columnTitle}>{t("footer.company", "Company")}</span>
               <ul className={styles.columnList}>
-                <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Blog</span></li>
-                <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Community</span></li>
-                <li><Link href="/resources/docs/future" className={styles.footerLink}>Future</Link></li>
+                <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>{t("nav.blog", "Blog")}</span></li>
+                <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>{t("nav.community", "Community")}</span></li>
+                <li><Link href={`/resources/docs/${language}/future`} className={styles.footerLink}>{t("footer.future", "Future")}</Link></li>
                 <li><Link href="/" className={styles.footerLink}>Pheron Agent</Link></li>
               </ul>
             </div>
@@ -78,12 +78,12 @@ export default function SiteFooter() {
                 <li><Link href="/privacy" className={styles.footerLink}>{t("footer.privacy", "Privacy Policy")}</Link></li>
                 <li><Link href="/refund" className={styles.footerLink}>{t("footer.refund", "Refund Policy")}</Link></li>
                 <li><Link href="/data-use" className={styles.footerLink}>{t("footer.dataUse", "Data Use")}</Link></li>
-                <li><Link href="/resources/docs/security" className={styles.footerLink}>{t("footer.security", "Security")}</Link></li>
+                <li><Link href={`/resources/docs/${language}/security`} className={styles.footerLink}>{t("footer.security", "Security")}</Link></li>
               </ul>
             </div>
 
             <div className={styles.footerColumn}>
-              <span className={styles.columnTitle}>Connect</span>
+              <span className={styles.columnTitle}>{t("footer.connect", "Connect")}</span>
               <ul className={styles.columnList}>
                 <li><a href="https://x.com/PheronAgent" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>X</a></li>
                 <li><a href="https://www.linkedin.com/company/pheron-agent/" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Linkedin</a></li>

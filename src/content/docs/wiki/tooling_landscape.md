@@ -22,9 +22,9 @@ A layer providing secure data exchange with the external world.
 
 ## 4. Specialized Media and System Control
 Low-level tools providing hardware-level control.
-- **MusicDNA:** Audio analysis and music processing capabilities. For more details, refer to the [[MusicTools]] document.
+- **MusicDNA:** Audio analysis and music processing capabilities.
 - **Ecosystem Tools:** `set_volume` and `set_brightness` tools to manage hardware parameters like volume, brightness, and sleep mode.
-- **Blender Bridge:** 3D modeling and render automation. Technical details: [[KNOWLEDGE_BlenderAPI]].
+- **Blender Bridge:** 3D modeling and render automation.
 
 ## 5. Advanced AI and Memory
 Meta-tools managing the agent's internal processes.
@@ -32,9 +32,9 @@ Meta-tools managing the agent's internal processes.
 - **Subagent (Task Delegation):** Orchestration tool allocating complex tasks to sub-agents.
 
 ---
+
 ### Related Resources
-- **Full Tool List:** [[PheronAgentTools]]
-- **Evolution Decisions:** Inspect the [[DevelopmentConversations]] records for the transition of tools to the UBID system and architectural evolution.
+- [Full Tool Inventory](full_tool_inventory.md)
 
 ---
 **Philosophical Note:** All tools run asynchronously (async/await) on the UNO backbone using **UBID** and **Typed Swift Parameters** instead of text-based protocols like JSON.

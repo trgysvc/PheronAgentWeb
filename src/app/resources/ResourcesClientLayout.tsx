@@ -10,46 +10,51 @@ import { LANGUAGES } from "../../i18n";
 
 export const RESOURCES_MENU = [
   {
+    titleKey: "docsmenu.groupOverview",
     title: "Overview",
     items: [
-      { name: "Introduction", path: "/resources/docs" },
-      { name: "Architecture Overview", path: "/resources/docs/wiki/architecture_overview" },
-      { name: "Local API (Titan Hub)", path: "/resources/docs/api" }
+      { nameKey: "docsmenu.introduction", name: "Introduction", path: "/resources/docs" },
+      { nameKey: "docsmenu.architectureOverview", name: "Architecture Overview", path: "/resources/docs/wiki/architecture_overview" },
+      { nameKey: "docsmenu.localApi", name: "Local API (Titan Hub)", path: "/resources/docs/api" },
+      { nameKey: "help.title", name: "Help & Support", path: "/resources/help" }
     ]
   },
   {
+    titleKey: "docsmenu.groupSetup",
     title: "Setup & Onboarding",
     items: [
-      { name: "macOS Permissions & Setup", path: "/resources/docs/wiki/macos_onboarding_permissions_guide" },
-      { name: "Models & Hardware Tiers", path: "/resources/docs/wiki/models_and_hardware" },
-      { name: "Updating Pheron Agent", path: "/resources/docs/wiki/updating_pheron_agent" }
+      { nameKey: "docsmenu.permissionsSetup", name: "macOS Permissions & Setup", path: "/resources/docs/wiki/macos_onboarding_permissions_guide" },
+      { nameKey: "docsmenu.modelsHardware", name: "Models & Hardware Tiers", path: "/resources/docs/wiki/models_and_hardware" },
+      { nameKey: "docsmenu.updating", name: "Updating Pheron Agent", path: "/resources/docs/wiki/updating_pheron_agent" }
     ]
   },
   {
+    titleKey: "docsmenu.groupCore",
     title: "Core Concepts",
     items: [
-      { name: "Full Tool Inventory", path: "/resources/docs/wiki/full_tool_inventory" },
-      { name: "External Tool Integrations", path: "/resources/docs/wiki/external_tool_integrations_reference" },
-      { name: "SkillVault Memory", path: "/resources/docs/wiki/skill_vault" },
-      { name: "Native Tool Calling", path: "/resources/docs/wiki/native_tool_calling" },
-      { name: "AudioIntelligence DSP", path: "/resources/docs/wiki/audio_intelligence" },
-      { name: "System Stability & Self-Healing", path: "/resources/docs/wiki/system_stability" },
-      { name: "Tech Stack & Learning", path: "/resources/learn" }
+      { nameKey: "docsmenu.fullToolInventory", name: "Full Tool Inventory", path: "/resources/docs/wiki/full_tool_inventory" },
+      { nameKey: "docsmenu.externalIntegrations", name: "External Tool Integrations", path: "/resources/docs/wiki/external_tool_integrations_reference" },
+      { nameKey: "docsmenu.skillVaultMemory", name: "SkillVault Memory", path: "/resources/docs/wiki/skill_vault" },
+      { nameKey: "docsmenu.nativeToolCalling", name: "Native Tool Calling", path: "/resources/docs/wiki/native_tool_calling" },
+      { nameKey: "docsmenu.audioIntelligence", name: "AudioIntelligence DSP", path: "/resources/docs/wiki/audio_intelligence" },
+      { nameKey: "docsmenu.systemStability", name: "System Stability & Self-Healing", path: "/resources/docs/wiki/system_stability" },
+      { nameKey: "docsmenu.techStack", name: "Tech Stack & Learning", path: "/resources/learn" }
     ]
   },
   {
+    titleKey: "docsmenu.groupBenchmarks",
     title: "Benchmarks & Evaluation",
     items: [
-      { name: "Benchmark & Test Results", path: "/resources/docs/wiki/benchmark_results" }
+      { nameKey: "docsmenu.benchmarkResults", name: "Benchmark & Test Results", path: "/resources/docs/wiki/benchmark_results" }
     ]
   },
   {
+    titleKey: "docsmenu.groupSecurity",
     title: "Security & Roadmap",
     items: [
-      { name: "Security & Privacy", path: "/resources/docs/security" },
-      { name: "Product Roadmap", path: "/resources/docs/future" },
-      { name: "v3 Migration Guide", path: "/resources/docs/wiki/v3_migration_guide" },
-      { name: "Performance Report", path: "/resources/docs/wiki/performance_optimization_report" }
+      { nameKey: "docsmenu.securityPrivacy", name: "Security & Privacy", path: "/resources/docs/security" },
+      { nameKey: "docsmenu.productRoadmap", name: "Product Roadmap", path: "/resources/docs/future" },
+      { nameKey: "docsmenu.v3Migration", name: "v3 Migration Guide", path: "/resources/docs/wiki/v3_migration_guide" }
     ]
   }
 ];
@@ -129,12 +134,12 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                   <Link href="/resources/help" className={styles.dropdownItem}>{t("footer.help", "Help")}</Link>
                   <Link href={getDocPath("/resources/docs")} className={styles.dropdownItem}>{t("footer.docs", "Docs")}</Link>
                   <Link href="/resources/learn" className={styles.dropdownItem}>{t("footer.learn", "Learn")}</Link>
-                  <Link href={getDocPath("/resources/docs/wiki/benchmark_results")} className={styles.dropdownItem}>Benchmarks</Link>
+                  <Link href={getDocPath("/resources/docs/wiki/benchmark_results")} className={styles.dropdownItem}>{t("nav.benchmarks", "Benchmarks")}</Link>
                 </div>
                 <div className={styles.dropdownCol}>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Blog</span>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>{t("nav.blog", "Blog")}</span>
                   <Link href="/changelog" className={styles.dropdownItem}>{t("nav.changelog", "Changelog")}</Link>
-                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>Community</span>
+                  <span className={styles.dropdownItem} style={{ opacity: 0.4, cursor: "default" }}>{t("nav.community", "Community")}</span>
                 </div>
               </div>
             </div>
@@ -151,17 +156,17 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
         <aside className={styles.docsSidebar}>
           {RESOURCES_MENU.map((group) => (
             <div key={group.title} className={styles.docsGroup}>
-              <div className={styles.docsGroupTitle}>{group.title}</div>
+              <div className={styles.docsGroupTitle}>{t(group.titleKey, group.title)}</div>
               {group.items.map((item) => {
                 const targetPath = getDocPath(item.path);
                 const isActive = pathname === targetPath;
                 return (
-                  <Link 
-                    key={item.path} 
+                  <Link
+                    key={item.path}
                     href={targetPath}
                     className={`${styles.docsLink} ${isActive ? styles.docsLinkActive : ""}`}
                   >
-                    {item.name}
+                    {t(item.nameKey, item.name)}
                   </Link>
                 );
               })}
@@ -210,17 +215,17 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
                   <li><Link href="/changelog" className={styles.footerLink}>{t("nav.changelog", "Changelog")}</Link></li>
                   <li><Link href={getDocPath("/resources/docs")} className={styles.footerLink}>{t("footer.docs", "Docs")}</Link></li>
                   <li><Link href="/resources/learn" className={styles.footerLink}>{t("footer.learn", "Learn")}</Link></li>
-                  <li><Link href={getDocPath("/resources/docs/wiki/benchmark_results")} className={styles.footerLink}>Benchmarks</Link></li>
+                  <li><Link href={getDocPath("/resources/docs/wiki/benchmark_results")} className={styles.footerLink}>{t("nav.benchmarks", "Benchmarks")}</Link></li>
                   <li><Link href="/resources/help" className={styles.footerLink}>{t("footer.help", "Help")}</Link></li>
                 </ul>
               </div>
 
               <div className={styles.footerColumn}>
-                <span className={styles.columnTitle}>Company</span>
+                <span className={styles.columnTitle}>{t("footer.company", "Company")}</span>
                 <ul className={styles.columnList}>
-                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Blog</span></li>
-                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>Community</span></li>
-                  <li><Link href={getDocPath("/resources/docs/future")} className={styles.footerLink}>Future</Link></li>
+                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>{t("nav.blog", "Blog")}</span></li>
+                  <li><span className={styles.footerLink} style={{ opacity: 0.4, cursor: "default" }}>{t("nav.community", "Community")}</span></li>
+                  <li><Link href={getDocPath("/resources/docs/future")} className={styles.footerLink}>{t("footer.future", "Future")}</Link></li>
                   <li><Link href="/" className={styles.footerLink}>Pheron Agent</Link></li>
                 </ul>
               </div>
@@ -237,7 +242,7 @@ export default function ResourcesClientLayout({ children }: { children: React.Re
               </div>
 
               <div className={styles.footerColumn}>
-                <span className={styles.columnTitle}>Connect</span>
+                <span className={styles.columnTitle}>{t("footer.connect", "Connect")}</span>
                 <ul className={styles.columnList}>
                   <li><a href="https://x.com/PheronAgent" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>X</a></li>
                   <li><a href="https://www.linkedin.com/company/pheron-agent/" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Linkedin</a></li>

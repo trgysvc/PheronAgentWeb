@@ -10,7 +10,7 @@ const jetbrainsMono = { variable: "font-jetbrains-mono" };
 
 export const metadata: Metadata = {
   title: "Pheron Agent | Native Autonomous AI Agent for macOS",
-  description: "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 59 integrated native tools. Privacy by design, autonomy by nature.",
+  description: "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 62 integrated native tools. Privacy by design, autonomy by nature.",
   keywords: ["AI Agent", "macOS Agent", "Apple Silicon", "MLX Inference", "Local LLM", "Autonomous Agent", "Privacy AI", "Swift 6"],
   authors: [{ name: "Pheron Team" }],
   openGraph: {

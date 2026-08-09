@@ -36,10 +36,8 @@ The application's native IPC highway, UNO, replaces traditional JSON serializati
 ---
 
 ### Technical Details & Reference
-- **Package Configuration:** Modularity and targets are defined in [[Package.swift]].
+- **Package Configuration:** Modularity and targets are defined in `Package.swift`.
 - **Workspace Bounds:** Standardized workspace directories are configured under `~/Workspaces/PheronAgent/`.
-- **Project Structure:** The project directory hierarchy can be inspected in [[project_tree]].
-- **Code Entry Point:** Code examples for app initialization are available in [[entry_point_code]].
 
 ---
 
@@ -69,4 +67,4 @@ If a task is ambiguous, the agent stops and prompts the user instead of guessing
 
 ### HardwareAdaptiveParams
 
-`InferenceActor.generate()` uses dynamic configs tailored to hardware specs (`AutoConfigManager.shared.adaptiveParams()`), adjusting `maxKVSize`, `topK`, `minP`, and speculative decoding on the fly. See [DECISIONS.md — ADR-018](../DECISIONS.md).
+`InferenceActor.generate()` uses dynamic configs tailored to hardware specs (`AutoConfigManager.shared.adaptiveParams()`), adjusting `maxKVSize`, `topK`, `minP`, and speculative decoding on the fly.

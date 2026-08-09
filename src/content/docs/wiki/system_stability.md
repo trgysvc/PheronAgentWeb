@@ -28,7 +28,7 @@ Strategies to manage memory pressure and the context window:
 
 ## 4. v9.0 Stability Sprint Fixes (2026-05-07)
 
-Six production defects were identified and resolved. For full technical details, see [Stability Hotfixes 2026-05-07](stability_hotfixes_2026-05-07.md).
+Six production defects were identified and resolved.
 
 | # | Domain | Issue | Resolution |
 |---|------|-------|-------|
@@ -67,9 +67,8 @@ All verdict logic in `OrchestratorRuntime.handleReview()` has been moved to the 
 ---
 
 ### Stability Verification & Testing
-- **Stress Tests:** System limits and the UNO protocol's threshold limits are tested in the [[UNO_BATTLE_TEST]] document.
-- **Error Logs & Analysis:** For past stability issues and their resolutions, see the [[devlog]] records.
-- **v9.0/v9.1/v9.2 Hotfix Details:** [stability_hotfixes_2026-05-07.md](stability_hotfixes_2026-05-07.md)
+- **Stress Tests:** System limits and the UNO protocol's threshold limits are covered by an internal automated battery of stress tests.
+- **Error Logs & Analysis:** Past stability issues and their resolutions are tracked internally by the engineering team.
 
 ---
 

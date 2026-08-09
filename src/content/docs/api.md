@@ -1,24 +1,26 @@
 # Local API (Titan Hub)
 
-Pheron Agent features a built-in, native HTTP/REST server named **Titan Hub**. When enabled, it runs directly inside the macOS client application, exposing model inference and the autonomous orchestrator engine to external developer scripts, tools, and integrations.
+Pheron Agent has a built-in local server called **Titan Hub**. When you turn it on, the app itself starts listening for web requests on your Mac — no cloud, no external server. Any script, tool, or app on your Mac (or your local network) can then talk to your local AI models and to the full autonomous agent, the same way it would talk to a cloud API.
 
 ---
 
-## 1. Enabling Titan Hub
+## 1. Turning on Titan Hub
 
-To start the local API server, open Pheron Agent and navigate to **Settings → AI → Titan Hub**:
-- **Enable Local API Server (Titan Hub)**: Toggle this switch to **ON**.
-- **Port**: Default is `11500` (can be changed to any open port, e.g. `11434` for default Ollama drop-in setups).
-- **Status Indicator**: Shows **Server Ready** when the server is actively listening for incoming TCP requests.
+1. Open Pheron Agent.
+2. Go to **Settings → AI** tab.
+3. Find the **Titan Hub (Local API Server)** section.
+4. Switch **Enable Local API Server (Titan Hub)** to **ON**.
+5. **Port**: `11500` by default. You can change it to any free port (for example `11434`, the default Ollama port, if you want existing Ollama-based tools to connect without changes).
+6. A green **Server Ready** indicator appears once the server is actually listening. If it still says **Stopped**, the toggle didn't take effect — try switching it off and on again.
 
 ---
 
 ## 2. API Endpoints Reference
 
-All endpoints accept and return JSON payloads.
+All requests and responses use JSON.
 
 ### GET `/api/health` — Health Check
-Checks the status of the server and verifies if a local model is loaded in unified memory.
+Checks whether the server is running and whether a model is currently loaded in memory.
 
 * **Request**:
   ```bash
@@ -29,14 +31,18 @@ Checks the status of the server and verifies if a local model is loaded in unifi
   {
     "status": "ok",
     "model_loaded": true,
-    "port": 11500
+    "port": 11500,
+    "is_busy": false,
+    "orphaned_generations": 0
   }
   ```
+  - `is_busy`: `true` while the server is already handling an `/api/agent` request (see the note about concurrency below).
+  - `orphaned_generations`: a counter for requests that timed out internally and could not be fully cancelled. Normally `0`; a rising number across a long session can indicate the model got stuck and the app may benefit from a restart.
 
 ---
 
 ### GET `/api/tags` — List Available Models
-Returns a list of local models currently registered and available in the `ModelRegistry`.
+Returns the models currently registered on your Mac.
 
 * **Request**:
   ```bash
@@ -46,32 +52,28 @@ Returns a list of local models currently registered and available in the `ModelR
   ```json
   {
     "models": [
-      {
-        "name": "Qwen3-8B-4bit",
-        "id": "qwen3-8b-4bit"
-      },
-      {
-        "name": "Llama-3.2-3B-4bit",
-        "id": "llama-3.2-3b-4bit"
-      }
+      { "name": "Qwen3.5 9B", "id": "qwen3.5-9b-4bit" },
+      { "name": "Llama 3.2 1B Draft", "id": "llama3.2-1b-4bit-draft" }
     ]
   }
   ```
+  The exact list depends on which models you've downloaded — see [Models & Hardware Tiers](wiki/models_and_hardware.md).
 
 ---
 
-### POST `/api/generate` — Ollama-Compatible Inference
-A drop-in replacement for the standard Ollama generation endpoint. Initiates streaming token generation.
+### POST `/api/generate` — Raw Text Generation (Ollama-style request)
+Sends a single prompt straight to the local model and streams the answer back token by token. This does **not** run tools or the autonomous agent — for that, use `/api/agent` below.
 
 * **Request**:
   ```bash
   curl -X POST http://localhost:11500/api/generate \
     -H "Content-Type: application/json" \
     -d '{
-      "prompt": "Write a short poem about Apple Silicon."
+      "prompt": "Write a short poem about Apple Silicon.",
+      "max_tokens": 200
     }'
   ```
-* **Stream Response Format**:
+* **Streamed response** (one small JSON object per chunk, `Transfer-Encoding: chunked`):
   ```json
   {"response": "In", "done": false}
   {"response": " the", "done": false}
@@ -82,8 +84,10 @@ A drop-in replacement for the standard Ollama generation endpoint. Initiates str
 
 ---
 
-### POST `/v1/chat/completions` — OpenAI-Compatible Inference
-Allows standard OpenAI client SDKs to query local models by simply updating the `baseURL` parameter.
+### POST `/v1/chat/completions` — Chat-Style Text Generation
+Accepts the same request shape OpenAI's SDKs send (`messages`, `max_tokens`), so you can point an existing chat-style client at this URL without rewriting your request code.
+
+**Important:** the *response* is Pheron's own simple streaming format shown above (`{"response": "...", "done": false}` chunks), not OpenAI's official response format (`choices[].delta.content`). If you're using an official OpenAI SDK, it will send the request correctly but will not know how to parse the response — you'll need to read the raw stream yourself, the same way as `/api/generate`.
 
 * **Request**:
   ```bash
@@ -99,16 +103,22 @@ Allows standard OpenAI client SDKs to query local models by simply updating the 
 
 ---
 
-### POST `/api/agent` — Otonom Orchestrator Pipeline
-Triggers the full, autonomous Orchestrator pipeline. The agent will parse the task, select tools, edit local files, execute shell actions, and return the final answer.
+### POST `/api/agent` — Full Autonomous Agent
+This is the "real" Pheron Agent: it reads your prompt, decides which tools it needs (files, web, apps, etc.), runs them, and gives you back a finished answer — the same pipeline that runs inside the app itself.
 
-> [!CAUTION]
-> **Safety Guard**: Since otonom agents can write to files and run zsh shell actions locally, requests to `/api/agent` are ran sequentially. If another task is in-flight, a `400 Bad Request` with an `error: "BUSY"` payload will be returned.
+**One request at a time.** Because the agent can write files and run shell commands on your Mac, the server only processes one `/api/agent` request at a time. If you send a second request while one is still running, you get an immediate response instead of a queued one:
+
+```json
+{ "response": "Sunucu şu an başka bir isteği işliyor. Lütfen birkaç saniye bekleyin.", "toolsUsed": [], "category": "", "done": false, "error": "BUSY" }
+```
+
+That message is in Turkish ("The server is busy with another request — please wait a moment") and is returned with a normal **`200 OK`** status — check the `"error": "BUSY"` field in the JSON body, not the HTTP status code, to detect this case. Poll `GET /api/health` and wait for `"is_busy": false` before retrying.
 
 * **Parameters**:
-  - `prompt` (string, required): The task prompt description.
-  - `workspace` (string, optional): Absolute path to the folder the agent should work inside (defaults to application support workspace).
-  - `complexity` (int, optional): Complexity scale `1` (7 turns limit) or `2` (30 turns limit).
+  - `prompt` (string, required): what you want the agent to do.
+  - `workspace` (string, optional): absolute path to the folder the agent should work in. Defaults to the app's own workspace folder if omitted.
+  - `complexity` (number, optional): `1` limits the agent to 7 turns (quick lookups). `2` or higher allows up to 30 turns (multi-step tasks). Defaults to `2`.
+  - `history` (array, optional): previous turns of the conversation, so the agent remembers earlier messages when you call the API multiple times in a row. Each entry looks like `{"role": "user", "content": "..."}` or `{"role": "assistant", "content": "..."}`.
 
 * **Request**:
   ```bash
@@ -123,19 +133,22 @@ Triggers the full, autonomous Orchestrator pipeline. The agent will parse the ta
   ```json
   {
     "response": "Successfully inspected the folder. Summary of project: ...",
-    "toolsUsed": ["File Manager", "Read File", "Markdown Report"],
-    "category": "File",
+    "toolsUsed": ["File Manager", "Read File"],
+    "category": "",
     "done": true,
     "error": null
   }
   ```
+  Note: `category` is currently always an empty string — it's reserved for future use, not something you can rely on today.
+
+  Long-running tasks (large renders, big builds) can legitimately take several minutes; the server allows up to about 18 minutes before giving up and returning a timeout error.
 
 ---
 
 ## 3. Telemetry and Usage Tracking
 
-Inference and orchestrator sessions run via the API are tracked locally in the application dashboard:
-- **Tokens**: Total tokens processed.
-- **Cost**: Local operations are recorded at **$0.000**.
-- **Speed**: Measured in tokens per second (`t/s`).
-- **Joule Metrics**: Exact energy footprint of the local GPU/CPU compute during the API call.
+Requests made through the API also show up locally in the app's own dashboard, so you can see what your scripts have been doing:
+- **Tokens**: total tokens processed.
+- **Cost**: always **$0.000** — everything here runs on your Mac, nothing is billed.
+- **Speed**: measured in tokens per second (`t/s`).
+- **Joule Metrics**: the actual energy your Mac's chip used for that request.

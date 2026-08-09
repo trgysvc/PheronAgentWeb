@@ -65,7 +65,7 @@ export default function DownloadPage() {
             >
               <div className={styles.versionLeft}>
                 <span className={styles.versionNum}>1.0.6</span>
-                <span className={styles.versionLatestBadge}>Latest</span>
+                <span className={styles.versionLatestBadge}>{t("download.latest", "Latest")}</span>
               </div>
               <svg 
                 className={`${styles.versionCaret} ${version106Expanded ? styles.versionCaretOpen : ""}`} 
@@ -82,17 +82,17 @@ export default function DownloadPage() {
             {version106Expanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v1.0.6 is the active, stable release for macOS (Apple Silicon).
+                  {t("download.activeRelease", "Pheron Agent v{version} is the active, stable release for macOS (Apple Silicon).").replace("{version}", "1.0.6")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
-                  <a 
-                    href="https://app.pheronagent.com/PheronAgent106.dmg" 
+                  <a
+                    href="https://app.pheronagent.com/PheronAgent106.dmg"
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent106.dmg directly (v1.0.6)
+                    {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent106.dmg").replace("{version}", "1.0.6")}
                   </a>
                   <Link href="/changelog#v1.0.6" className={styles.versionDetailsLink}>
-                    View Changelog
+                    {t("download.viewChangelog", "View Changelog")}
                   </Link>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default function DownloadPage() {
             >
               <div className={styles.versionLeft}>
                 <span className={styles.versionNum}>1.0.5</span>
-                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>Previous</span>
+                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>{t("download.previous", "Previous")}</span>
               </div>
               <svg 
                 className={`${styles.versionCaret} ${versionExpanded ? styles.versionCaretOpen : ""}`} 
@@ -123,17 +123,17 @@ export default function DownloadPage() {
             {versionExpanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v1.0.5 is a previous release for macOS (Apple Silicon).
+                  {t("download.previousRelease", "Pheron Agent v{version} is a previous release for macOS (Apple Silicon).").replace("{version}", "1.0.5")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
-                  <a 
-                    href="https://app.pheronagent.com/PheronAgent105.dmg" 
+                  <a
+                    href="https://app.pheronagent.com/PheronAgent105.dmg"
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent105.dmg directly (v1.0.5)
+                    {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent105.dmg").replace("{version}", "1.0.5")}
                   </a>
                   <Link href="/changelog#v1.0.5" className={styles.versionDetailsLink}>
-                    View Changelog
+                    {t("download.viewChangelog", "View Changelog")}
                   </Link>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function DownloadPage() {
             >
               <div className={styles.versionLeft}>
                 <span className={styles.versionNum}>1.0.4</span>
-                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>Previous</span>
+                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>{t("download.previous", "Previous")}</span>
               </div>
               <svg 
                 className={`${styles.versionCaret} ${version104Expanded ? styles.versionCaretOpen : ""}`} 
@@ -164,17 +164,17 @@ export default function DownloadPage() {
             {version104Expanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v1.0.4 is a previous release for macOS (Apple Silicon).
+                  {t("download.previousRelease", "Pheron Agent v{version} is a previous release for macOS (Apple Silicon).").replace("{version}", "1.0.4")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
-                  <a 
-                    href="https://app.pheronagent.com/PheronAgent104.dmg" 
+                  <a
+                    href="https://app.pheronagent.com/PheronAgent104.dmg"
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent104.dmg directly (v1.0.4)
+                    {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent104.dmg").replace("{version}", "1.0.4")}
                   </a>
                   <Link href="/changelog#v1.0.4" className={styles.versionDetailsLink}>
-                    View Changelog
+                    {t("download.viewChangelog", "View Changelog")}
                   </Link>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export default function DownloadPage() {
             >
               <div className={styles.versionLeft}>
                 <span className={styles.versionNum}>1.0.3</span>
-                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>Previous</span>
+                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>{t("download.previous", "Previous")}</span>
               </div>
               <svg 
                 className={`${styles.versionCaret} ${version103Expanded ? styles.versionCaretOpen : ""}`} 
@@ -205,17 +205,17 @@ export default function DownloadPage() {
             {version103Expanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v1.0.3 is a previous release for macOS (Apple Silicon).
+                  {t("download.previousRelease", "Pheron Agent v{version} is a previous release for macOS (Apple Silicon).").replace("{version}", "1.0.3")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
-                  <a 
-                    href="https://app.pheronagent.com/PheronAgent103.dmg" 
+                  <a
+                    href="https://app.pheronagent.com/PheronAgent103.dmg"
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent103.dmg directly (v1.0.3)
+                    {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent103.dmg").replace("{version}", "1.0.3")}
                   </a>
                   <Link href="/changelog#v1.0.3" className={styles.versionDetailsLink}>
-                    View Changelog
+                    {t("download.viewChangelog", "View Changelog")}
                   </Link>
                 </div>
               </div>
@@ -229,7 +229,7 @@ export default function DownloadPage() {
             >
               <div className={styles.versionLeft}>
                 <span className={styles.versionNum}>1.0.2</span>
-                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>Previous</span>
+                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>{t("download.previous", "Previous")}</span>
               </div>
               <svg 
                 className={`${styles.versionCaret} ${version102Expanded ? styles.versionCaretOpen : ""}`} 
@@ -246,17 +246,17 @@ export default function DownloadPage() {
             {version102Expanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v1.0.2 is a previous release for macOS (Apple Silicon).
+                  {t("download.previousRelease", "Pheron Agent v{version} is a previous release for macOS (Apple Silicon).").replace("{version}", "1.0.2")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
-                  <a 
-                    href="https://app.pheronagent.com/PheronAgent102.dmg" 
+                  <a
+                    href="https://app.pheronagent.com/PheronAgent102.dmg"
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent102.dmg directly (v1.0.2)
+                    {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent102.dmg").replace("{version}", "1.0.2")}
                   </a>
                   <Link href="/changelog#v1.0.2" className={styles.versionDetailsLink}>
-                    View Changelog
+                    {t("download.viewChangelog", "View Changelog")}
                   </Link>
                 </div>
               </div>
@@ -270,7 +270,7 @@ export default function DownloadPage() {
             >
               <div className={styles.versionLeft}>
                 <span className={styles.versionNum}>1.0.1</span>
-                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>Previous</span>
+                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>{t("download.previous", "Previous")}</span>
               </div>
               <svg 
                 className={`${styles.versionCaret} ${version101Expanded ? styles.versionCaretOpen : ""}`} 
@@ -287,17 +287,17 @@ export default function DownloadPage() {
             {version101Expanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  Pheron Agent v1.0.1 is a previous release for macOS (Apple Silicon).
+                  {t("download.previousRelease", "Pheron Agent v{version} is a previous release for macOS (Apple Silicon).").replace("{version}", "1.0.1")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
-                  <a 
-                    href="https://app.pheronagent.com/PheronAgent101.dmg" 
+                  <a
+                    href="https://app.pheronagent.com/PheronAgent101.dmg"
                     className={styles.versionDetailsLink}
                   >
-                    Download PheronAgent101.dmg directly (v1.0.1)
+                    {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent101.dmg").replace("{version}", "1.0.1")}
                   </a>
                   <Link href="/changelog#v1.0.1" className={styles.versionDetailsLink}>
-                    View Changelog
+                    {t("download.viewChangelog", "View Changelog")}
                   </Link>
                 </div>
               </div>
@@ -314,16 +314,16 @@ export default function DownloadPage() {
         padding: "0 24px 80px 24px",
       }}>
         <h2 style={{ fontSize: "18px", fontWeight: 500, color: "var(--text-primary)", marginBottom: "24px", letterSpacing: "-0.2px" }}>
-          System Requirements
+          {t("download.systemRequirements", "System Requirements")}
         </h2>
         <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
           {[
-            ["Operating System", "macOS 26.0 Tahoe or later"],
-            ["Processor", "Apple Silicon (M1 or later)"],
-            ["RAM — Minimum", "16 GB unified memory"],
-            ["RAM — Recommended", "24 GB+ unified memory"],
-            ["Storage", "~6 GB free space (per model)"],
-            ["GPU", "Metal (built into Apple Silicon)"],
+            [t("download.specOS", "Operating System"), t("download.specOSValue", "macOS 26.0 Tahoe or later")],
+            [t("download.specProcessor", "Processor"), t("download.specProcessorValue", "Apple Silicon (M1 or later)")],
+            [t("download.specRamMin", "RAM — Minimum"), t("download.specRamMinValue", "16 GB unified memory")],
+            [t("download.specRamRec", "RAM — Recommended"), t("download.specRamRecValue", "24 GB+ unified memory")],
+            [t("download.specStorage", "Storage"), t("download.specStorageValue", "~6 GB free space (per model)")],
+            [t("download.specGpu", "GPU"), t("download.specGpuValue", "Metal (built into Apple Silicon)")],
           ].map(([label, value]) => (
             <div key={label} style={{
               display: "flex",
