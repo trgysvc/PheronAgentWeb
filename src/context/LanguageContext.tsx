@@ -106,7 +106,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (pathname && pathname.startsWith("/resources/docs")) {
       const parts = pathname.split("/").filter(Boolean);
       // parts[0] = 'resources', parts[1] = 'docs'
-      if (parts.length >= 3 && (parts[2] === "en" || parts[2] === "tr")) {
+      if (parts.length >= 3 && LANGUAGES.some((l) => l.code === parts[2])) {
         parts[2] = validLang;
         const newPath = "/" + parts.join("/");
         router.push(newPath);

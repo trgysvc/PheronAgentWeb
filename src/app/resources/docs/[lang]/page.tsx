@@ -10,8 +10,10 @@ interface PageProps {
   }>;
 }
 
+import { LANGUAGES } from "../../../../i18n";
+
 export async function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "tr" }];
+  return LANGUAGES.map((l) => ({ lang: l.code }));
 }
 
 export default async function ResourcesDocsIndexPage({ params }: PageProps) {

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ResourcesClientLayout from "../../../ResourcesClientLayout";
 import styles from "../../../../page.module.css";
 import { parseMarkdown } from "../../../../../utils/markdown";
+import { LANGUAGES } from "../../../../../i18n";
 
 interface PageProps {
   params: Promise<{
@@ -52,7 +53,7 @@ export async function generateStaticParams() {
   }
 
   const slugPartsList = Array.from(uniqueSlugMap.values());
-  const languages = ["en", "tr"];
+  const languages = LANGUAGES.map((l) => l.code);
   const paramsList: { lang: string; slug: string[] }[] = [];
 
   for (const lang of languages) {
