@@ -30,3 +30,10 @@ To execute macOS system tasks (such as terminal scripts and system controls), Ph
 - The main user interface runs inside a restricted user environment.
 - Privilege-requiring tasks are delegated to `PheronAgentXPC`, a notarized background helper service compiled with Apple's Hardened Runtime and strict entitlements.
 - All actions are logged and subject to user accessibility approvals.
+
+## 5. Workspace Isolation
+
+Every session is scoped to a single, user-designated workspace folder — not your whole filesystem. This boundary is enforced independently at two different layers, so a single mistake can't break out of it:
+- **File tools**: Reading and writing files is only allowed inside the active workspace plus a small, user-configurable allowlist (defaults to `~/Documents`, `~/Desktop`, `~/Downloads`). Any other path is rejected outright — no silent remapping, no fallback location.
+- **Absolute block list**: A separate, always-on deny list blocks sensitive system paths (such as `/etc/passwd`) regardless of workspace or allowlist settings, so it can't be reconfigured away by mistake.
+- **Shell execution is kernel-enforced, not just app-level**: Commands run through the shell-execution tool are launched inside Apple's **Seatbelt sandbox** (`sandbox-exec`) with a profile scoped to the active workspace, and the process's working directory is pinned there. This is the same underlying primitive macOS uses to sandbox App Store apps — it's enforced by the kernel, not a Swift-level check the agent could talk its way around.
