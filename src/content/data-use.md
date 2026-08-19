@@ -11,7 +11,7 @@ Pheron Agent is built with a **Sovereign On-Device Architecture**. This policy o
 Pheron Agent runs local model inference using the Apple Neural Engine and GPU via Apple's MLX Framework. 
 
 - **Inference Data**: All prompts, file contents, terminal execution histories, and system logs are processed 100% on-device. Nothing is transmitted to external servers.
-- **Context Preservation**: The three memory layers (L1 Hot Cache, L2 Daily Notes, L3 DreamBank summaries) are stored purely on local SQLite databases and plist files under `~/Library/Application Support/PheronAgent/`.
+- **Context Preservation**: A five-layer memory system (user identity, daily notes, a knowledge base, cross-session history, and learned habits) is stored purely on-device — mostly as plain Markdown files, with a plist for session history and a SQLite database for habits — under `~/Library/Application Support/PheronAgent/`.
 
 ---
 
