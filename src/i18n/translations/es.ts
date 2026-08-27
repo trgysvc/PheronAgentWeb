@@ -18,10 +18,10 @@ const es: Record<string, string> = {
 
   "hero.badge": "v1.0.6 YA DISPONIBLE · MOTOR SWIFT 6 Y MLX",
   "hero.title": "Agente de IA Autónomo Nativo para macOS",
-  "hero.subtitle": "Un agente de IA autónomo nativo de hardware que se ejecuta 100% en tu Apple Silicon. Inferencia MLX local, aceleración ANE y 62 herramientas nativas integradas. Privacidad por diseño, autonomía por naturaleza.",
+  "hero.subtitle": "Un agente de IA autónomo nativo de hardware que se ejecuta 100% en tu Apple Silicon. Inferencia MLX local, aceleración ANE y 72 herramientas nativas integradas. Privacidad por diseño, autonomía por naturaleza.",
   "hero.ctaDownload": "Descargar para macOS",
   "hero.ctaDocs": "Explorar documentación",
-  "hero.hardwareNotice": "Requiere macOS 15.0+ y Apple Silicon (M1/M2/M3/M4)",
+  "hero.hardwareNotice": "Requiere macOS 26.0+ (Tahoe o posterior) y Apple Silicon (M1/M2/M3/M4)",
 
   "features.tag": "Bajo el capó",
   "features.title": "Diseñado para rendimiento extremo",
@@ -95,7 +95,7 @@ const es: Record<string, string> = {
   "pricing.localMlx": "Inferencia local completa MLX 4-bit",
   "pricing.multiAgent": "Ejecución de enjambre Multi-Agente",
   "pricing.aneRouting": "Enrutamiento ANE Intent Classifier",
-  "pricing.allTools": "Las 62 herramientas nativas integradas",
+  "pricing.allTools": "Las 72 herramientas nativas integradas",
 
   "download.pageTitle": "Descargar macOS",
   "download.pageSubtitle": "Requiere macOS 26.0+ (Tahoe o posterior), Apple Silicon — 16 GB RAM mínimo, 24 GB+ recomendado",
@@ -105,8 +105,8 @@ const es: Record<string, string> = {
   "download.releaseHeading": "La aplicación de escritorio de Pheron Agent está disponible para macOS Release;",
 
   "ecosystem.title": "Ecosistema de herramientas nativas",
-  "ecosystem.subtitle": "62 herramientas nativas integradas para gestión de archivos, automatización de sistemas, Web, comunicaciones y desarrollo.",
-  "ecosystem.searchPlaceholder": "Buscar entre 62 herramientas...",
+  "ecosystem.subtitle": "72 herramientas nativas integradas para gestión de archivos, automatización de sistemas, Web, comunicaciones y desarrollo.",
+  "ecosystem.searchPlaceholder": "Buscar entre 72 herramientas...",
   "ecosystem.catAll": "Todo",
   "ecosystem.catSystem": "Sistema",
   "ecosystem.catFile": "Archivo",

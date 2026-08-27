@@ -18,10 +18,10 @@ const ja: Record<string, string> = {
 
   "hero.badge": "v1.0.6 リリース · SWIFT 6 & MLX エンジン",
   "hero.title": "macOS用ネイティブ自律型AIエージェント",
-  "hero.subtitle": "Apple Silicon上で完全にローカル実行される完全自律型AIエージェント。ローカルMLX推論、ANEアクセラレーション、62個の統合ネイティブツール。プライバシー重視、自律設計。",
+  "hero.subtitle": "Apple Silicon上で完全にローカル実行される完全自律型AIエージェント。ローカルMLX推論、ANEアクセラレーション、72個の統合ネイティブツール。プライバシー重視、自律設計。",
   "hero.ctaDownload": "macOS版をダウンロード",
   "hero.ctaDocs": "ドキュメントを見る",
-  "hero.hardwareNotice": "macOS 15.0+ および Apple Silicon (M1/M2/M3/M4) が必要",
+  "hero.hardwareNotice": "macOS 26.0+ (Tahoe以降) および Apple Silicon (M1/M2/M3/M4) が必要",
 
   "features.tag": "内部アーキテクチャ",
   "features.title": "究極のパフォーマンスのために設計",
@@ -95,7 +95,7 @@ const ja: Record<string, string> = {
   "pricing.localMlx": "完全なローカルMLX 4-bit推論",
   "pricing.multiAgent": "マルチエージェントスウォーム実行",
   "pricing.aneRouting": "ANE意図分類器ルーティング",
-  "pricing.allTools": "62個の全統合ネイティブツール",
+  "pricing.allTools": "72個の全統合ネイティブツール",
 
   "download.pageTitle": "macOS版ダウンロード",
   "download.pageSubtitle": "macOS 26.0+ (Tahoe以降), Apple Silicon — 最小16 GB RAM、24 GB+ 推奨",
@@ -105,8 +105,8 @@ const ja: Record<string, string> = {
   "download.releaseHeading": "Pheron AgentデスクトップアプリはmacOSリリース用に提供されています；",
 
   "ecosystem.title": "ネイティブツールエコシステム",
-  "ecosystem.subtitle": "ファイル管理、システム自動化、Web、通信、ビジョン、開発用ワークフローの62個の統合ネイティブツール。",
-  "ecosystem.searchPlaceholder": "62個のツールを検索...",
+  "ecosystem.subtitle": "ファイル管理、システム自動化、Web、通信、ビジョン、開発用ワークフローの72個の統合ネイティブツール。",
+  "ecosystem.searchPlaceholder": "72個のツールを検索...",
   "ecosystem.catAll": "すべて",
   "ecosystem.catSystem": "システム",
   "ecosystem.catFile": "ファイル",

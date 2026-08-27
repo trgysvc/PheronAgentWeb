@@ -141,7 +141,7 @@ export default function Home() {
           <span>{t("hero.title", "Native Autonomous AI Agent for macOS")}</span>
         </h1>
         <p className={styles.heroSubtitle}>
-          {t("hero.subtitle", "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 62 integrated native tools. Privacy by design, autonomy by nature.")}
+          {t("hero.subtitle", "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 72 integrated native tools. Privacy by design, autonomy by nature.")}
         </p>
 
         {/* Hero Screenshot */}

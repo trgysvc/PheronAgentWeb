@@ -18,10 +18,10 @@ const fr: Record<string, string> = {
 
   "hero.badge": "v1.0.6 DISPONIBLE · MOTEUR SWIFT 6 & MLX",
   "hero.title": "Agent IA Autonome Native pour macOS",
-  "hero.subtitle": "Un agent IA autonome matériellement natif fonctionnant à 100% sur votre Apple Silicon. Inférence MLX locale, accélération ANE et 62 outils intégrés.",
+  "hero.subtitle": "Un agent IA autonome matériellement natif fonctionnant à 100% sur votre Apple Silicon. Inférence MLX locale, accélération ANE et 72 outils intégrés.",
   "hero.ctaDownload": "Télécharger pour macOS",
   "hero.ctaDocs": "Explorer la doc",
-  "hero.hardwareNotice": "Nécessite macOS 15.0+ et Apple Silicon (M1/M2/M3/M4)",
+  "hero.hardwareNotice": "Nécessite macOS 26.0+ (Tahoe ou ultérieur) et Apple Silicon (M1/M2/M3/M4)",
 
   "features.tag": "Sous le capot",
   "features.title": "Conçu pour des performances extrêmes",
@@ -95,7 +95,7 @@ const fr: Record<string, string> = {
   "pricing.localMlx": "Inférence MLX 4 bits locale complète",
   "pricing.multiAgent": "Exécution d'essaim multi-agents",
   "pricing.aneRouting": "Routage par classificateur ANE",
-  "pricing.allTools": "Les 62 outils natifs intégrés",
+  "pricing.allTools": "Les 72 outils natifs intégrés",
 
   "download.pageTitle": "Télécharger pour macOS",
   "download.pageSubtitle": "Nécessite macOS 26.0+ (Tahoe ou ultérieur), Apple Silicon — 16 Go RAM min, 24 Go+ recommandé",
@@ -105,8 +105,8 @@ const fr: Record<string, string> = {
   "download.releaseHeading": "L'application de bureau Pheron Agent est disponible pour macOS Release ;",
 
   "ecosystem.title": "Écosystème d'outils natifs",
-  "ecosystem.subtitle": "62 outils natifs intégrés pour les fichiers, l'automatisation système, le web, la communication et le développement.",
-  "ecosystem.searchPlaceholder": "Rechercher parmi 62 outils...",
+  "ecosystem.subtitle": "72 outils natifs intégrés pour les fichiers, l'automatisation système, le web, la communication et le développement.",
+  "ecosystem.searchPlaceholder": "Rechercher parmi 72 outils...",
   "ecosystem.catAll": "Tout",
   "ecosystem.catSystem": "Système",
   "ecosystem.catFile": "Fichier",

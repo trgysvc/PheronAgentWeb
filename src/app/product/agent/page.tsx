@@ -83,10 +83,10 @@ export default function AgentPage() {
   ];
 
   const HW_TIERS = [
-    { chip: "Starter (Base) · 16 GB", models: "3B – 9B models", speed: "~30–120 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "62 Tools", "Quantized KV Cache"], highlight: false },
-    { chip: "Mid (Pro) · 16–24 GB", models: "9B – 27B models", speed: "~20–200 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "62 Tools", "Speculative Decoding", "Semantic Vision (24GB)"], highlight: true },
-    { chip: "High (Max) · 32–64 GB", models: "27B – 32B models", speed: "~15–50 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "62 Tools", "Speculative Decoding", "65K Context (8-bit KV)"], highlight: false },
-    { chip: "Ultra (Ultra) · 64 GB+", models: "70B – 72B models", speed: "~10–25 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "62 Tools", "Speculative Decoding", "131K Context (FP16 KV)"], highlight: false },
+    { chip: "Starter (Base) · 16 GB", models: "3B – 9B models", speed: "~30–120 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "72 Tools", "Quantized KV Cache"], highlight: false },
+    { chip: "Mid (Pro) · 16–24 GB", models: "9B – 27B models", speed: "~20–200 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "72 Tools", "Speculative Decoding", "Semantic Vision (24GB)"], highlight: true },
+    { chip: "High (Max) · 32–64 GB", models: "27B – 32B models", speed: "~15–50 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "72 Tools", "Speculative Decoding", "65K Context (8-bit KV)"], highlight: false },
+    { chip: "Ultra (Ultra) · 64 GB+", models: "70B – 72B models", speed: "~10–25 tok/s", features: ["Titan Engine", "ANE Intent Classifier", "72 Tools", "Speculative Decoding", "131K Context (FP16 KV)"], highlight: false },
   ];
 
   return (

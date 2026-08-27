@@ -103,7 +103,7 @@ export default async function ResourcesDocsSlugPage({ params }: PageProps) {
     notFound();
   }
 
-  const fileContent = fs.readFileSync(targetFilePath, "utf8");
+  const fileContent = fs.readFileSync(/*turbopackIgnore: true*/ targetFilePath, "utf8");
   const htmlContent = await parseMarkdown(fileContent, lang);
 
   return (

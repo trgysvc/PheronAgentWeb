@@ -18,10 +18,10 @@ const zhTW: Record<string, string> = {
 
   "hero.badge": "v1.0.6 現已發布 · SWIFT 6 & MLX 引擎",
   "hero.title": "macOS 原生自主 AI Agent",
-  "hero.subtitle": "完全運行於 Apple Silicon 上的原生自主 AI Agent。本地 MLX 推理、ANE 硬體加速及 62 個整合原生工具。隱私設計，原生自主。",
+  "hero.subtitle": "完全運行於 Apple Silicon 上的原生自主 AI Agent。本地 MLX 推理、ANE 硬體加速及 72 個整合原生工具。隱私設計，原生自主。",
   "hero.ctaDownload": "下載 macOS 版",
   "hero.ctaDocs": "探索文檔",
-  "hero.hardwareNotice": "需要 macOS 15.0+ 與 Apple Silicon (M1/M2/M3/M4)",
+  "hero.hardwareNotice": "需要 macOS 26.0+ (Tahoe 或更高) 與 Apple Silicon (M1/M2/M3/M4)",
 
   "features.tag": "核心架構",
   "features.title": "為極速效能打造",
@@ -95,7 +95,7 @@ const zhTW: Record<string, string> = {
   "pricing.localMlx": "完整本地 MLX 4-bit 推理",
   "pricing.multiAgent": "多 Agent 蜂群協同執行",
   "pricing.aneRouting": "ANE 意圖分類器智慧路由",
-  "pricing.allTools": "包含全部 62 個整合原生工具",
+  "pricing.allTools": "包含全部 72 個整合原生工具",
 
   "download.pageTitle": "下載 macOS 版",
   "download.pageSubtitle": "需要 macOS 26.0+ (Tahoe 或更高), Apple Silicon — 至少 16 GB 記憶體，推薦 24 GB+",
@@ -105,8 +105,8 @@ const zhTW: Record<string, string> = {
   "download.releaseHeading": "Pheron Agent 桌面應用適用於 macOS 正式版；",
 
   "ecosystem.title": "原生工具生態",
-  "ecosystem.subtitle": "涵蓋檔案管理、系統自動化、Web、通訊、視覺及開發工作流的 62 個整合原生工具。",
-  "ecosystem.searchPlaceholder": "搜尋 62 個原生工具...",
+  "ecosystem.subtitle": "涵蓋檔案管理、系統自動化、Web、通訊、視覺及開發工作流的 72 個整合原生工具。",
+  "ecosystem.searchPlaceholder": "搜尋 72 個原生工具...",
   "ecosystem.catAll": "全部",
   "ecosystem.catSystem": "系統",
   "ecosystem.catFile": "檔案",

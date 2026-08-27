@@ -18,10 +18,10 @@ const de: Record<string, string> = {
 
   "hero.badge": "v1.0.6 JETZT VERFÜGBAR · SWIFT 6 & MLX ENGINE",
   "hero.title": "Nativer autonomer KI-Agent für macOS",
-  "hero.subtitle": "Ein vollständig autonomer, hardware-nativer KI-Agent, der zu 100% auf Ihrem Apple Silicon läuft. Lokale MLX-Inferenz, ANE-Beschleunigung und 62 integrierte Werkzeuge.",
+  "hero.subtitle": "Ein vollständig autonomer, hardware-nativer KI-Agent, der zu 100% auf Ihrem Apple Silicon läuft. Lokale MLX-Inferenz, ANE-Beschleunigung und 72 integrierte Werkzeuge.",
   "hero.ctaDownload": "Für macOS herunterladen",
   "hero.ctaDocs": "Dokumentation durchsuchen",
-  "hero.hardwareNotice": "Erfordert macOS 15.0+ und Apple Silicon (M1/M2/M3/M4)",
+  "hero.hardwareNotice": "Erfordert macOS 26.0+ (Tahoe oder neuer) und Apple Silicon (M1/M2/M3/M4)",
 
   "features.tag": "Unter der Haube",
   "features.title": "Gebaut für extreme Leistung",
@@ -95,7 +95,7 @@ const de: Record<string, string> = {
   "pricing.localMlx": "Vollständige lokale MLX 4-Bit-Inferenz",
   "pricing.multiAgent": "Multi-Agenten-Schwarm-Ausführung",
   "pricing.aneRouting": "ANE-Absichtsklassifizierer-Routing",
-  "pricing.allTools": "Alle 62 integrierten nativen Werkzeuge",
+  "pricing.allTools": "Alle 72 integrierten nativen Werkzeuge",
 
   "download.pageTitle": "macOS Herunterladen",
   "download.pageSubtitle": "Erfordert macOS 26.0+ (Tahoe oder neuer), Apple Silicon — min. 16 GB RAM, 24 GB+ empfohlen",
@@ -105,8 +105,8 @@ const de: Record<string, string> = {
   "download.releaseHeading": "Die Pheron Agent Desktop-App ist für macOS verfügbar;",
 
   "ecosystem.title": "Natives Werkzeug-Ökosystem",
-  "ecosystem.subtitle": "62 integrierte native Werkzeuge für Dateien, Systemautomatisierung, Web, Kommunikation und Entwicklung.",
-  "ecosystem.searchPlaceholder": "62 Werkzeuge durchsuchen...",
+  "ecosystem.subtitle": "72 integrierte native Werkzeuge für Dateien, Systemautomatisierung, Web, Kommunikation und Entwicklung.",
+  "ecosystem.searchPlaceholder": "72 Werkzeuge durchsuchen...",
   "ecosystem.catAll": "Alle",
   "ecosystem.catSystem": "System",
   "ecosystem.catFile": "Datei",

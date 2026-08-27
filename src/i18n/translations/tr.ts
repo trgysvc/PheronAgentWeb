@@ -20,10 +20,10 @@ const tr: Record<string, string> = {
   // Hero Section
   "hero.badge": "v1.0.6 YAYINLANDI · SWIFT 6 & MLX MOTORU",
   "hero.title": "macOS İçin Yerel Otonom Yapay Zeka Ajanı",
-  "hero.subtitle": "Tamamen Apple Silicon üzerinde çalışan otonom, donanıma yerel yapay zeka ajanı. Yerel MLX çıkarımı, ANE hızlandırması ve 62 entegre yerel araç. Tasarımdan gelen gizlilik, doğasında olan otonomi.",
+  "hero.subtitle": "Tamamen Apple Silicon üzerinde çalışan otonom, donanıma yerel yapay zeka ajanı. Yerel MLX çıkarımı, ANE hızlandırması ve 72 entegre yerel araç. Tasarımdan gelen gizlilik, doğasında olan otonomi.",
   "hero.ctaDownload": "macOS için İndir",
   "hero.ctaDocs": "Dokümantasyonu İncele",
-  "hero.hardwareNotice": "macOS 15.0+ ve Apple Silicon (M1/M2/M3/M4) gerektirir",
+  "hero.hardwareNotice": "macOS 26.0+ (Tahoe veya üzeri) ve Apple Silicon (M1/M2/M3/M4) gerektirir",
 
   // Feature Section (Under the Hood)
   "features.tag": "Kaputun Altında",
@@ -103,7 +103,7 @@ const tr: Record<string, string> = {
   "pricing.localMlx": "Tam yerel MLX 4-bit çıkarım",
   "pricing.multiAgent": "Çoklu Ajan Sürü yürütmesi",
   "pricing.aneRouting": "ANE Niyet Sınıflandırıcı yönlendirmesi",
-  "pricing.allTools": "Entegre 62 yerel aracın tümü",
+  "pricing.allTools": "Entegre 72 yerel aracın tümü",
 
   // Download Page
   "download.pageTitle": "macOS İndir",
@@ -115,8 +115,8 @@ const tr: Record<string, string> = {
 
   // Ecosystem Page
   "ecosystem.title": "Yerel Araç Ekosistemi",
-  "ecosystem.subtitle": "Dosya yönetimi, sistem otomasyonu, web, iletişim, görme ve geliştirici iş akışlarında 62 entegre yerel araç.",
-  "ecosystem.searchPlaceholder": "62 yerel aracı arayın...",
+  "ecosystem.subtitle": "Dosya yönetimi, sistem otomasyonu, web, iletişim, görme ve geliştirici iş akışlarında 72 entegre yerel araç.",
+  "ecosystem.searchPlaceholder": "72 yerel aracı arayın...",
   "ecosystem.catAll": "Tümü",
   "ecosystem.catSystem": "Sistem",
   "ecosystem.catFile": "Dosya",

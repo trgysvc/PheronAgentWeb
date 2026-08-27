@@ -18,10 +18,10 @@ const hi: Record<string, string> = {
 
   "hero.badge": "v1.0.6 अब उपलब्ध है · SWIFT 6 एवं MLX इंजन",
   "hero.title": "macOS के लिए स्वदेशी स्वायत्त AI एजेंट",
-  "hero.subtitle": "आपके Apple Silicon पर 100% स्थानीय रूप से चलने वाला स्वायत्त AI एजेंट। स्थानीय MLX अनुमान, ANE हार्डवेयर त्वरण और 62 एकीकृत देशी उपकरण।",
+  "hero.subtitle": "आपके Apple Silicon पर 100% स्थानीय रूप से चलने वाला स्वायत्त AI एजेंट। स्थानीय MLX अनुमान, ANE हार्डवेयर त्वरण और 72 एकीकृत देशी उपकरण।",
   "hero.ctaDownload": "macOS के लिए डाउनलोड करें",
   "hero.ctaDocs": "दस्तावेज़ देखें",
-  "hero.hardwareNotice": "macOS 15.0+ और Apple Silicon (M1/M2/M3/M4) आवश्यक",
+  "hero.hardwareNotice": "macOS 26.0+ (Tahoe या बाद का) और Apple Silicon (M1/M2/M3/M4) आवश्यक",
 
   "features.tag": "आंतरिक संरचना",
   "features.title": "अत्यधिक प्रदर्शन के लिए निर्मित",
@@ -95,7 +95,7 @@ const hi: Record<string, string> = {
   "pricing.localMlx": "पूर्ण स्थानीय MLX 4-बिट अनुमान",
   "pricing.multiAgent": "मल्टी-एजेंट झुंड निष्पादन",
   "pricing.aneRouting": "ANE इंटेंट क्लासिफायर राउटिंग",
-  "pricing.allTools": "सभी 62 एकीकृत देशी उपकरण शामिल",
+  "pricing.allTools": "सभी 72 एकीकृत देशी उपकरण शामिल",
 
   "download.pageTitle": "macOS डाउनलोड करें",
   "download.pageSubtitle": "macOS 26.0+ (Tahoe या बाद का), Apple Silicon — न्यूनतम 16 GB RAM, 24 GB+ अनुशंसित",
@@ -105,8 +105,8 @@ const hi: Record<string, string> = {
   "download.releaseHeading": "Pheron Agent डेस्कटॉप ऐप macOS रिलीज़ के लिए उपलब्ध है;",
 
   "ecosystem.title": "देशी उपकरण पारिस्थितिकी तंत्र",
-  "ecosystem.subtitle": "फाइल प्रबंधन, सिस्टम ऑटोमेशन, वेब, संचार और विकास के लिए 62 एकीकृत देशी उपकरण।",
-  "ecosystem.searchPlaceholder": "62 उपकरणों में खोजें...",
+  "ecosystem.subtitle": "फाइल प्रबंधन, सिस्टम ऑटोमेशन, वेब, संचार और विकास के लिए 72 एकीकृत देशी उपकरण।",
+  "ecosystem.searchPlaceholder": "72 उपकरणों में खोजें...",
   "ecosystem.catAll": "सभी",
   "ecosystem.catSystem": "सिस्टम",
   "ecosystem.catFile": "फाइल",

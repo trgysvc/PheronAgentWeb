@@ -10,7 +10,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { LANGUAGES } from "../../i18n";
 import toolsTranslations from "../../i18n/toolsTranslations";
 
-// 62 integrated native tools categorized and described
+// 72 integrated native tools categorized and described
 const TOOLS = [
   // File (3 tools)
   { id: "fileManager", name: "File Manager", icon: "📁", desc: "Native file explorer: scan large files, copy, move, and delete items securely", category: "File" },
@@ -147,7 +147,7 @@ export default function Ecosystem() {
           <span className={styles.sectionTag}>{t("ecosystem.title", "Integrated Native Tools")}</span>
           <h2 className={styles.sectionTitle}>{t("ecosystem.title", "Native Tool Ecosystem")}</h2>
           <p className={styles.sectionSubtitle}>
-            {t("ecosystem.subtitle", "62 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.")}
+            {t("ecosystem.subtitle", "72 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.")}
           </p>
         </div>
 

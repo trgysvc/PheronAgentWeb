@@ -25,7 +25,7 @@ export default async function ResourcesDocsIndexPage({ params }: PageProps) {
     filePath = path.join(docsDirectory, "index.md");
   }
 
-  const fileContent = fs.readFileSync(filePath, "utf8");
+  const fileContent = fs.readFileSync(/*turbopackIgnore: true*/ filePath, "utf8");
   const htmlContent = await parseMarkdown(fileContent, lang);
 
   return (
