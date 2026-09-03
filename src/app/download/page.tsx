@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 import styles from "../page.module.css";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
@@ -16,6 +17,20 @@ export default function DownloadPage() {
   const [version103Expanded, setVersion103Expanded] = useState(false);
   const [version102Expanded, setVersion102Expanded] = useState(false);
   const [version101Expanded, setVersion101Expanded] = useState(false);
+
+  const trackDownload = (fileName: string, version: string, url: string, linkText?: string) => {
+    try {
+      sendGAEvent("event", "file_download", {
+        file_name: fileName,
+        file_extension: "dmg",
+        link_url: url,
+        link_text: linkText || "Download for macOS",
+        version: version,
+      });
+    } catch (e) {
+      console.warn("GA4 file_download event error:", e);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -31,6 +46,7 @@ export default function DownloadPage() {
           <a 
             href="https://app.pheronagent.com/PheronAgent106.dmg" 
             className={styles.downloadPillBtn}
+            onClick={() => trackDownload("PheronAgent106.dmg", "1.0.6", "https://app.pheronagent.com/PheronAgent106.dmg", "Download for macOS")}
           >
             <span>{t("download.downloadBtn", "Download for macOS")}</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px" }}>
@@ -88,6 +104,7 @@ export default function DownloadPage() {
                   <a
                     href="https://app.pheronagent.com/PheronAgent106.dmg"
                     className={styles.versionDetailsLink}
+                    onClick={() => trackDownload("PheronAgent106.dmg", "1.0.6", "https://app.pheronagent.com/PheronAgent106.dmg", "Download PheronAgent106.dmg directly (v1.0.6)")}
                   >
                     {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent106.dmg").replace("{version}", "1.0.6")}
                   </a>
@@ -129,6 +146,7 @@ export default function DownloadPage() {
                   <a
                     href="https://app.pheronagent.com/PheronAgent105.dmg"
                     className={styles.versionDetailsLink}
+                    onClick={() => trackDownload("PheronAgent105.dmg", "1.0.5", "https://app.pheronagent.com/PheronAgent105.dmg", "Download PheronAgent105.dmg directly (v1.0.5)")}
                   >
                     {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent105.dmg").replace("{version}", "1.0.5")}
                   </a>
@@ -170,6 +188,7 @@ export default function DownloadPage() {
                   <a
                     href="https://app.pheronagent.com/PheronAgent104.dmg"
                     className={styles.versionDetailsLink}
+                    onClick={() => trackDownload("PheronAgent104.dmg", "1.0.4", "https://app.pheronagent.com/PheronAgent104.dmg", "Download PheronAgent104.dmg directly (v1.0.4)")}
                   >
                     {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent104.dmg").replace("{version}", "1.0.4")}
                   </a>
@@ -211,6 +230,7 @@ export default function DownloadPage() {
                   <a
                     href="https://app.pheronagent.com/PheronAgent103.dmg"
                     className={styles.versionDetailsLink}
+                    onClick={() => trackDownload("PheronAgent103.dmg", "1.0.3", "https://app.pheronagent.com/PheronAgent103.dmg", "Download PheronAgent103.dmg directly (v1.0.3)")}
                   >
                     {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent103.dmg").replace("{version}", "1.0.3")}
                   </a>
@@ -252,6 +272,7 @@ export default function DownloadPage() {
                   <a
                     href="https://app.pheronagent.com/PheronAgent102.dmg"
                     className={styles.versionDetailsLink}
+                    onClick={() => trackDownload("PheronAgent102.dmg", "1.0.2", "https://app.pheronagent.com/PheronAgent102.dmg", "Download PheronAgent102.dmg directly (v1.0.2)")}
                   >
                     {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent102.dmg").replace("{version}", "1.0.2")}
                   </a>
@@ -293,6 +314,7 @@ export default function DownloadPage() {
                   <a
                     href="https://app.pheronagent.com/PheronAgent101.dmg"
                     className={styles.versionDetailsLink}
+                    onClick={() => trackDownload("PheronAgent101.dmg", "1.0.1", "https://app.pheronagent.com/PheronAgent101.dmg", "Download PheronAgent101.dmg directly (v1.0.1)")}
                   >
                     {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent101.dmg").replace("{version}", "1.0.1")}
                   </a>
