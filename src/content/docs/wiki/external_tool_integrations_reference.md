@@ -66,6 +66,18 @@
 - **Endpoint:** `https://platform.higgsfield.ai`
 - **Supported Models:** Soul, Seedream, DoP, Kling, Seedance (text-to-image and image-to-video).
 
+## B.2 — `linkedin_post` (UBID 125) — LinkedIn REST API
+- **Endpoint:** `https://api.linkedin.com/rest/posts`
+- **Auth:** OAuth 2.0, bring-your-own app (Client ID + Secret from your own developer.linkedin.com app) — see [LinkedIn & X Setup](../linkedin_x_setup.md).
+- **Status:** ✅ Live-Verified (2026-09-11, real post published and confirmed on the connected account).
+- **Scope:** publishes a text post to the connected member's own personal profile only (`w_member_social`). Company-page posting, messaging, connections, and search are outside LinkedIn's self-serve API and require separate partner approval — not available here.
+
+## B.3 — `x_post` (UBID 126) — X (Twitter) REST API
+- **Endpoint:** `https://api.x.com/2/tweets`
+- **Auth:** OAuth 2.0 PKCE, bring-your-own app (Client ID from your own developer.x.com app) — see [LinkedIn & X Setup](../linkedin_x_setup.md).
+- **Status:** ⚠️ OAuth connection live-verified (2026-09-11, real PKCE authorize + token exchange succeeded). Actual publish call still unverified — blocked on adding a payment method (X requires one before any write call, no free tier).
+- **Cost:** every successful post is billed by X (~$0.015, ~$0.20 if it contains a link) — no free tier.
+
 ---
 
 # SECTION C — Custom Process Bridges

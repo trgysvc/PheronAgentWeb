@@ -10,7 +10,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { LANGUAGES } from "../../i18n";
 import toolsTranslations from "../../i18n/toolsTranslations";
 
-// 72 integrated native tools categorized and described
+// 74 integrated native tools categorized and described
 const TOOLS = [
   // File (3 tools)
   { id: "fileManager", name: "File Manager", icon: "📁", desc: "Native file explorer: scan large files, copy, move, and delete items securely", category: "File" },
@@ -80,7 +80,7 @@ const TOOLS = [
   { id: "memoryVault", name: "Memory Vault", icon: "🧠", desc: "Access local long-term experiential memory for past task solutions", category: "Self-Improvement" },
   { id: "skillPatch", name: "Skill Patch", icon: "🦾", desc: "Manage, patch, and search custom agent skills and procedural rules", category: "Self-Improvement" },
 
-  // MCP Bridges (10 tools) + Direct REST Bridges (2 tools)
+  // MCP Bridges (10 tools) + Direct REST Bridges (4 tools)
   { id: "gitMcpBridge", name: "Git MCP Bridge", icon: "🌿", desc: "Anthropic Model Context Protocol bridge for full Git control (12 actions) · Live-Verified", category: "MCP Bridges" },
   { id: "memoryMcpBridge", name: "Memory MCP Bridge", icon: "🧠", desc: "Official Knowledge-Graph MCP server for entity-relation observation CRUD · Live-Verified", category: "MCP Bridges" },
   { id: "browserMcpBridge", name: "Browser MCP Bridge", icon: "🌐", desc: "Microsoft Playwright MCP server offering headless web testing (22 actions) · Live-Verified", category: "MCP Bridges" },
@@ -95,6 +95,8 @@ const TOOLS = [
   // Direct REST Bridges (non-MCP)
   { id: "lemonSqueezy", name: "LemonSqueezy", icon: "🍋", desc: "Manage orders, customers, subscriptions, discounts, and license keys via direct REST API (Non-MCP) · Live-Verified", category: "Development" },
   { id: "kitConvertKit", name: "Kit (ConvertKit)", icon: "📮", desc: "Email marketing: subscribers, broadcasts, sequences, and tags via Kit's V4 REST API (Non-MCP) · Live-Verified", category: "Communication" },
+  { id: "linkedinPost", name: "LinkedIn Post", icon: "💼", desc: "Publish text posts to your own LinkedIn profile via direct REST API (Non-MCP) · Live-Verified", category: "Communication" },
+  { id: "xPost", name: "X Post", icon: "✖️", desc: "Publish posts to your own X (Twitter) account via direct REST API (Non-MCP, billed per post)", category: "Communication" },
 ];
 
 const CATEGORIES = ["All", "System", "File", "Web", "Vision", "Development", "Communication", "Productivity", "Self-Improvement", "Media", "MCP Bridges"];

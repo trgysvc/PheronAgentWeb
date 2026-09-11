@@ -1,11 +1,11 @@
-# PheronAgent — Full Tool Inventory & Capability Reference (72 Tools)
-**Last updated:** 2026-08-27
-**Verification method:** Verified against `Tests/PheronAgentTests/RouterHealth/UBIDCoverageTests.swift` — `ToolUBID.allCases` currently has **72** cases, matched 1:1 against the tool registry by a live test suite (`testEveryRegisteredToolHasAToolUBIDCase`, `testEveryToolUBIDCaseHasARegisteredImplementation`, `testNoDuplicateUBIDsAmongKnownTools`). 1 tool added since 2026-08-19: `hook_manage` (124, tool-call-triggered hooks).
+# PheronAgent — Full Tool Inventory & Capability Reference (74 Tools)
+**Last updated:** 2026-09-11
+**Verification method:** Verified against `Tests/PheronAgentTests/RouterHealth/UBIDCoverageTests.swift` — `ToolUBID.allCases` currently has **74** cases, matched 1:1 against the tool registry by a live test suite (`testEveryRegisteredToolHasAToolUBIDCase`, `testEveryToolUBIDCaseHasARegisteredImplementation`, `testNoDuplicateUBIDsAmongKnownTools`). 2 tools added since 2026-08-27: `linkedin_post`, `x_post` (125-126, direct social media publishing).
 
-This document details the capabilities of ALL 72 PheronAgent tools across 3 distinct architectures:
+This document details the capabilities of ALL 74 PheronAgent tools across 3 distinct architectures:
 1. **Native/built-in** (51 tools) — written directly in Swift, calling system APIs such as AppleScript, Core Audio, WeatherKit, and Vision. `subagent_spawn` belongs to this category but is registered separately via dependency injection.
 2. **Official MCP protocol** (17 tools) — JSON-RPC 2.0, the official `initialize`/`tools/list`/`tools/call` lifecycle.
-3. **Direct REST API / custom process bridge** (4 tools) — Higgsfield, LemonSqueezy, Kit (REST), and Blender (process spawn) — none of these are MCP.
+3. **Direct REST API / custom process bridge** (6 tools) — Higgsfield, LemonSqueezy, Kit, LinkedIn, X (REST), and Blender (process spawn) — none of these are MCP.
 
 ---
 
@@ -254,8 +254,17 @@ Builds a Pages document and exports it to `.docx`. **Parameters:** `blocks` (req
 |---|---|---|---|
 | `hook_manage` | 124 | Code + tests complete (17 tests) | Create/list/enable-disable/delete hooks that fire a new task automatically whenever a specific tool call succeeds (e.g. "after every write_file, run prettier") — same CRUD shape as `automation_manage`, but triggered by a tool call instead of a time schedule |
 
+## 16. Added 2026-09-11 — Social Media Publishing (2 tools)
+
+Replaces the earlier `browser_tool`-based "learn the page visually" approach for social posting, abandoned after a two-day live investigation proved it structurally unreliable (repeated click failures, hallucinated element references, false success claims the tool itself couldn't catch). Both tools below call the platform's own official REST API directly with a single fixed parameter (`text`) — no page interpretation, no free-form surface for the model to misuse. See [LinkedIn & X Setup](../linkedin_x_setup.md).
+
+| Tool | UBID | Verification status | What it does |
+|---|---|---|---|
+| `linkedin_post` | 125 | ✅ Live-verified (2026-09-11, real post published and confirmed on the connected profile) | Publishes a text post to the connected member's own LinkedIn profile (`w_member_social`, self-serve — no partner approval). Company-page posting, messaging, and search are outside LinkedIn's self-serve API. |
+| `x_post` | 126 | ⚠️ OAuth connection live-verified (2026-09-11, real PKCE authorize + token exchange succeeded); the actual publish call is still unverified — blocked on adding a payment method, per X's own mandatory pay-per-use policy (no free tier since February 2026) | Publishes a post to the connected account's own X (Twitter) timeline. Every successful post is billed by X (~$0.015, ~$0.20 with a link). |
+
 ---
 
-## Total: 72 tools
+## Total: 74 tools
 - **51 native/built-in tools** (written directly in Swift; includes `subagent_spawn`, which is registered separately/conditionally)
-- **21 MCP/REST/bridge tools** (connecting to external services: 17 official MCP-protocol tools + 3 REST API tools [Higgsfield, LemonSqueezy, Kit] + 1 custom process bridge [Blender])
+- **23 MCP/REST/bridge tools** (connecting to external services: 17 official MCP-protocol tools + 5 REST API tools [Higgsfield, LemonSqueezy, Kit, LinkedIn, X] + 1 custom process bridge [Blender])

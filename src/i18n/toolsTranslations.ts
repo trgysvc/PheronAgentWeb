@@ -67,6 +67,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Lark MCP Köprüsü", desc: "Resmi Lark/Feishu OpenAPI MCP: mesajlaşma, sohbetler, takvim, Base, dokümanlar, görevler, wiki (27 araç) · Canlı Doğrulanmış" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "Doğrudan REST API aracılığıyla siparişleri, müşterileri, abonelikleri, indirimleri ve lisans anahtarlarını yönetir (MCP Değil) · Canlı Doğrulanmış" },
     kitConvertKit: { name: "Kit (ConvertKit)", desc: "Kit'in V4 REST API'si aracılığıyla e-posta pazarlaması: aboneler, yayınlar, diziler ve etiketler (MCP Değil) · Canlı Doğrulanmış" },
+    linkedinPost: { name: "LinkedIn Post", desc: "Doğrudan REST API aracılığıyla kendi LinkedIn profilinize metin gönderileri yayınlar (MCP Değil) · Canlı Doğrulanmış" },
+    xPost: { name: "X Post", desc: "Doğrudan REST API aracılığıyla kendi X (Twitter) hesabınıza gönderi yayınlar (MCP Değil, gönderi başına ücretli)" },
   },
   de: {
     fileManager: { name: "Dateimanager", desc: "Nativer Datei-Explorer: durchsucht große Dateien, kopiert, verschiebt und löscht Elemente sicher" },
@@ -131,6 +133,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Lark-MCP-Brücke", desc: "Offizielles Lark/Feishu-OpenAPI-MCP: Messaging, Chats, Kalender, Base, Docs, Aufgaben, Wiki (27 Tools) · Live-Verifiziert" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "Verwaltet Bestellungen, Kunden, Abonnements, Rabatte und Lizenzschlüssel über eine direkte REST-API (Nicht-MCP) · Live-Verifiziert" },
     kitConvertKit: { name: "Kit (ConvertKit)", desc: "E-Mail-Marketing: Abonnenten, Broadcasts, Sequenzen und Tags über Kits V4-REST-API (Nicht-MCP) · Live-Verifiziert" },
+    linkedinPost: { name: "LinkedIn Post", desc: "Veröffentlicht Textbeiträge auf Ihrem eigenen LinkedIn-Profil über eine direkte REST-API (Nicht-MCP) · Live-Verifiziert" },
+    xPost: { name: "X Post", desc: "Veröffentlicht Beiträge auf Ihrem eigenen X (Twitter)-Konto über eine direkte REST-API (Nicht-MCP, pro Beitrag kostenpflichtig)" },
   },
   es: {
     fileManager: { name: "Gestor de Archivos", desc: "Explorador de archivos nativo: escanea archivos grandes, copia, mueve y elimina elementos de forma segura" },
@@ -195,6 +199,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Puente MCP de Lark", desc: "MCP oficial de la OpenAPI de Lark/Feishu: mensajería, chats, calendario, Base, documentos, tareas, wiki (27 herramientas) · Verificado en vivo" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "Gestiona pedidos, clientes, suscripciones, descuentos y claves de licencia mediante API REST directa (No-MCP) · Verificado en vivo" },
     kitConvertKit: { name: "Kit (ConvertKit)", desc: "Marketing por correo: suscriptores, difusiones, secuencias y etiquetas mediante la API REST V4 de Kit (No-MCP) · Verificado en vivo" },
+    linkedinPost: { name: "LinkedIn Post", desc: "Publica publicaciones de texto en tu propio perfil de LinkedIn mediante API REST directa (No-MCP) · Verificado en vivo" },
+    xPost: { name: "X Post", desc: "Publica publicaciones en tu propia cuenta de X (Twitter) mediante API REST directa (No-MCP, facturado por publicación)" },
   },
   fr: {
     fileManager: { name: "Gestionnaire de Fichiers", desc: "Explorateur de fichiers natif : analyse les fichiers volumineux, copie, déplace et supprime les éléments en toute sécurité" },
@@ -259,6 +265,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Pont MCP Lark", desc: "MCP officiel de l'OpenAPI Lark/Feishu : messagerie, discussions, calendrier, Base, documents, tâches, wiki (27 outils) · Vérifié en direct" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "Gère les commandes, clients, abonnements, réductions et clés de licence via une API REST directe (Non-MCP) · Vérifié en direct" },
     kitConvertKit: { name: "Kit (ConvertKit)", desc: "Marketing par e-mail : abonnés, diffusions, séquences et tags via l'API REST V4 de Kit (Non-MCP) · Vérifié en direct" },
+    linkedinPost: { name: "LinkedIn Post", desc: "Publie des posts texte sur votre propre profil LinkedIn via une API REST directe (Non-MCP) · Vérifié en direct" },
+    xPost: { name: "X Post", desc: "Publie des posts sur votre propre compte X (Twitter) via une API REST directe (Non-MCP, facturé par publication)" },
   },
   pt: {
     fileManager: { name: "Gerenciador de Arquivos", desc: "Explorador de arquivos nativo: verifica arquivos grandes, copia, move e exclui itens com segurança" },
@@ -323,6 +331,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Ponte MCP do Lark", desc: "MCP oficial da OpenAPI Lark/Feishu: mensagens, chats, calendário, Base, documentos, tarefas, wiki (27 ferramentas) · Verificado ao vivo" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "Gerencia pedidos, clientes, assinaturas, descontos e chaves de licença via API REST direta (Não-MCP) · Verificado ao vivo" },
     kitConvertKit: { name: "Kit (ConvertKit)", desc: "Marketing por e-mail: assinantes, transmissões, sequências e tags via API REST V4 do Kit (Não-MCP) · Verificado ao vivo" },
+    linkedinPost: { name: "LinkedIn Post", desc: "Publica posts de texto no seu próprio perfil do LinkedIn via API REST direta (Não-MCP) · Verificado ao vivo" },
+    xPost: { name: "X Post", desc: "Publica posts na sua própria conta X (Twitter) via API REST direta (Não-MCP, cobrado por publicação)" },
   },
   ja: {
     fileManager: { name: "ファイルマネージャー", desc: "ネイティブファイルエクスプローラー：大容量ファイルのスキャン、安全なコピー・移動・削除" },
@@ -387,6 +397,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Lark MCPブリッジ", desc: "公式Lark/Feishu OpenAPI MCP：メッセージング、チャット、カレンダー、Base、ドキュメント、タスク、wiki（27ツール）・ライブ検証済み" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "直接REST API経由で注文、顧客、サブスクリプション、割引、ライセンスキーを管理（非MCP）・ライブ検証済み" },
     kitConvertKit: { name: "Kit（ConvertKit）", desc: "Kit V4 REST API経由のメールマーケティング：購読者、配信、シーケンス、タグ（非MCP）・ライブ検証済み" },
+    linkedinPost: { name: "LinkedIn Post", desc: "直接REST API経由で自分のLinkedInプロフィールにテキスト投稿を公開（非MCP）・ライブ検証済み" },
+    xPost: { name: "X Post", desc: "直接REST API経由で自分のX（Twitter）アカウントに投稿を公開（非MCP、投稿ごとに課金）" },
   },
   ko: {
     fileManager: { name: "파일 관리자", desc: "네이티브 파일 탐색기: 대용량 파일 스캔, 안전한 복사·이동·삭제" },
@@ -451,6 +463,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Lark MCP 브리지", desc: "공식 Lark/Feishu OpenAPI MCP: 메시징, 채팅, 캘린더, Base, 문서, 작업, 위키(27개 도구) · 라이브 검증됨" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "직접 REST API를 통해 주문, 고객, 구독, 할인, 라이선스 키 관리(비-MCP) · 라이브 검증됨" },
     kitConvertKit: { name: "Kit(ConvertKit)", desc: "Kit의 V4 REST API를 통한 이메일 마케팅: 구독자, 브로드캐스트, 시퀀스, 태그(비-MCP) · 라이브 검증됨" },
+    linkedinPost: { name: "LinkedIn Post", desc: "직접 REST API를 통해 자신의 LinkedIn 프로필에 텍스트 게시물을 게시(비-MCP) · 라이브 검증됨" },
+    xPost: { name: "X Post", desc: "직접 REST API를 통해 자신의 X(Twitter) 계정에 게시물을 게시(비-MCP, 게시물당 요금 부과)" },
   },
   "zh-CN": {
     fileManager: { name: "文件管理器", desc: "原生文件浏览器：扫描大文件，安全地复制、移动和删除项目" },
@@ -515,6 +529,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Lark MCP 桥接", desc: "官方飞书/Lark OpenAPI MCP：消息、聊天、日历、多维表格、文档、任务、知识库（27 个工具）· 已实测验证" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "通过直接 REST API 管理订单、客户、订阅、折扣和许可证密钥（非 MCP）· 已实测验证" },
     kitConvertKit: { name: "Kit（ConvertKit）", desc: "通过 Kit 的 V4 REST API 进行邮件营销：订阅者、群发、序列和标签（非 MCP）· 已实测验证" },
+    linkedinPost: { name: "LinkedIn Post", desc: "通过直接 REST API 在您自己的 LinkedIn 个人资料上发布文字帖子（非 MCP）· 已实测验证" },
+    xPost: { name: "X Post", desc: "通过直接 REST API 在您自己的 X（Twitter）账户上发布帖子（非 MCP，按帖子计费）" },
   },
   "zh-TW": {
     fileManager: { name: "檔案管理員", desc: "原生檔案總管：掃描大型檔案，安全地複製、移動與刪除項目" },
@@ -579,6 +595,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Lark MCP 橋接", desc: "官方 Lark/Feishu OpenAPI MCP：訊息、聊天、行事曆、Base、文件、任務、知識庫（27 項工具）· 已即時驗證" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "透過直接 REST API 管理訂單、客戶、訂閱、折扣與授權金鑰（非 MCP）· 已即時驗證" },
     kitConvertKit: { name: "Kit（ConvertKit）", desc: "透過 Kit 的 V4 REST API 進行電子郵件行銷：訂閱者、群發、序列與標籤（非 MCP）· 已即時驗證" },
+    linkedinPost: { name: "LinkedIn Post", desc: "透過直接 REST API 在您自己的 LinkedIn 個人檔案上發布文字貼文（非 MCP）· 已即時驗證" },
+    xPost: { name: "X Post", desc: "透過直接 REST API 在您自己的 X（Twitter）帳戶上發布貼文（非 MCP，按貼文計費）" },
   },
   hi: {
     fileManager: { name: "फ़ाइल प्रबंधक", desc: "नेटिव फ़ाइल एक्सप्लोरर: बड़ी फ़ाइलों को स्कैन करता है, आइटम को सुरक्षित रूप से कॉपी, स्थानांतरित और हटाता है" },
@@ -643,6 +661,8 @@ const toolsTranslations: Record<string, Record<string, ToolTranslation>> = {
     larkMcpBridge: { name: "Lark MCP ब्रिज", desc: "आधिकारिक Lark/Feishu OpenAPI MCP: मैसेजिंग, चैट, कैलेंडर, Base, दस्तावेज़, कार्य, विकी (27 टूल) · लाइव-सत्यापित" },
     lemonSqueezy: { name: "LemonSqueezy", desc: "डायरेक्ट REST API के माध्यम से ऑर्डर, ग्राहक, सदस्यता, छूट और लाइसेंस कुंजी प्रबंधित करता है (गैर-MCP) · लाइव-सत्यापित" },
     kitConvertKit: { name: "Kit (ConvertKit)", desc: "Kit के V4 REST API के माध्यम से ईमेल मार्केटिंग: सब्सक्राइबर, ब्रॉडकास्ट, सीक्वेंस और टैग (गैर-MCP) · लाइव-सत्यापित" },
+    linkedinPost: { name: "LinkedIn Post", desc: "डायरेक्ट REST API के माध्यम से अपनी LinkedIn प्रोफ़ाइल पर टेक्स्ट पोस्ट प्रकाशित करता है (गैर-MCP) · लाइव-सत्यापित" },
+    xPost: { name: "X Post", desc: "डायरेक्ट REST API के माध्यम से अपने X (Twitter) खाते पर पोस्ट प्रकाशित करता है (गैर-MCP, प्रति पोस्ट शुल्क)" },
   },
 };
 
