@@ -1,11 +1,11 @@
-# PheronAgent — Full Tool Inventory & Capability Reference (74 Tools)
-**Last updated:** 2026-09-11
-**Verification method:** Verified against `Tests/PheronAgentTests/RouterHealth/UBIDCoverageTests.swift` — `ToolUBID.allCases` currently has **74** cases, matched 1:1 against the tool registry by a live test suite (`testEveryRegisteredToolHasAToolUBIDCase`, `testEveryToolUBIDCaseHasARegisteredImplementation`, `testNoDuplicateUBIDsAmongKnownTools`). 2 tools added since 2026-08-27: `linkedin_post`, `x_post` (125-126, direct social media publishing).
+# PheronAgent — Full Tool Inventory & Capability Reference (95 Tools)
+**Last updated:** 2026-09-16
+**Verification method:** Verified against `Tests/PheronAgentTests/RouterHealth/UBIDCoverageTests.swift` — `ToolUBID.allCases` currently has **95** cases, matched 1:1 against the tool registry by a live test suite (`testEveryRegisteredToolHasAToolUBIDCase`, `testEveryToolUBIDCaseHasARegisteredImplementation`, `testNoDuplicateUBIDsAmongKnownTools`). 21 tools added since 2026-09-11: `chrome_devtools_tool` (127), and a full social-media management expansion — LinkedIn/X/Instagram/TikTok/Facebook posting, deleting, cross-posting, insights, comments, engagement, and scheduling (128-147).
 
-This document details the capabilities of ALL 74 PheronAgent tools across 3 distinct architectures:
+This document details the capabilities of ALL 95 PheronAgent tools across 3 distinct architectures:
 1. **Native/built-in** (51 tools) — written directly in Swift, calling system APIs such as AppleScript, Core Audio, WeatherKit, and Vision. `subagent_spawn` belongs to this category but is registered separately via dependency injection.
-2. **Official MCP protocol** (17 tools) — JSON-RPC 2.0, the official `initialize`/`tools/list`/`tools/call` lifecycle.
-3. **Direct REST API / custom process bridge** (6 tools) — Higgsfield, LemonSqueezy, Kit, LinkedIn, X (REST), and Blender (process spawn) — none of these are MCP.
+2. **Official MCP protocol** (18 tools) — JSON-RPC 2.0, the official `initialize`/`tools/list`/`tools/call` lifecycle.
+3. **Direct REST API / custom process bridge** (26 tools) — Higgsfield, LemonSqueezy, Kit, Blender (process spawn), and the full LinkedIn/X/Instagram/TikTok/Facebook social-media tool set — none of these are MCP.
 
 ---
 
@@ -263,8 +263,36 @@ Replaces the earlier `browser_tool`-based "learn the page visually" approach for
 | `linkedin_post` | 125 | ✅ Live-verified (2026-09-11, real post published and confirmed on the connected profile) | Publishes a text post to the connected member's own LinkedIn profile (`w_member_social`, self-serve — no partner approval). Company-page posting, messaging, and search are outside LinkedIn's self-serve API. |
 | `x_post` | 126 | ⚠️ OAuth connection live-verified (2026-09-11, real PKCE authorize + token exchange succeeded); the actual publish call is still unverified — blocked on adding a payment method, per X's own mandatory pay-per-use policy (no free tier since February 2026) | Publishes a post to the connected account's own X (Twitter) timeline. Every successful post is billed by X (~$0.015, ~$0.20 with a link). |
 
+## 17. Added 2026-09-16 — Chrome DevTools Bridge + Full Social Media Expansion (21 tools)
+
+A full pass through every integrated platform's own official API documentation (Meta Graph API, X API v2, TikTok Content Posting/Display API, LinkedIn Posts API) closed the coverage gap left after the initial LinkedIn/X launch — publishing, deleting, cross-posting, insights, comments, engagement, and scheduling across all five connected platforms. Every write action that publishes, deletes, or otherwise makes a real, visible, irreversible change requires an explicit user confirmation before it executes (`ToolPrivacyGate`); purely read-only actions (insights, list, timeline) never require confirmation.
+
+| Tool | UBID | Verification status | What it does |
+|---|---|---|---|
+| `chrome_devtools_tool` | 127 | ✅ Live-verified | Drives/inspects a real Chrome browser via the Chrome DevTools Protocol — performance traces, network requests, console messages, memory snapshots (distinct from the Playwright-based `browser_tool`) |
+| `instagram_post` | 128 | ✅ Live-verified (real photo/carousel published) | Publishes a photo or photo-carousel to the connected Instagram Business account |
+| `tiktok_post` | 129 | ✅ Live-verified (Sandbox; Production gated on TikTok's own App Review demo-video requirement) | Publishes a video or photo carousel to TikTok, direct or as an inbox draft |
+| `facebook_post` | 130 | ✅ Live-verified (real post published to a connected Page) | Publishes a text/link/photo post to a connected Facebook Page |
+| `linkedin_delete_post` | 131 | Code + tests complete | Deletes a previously published LinkedIn post |
+| `x_delete_post` | 132 | Code + tests complete | Deletes a previously published X post |
+| `facebook_delete_post` | 133 | Code + tests complete | Deletes a previously published Facebook Page post |
+| `social_cross_post` | 134 | Code + tests complete | Publishes the same text to several platforms (LinkedIn/X/Facebook/Instagram) in one call |
+| `facebook_page_insights` | 135 | ✅ Live-verified (real Page data returned) | Read-only Page/post-level Facebook Insights — never gated |
+| `instagram_insights` | 136 | ✅ Live-verified (real account data returned) | Read-only Instagram account/media Insights — never gated |
+| `facebook_comments` | 137 | Code + tests complete | List/reply/delete comments on the connected Page's own posts (list is ungated; reply/delete require confirmation) |
+| `instagram_comments` | 138 | Code + tests complete | List/reply/delete/hide/unhide comments on the connected account's own posts (list is ungated; the rest require confirmation) |
+| `social_schedule` | 139 | Code + tests complete | Schedules a post to publish automatically at a future time, or lists/cancels scheduled posts (list/cancel ungated; create requires confirmation) |
+| `linkedin_comments` | 140 | Code complete; blocked on LinkedIn's separate Community Management API Partner Program approval (weeks-to-months, distinct from the self-serve `w_member_social` product `linkedin_post` uses) | List/reply/delete/like/unlike comments on the connected profile's own LinkedIn posts |
+| `x_engagement` | 141 | Code + tests complete | Like/unlike/retweet/reply/bookmark/follow/mute/block on X, plus read-only timeline/mentions/lists (reads ungated) |
+| `facebook_engagement` | 142 | Code + tests complete | Like/unlike a post on the connected Facebook Page |
+| `tiktok_insights` | 143 | ✅ Live-verified (real creator/video data returned) | Read-only TikTok video metrics, video list, user/creator info, post status, and public oEmbed — never gated |
+| `x_lists` | 144 | Code + tests complete | Create/update/delete/manage the connected account's own X Lists (get/owned_lists/list_tweets are ungated reads) |
+| `x_direct_message` | 145 | Code + tests complete | Send or read X Direct Messages (list is ungated; send requires confirmation, same discipline as email) |
+| `linkedin_update_post` | 146 | Code + tests complete | Edits the text/call-to-action of an already-published LinkedIn post |
+| `facebook_page_manage` | 147 | Code + tests complete | Updates a connected Facebook Page's profile fields, or creates/manages photo albums |
+
 ---
 
-## Total: 74 tools
+## Total: 95 tools
 - **51 native/built-in tools** (written directly in Swift; includes `subagent_spawn`, which is registered separately/conditionally)
-- **23 MCP/REST/bridge tools** (connecting to external services: 17 official MCP-protocol tools + 5 REST API tools [Higgsfield, LemonSqueezy, Kit, LinkedIn, X] + 1 custom process bridge [Blender])
+- **44 MCP/REST/bridge tools** (connecting to external services: 18 official MCP-protocol tools + 25 REST API tools [Higgsfield, LemonSqueezy, Kit, and the full LinkedIn/X/Instagram/TikTok/Facebook social-media set] + 1 custom process bridge [Blender])

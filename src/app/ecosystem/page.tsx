@@ -10,7 +10,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { LANGUAGES } from "../../i18n";
 import toolsTranslations from "../../i18n/toolsTranslations";
 
-// 74 integrated native tools categorized and described
+// 95 integrated native tools categorized and described
 const TOOLS = [
   // File (3 tools)
   { id: "fileManager", name: "File Manager", icon: "📁", desc: "Native file explorer: scan large files, copy, move, and delete items securely", category: "File" },
@@ -63,7 +63,7 @@ const TOOLS = [
   { id: "higgsfieldVideo", name: "Higgsfield Video", icon: "🎥", desc: "Generate generative AI video and motion dynamics via direct Higgsfield REST API (Non-MCP)", category: "Development" },
   { id: "subagentSpawn", name: "Subagent Spawn", icon: "👥", desc: "Delegate recursive sub-tasks to child orchestrator runtimes", category: "Development" },
 
-  // Productivity (11 tools)
+  // Productivity (13 tools)
   { id: "contacts", name: "Contacts", icon: "📇", desc: "Query and retrieve contact details from the local Contacts database", category: "Productivity" },
   { id: "calendar", name: "Calendar", icon: "📅", desc: "Create, list, and manage local calendar events via EventKit", category: "Productivity" },
   { id: "calculator", name: "Calculator", icon: "🧮", desc: "High-precision math evaluations with safe expression parsing", category: "Productivity" },
@@ -75,15 +75,19 @@ const TOOLS = [
   { id: "excelNumbers", name: "Excel (Numbers)", icon: "📊", desc: "Build structured spreadsheets and export genuine .xlsx files via Apple Numbers", category: "Productivity" },
   { id: "powerpointKeynote", name: "PowerPoint (Keynote)", icon: "📑", desc: "Build slide presentations and export genuine .pptx files via Apple Keynote", category: "Productivity" },
   { id: "wordPages", name: "Word (Pages)", icon: "📄", desc: "Build documents and export genuine .docx files via Apple Pages", category: "Productivity" },
+  { id: "automationManage", name: "Automation Manage", icon: "⚙️", desc: "Create, list, enable/disable, or delete time-based automations from natural language", category: "Productivity" },
+  { id: "hookManage", name: "Hook Manage", icon: "🪝", desc: "Create, list, enable/disable, or delete hooks that fire a new task automatically whenever a specific tool call succeeds", category: "Productivity" },
 
-  // Self-Improvement (2 tools)
+  // Self-Improvement (3 tools)
   { id: "memoryVault", name: "Memory Vault", icon: "🧠", desc: "Access local long-term experiential memory for past task solutions", category: "Self-Improvement" },
   { id: "skillPatch", name: "Skill Patch", icon: "🦾", desc: "Manage, patch, and search custom agent skills and procedural rules", category: "Self-Improvement" },
+  { id: "skillCatalog", name: "Skill Catalog", icon: "📚", desc: "List, inspect, and reactivate learned skills stored in the Skill Vault", category: "Self-Improvement" },
 
-  // MCP Bridges (10 tools) + Direct REST Bridges (4 tools)
+  // MCP Bridges (18 tools) + Direct REST Bridges (24 tools)
   { id: "gitMcpBridge", name: "Git MCP Bridge", icon: "🌿", desc: "Anthropic Model Context Protocol bridge for full Git control (12 actions) · Live-Verified", category: "MCP Bridges" },
   { id: "memoryMcpBridge", name: "Memory MCP Bridge", icon: "🧠", desc: "Official Knowledge-Graph MCP server for entity-relation observation CRUD · Live-Verified", category: "MCP Bridges" },
   { id: "browserMcpBridge", name: "Browser MCP Bridge", icon: "🌐", desc: "Microsoft Playwright MCP server offering headless web testing (22 actions) · Live-Verified", category: "MCP Bridges" },
+  { id: "chromeDevToolsBridge", name: "Chrome DevTools Bridge", icon: "🧰", desc: "Drive/inspect a real Chrome browser via the DevTools Protocol: performance traces, network requests, console messages, memory snapshots · Live-Verified", category: "MCP Bridges" },
   { id: "perplexityMcpBridge", name: "Perplexity MCP Bridge", icon: "🔍", desc: "Official Perplexity search engine integration via standard MCP model · Live-Verified", category: "MCP Bridges" },
   { id: "stripeMcpBridge", name: "Stripe MCP Bridge", icon: "💳", desc: "Manage payments, customers, subscriptions, and refunds via Stripe's MCP · Live-Verified", category: "MCP Bridges" },
   { id: "githubMcpBridge", name: "GitHub MCP Bridge", icon: "🐙", desc: "Comprehensive GitHub API MCP server: issues, PRs, actions, and projects · Live-Verified", category: "MCP Bridges" },
@@ -91,12 +95,39 @@ const TOOLS = [
   { id: "notionMcpBridge", name: "Notion MCP Bridge", icon: "📓", desc: "Official Notion workspace integration: pages, databases, and comments (OAuth Integration)", category: "MCP Bridges" },
   { id: "unrealEngineMcpBridge", name: "Unreal Engine MCP Bridge", icon: "🎮", desc: "Control actors, material instances, and attributes inside Unreal Engine 5.8+ (Experimental, Editor-embedded)", category: "MCP Bridges" },
   { id: "larkMcpBridge", name: "Lark MCP Bridge", icon: "🐦", desc: "Official Lark/Feishu OpenAPI MCP: messaging, chats, calendar, Base, docs, tasks, wiki (27 tools) · Live-Verified", category: "MCP Bridges" },
+  { id: "linearMcpBridge", name: "Linear MCP Bridge", icon: "📐", desc: "Linear issue, project, and cycle read/write via official MCP · Live-Verified", category: "MCP Bridges" },
+  { id: "jiraMcpBridge", name: "Jira MCP Bridge", icon: "🎫", desc: "Jira, Confluence, Bitbucket, and Compass issue/project read-write via Atlassian's official MCP · Live-Verified", category: "MCP Bridges" },
+  { id: "slackMcpBridge", name: "Slack MCP Bridge", icon: "💬", desc: "Read and send Slack messages, search channels and history via official MCP · Live-Verified", category: "MCP Bridges" },
+  { id: "figmaMcpBridge", name: "Figma MCP Bridge", icon: "🎨", desc: "Read Figma file and design data via the official Dev Mode MCP server", category: "MCP Bridges" },
+  { id: "sentryMcpBridge", name: "Sentry MCP Bridge", icon: "🐛", desc: "Read Sentry issue, error, and project data for debugging via official MCP", category: "MCP Bridges" },
+  { id: "postgresMcpBridge", name: "Postgres MCP Bridge", icon: "🐘", desc: "Read-only SQL queries against PostgreSQL databases (restricted mode, no writes) · Live-Verified", category: "MCP Bridges" },
+  { id: "huggingfaceMcpBridge", name: "Hugging Face MCP Bridge", icon: "🤗", desc: "Search Hugging Face Hub models, datasets, Spaces, papers, and docs via official MCP · Live-Verified", category: "MCP Bridges" },
 
   // Direct REST Bridges (non-MCP)
   { id: "lemonSqueezy", name: "LemonSqueezy", icon: "🍋", desc: "Manage orders, customers, subscriptions, discounts, and license keys via direct REST API (Non-MCP) · Live-Verified", category: "Development" },
   { id: "kitConvertKit", name: "Kit (ConvertKit)", icon: "📮", desc: "Email marketing: subscribers, broadcasts, sequences, and tags via Kit's V4 REST API (Non-MCP) · Live-Verified", category: "Communication" },
   { id: "linkedinPost", name: "LinkedIn Post", icon: "💼", desc: "Publish text posts to your own LinkedIn profile via direct REST API (Non-MCP) · Live-Verified", category: "Communication" },
+  { id: "linkedinUpdatePost", name: "LinkedIn Update Post", icon: "✏️", desc: "Edit the text or call-to-action button of an already-published LinkedIn post", category: "Communication" },
+  { id: "linkedinDeletePost", name: "LinkedIn Delete Post", icon: "🗑️", desc: "Delete a previously published LinkedIn post", category: "Communication" },
+  { id: "linkedinComments", name: "LinkedIn Comments", icon: "💬", desc: "List, reply to, delete, like, or unlike comments on your own LinkedIn posts (blocked on LinkedIn's separate Partner Program approval)", category: "Communication" },
   { id: "xPost", name: "X Post", icon: "✖️", desc: "Publish posts to your own X (Twitter) account via direct REST API (Non-MCP, billed per post)", category: "Communication" },
+  { id: "xDeletePost", name: "X Delete Post", icon: "🗑️", desc: "Delete a previously published post on X (Twitter)", category: "Communication" },
+  { id: "xEngagement", name: "X Engagement", icon: "❤️", desc: "Like, retweet, reply, bookmark, follow, mute, or block on X, plus read your own timeline, mentions, and lists", category: "Communication" },
+  { id: "xLists", name: "X Lists", icon: "📋", desc: "Create, update, and manage your own X Lists, or read your existing ones", category: "Communication" },
+  { id: "xDirectMessage", name: "X Direct Message", icon: "✉️", desc: "Send or read Direct Messages on your own X account", category: "Communication" },
+  { id: "instagramPost", name: "Instagram Post", icon: "📷", desc: "Publish a photo or photo-carousel to your connected Instagram Business account · Live-Verified", category: "Communication" },
+  { id: "instagramComments", name: "Instagram Comments", icon: "💬", desc: "List, reply to, delete, hide, or unhide comments on your own Instagram posts", category: "Communication" },
+  { id: "instagramInsights", name: "Instagram Insights", icon: "📈", desc: "Read your Instagram account profile info, recent media, and engagement Insights · Live-Verified", category: "Communication" },
+  { id: "tiktokPost", name: "TikTok Post", icon: "🎬", desc: "Publish a video or photo carousel to TikTok, direct or as an inbox draft · Live-Verified", category: "Communication" },
+  { id: "tiktokInsights", name: "TikTok Insights", icon: "📊", desc: "Read TikTok video metrics, video list, creator/user info, and post status · Live-Verified", category: "Communication" },
+  { id: "facebookPost", name: "Facebook Post", icon: "📘", desc: "Publish a text, link, or photo post to a connected Facebook Page · Live-Verified", category: "Communication" },
+  { id: "facebookDeletePost", name: "Facebook Delete Post", icon: "🗑️", desc: "Delete a previously published post on your Facebook Page", category: "Communication" },
+  { id: "facebookComments", name: "Facebook Comments", icon: "💬", desc: "List, reply to, or delete comments on your own Facebook Page's posts", category: "Communication" },
+  { id: "facebookEngagement", name: "Facebook Engagement", icon: "👍", desc: "Like or unlike a post on your own Facebook Page", category: "Communication" },
+  { id: "facebookPageInsights", name: "Facebook Page Insights", icon: "📈", desc: "Read Page-level and post-level Facebook Insights, plus list posts, photos, and videos · Live-Verified", category: "Communication" },
+  { id: "facebookPageManage", name: "Facebook Page Manage", icon: "🏢", desc: "Update your Facebook Page's profile fields, or create and manage photo albums", category: "Communication" },
+  { id: "socialCrossPost", name: "Social Cross-Post", icon: "🔁", desc: "Publish the same text to several platforms — LinkedIn, X, Facebook, Instagram — in a single call", category: "Communication" },
+  { id: "socialSchedule", name: "Social Schedule", icon: "🗓️", desc: "Schedule a social post to publish automatically at a future time, or list/cancel scheduled posts", category: "Communication" },
 ];
 
 const CATEGORIES = ["All", "System", "File", "Web", "Vision", "Development", "Communication", "Productivity", "Self-Improvement", "Media", "MCP Bridges"];
@@ -149,7 +180,7 @@ export default function Ecosystem() {
           <span className={styles.sectionTag}>{t("ecosystem.title", "Integrated Native Tools")}</span>
           <h2 className={styles.sectionTitle}>{t("ecosystem.title", "Native Tool Ecosystem")}</h2>
           <p className={styles.sectionSubtitle}>
-            {t("ecosystem.subtitle", "72 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.")}
+            {t("ecosystem.subtitle", "95 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.")}
           </p>
         </div>
 
