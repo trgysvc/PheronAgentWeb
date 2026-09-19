@@ -10,7 +10,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { LANGUAGES } from "../../i18n";
 import toolsTranslations from "../../i18n/toolsTranslations";
 
-// 95 integrated native tools categorized and described
+// 96 integrated native tools categorized and described
 const TOOLS = [
   // File (3 tools)
   { id: "fileManager", name: "File Manager", icon: "📁", desc: "Native file explorer: scan large files, copy, move, and delete items securely", category: "File" },
@@ -32,7 +32,7 @@ const TOOLS = [
   { id: "accessibilityAx", name: "Accessibility AX", icon: "♿", desc: "Interact directly with application UI controls via Accessibility APIs", category: "System" },
 
   // Web (4 tools)
-  { id: "webSearch", name: "Web Search", icon: "🔍", desc: "Live web searching using Brave and Google Search APIs for real-time facts", category: "Web" },
+  { id: "webSearch", name: "Web Search", icon: "🔍", desc: "5-tier web search cascade (Serper, Brave, DuckDuckGo, Google, Safari) with automatic fallback", category: "Web" },
   { id: "webFetch", name: "Web Fetch", icon: "📥", desc: "HTTP document retriever formatting raw web text into clean Markdown", category: "Web" },
   { id: "safariAutomation", name: "Safari Automation", icon: "🧭", desc: "Control active Safari sessions: search, scrape, read, and close tabs", category: "Web" },
   { id: "browserNative", name: "Browser Native", icon: "🌐", desc: "High-fidelity interactive Safari controller for filling forms and navigating", category: "Web" },
@@ -59,6 +59,7 @@ const TOOLS = [
   { id: "gitAction", name: "Git Action", icon: "🌿", desc: "Basic local Git operations: commit, status, diff, log, and revert", category: "Development" },
   { id: "patchFile", name: "Patch File", icon: "🩹", desc: "Line-by-line diff match and semantic file patching without external dependencies", category: "Development" },
   { id: "xcodeEngine", name: "Xcode Engine", icon: "🛠️", desc: "Automated Xcode project building, error tracking, and simulator control", category: "Development" },
+  { id: "xcodeMcpTool", name: "Xcode MCP Bridge", icon: "📱", desc: "Bridges Apple's own official, Xcode-embedded MCP server: build/test/read/write a project, plus real Simulator device interaction (tap, type, swipe, hardware buttons)", category: "Development" },
   { id: "blender3d", name: "Blender 3D", icon: "🧊", desc: "Automate Blender 3D rendering and meshes via custom background Python process bridge (Non-MCP)", category: "Development" },
   { id: "higgsfieldVideo", name: "Higgsfield Video", icon: "🎥", desc: "Generate generative AI video and motion dynamics via direct Higgsfield REST API (Non-MCP)", category: "Development" },
   { id: "subagentSpawn", name: "Subagent Spawn", icon: "👥", desc: "Delegate recursive sub-tasks to child orchestrator runtimes", category: "Development" },
@@ -180,7 +181,7 @@ export default function Ecosystem() {
           <span className={styles.sectionTag}>{t("ecosystem.title", "Integrated Native Tools")}</span>
           <h2 className={styles.sectionTitle}>{t("ecosystem.title", "Native Tool Ecosystem")}</h2>
           <p className={styles.sectionSubtitle}>
-            {t("ecosystem.subtitle", "95 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.")}
+            {t("ecosystem.subtitle", "96 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.")}
           </p>
         </div>
 

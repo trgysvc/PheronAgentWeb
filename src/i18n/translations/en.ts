@@ -20,7 +20,7 @@ const en: Record<string, string> = {
   // Hero Section
   "hero.badge": "v1.0.6 NOW AVAILABLE · SWIFT 6 & MLX ENGINE",
   "hero.title": "Native Autonomous AI Agent for macOS",
-  "hero.subtitle": "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 95 integrated native tools. Privacy by design, autonomy by nature.",
+  "hero.subtitle": "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 96 integrated native tools. Privacy by design, autonomy by nature.",
   "hero.ctaDownload": "Download for macOS",
   "hero.ctaDocs": "Explore Documentation",
   "hero.hardwareNotice": "Requires macOS 26.0+ (Tahoe or later) and Apple Silicon (M1/M2/M3/M4)",
@@ -103,7 +103,7 @@ const en: Record<string, string> = {
   "pricing.localMlx": "Complete local MLX 4-bit inference",
   "pricing.multiAgent": "Multi-Agent Swarm execution",
   "pricing.aneRouting": "ANE Intent Classifier routing",
-  "pricing.allTools": "All 95 integrated native tools",
+  "pricing.allTools": "All 96 integrated native tools",
 
   // Download Page
   "download.pageTitle": "Download macOS",
@@ -115,8 +115,8 @@ const en: Record<string, string> = {
 
   // Ecosystem Page
   "ecosystem.title": "Native Tool Ecosystem",
-  "ecosystem.subtitle": "95 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.",
-  "ecosystem.searchPlaceholder": "Search 95 native tools...",
+  "ecosystem.subtitle": "96 integrated native tools across file management, system automation, web, communication, vision, and developer workflows.",
+  "ecosystem.searchPlaceholder": "Search 96 native tools...",
   "ecosystem.catAll": "All",
   "ecosystem.catSystem": "System",
   "ecosystem.catFile": "File",

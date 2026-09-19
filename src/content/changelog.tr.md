@@ -4,6 +4,30 @@ Bu projedeki tüm önemli değişiklikler bu dosyada belgelenir.
 
 Format [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) esas alınmıştır ve bu proje [Semantic Versioning](https://semver.org/spec/v2.0.0.html) sürümlemesine uyar.
 
+## [1.0.7] - 2026-09-17
+
+### Eklenenler
+- **TikTok Entegrasyonu** — Kendi-uygulamanı-bağla yöntemiyle bağlantı (Ayarlar > Bağlantılar > TikTok): bir video veya fotoğraf karuseli doğrudan yayınlayın, veya gözden geçirmek üzere kendi TikTok gelen kutunuza taslak olarak gönderin. Ayrıca kendi profil/içerik üretici bilgilerinizi, video listenizi ve gönderi işleme durumunu okur.
+- **X (Twitter) — Yer İmleri, Takip, Sessize Alma, Engelleme, Listeler ve Direkt Mesajlar** — Paylaşma/silme/beğenme/retweet'in ötesinde artık yer imine ekleme, takip etme/bırakma, sessize alma/engelleme, yanıt gizleme, alıntı gönderi, anket, kendi Listelerinizi yönetme ve Direkt Mesaj gönderme/okuma da destekleniyor.
+- **LinkedIn — Yeniden Paylaşım, Makale, Çoklu Görsel, Anket ve Belge** — Başka birinin gönderisini yeniden paylaşın, başlık/açıklamalı bir bağlantı paylaşın, tek seferde 20 görsele kadar gönderi atın, anket oluşturun, belge (PDF/PPT/DOC) ekleyin, harekete geçirici mesaj butonu ekleyin ve yayınlanmış bir gönderinin metnini düzenleyin.
+- **Facebook — Sayfa Yönetimi ve Fotoğraf Albümleri** — Sayfanızın profil bilgilerini güncelleyin, fotoğraf albümü oluşturup yükleyin, ayrıca gönderi bazlı istatistikler ve tam tepki dağılımı.
+- **Instagram — Yorum Moderasyonu** — Kendi gönderinizdeki bir yorumu silmeden gizleyin/gösterin, ayrıca kendi profilinizi ve son medyanızı okuma.
+- **Konuşma Arşivi** (Ayarlar > Veri ve Gizlilik) — "X ile ne konuşmuştuk" gibi soruları yanıtlamak için geçmiş iMessage/SMS, WhatsApp ve Mail konuşmalarınızda cihaz üzerinde, opt-in arama. Hiçbir şey buluta gönderilmez; ham mesaj metni asla saklanmaz, sadece konu-bazlı özetler ve kişi profilleri (şifrelenmiş olarak) tutulur.
+- **Jira, Slack, Notion ve Zapier — artık tamamen canlı test edildi ve çalışıyor**, her biri öncekinden daha basit veya daha güvenilir bir bağlantı akışıyla.
+- **Hooks** — Belirli bir araç çağrısı başarılı olduğunda otomatik olarak bir takip görevi çalıştırın (ör. "her dosya kaydından sonra prettier çalıştır"), mevcut zaman/dosya-değişikliği otomasyonlarının yanında.
+
+### Düzeltilenler
+- **Hatırlatıcı Bitiş Tarihleri** — Bitiş tarihi/saati ile oluşturulan bir hatırlatıcı hiçbir tarih olmadan sessizce kaydedilebiliyordu; düzeltildi.
+- **Instagram ve Facebook Token Süresi Dolması** — İlk giriş adımından gelen kısa ömürlü token gerçek ~60 günlük olanla hiç değiştirilmediği için her iki bağlantı da bağlandıktan yaklaşık bir saat sonra sessizce çalışmayı durdurabiliyordu; düzeltildi — düzeltmeyi almak için bir kez yeniden bağlanın.
+- **TikTok OAuth Güvenilirliği** — Connect via OAuth sırasında genel bir "scope"/"malformed request" hatasının üç ayrı nedeni, hepsi düzeltildi (kopyala-yapıştırdan kalan görünmez karakterler, bir token-değişim biçimlendirme uyuşmazlığı ve bir PKCE kodlama uyuşmazlığı).
+- **Sosyal Medya İstatistik Yanlış Yönlendirmesi** — Bir Facebook veya Instagram Sayfasının "performans" istatistiklerini sormak, gerçek istatistik aracı yerine Mac'inizin kendi CPU/RAM telemetrisiyle yanıtlanabiliyordu; düzeltildi.
+- **X Araç Ayrımı** — Beş X aracı (gönderi, silme, etkileşim, listeler, direkt mesajlar) tek bir istekte birbirine karışabiliyordu; artık her istek gerçekten eşleşen tek araca çözümleniyor.
+- **Konuşma ve Beceri Hatırlama** — "X ile ne konuştuk" veya "kayıtlı becerilerimi listele" istekleri, gerçek verileriniz yerine modelin kendi hayal gücünden yanıtlanabiliyordu; gerçek bir arama üzerinden yönlendirilecek şekilde düzeltildi.
+- **Bağlantı Kullanılabilirlik Titremesi** — Bağlı bir entegrasyon, aynı oturumda daha önce çalıştığı doğrulanmış olsa bile, yoğun sistem yükü altında konuşma ortasında kısa süreliğine kullanılabilir araçlardan kaybolabiliyordu; doğrulanmış-çalışıyor bir sonuç artık çok daha uzun süre güveniliyor.
+- **Web Arama ve Alıntı Güvenilirliği** — 1.0.6'dakilerin üzerine, düşürülen arama sonuçları ve yanlış-pozitif uydurma-kaynak tespitleri dahil ek bir araştırma/alıntı düzeltme paketi.
+- **Entegrasyon Yönlendirme Tutarlılığı** — Jira, Sentry, Linear, Slack veya Postgres'ten bahseden istekler, aynı isteğin farklı çalıştırmaları arasında tutarsız sınıflandırılabiliyordu; artık her seferinde tutarlı şekilde yönlendiriliyor.
+- **Swift 6.4 / Xcode 27 Uyumluluğu** — Yeni araç zincirinin async `defer` desteği benimsenerek üç gerçek kaynak-sızıntısı yolu kapatıldı (enerji takibi ve yerel model önbelleğinin bir hata yolunda her zaman serbest bırakılmaması), ayrıca araç zinciri güncellemesinin yol açtığı build'i kıran bir Metal shader paketleme çakışması giderildi.
+
 ## [1.0.6] - 2026-08-01
 
 ### Eklenenler

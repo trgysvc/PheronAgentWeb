@@ -18,7 +18,7 @@ const ko: Record<string, string> = {
 
   "hero.badge": "v1.0.6 출시 · SWIFT 6 및 MLX 엔진",
   "hero.title": "macOS 전용 네이티브 자율 AI 에이전트",
-  "hero.subtitle": "Apple Silicon에서 100% 로컬로 작동하는 자율 AI 에이전트. 로컬 MLX 추론, ANE 하드웨어 가속, 95개의 통합 네이티브 툴 제공. 개인정보 보호 중심.",
+  "hero.subtitle": "Apple Silicon에서 100% 로컬로 작동하는 자율 AI 에이전트. 로컬 MLX 추론, ANE 하드웨어 가속, 96개의 통합 네이티브 툴 제공. 개인정보 보호 중심.",
   "hero.ctaDownload": "macOS용 다운로드",
   "hero.ctaDocs": "문서 둘러보기",
   "hero.hardwareNotice": "macOS 26.0+ (Tahoe 이상) 및 Apple Silicon (M1/M2/M3/M4) 필요",
@@ -95,7 +95,7 @@ const ko: Record<string, string> = {
   "pricing.localMlx": "완전한 로컬 MLX 4-bit 추론",
   "pricing.multiAgent": "멀티 에이전트 스웜 실행",
   "pricing.aneRouting": "ANE 의도 분류기 라우팅",
-  "pricing.allTools": "95개 전체 통합 네이티브 툴 포함",
+  "pricing.allTools": "96개 전체 통합 네이티브 툴 포함",
 
   "download.pageTitle": "macOS 다운로드",
   "download.pageSubtitle": "macOS 26.0+ (Tahoe 이상), Apple Silicon — 최소 16 GB RAM, 24 GB+ 권장",
@@ -105,8 +105,8 @@ const ko: Record<string, string> = {
   "download.releaseHeading": "Pheron Agent 데스크톱 앱은 macOS 정식 버전용으로 제공됩니다;",
 
   "ecosystem.title": "네이티브 툴 생태계",
-  "ecosystem.subtitle": "파일 관리, 시스템 자동화, Web, 통신, 비전, 개발 워크플로우를 위한 95개의 통합 네이티브 툴.",
-  "ecosystem.searchPlaceholder": "95개 툴 검색...",
+  "ecosystem.subtitle": "파일 관리, 시스템 자동화, Web, 통신, 비전, 개발 워크플로우를 위한 96개의 통합 네이티브 툴.",
+  "ecosystem.searchPlaceholder": "96개 툴 검색...",
   "ecosystem.catAll": "전체",
   "ecosystem.catSystem": "시스템",
   "ecosystem.catFile": "파일",

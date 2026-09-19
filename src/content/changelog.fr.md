@@ -4,6 +4,30 @@ Tous les changements notables apportés à ce projet sont documentés dans ce fi
 
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), et ce projet adhère au [Versionnage sémantique](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2026-09-17
+
+### Ajouté
+- **Intégration TikTok** — Connexion « apportez votre propre application » (Réglages > Connexions > TikTok) : publiez une vidéo ou un carrousel de photos directement, ou envoyez-le comme brouillon dans votre propre boîte de réception TikTok. Lit aussi votre profil/infos créateur, votre liste de vidéos et l'état de traitement d'une publication.
+- **X (Twitter) — Favoris, abonnements, sourdine, blocage, listes et messages directs** — Au-delà de publier/supprimer/aimer/retweeter : ajout des favoris, suivre/ne plus suivre, mettre en sourdine/bloquer, masquer une réponse, citer une publication, sondages, gestion de vos propres listes, et envoi/lecture de messages directs.
+- **LinkedIn — Repartage, articles, multi-images, sondages et documents** — Repartagez la publication de quelqu'un d'autre, partagez un lien avec titre/description, publiez jusqu'à 20 images, créez un sondage, joignez un document (PDF/PPT/DOC), ajoutez un bouton d'appel à l'action, et modifiez le texte d'une publication déjà publiée.
+- **Facebook — Gestion de page et albums photo** — Mettez à jour le profil de votre page, créez et alimentez des albums photo, plus des statistiques par publication et une ventilation complète des réactions.
+- **Instagram — Modération des commentaires** — Masquez/affichez un commentaire sur votre propre publication sans le supprimer, plus la lecture de votre profil et de vos médias récents.
+- **Archive des conversations** (Réglages > Données et confidentialité) — Recherche opt-in, sur l'appareil, dans vos anciennes conversations iMessage/SMS, WhatsApp et Mail. Rien n'est envoyé dans le cloud ; le texte brut des messages n'est jamais stocké, seuls des résumés par sujet chiffrés au repos le sont.
+- **Jira, Slack, Notion et Zapier — désormais entièrement testés en conditions réelles et fonctionnels**, chacun avec un flux de connexion plus simple ou plus fiable.
+- **Hooks** — Exécutez automatiquement une tâche de suivi dès qu'un appel d'outil spécifique réussit.
+
+### Corrigé
+- **Dates d'échéance des rappels** — Un rappel créé avec une date/heure pouvait être enregistré silencieusement sans date d'échéance ; corrigé.
+- **Expiration des jetons Instagram et Facebook** — Les deux connexions pouvaient cesser de fonctionner silencieusement environ une heure après la connexion, le jeton de courte durée n'étant jamais échangé contre le vrai jeton de ~60 jours ; corrigé — reconnectez-vous une fois pour appliquer le correctif.
+- **Fiabilité de l'OAuth TikTok** — Trois causes distinctes d'une erreur générique « scope »/« malformed request », toutes corrigées.
+- **Mauvais routage des statistiques de réseaux sociaux** — Demander les statistiques de « performance » d'une page Facebook ou Instagram pouvait être répondu avec la télémétrie CPU/RAM du Mac lui-même ; corrigé.
+- **Désambiguïsation des outils X** — Les cinq outils X pouvaient être confondus entre eux sur une seule requête ; chaque requête est désormais résolue vers l'outil qui correspond réellement.
+- **Rappel de conversations et de compétences** — Des questions comme « qu'ai-je discuté avec X » pouvaient être répondues à partir de l'imagination du modèle plutôt que de vos données réelles ; corrigé.
+- **Scintillement de la disponibilité des connexions** — Une intégration connectée pouvait brièvement disparaître sous forte charge système même après avoir été confirmée fonctionnelle ; un résultat confirmé est désormais fait confiance beaucoup plus longtemps.
+- **Fiabilité de la recherche web et des citations** — Un nouveau lot de corrections de recherche/citation en plus de celles de la 1.0.6.
+- **Cohérence du routage des intégrations** — Les requêtes mentionnant Jira, Sentry, Linear, Slack ou Postgres sont désormais routées de manière cohérente.
+- **Compatibilité Swift 6.4 / Xcode 27** — Adoption du support `defer` asynchrone pour fermer trois véritables fuites de ressources, plus un conflit d'empaquetage de shader Metal qui cassait la compilation.
+
 ## [1.0.6] - 2026-08-01
 
 ### Ajouté

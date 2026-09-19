@@ -98,7 +98,7 @@ export default function PricingPage() {
                   </li>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
-                    <span>{t("pricing.allTools", "All 95 integrated native tools")}</span>
+                    <span>{t("pricing.allTools", "All 96 integrated native tools")}</span>
                   </li>
                 </ul>
               </div>

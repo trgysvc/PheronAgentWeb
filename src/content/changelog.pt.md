@@ -4,6 +4,30 @@ Todas as alterações notáveis deste projeto são documentadas neste arquivo.
 
 O formato é baseado no [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), e este projeto adere ao [Versionamento Semântico](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2026-09-17
+
+### Adicionado
+- **Integração com TikTok** — Conexão do tipo "traga seu próprio app" (Ajustes > Conexões > TikTok): publique um vídeo ou carrossel de fotos diretamente, ou envie como rascunho para sua própria caixa de entrada do TikTok. Também lê seu perfil/info de criador, lista de vídeos e status de processamento.
+- **X (Twitter) — Favoritos, seguir, silenciar, bloquear, listas e mensagens diretas** — Além de publicar/excluir/curtir/retweetar, agora inclui favoritar, seguir/deixar de seguir, silenciar/bloquear, ocultar respostas, citar postagens, enquetes, gerenciar suas próprias Listas e enviar/ler Mensagens Diretas.
+- **LinkedIn — Republicar, artigos, múltiplas imagens, enquetes e documentos** — Reposte a publicação de outra pessoa, compartilhe um link com título/descrição, publique até 20 imagens, crie uma enquete, anexe um documento (PDF/PPT/DOC), adicione um botão de chamada para ação, e edite o texto de uma publicação já publicada.
+- **Facebook — Gerenciamento de página e álbuns de fotos** — Atualize o perfil da sua página, crie e envie fotos para álbuns, além de insights por publicação e detalhamento completo de reações.
+- **Instagram — Moderação de comentários** — Oculte/mostre um comentário em sua própria publicação sem excluí-lo, além de ler seu próprio perfil e mídia recente.
+- **Arquivo de conversas** (Ajustes > Dados e privacidade) — Busca opcional, no dispositivo, em suas conversas anteriores de iMessage/SMS, WhatsApp e Mail. Nada é enviado à nuvem; o texto bruto das mensagens nunca é armazenado, apenas resumos por tópico, criptografados em repouso.
+- **Jira, Slack, Notion e Zapier — agora totalmente testados ao vivo e funcionando**, cada um com um fluxo de conexão mais simples ou confiável.
+- **Hooks** — Execute automaticamente uma tarefa de acompanhamento sempre que uma chamada de ferramenta específica for bem-sucedida.
+
+### Corrigido
+- **Datas de vencimento de lembretes** — Um lembrete criado com data/hora podia ser salvo silenciosamente sem data de vencimento; corrigido.
+- **Expiração de tokens do Instagram e Facebook** — Ambas as conexões podiam parar de funcionar silenciosamente cerca de uma hora após conectar, pois o token de curta duração nunca era trocado pelo real de ~60 dias; corrigido — reconecte uma vez para aplicar.
+- **Confiabilidade do OAuth do TikTok** — Três causas distintas de um erro genérico de "scope"/"malformed request", todas corrigidas.
+- **Roteamento incorreto de estatísticas de redes sociais** — Perguntar pelas estatísticas de "desempenho" de uma página do Facebook ou Instagram podia ser respondido com a telemetria de CPU/RAM do próprio Mac; corrigido.
+- **Desambiguação de ferramentas do X** — As cinco ferramentas do X podiam se confundir entre si em uma única solicitação; agora cada solicitação é resolvida para a ferramenta que realmente corresponde.
+- **Recuperação de conversas e habilidades** — Perguntas como "o que conversei com X" podiam ser respondidas pela imaginação do modelo em vez dos seus dados reais; corrigido.
+- **Instabilidade na disponibilidade de conexões** — Uma integração conectada podia desaparecer brevemente sob alta carga do sistema mesmo já confirmada como funcional; um resultado confirmado agora é confiado por muito mais tempo.
+- **Confiabilidade de busca na web e citações** — Um novo lote de correções de pesquisa/citação além das da 1.0.6.
+- **Consistência no roteamento de integrações** — Solicitações mencionando Jira, Sentry, Linear, Slack ou Postgres agora são roteadas de forma consistente.
+- **Compatibilidade com Swift 6.4 / Xcode 27** — Adotado o suporte a `defer` assíncrono para fechar três vazamentos reais de recursos, além de um conflito de empacotamento de shader Metal que quebrava a compilação.
+
 ## [1.0.6] - 2026-08-01
 
 ### Adicionado

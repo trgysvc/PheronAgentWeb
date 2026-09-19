@@ -18,7 +18,7 @@ const pt: Record<string, string> = {
 
   "hero.badge": "v1.0.6 DISPONÍVEL · MOTOR SWIFT 6 E MLX",
   "hero.title": "Agente de IA Autônomo Nativo para macOS",
-  "hero.subtitle": "Um agente de IA autônomo nativo executado 100% no seu Apple Silicon. Inferência MLX local, aceleração ANE e 95 ferramentas nativas integradas.",
+  "hero.subtitle": "Um agente de IA autônomo nativo executado 100% no seu Apple Silicon. Inferência MLX local, aceleração ANE e 96 ferramentas nativas integradas.",
   "hero.ctaDownload": "Baixar para macOS",
   "hero.ctaDocs": "Explorar documentação",
   "hero.hardwareNotice": "Requer macOS 26.0+ (Tahoe ou posterior) e Apple Silicon (M1/M2/M3/M4)",
@@ -95,7 +95,7 @@ const pt: Record<string, string> = {
   "pricing.localMlx": "Inferência local completa MLX 4-bit",
   "pricing.multiAgent": "Execução de enxame multiagente",
   "pricing.aneRouting": "Roteamento por classificador ANE",
-  "pricing.allTools": "Todas as 95 ferramentas nativas integradas",
+  "pricing.allTools": "Todas as 96 ferramentas nativas integradas",
 
   "download.pageTitle": "Baixar para macOS",
   "download.pageSubtitle": "Requer macOS 26.0+ (Tahoe ou posterior), Apple Silicon — 16 GB RAM mín., 24 GB+ recomendado",
@@ -105,8 +105,8 @@ const pt: Record<string, string> = {
   "download.releaseHeading": "O aplicativo Pheron Agent está disponível para macOS Release;",
 
   "ecosystem.title": "Ecossistema de ferramentas nativas",
-  "ecosystem.subtitle": "95 ferramentas nativas integradas para arquivos, automação de sistema, Web, comunicação e desenvolvimento.",
-  "ecosystem.searchPlaceholder": "Pesquisar entre 95 ferramentas...",
+  "ecosystem.subtitle": "96 ferramentas nativas integradas para arquivos, automação de sistema, Web, comunicação e desenvolvimento.",
+  "ecosystem.searchPlaceholder": "Pesquisar entre 96 ferramentas...",
   "ecosystem.catAll": "Tudo",
   "ecosystem.catSystem": "Sistema",
   "ecosystem.catFile": "Arquivo",

@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2026-09-17
+
+### Added
+- **TikTok Integration** — Bring-your-own-app connection (Settings > Connections > TikTok): publish a video or photo carousel directly, or send it to your own inbox as a draft. Also reads your own profile/creator info, video list, and post-processing status.
+- **X (Twitter) — Bookmarks, Follows, Mutes, Blocks, Lists & Direct Messages** — Expanded beyond posting/deleting/liking/retweeting to cover bookmarking, following/unfollowing, muting/blocking, hiding replies, quote posts, polls, managing your own Lists, and sending/reading Direct Messages.
+- **LinkedIn — Reshare, Articles, Multi-Image, Polls & Documents** — Reshare another post, share a link with a title/description, post up to 20 images, create a poll, attach a document (PDF/PPT/DOC), add a call-to-action button, and edit a post's text after publishing.
+- **Facebook — Page Management & Photo Albums** — Update your Page's profile fields, create and upload to photo albums, plus per-post insights and a full reaction breakdown.
+- **Instagram — Comment Moderation** — Hide/unhide a comment on your own post without deleting it, plus reading your own profile and recent media.
+- **Conversation Archive** (Settings > Data & Privacy) — Opt-in, on-device search across your past iMessage/SMS, WhatsApp, and Mail conversations to answer "what did I decide with X"-style questions. Nothing is sent to the cloud; raw message text is never stored, only derived per-topic summaries and per-contact profiles, encrypted at rest.
+- **Jira, Slack, Notion & Zapier — now fully live-tested and working**, each with a simpler or more reliable connection flow than before.
+- **Hooks** — Automatically run a follow-up task whenever a specific tool call succeeds (e.g. "after every file save, run prettier on it"), alongside the existing time/file-change automations.
+
+### Fixed
+- **Reminder Due Dates** — A reminder created with a due date/time could silently save with no due date at all; fixed.
+- **Instagram & Facebook Token Expiry** — Both connections could silently stop working about an hour after connecting because the short-lived token from the first login step was never exchanged for the real ~60-day one; fixed — reconnect once to pick it up.
+- **TikTok OAuth Reliability** — Three separate causes for a generic "scope"/"malformed request" error during Connect via OAuth, all fixed (stray invisible characters from copy-paste, a token-exchange formatting mismatch, and a PKCE encoding mismatch).
+- **Social-Media Insight Misrouting** — Asking for a Facebook or Instagram Page's "performance" stats could get answered with your Mac's own CPU/RAM telemetry instead of the real insights tool; fixed.
+- **X Tool Disambiguation** — The five X tools (post, delete, engagement, lists, direct messages) could get confused with each other on a single request; each now resolves to the one that actually matches.
+- **Conversation & Skill Recall** — "What did I discuss with X" or "list my saved skills" could get answered from the model's own imagination instead of your real data; corrected to route through a real lookup.
+- **Connection Availability Flicker** — A connected integration could briefly disappear from available tools mid-conversation under heavy system load, even after being confirmed working earlier in the same session; a confirmed-working result is now trusted for much longer.
+- **Web Search & Citation Reliability** — A further batch of research/citation fixes on top of 1.0.6's, including dropped search results and fabricated-source false positives.
+- **Integration Routing Consistency** — Requests mentioning Jira, Sentry, Linear, Slack, or Postgres could be classified inconsistently between runs of the same request; now routed consistently every time.
+- **Swift 6.4 / Xcode 27 Compatibility** — Adopted the new toolchain's async `defer` support to close three real resource-leak paths (energy tracking and local-model cache not always releasing on an error path), plus a build-breaking Metal shader packaging conflict introduced by the toolchain update.
+
 ## [1.0.6] - 2026-08-01
 
 ### Added

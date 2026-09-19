@@ -4,6 +4,30 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2026-09-17
+
+### Hinzugefügt
+- **TikTok-Integration** — Bring-your-own-App-Verbindung (Einstellungen > Verbindungen > TikTok): Video oder Fotokarussell direkt veröffentlichen oder als Entwurf an den eigenen TikTok-Posteingang senden. Liest außerdem Profil-/Creator-Infos, Videoliste und Verarbeitungsstatus.
+- **X (Twitter) — Lesezeichen, Folgen, Stummschalten, Blockieren, Listen & Direktnachrichten** — Erweitert um Lesezeichen, Folgen/Entfolgen, Stummschalten/Blockieren, Antworten ausblenden, Zitat-Posts, Umfragen, eigene Listen verwalten sowie Direktnachrichten senden/lesen.
+- **LinkedIn — Reshare, Artikel, Mehrfachbilder, Umfragen & Dokumente** — Beiträge erneut teilen, Links mit Titel/Beschreibung teilen, bis zu 20 Bilder posten, Umfragen erstellen, Dokumente (PDF/PPT/DOC) anhängen, Call-to-Action-Button hinzufügen und veröffentlichte Beiträge bearbeiten.
+- **Facebook — Seitenverwaltung & Fotoalben** — Seitenprofil aktualisieren, Fotoalben erstellen und befüllen, plus Beitrags-Insights und vollständige Reaktionsaufschlüsselung.
+- **Instagram — Kommentarmoderation** — Kommentare am eigenen Beitrag aus-/einblenden, plus Lesen des eigenen Profils und der neuesten Medien.
+- **Gesprächsarchiv** (Einstellungen > Daten & Datenschutz) — Opt-in, geräteinterne Suche in vergangenen iMessage/SMS-, WhatsApp- und Mail-Konversationen. Nichts wird in die Cloud gesendet; der Rohtext wird nie gespeichert, nur themenbezogene Zusammenfassungen, verschlüsselt gespeichert.
+- **Jira, Slack, Notion & Zapier — jetzt vollständig live getestet und funktionsfähig**, jeweils mit einem einfacheren oder zuverlässigeren Verbindungsablauf.
+- **Hooks** — Automatisch eine Folgeaufgabe ausführen, sobald ein bestimmter Tool-Aufruf erfolgreich war.
+
+### Behoben
+- **Erinnerungs-Fälligkeitsdaten** — Eine mit Datum/Uhrzeit erstellte Erinnerung konnte stillschweigend ohne Fälligkeitsdatum gespeichert werden; behoben.
+- **Ablauf von Instagram-/Facebook-Token** — Beide Verbindungen konnten etwa eine Stunde nach dem Verbinden stillschweigend aufhören zu funktionieren, weil das kurzlebige Token nie gegen das echte ~60-Tage-Token getauscht wurde; behoben — einmal neu verbinden.
+- **TikTok-OAuth-Zuverlässigkeit** — Drei separate Ursachen für einen generischen "scope"/"malformed request"-Fehler behoben.
+- **Fehlleitung bei Social-Media-Statistiken** — Die Frage nach "Performance"-Statistiken einer Facebook-/Instagram-Seite konnte fälschlich mit der CPU/RAM-Telemetrie des Macs beantwortet werden; behoben.
+- **X-Tool-Unterscheidung** — Die fünf X-Tools konnten bei einer einzelnen Anfrage verwechselt werden; jede Anfrage wird nun dem tatsächlich passenden Tool zugeordnet.
+- **Gesprächs- und Skill-Abruf** — Fragen wie "Was habe ich mit X besprochen" konnten aus der Vorstellung des Modells statt aus echten Daten beantwortet werden; korrigiert.
+- **Flackern der Verbindungsverfügbarkeit** — Eine verbundene Integration konnte unter hoher Systemlast kurzzeitig verschwinden, obwohl sie bereits bestätigt funktionierte; ein bestätigtes Ergebnis wird nun deutlich länger vertraut.
+- **Web-Such- und Zitierzuverlässigkeit** — Ein weiteres Paket an Recherche-/Zitierfixes zusätzlich zu 1.0.6.
+- **Konsistenz der Integrations-Weiterleitung** — Anfragen zu Jira, Sentry, Linear, Slack oder Postgres wurden nun konsistent weitergeleitet.
+- **Swift 6.4 / Xcode 27-Kompatibilität** — Async-`defer`-Unterstützung übernommen, um drei echte Ressourcenlecks zu schließen, plus ein build-brechender Metal-Shader-Konflikt behoben.
+
 ## [1.0.6] - 2026-08-01
 
 ### Hinzugefügt

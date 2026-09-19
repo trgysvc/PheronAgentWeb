@@ -1,6 +1,6 @@
 # Tooling Landscape Map
 
-Pheron Agent manages 95 tools using a **UBID (Unique Binary ID)** system. This structure ensures zero latency and high type safety in line with the UNO (Unified Native Orchestration) philosophy.
+Pheron Agent manages 96 tools using a **UBID (Unique Binary ID)** system. This structure ensures zero latency and high type safety in line with the UNO (Unified Native Orchestration) philosophy.
 
 ## 1. Communication and Social (Native Bridge)
 These tools are directly tied to Apple's Sandbox rules and the Apple Events system.

@@ -4,6 +4,30 @@ Todos los cambios notables de este proyecto se documentan en este archivo.
 
 El formato se basa en [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), y este proyecto se adhiere al [Versionado Semántico](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2026-09-17
+
+### Añadido
+- **Integración con TikTok** — Conexión de tipo "trae tu propia app" (Ajustes > Conexiones > TikTok): publica un vídeo o carrusel de fotos directamente, o envíalo como borrador a tu propia bandeja de entrada de TikTok. También lee tu propio perfil/info de creador, lista de vídeos y estado de procesamiento.
+- **X (Twitter) — Marcadores, seguir, silenciar, bloquear, listas y mensajes directos** — Ampliado más allá de publicar/eliminar/dar me gusta/retuitear: ahora incluye marcadores, seguir/dejar de seguir, silenciar/bloquear, ocultar respuestas, citar publicaciones, encuestas, gestión de tus propias Listas y envío/lectura de Mensajes Directos.
+- **LinkedIn — Republicar, artículos, multiimagen, encuestas y documentos** — Republica una publicación ajena, comparte un enlace con título/descripción, publica hasta 20 imágenes, crea una encuesta, adjunta un documento (PDF/PPT/DOC), añade un botón de llamada a la acción y edita el texto de una publicación ya publicada.
+- **Facebook — Gestión de página y álbumes de fotos** — Actualiza el perfil de tu página, crea y sube fotos a álbumes, además de estadísticas por publicación y un desglose completo de reacciones.
+- **Instagram — Moderación de comentarios** — Oculta/muestra un comentario en tu propia publicación sin eliminarlo, además de leer tu propio perfil y contenido reciente.
+- **Archivo de conversaciones** (Ajustes > Datos y privacidad) — Búsqueda opcional y local en el dispositivo entre tus conversaciones pasadas de iMessage/SMS, WhatsApp y Mail. Nada se envía a la nube; el texto sin procesar nunca se almacena, solo resúmenes por tema cifrados en reposo.
+- **Jira, Slack, Notion y Zapier — ahora completamente probados en vivo y funcionando**, cada uno con un flujo de conexión más simple o fiable.
+- **Hooks** — Ejecuta automáticamente una tarea de seguimiento cuando una llamada a herramienta específica tiene éxito.
+
+### Corregido
+- **Fechas de vencimiento de recordatorios** — Un recordatorio creado con fecha/hora podía guardarse silenciosamente sin fecha de vencimiento; corregido.
+- **Expiración de tokens de Instagram y Facebook** — Ambas conexiones podían dejar de funcionar silenciosamente una hora después de conectarse porque el token de corta duración nunca se intercambiaba por el real de ~60 días; corregido — reconecta una vez para aplicarlo.
+- **Fiabilidad del OAuth de TikTok** — Tres causas distintas de un error genérico de "scope"/"malformed request", todas corregidas.
+- **Desvío de estadísticas de redes sociales** — Preguntar por las estadísticas de "rendimiento" de una página de Facebook o Instagram podía responderse con la telemetría de CPU/RAM del propio Mac; corregido.
+- **Desambiguación de herramientas de X** — Las cinco herramientas de X podían confundirse entre sí en una sola solicitud; ahora cada solicitud se resuelve con la herramienta que realmente corresponde.
+- **Recuperación de conversaciones y habilidades** — Preguntas como "qué hablé con X" podían responderse con la imaginación del modelo en lugar de tus datos reales; corregido.
+- **Parpadeo de disponibilidad de conexión** — Una integración conectada podía desaparecer brevemente bajo mucha carga del sistema aunque ya se hubiera confirmado que funcionaba; ahora un resultado confirmado se confía durante mucho más tiempo.
+- **Fiabilidad de búsqueda web y citas** — Un nuevo lote de correcciones de investigación/citas sobre las de 1.0.6.
+- **Consistencia de enrutamiento de integraciones** — Las solicitudes sobre Jira, Sentry, Linear, Slack o Postgres ahora se enrutan de forma consistente.
+- **Compatibilidad con Swift 6.4 / Xcode 27** — Se adoptó el soporte de `defer` asíncrono para cerrar tres fugas de recursos reales, además de un conflicto de empaquetado de shaders Metal que rompía la compilación.
+
 ## [1.0.6] - 2026-08-01
 
 ### Añadido

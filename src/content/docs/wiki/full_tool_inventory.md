@@ -1,8 +1,8 @@
-# PheronAgent — Full Tool Inventory & Capability Reference (95 Tools)
-**Last updated:** 2026-09-16
-**Verification method:** Verified against `Tests/PheronAgentTests/RouterHealth/UBIDCoverageTests.swift` — `ToolUBID.allCases` currently has **95** cases, matched 1:1 against the tool registry by a live test suite (`testEveryRegisteredToolHasAToolUBIDCase`, `testEveryToolUBIDCaseHasARegisteredImplementation`, `testNoDuplicateUBIDsAmongKnownTools`). 21 tools added since 2026-09-11: `chrome_devtools_tool` (127), and a full social-media management expansion — LinkedIn/X/Instagram/TikTok/Facebook posting, deleting, cross-posting, insights, comments, engagement, and scheduling (128-147).
+# PheronAgent — Full Tool Inventory & Capability Reference (96 Tools)
+**Last updated:** 2026-09-19
+**Verification method:** Verified against `Tests/PheronAgentTests/RouterHealth/UBIDCoverageTests.swift` — `allKnownTools` + `dependencyInjectedToolUBIDs` currently total **96**, matched 1:1 against the tool registry by a live test suite. 22 tools added since 2026-09-11: `chrome_devtools_tool` (127), a full social-media management expansion — LinkedIn/X/Instagram/TikTok/Facebook posting, deleting, cross-posting, insights, comments, engagement, and scheduling (128-147) — and `xcode_mcp_tool` (148, Apple's official Xcode-embedded MCP bridge).
 
-This document details the capabilities of ALL 95 PheronAgent tools across 3 distinct architectures:
+This document details the capabilities of ALL 96 PheronAgent tools across 3 distinct architectures:
 1. **Native/built-in** (51 tools) — written directly in Swift, calling system APIs such as AppleScript, Core Audio, WeatherKit, and Vision. `subagent_spawn` belongs to this category but is registered separately via dependency injection.
 2. **Official MCP protocol** (18 tools) — JSON-RPC 2.0, the official `initialize`/`tools/list`/`tools/call` lifecycle.
 3. **Direct REST API / custom process bridge** (26 tools) — Higgsfield, LemonSqueezy, Kit, Blender (process spawn), and the full LinkedIn/X/Instagram/TikTok/Facebook social-media tool set — none of these are MCP.
@@ -47,8 +47,8 @@ Controls a running Audacity instance via Audacity's official `mod-script-pipe` s
 
 ## 3. Web & Browser (5 tools)
 
-### `web_search` (UBID 45) — Google/Brave Live Search
-Searches for real-time information, news, or technical data. **Parameter:** `query` (should be specific).
+### `web_search` (UBID 45) — 5-tier live search cascade
+Searches for real-time information, news, or technical data. Tries Serper → Brave → DuckDuckGo → Google → Safari in order, falling through to the next tier on any failure (no key, quota, network error). **Parameter:** `query` (should be specific).
 
 ### `web_fetch` (UBID 46) — URL Content Extraction
 Extracts the full text content of a given public URL. **Parameter:** `url`.
@@ -293,6 +293,16 @@ A full pass through every integrated platform's own official API documentation (
 
 ---
 
-## Total: 95 tools
+## 18. Added 2026-09-18 — Xcode/Simulator Automation (1 tool)
+
+Bridges Apple's own official, Xcode-embedded MCP server (`xcrun mcpbridge`, Xcode 26.3+) — no third-party dependency. Confirmed to work with Xcode.app fully closed. Deliberate scope boundary: Xcode's own code-signing/certificate-Trust/Team-selection GUI dialogs aren't automated — evaluated against `apple_accessibility` as a possible fallback and closed as having no viable use case (see the architecture decision record for the full investigation).
+
+| Tool | UBID | Verification status | What it does |
+|---|---|---|---|
+| `xcode_mcp_tool` | 148 | ✅ Live-verified (real build/test calls, golden-dataset regression coverage) | Build/test/read/write an Xcode or Swift Package project, and drive a real Simulator session (install, run, tap/type/swipe/hardware buttons) to verify your own app end to end |
+
+---
+
+## Total: 96 tools
 - **51 native/built-in tools** (written directly in Swift; includes `subagent_spawn`, which is registered separately/conditionally)
-- **44 MCP/REST/bridge tools** (connecting to external services: 18 official MCP-protocol tools + 25 REST API tools [Higgsfield, LemonSqueezy, Kit, and the full LinkedIn/X/Instagram/TikTok/Facebook social-media set] + 1 custom process bridge [Blender])
+- **45 MCP/REST/bridge tools** (connecting to external services: 18 official MCP-protocol tools + 25 REST API tools [Higgsfield, LemonSqueezy, Kit, and the full LinkedIn/X/Instagram/TikTok/Facebook social-media set] + 1 custom process bridge [Blender] + `xcode_mcp_tool`)
