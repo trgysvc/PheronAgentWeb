@@ -4,9 +4,10 @@ Todas as alterações notáveis deste projeto são documentadas neste arquivo.
 
 O formato é baseado no [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), e este projeto adere ao [Versionamento Semântico](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.7] - 2026-09-17
+## [1.0.7] - 2026-09-19
 
 ### Adicionado
+- **Integração com Xcode/Simulator** — Conecta-se ao servidor MCP oficial da Apple, embutido no Xcode: compile/teste/leia/escreva um projeto Xcode ou Swift Package, e controle um Simulator real (tocar/digitar/deslizar, botões físicos) de ponta a ponta — sem dependência de terceiros.
 - **Integração com TikTok** — Conexão do tipo "traga seu próprio app" (Ajustes > Conexões > TikTok): publique um vídeo ou carrossel de fotos diretamente, ou envie como rascunho para sua própria caixa de entrada do TikTok. Também lê seu perfil/info de criador, lista de vídeos e status de processamento.
 - **X (Twitter) — Favoritos, seguir, silenciar, bloquear, listas e mensagens diretas** — Além de publicar/excluir/curtir/retweetar, agora inclui favoritar, seguir/deixar de seguir, silenciar/bloquear, ocultar respostas, citar postagens, enquetes, gerenciar suas próprias Listas e enviar/ler Mensagens Diretas.
 - **LinkedIn — Republicar, artigos, múltiplas imagens, enquetes e documentos** — Reposte a publicação de outra pessoa, compartilhe um link com título/descrição, publique até 20 imagens, crie uma enquete, anexe um documento (PDF/PPT/DOC), adicione um botão de chamada para ação, e edite o texto de uma publicação já publicada.
@@ -20,13 +21,22 @@ O formato é baseado no [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - **Datas de vencimento de lembretes** — Um lembrete criado com data/hora podia ser salvo silenciosamente sem data de vencimento; corrigido.
 - **Expiração de tokens do Instagram e Facebook** — Ambas as conexões podiam parar de funcionar silenciosamente cerca de uma hora após conectar, pois o token de curta duração nunca era trocado pelo real de ~60 dias; corrigido — reconecte uma vez para aplicar.
 - **Confiabilidade do OAuth do TikTok** — Três causas distintas de um erro genérico de "scope"/"malformed request", todas corrigidas.
+- **Conexão com o Notion** — Três problemas distintos tornavam a conexão com o Notion totalmente impossível (servidor OAuth errado, registro manual em vez de automático, codificação de solicitação errada); corrigido — conectar agora é um único clique em "Conectar via OAuth".
 - **Roteamento incorreto de estatísticas de redes sociais** — Perguntar pelas estatísticas de "desempenho" de uma página do Facebook ou Instagram podia ser respondido com a telemetria de CPU/RAM do próprio Mac; corrigido.
 - **Desambiguação de ferramentas do X** — As cinco ferramentas do X podiam se confundir entre si em uma única solicitação; agora cada solicitação é resolvida para a ferramenta que realmente corresponde.
 - **Recuperação de conversas e habilidades** — Perguntas como "o que conversei com X" podiam ser respondidas pela imaginação do modelo em vez dos seus dados reais; corrigido.
 - **Instabilidade na disponibilidade de conexões** — Uma integração conectada podia desaparecer brevemente sob alta carga do sistema mesmo já confirmada como funcional; um resultado confirmado agora é confiado por muito mais tempo.
-- **Confiabilidade de busca na web e citações** — Um novo lote de correções de pesquisa/citação além das da 1.0.6.
+- **Confiabilidade da busca na web** — A busca agora é uma cadeia de fallback de 5 níveis (Serper → Brave → DuckDuckGo → Google → Safari) que realmente passa para o próximo nível quando um falha, em vez de parar totalmente; uma consulta ambígua de uma palavra (ex. "Swift 6") agora é desambiguada automaticamente; e o nível de fallback do Safari não toca nem fecha mais nenhuma das suas próprias janelas do Safari já abertas.
+- **Tempo limite em análises de áudio longas** — Uma análise `music_dna` muito longa em um arquivo grande podia ser interrompida no meio do caminho por um limite de segurança que não verificava se ainda estava progredindo; corrigido.
+- **Confiabilidade do Jira** — Corrigido um loop infinito de novas tentativas em algumas solicitações, e uma mudança de status concluída com sucesso que ainda podia ser relatada como "falhou".
+- **Loop de novas tentativas do Sentry** — Corrigido ficar travado em um loop infinito quando o Sentry ainda não estava conectado — agora isso é informado apenas uma vez.
 - **Consistência no roteamento de integrações** — Solicitações mencionando Jira, Sentry, Linear, Slack ou Postgres agora são roteadas de forma consistente.
-- **Compatibilidade com Swift 6.4 / Xcode 27** — Adotado o suporte a `defer` assíncrono para fechar três vazamentos reais de recursos, além de um conflito de empacotamento de shader Metal que quebrava a compilação.
+- **Suposição incorreta de nome de ação** — Jira, Linear e Slack podiam cada um adivinhar, na primeira tentativa, um nome de ação plausível mas inexistente; cada um agora usa a ação real e confirmada para operações comuns.
+- **Falso positivo de citação fabricada** — Um link real corretamente citado ainda podia ser rejeitado como fonte fabricada devido a uma quebra de linha incorporada que corrompia a comparação; corrigido.
+- **Falha de inicialização do Postgres** — Corrigida uma incompatibilidade de dependência de um pacote upstream que podia impedir totalmente uma conexão Postgres de iniciar.
+- **Padrão de analytics** — As análises de uso anônimas agora realmente vêm desativadas por padrão, correspondendo ao que Ajustes > Privacidade sempre disse.
+- **Serviço em segundo plano do Xcode** — O app podia lançar silenciosamente o próprio serviço de ferramentas de desenvolvedor em segundo plano do Xcode a cada inicialização (visível como um ícone de martelo aparecendo por conta própria na barra de menu), mesmo sem nunca tocar na automação do Xcode; agora só inicia no momento em que é realmente solicitado.
+- **Vazamento de recursos (rastreamento de energia e cache KV)** — O rastreamento de uso de energia e o cache KV do modelo local podiam não ser liberados/limpos se uma tarefa terminasse com erro no meio do caminho, em vez de apenas em uma conclusão limpa; corrigido nos três pontos afetados usando o novo suporte a `defer` assíncrono do Swift 6.4.
 
 ## [1.0.6] - 2026-08-01
 

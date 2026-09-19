@@ -4,9 +4,10 @@ Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert
 
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.7] - 2026-09-17
+## [1.0.7] - 2026-09-19
 
 ### Hinzugefügt
+- **Xcode/Simulator-Integration** — Bindet Apples eigenen, in Xcode integrierten offiziellen MCP-Server ein: ein Xcode- oder Swift-Package-Projekt bauen/testen/lesen/schreiben und einen echten Simulator (Tippen/Tippen/Wischen, Hardwaretasten) end-to-end steuern — keine Abhängigkeit von Drittanbietern.
 - **TikTok-Integration** — Bring-your-own-App-Verbindung (Einstellungen > Verbindungen > TikTok): Video oder Fotokarussell direkt veröffentlichen oder als Entwurf an den eigenen TikTok-Posteingang senden. Liest außerdem Profil-/Creator-Infos, Videoliste und Verarbeitungsstatus.
 - **X (Twitter) — Lesezeichen, Folgen, Stummschalten, Blockieren, Listen & Direktnachrichten** — Erweitert um Lesezeichen, Folgen/Entfolgen, Stummschalten/Blockieren, Antworten ausblenden, Zitat-Posts, Umfragen, eigene Listen verwalten sowie Direktnachrichten senden/lesen.
 - **LinkedIn — Reshare, Artikel, Mehrfachbilder, Umfragen & Dokumente** — Beiträge erneut teilen, Links mit Titel/Beschreibung teilen, bis zu 20 Bilder posten, Umfragen erstellen, Dokumente (PDF/PPT/DOC) anhängen, Call-to-Action-Button hinzufügen und veröffentlichte Beiträge bearbeiten.
@@ -20,13 +21,22 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **Erinnerungs-Fälligkeitsdaten** — Eine mit Datum/Uhrzeit erstellte Erinnerung konnte stillschweigend ohne Fälligkeitsdatum gespeichert werden; behoben.
 - **Ablauf von Instagram-/Facebook-Token** — Beide Verbindungen konnten etwa eine Stunde nach dem Verbinden stillschweigend aufhören zu funktionieren, weil das kurzlebige Token nie gegen das echte ~60-Tage-Token getauscht wurde; behoben — einmal neu verbinden.
 - **TikTok-OAuth-Zuverlässigkeit** — Drei separate Ursachen für einen generischen "scope"/"malformed request"-Fehler behoben.
+- **Notion-Verbindung** — Drei separate Probleme machten das Verbinden von Notion vollständig unmöglich (falscher OAuth-Server, manuelle statt automatische Registrierung, falsche Anfragekodierung); behoben — Verbinden ist jetzt ein einziger Klick auf "Via OAuth verbinden".
 - **Fehlleitung bei Social-Media-Statistiken** — Die Frage nach "Performance"-Statistiken einer Facebook-/Instagram-Seite konnte fälschlich mit der CPU/RAM-Telemetrie des Macs beantwortet werden; behoben.
 - **X-Tool-Unterscheidung** — Die fünf X-Tools konnten bei einer einzelnen Anfrage verwechselt werden; jede Anfrage wird nun dem tatsächlich passenden Tool zugeordnet.
 - **Gesprächs- und Skill-Abruf** — Fragen wie "Was habe ich mit X besprochen" konnten aus der Vorstellung des Modells statt aus echten Daten beantwortet werden; korrigiert.
 - **Flackern der Verbindungsverfügbarkeit** — Eine verbundene Integration konnte unter hoher Systemlast kurzzeitig verschwinden, obwohl sie bereits bestätigt funktionierte; ein bestätigtes Ergebnis wird nun deutlich länger vertraut.
-- **Web-Such- und Zitierzuverlässigkeit** — Ein weiteres Paket an Recherche-/Zitierfixes zusätzlich zu 1.0.6.
+- **Websuche-Zuverlässigkeit** — Die Suche ist jetzt eine 5-stufige Fallback-Kette (Serper → Brave → DuckDuckGo → Google → Safari), die bei einem Fehlschlag einer Stufe echt zur nächsten übergeht, statt ganz zu stoppen; eine mehrdeutige Ein-Wort-Anfrage (z. B. "Swift 6") wird jetzt automatisch präzisiert; und die Safari-Fallback-Stufe berührt oder schließt keine Ihrer eigenen bereits geöffneten Safari-Fenster mehr.
+- **Zeitüberschreitung bei langer Audioanalyse** — Eine sehr lange `music_dna`-Analyse einer großen Datei konnte mitten im Vorgang durch ein Sicherheitslimit abgebrochen werden, das nicht prüfte, ob noch Fortschritt gemacht wurde; behoben.
+- **Jira-Zuverlässigkeit** — Eine Endlos-Wiederholungsschleife bei manchen Anfragen und eine erfolgreich abgeschlossene Statusänderung, die trotzdem als "fehlgeschlagen" gemeldet wurde, behoben.
+- **Sentry-Wiederholungsschleife** — Das Feststecken in einer Endlosschleife, wenn Sentry noch nicht verbunden war, behoben — jetzt wird das nur einmal mitgeteilt.
 - **Konsistenz der Integrations-Weiterleitung** — Anfragen zu Jira, Sentry, Linear, Slack oder Postgres wurden nun konsistent weitergeleitet.
-- **Swift 6.4 / Xcode 27-Kompatibilität** — Async-`defer`-Unterstützung übernommen, um drei echte Ressourcenlecks zu schließen, plus ein build-brechender Metal-Shader-Konflikt behoben.
+- **Falsches Erraten von Aktionsnamen** — Jira, Linear und Slack konnten jeweils beim ersten Versuch einen plausibel wirkenden, aber nicht existierenden Aktionsnamen erraten; jedes nutzt jetzt die echte, bestätigte Aktion für gängige Vorgänge.
+- **Falsch-positive erkannte Zitat-Fälschung** — Ein korrekt zitierter, echter Link konnte wegen eines eingebetteten Zeilenumbruchs, der den Vergleich verfälschte, trotzdem als erfundene Quelle abgelehnt werden; behoben.
+- **Postgres-Startfehler** — Eine Inkompatibilität in einer vorgelagerten Paketabhängigkeit, die eine Postgres-Verbindung komplett am Start hindern konnte, behoben.
+- **Analytics-Standardeinstellung** — Anonyme Nutzungsanalyse ist jetzt tatsächlich standardmäßig deaktiviert, passend zu dem, was Einstellungen > Datenschutz immer schon gesagt hat.
+- **Xcode-Hintergrunddienst** — Die App konnte bei jedem Start stillschweigend Xcodes eigenen Hintergrunddienst für Entwicklertools starten (sichtbar als von selbst erscheinendes Hammer-Symbol in der Menüleiste), selbst wenn Xcode-Automatisierung nie genutzt wird; startet jetzt erst in dem Moment, in dem tatsächlich danach gefragt wird.
+- **Ressourcenleck (Energie-Tracking & KV-Cache)** — Energie-Tracking und der KV-Cache des lokalen Modells konnten bei einem mit Fehler beendeten Task nicht freigegeben/gelöscht werden, statt nur bei einem sauberen Abschluss; an allen drei betroffenen Stellen mit Swift 6.4s neuer async-`defer`-Unterstützung geschlossen.
 
 ## [1.0.6] - 2026-08-01
 

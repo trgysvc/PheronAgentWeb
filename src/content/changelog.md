@@ -5,9 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.7] - 2026-09-17
+## [1.0.7] - 2026-09-19
 
 ### Added
+- **Xcode/Simulator Integration** — Bridges Apple's own official, Xcode-embedded MCP server: build/test/read/write an Xcode or Swift Package project, and drive a real Simulator (tap/type/swipe, hardware buttons) end to end — no third-party dependency.
 - **TikTok Integration** — Bring-your-own-app connection (Settings > Connections > TikTok): publish a video or photo carousel directly, or send it to your own inbox as a draft. Also reads your own profile/creator info, video list, and post-processing status.
 - **X (Twitter) — Bookmarks, Follows, Mutes, Blocks, Lists & Direct Messages** — Expanded beyond posting/deleting/liking/retweeting to cover bookmarking, following/unfollowing, muting/blocking, hiding replies, quote posts, polls, managing your own Lists, and sending/reading Direct Messages.
 - **LinkedIn — Reshare, Articles, Multi-Image, Polls & Documents** — Reshare another post, share a link with a title/description, post up to 20 images, create a poll, attach a document (PDF/PPT/DOC), add a call-to-action button, and edit a post's text after publishing.
@@ -21,13 +22,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Reminder Due Dates** — A reminder created with a due date/time could silently save with no due date at all; fixed.
 - **Instagram & Facebook Token Expiry** — Both connections could silently stop working about an hour after connecting because the short-lived token from the first login step was never exchanged for the real ~60-day one; fixed — reconnect once to pick it up.
 - **TikTok OAuth Reliability** — Three separate causes for a generic "scope"/"malformed request" error during Connect via OAuth, all fixed (stray invisible characters from copy-paste, a token-exchange formatting mismatch, and a PKCE encoding mismatch).
+- **Notion Connection** — Three separate problems made Notion impossible to connect at all (wrong OAuth server, manual registration instead of automatic, wrong request encoding); fixed — connecting is now a single "Connect via OAuth" click.
 - **Social-Media Insight Misrouting** — Asking for a Facebook or Instagram Page's "performance" stats could get answered with your Mac's own CPU/RAM telemetry instead of the real insights tool; fixed.
 - **X Tool Disambiguation** — The five X tools (post, delete, engagement, lists, direct messages) could get confused with each other on a single request; each now resolves to the one that actually matches.
 - **Conversation & Skill Recall** — "What did I discuss with X" or "list my saved skills" could get answered from the model's own imagination instead of your real data; corrected to route through a real lookup.
 - **Connection Availability Flicker** — A connected integration could briefly disappear from available tools mid-conversation under heavy system load, even after being confirmed working earlier in the same session; a confirmed-working result is now trusted for much longer.
-- **Web Search & Citation Reliability** — A further batch of research/citation fixes on top of 1.0.6's, including dropped search results and fabricated-source false positives.
+- **Web Search Reliability** — Search is now a 5-tier fallback chain (Serper → Brave → DuckDuckGo → Google → Safari) that genuinely falls through on any tier's failure instead of stopping outright; an ambiguous single-word query (e.g. "Swift 6") is now disambiguated automatically; and the Safari fallback tier no longer touches or closes any of your own already-open Safari windows.
+- **Long Audio Analysis Timeout** — A very long `music_dna` analysis on a large file could be killed partway through by a safety limit that didn't check whether it was still making progress; fixed.
+- **Jira Reliability** — Fixed an endless retry loop on some requests, and a successfully-completed status change that could still be reported back to you as "failed."
+- **Sentry Retry Loop** — Fixed getting stuck retrying endlessly when Sentry wasn't connected yet, instead of just saying so once.
 - **Integration Routing Consistency** — Requests mentioning Jira, Sentry, Linear, Slack, or Postgres could be classified inconsistently between runs of the same request; now routed consistently every time.
-- **Swift 6.4 / Xcode 27 Compatibility** — Adopted the new toolchain's async `defer` support to close three real resource-leak paths (energy tracking and local-model cache not always releasing on an error path), plus a build-breaking Metal shader packaging conflict introduced by the toolchain update.
+- **Wrong Action-Name Guessing** — Jira, Linear, and Slack could each guess a plausible but nonexistent action name on the first try; each now uses its real, confirmed action for common operations.
+- **Fabricated-Citation False Positive** — A correctly-cited real link could still get rejected as a fabricated source due to an embedded line-break character corrupting the comparison; fixed.
+- **Postgres Startup Failure** — Fixed an upstream package dependency incompatibility that could prevent a Postgres connection from starting at all.
+- **Analytics Default** — Corrected anonymous usage analytics to genuinely default to off, matching what Settings > Privacy has always said.
+- **Xcode Background Service** — The app could silently launch Xcode's own background developer-tools service on every startup (visible as a hammer icon in the menu bar), even if you never touch Xcode automation; it now only starts the moment you actually ask for it.
+- **Resource Leak (Energy Tracking & KV-Cache)** — Energy-usage tracking and the local model's KV-cache could fail to release/clear if a task ended in an error partway through, instead of only on a clean finish; closed across all three affected sites using Swift 6.4's new async `defer` support.
 
 ## [1.0.6] - 2026-08-01
 

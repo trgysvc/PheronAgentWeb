@@ -4,9 +4,10 @@ Bu projedeki tüm önemli değişiklikler bu dosyada belgelenir.
 
 Format [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) esas alınmıştır ve bu proje [Semantic Versioning](https://semver.org/spec/v2.0.0.html) sürümlemesine uyar.
 
-## [1.0.7] - 2026-09-17
+## [1.0.7] - 2026-09-19
 
 ### Eklenenler
+- **Xcode/Simulator Entegrasyonu** — Apple'ın kendi resmi, Xcode içine gömülü MCP sunucusunu köprüler: bir Xcode veya Swift Package projesini derleyin/test edin/okuyun/yazın, ve gerçek bir Simulator'ı (dokunma/yazma/kaydırma, donanım tuşları) uçtan uca yönetin — üçüncü taraf bağımlılık yok.
 - **TikTok Entegrasyonu** — Kendi-uygulamanı-bağla yöntemiyle bağlantı (Ayarlar > Bağlantılar > TikTok): bir video veya fotoğraf karuseli doğrudan yayınlayın, veya gözden geçirmek üzere kendi TikTok gelen kutunuza taslak olarak gönderin. Ayrıca kendi profil/içerik üretici bilgilerinizi, video listenizi ve gönderi işleme durumunu okur.
 - **X (Twitter) — Yer İmleri, Takip, Sessize Alma, Engelleme, Listeler ve Direkt Mesajlar** — Paylaşma/silme/beğenme/retweet'in ötesinde artık yer imine ekleme, takip etme/bırakma, sessize alma/engelleme, yanıt gizleme, alıntı gönderi, anket, kendi Listelerinizi yönetme ve Direkt Mesaj gönderme/okuma da destekleniyor.
 - **LinkedIn — Yeniden Paylaşım, Makale, Çoklu Görsel, Anket ve Belge** — Başka birinin gönderisini yeniden paylaşın, başlık/açıklamalı bir bağlantı paylaşın, tek seferde 20 görsele kadar gönderi atın, anket oluşturun, belge (PDF/PPT/DOC) ekleyin, harekete geçirici mesaj butonu ekleyin ve yayınlanmış bir gönderinin metnini düzenleyin.
@@ -20,13 +21,22 @@ Format [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) esas alınmışt
 - **Hatırlatıcı Bitiş Tarihleri** — Bitiş tarihi/saati ile oluşturulan bir hatırlatıcı hiçbir tarih olmadan sessizce kaydedilebiliyordu; düzeltildi.
 - **Instagram ve Facebook Token Süresi Dolması** — İlk giriş adımından gelen kısa ömürlü token gerçek ~60 günlük olanla hiç değiştirilmediği için her iki bağlantı da bağlandıktan yaklaşık bir saat sonra sessizce çalışmayı durdurabiliyordu; düzeltildi — düzeltmeyi almak için bir kez yeniden bağlanın.
 - **TikTok OAuth Güvenilirliği** — Connect via OAuth sırasında genel bir "scope"/"malformed request" hatasının üç ayrı nedeni, hepsi düzeltildi (kopyala-yapıştırdan kalan görünmez karakterler, bir token-değişim biçimlendirme uyuşmazlığı ve bir PKCE kodlama uyuşmazlığı).
+- **Notion Bağlantısı** — Notion'ı bağlamayı tamamen imkansız kılan üç ayrı sorun (yanlış OAuth sunucusu, otomatik yerine elle kayıt, yanlış istek kodlaması) vardı; düzeltildi — bağlanmak artık tek bir "OAuth ile Bağlan" tıklaması.
 - **Sosyal Medya İstatistik Yanlış Yönlendirmesi** — Bir Facebook veya Instagram Sayfasının "performans" istatistiklerini sormak, gerçek istatistik aracı yerine Mac'inizin kendi CPU/RAM telemetrisiyle yanıtlanabiliyordu; düzeltildi.
 - **X Araç Ayrımı** — Beş X aracı (gönderi, silme, etkileşim, listeler, direkt mesajlar) tek bir istekte birbirine karışabiliyordu; artık her istek gerçekten eşleşen tek araca çözümleniyor.
 - **Konuşma ve Beceri Hatırlama** — "X ile ne konuştuk" veya "kayıtlı becerilerimi listele" istekleri, gerçek verileriniz yerine modelin kendi hayal gücünden yanıtlanabiliyordu; gerçek bir arama üzerinden yönlendirilecek şekilde düzeltildi.
 - **Bağlantı Kullanılabilirlik Titremesi** — Bağlı bir entegrasyon, aynı oturumda daha önce çalıştığı doğrulanmış olsa bile, yoğun sistem yükü altında konuşma ortasında kısa süreliğine kullanılabilir araçlardan kaybolabiliyordu; doğrulanmış-çalışıyor bir sonuç artık çok daha uzun süre güveniliyor.
-- **Web Arama ve Alıntı Güvenilirliği** — 1.0.6'dakilerin üzerine, düşürülen arama sonuçları ve yanlış-pozitif uydurma-kaynak tespitleri dahil ek bir araştırma/alıntı düzeltme paketi.
+- **Web Arama Güvenilirliği** — Arama artık 5 katmanlı bir yedekleme zinciri (Serper → Brave → DuckDuckGo → Google → Safari) ve herhangi bir katman başarısız olursa gerçekten bir sonrakine düşüyor, tamamen durmuyor; belirsiz tek-kelime bir sorgu (ör. "Swift 6") artık otomatik olarak netleştiriliyor; ve Safari yedekleme katmanı artık kendi açık Safari pencerelerinize hiç dokunmuyor veya onları kapatmıyor.
+- **Uzun Ses Analizi Zaman Aşımı** — Büyük bir dosyada çok uzun bir `music_dna` analizi, hâlâ ilerleme yapıp yapmadığını kontrol etmeyen bir güvenlik sınırı yüzünden yarı yolda öldürülebiliyordu; düzeltildi.
+- **Jira Güvenilirliği** — Bazı isteklerde sonsuz yeniden deneme döngüsü ve başarıyla tamamlanmış bir durum değişikliğinin size hâlâ "başarısız" olarak bildirilmesi düzeltildi.
+- **Sentry Yeniden Deneme Döngüsü** — Sentry henüz bağlı değilken sonsuz yeniden deneme döngüsüne girme düzeltildi — artık bunu bir kez söylüyor.
 - **Entegrasyon Yönlendirme Tutarlılığı** — Jira, Sentry, Linear, Slack veya Postgres'ten bahseden istekler, aynı isteğin farklı çalıştırmaları arasında tutarsız sınıflandırılabiliyordu; artık her seferinde tutarlı şekilde yönlendiriliyor.
-- **Swift 6.4 / Xcode 27 Uyumluluğu** — Yeni araç zincirinin async `defer` desteği benimsenerek üç gerçek kaynak-sızıntısı yolu kapatıldı (enerji takibi ve yerel model önbelleğinin bir hata yolunda her zaman serbest bırakılmaması), ayrıca araç zinciri güncellemesinin yol açtığı build'i kıran bir Metal shader paketleme çakışması giderildi.
+- **Yanlış Eylem-Adı Tahmini** — Jira, Linear ve Slack her biri ilk denemede mantıklı görünen ama var olmayan bir eylem adı tahmin edebiliyordu; her biri artık yaygın işlemler için gerçek, doğrulanmış eylemi kullanıyor.
+- **Uydurma-Alıntı Yanlış Pozitifi** — Doğru şekilde alıntılanan gerçek bir bağlantı, gömülü bir satır-sonu karakterinin karşılaştırmayı bozması yüzünden hâlâ uydurma kaynak olarak reddedilebiliyordu; düzeltildi.
+- **Postgres Başlatma Hatası** — Bir Postgres bağlantısının hiç başlamamasına neden olabilen üst-akış paket bağımlılığı uyumsuzluğu düzeltildi.
+- **Analitik Varsayılanı** — Anonim kullanım analitiğinin, Ayarlar > Gizlilik'in her zaman söylediğiyle eşleşecek şekilde gerçekten kapalı olarak varsayılan gelmesi düzeltildi.
+- **Xcode Arka Plan Servisi** — Uygulama, Xcode otomasyonuna hiç dokunmasanız bile her başlatmada Xcode'un kendi arka plan geliştirici-araçları servisini sessizce başlatabiliyordu (menü çubuğunda kendiliğinden görünen bir çekiç ikonu olarak fark edilir); artık sadece gerçekten istediğiniz anda başlıyor.
+- **Kaynak Sızıntısı (Enerji Takibi ve KV-Cache)** — Enerji kullanımı takibi ve yerel modelin KV-cache'i, bir görev hata ile yarı yolda bitince (sadece temiz bir bitişte değil) serbest bırakılmayı/temizlenmeyi başaramayabiliyordu; Swift 6.4'ün yeni async `defer` desteği kullanılarak etkilenen üç noktada da kapatıldı.
 
 ## [1.0.6] - 2026-08-01
 

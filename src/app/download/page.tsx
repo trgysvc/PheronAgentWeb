@@ -11,6 +11,7 @@ import { useLanguage } from "../../context/LanguageContext";
 
 export default function DownloadPage() {
   const { language, t } = useLanguage();
+  const [version107Expanded, setVersion107Expanded] = useState(false);
   const [version106Expanded, setVersion106Expanded] = useState(false);
   const [versionExpanded, setVersionExpanded] = useState(false);
   const [version104Expanded, setVersion104Expanded] = useState(false);
@@ -43,10 +44,10 @@ export default function DownloadPage() {
         <p className={styles.downloadSubtitle}>{t("download.pageSubtitle", "Requires macOS 26.0+ (Tahoe or later), Apple Silicon — 16 GB RAM minimum, 24 GB+ recommended")}</p>
         
         <div style={{ marginBottom: "50px", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <a 
-            href="https://app.pheronagent.com/PheronAgent106.dmg" 
+          <a
+            href="https://app.pheronagent.com/PheronAgent107.dmg"
             className={styles.downloadPillBtn}
-            onClick={() => trackDownload("PheronAgent106.dmg", "1.0.6", "https://app.pheronagent.com/PheronAgent106.dmg", "Download for macOS")}
+            onClick={() => trackDownload("PheronAgent107.dmg", "1.0.7", "https://app.pheronagent.com/PheronAgent107.dmg", "Download for macOS")}
           >
             <span>{t("download.downloadBtn", "Download for macOS")}</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px" }}>
@@ -75,21 +76,63 @@ export default function DownloadPage() {
 
         <div className={styles.versionList}>
           <div className={styles.versionItem}>
-            <div 
-              className={styles.versionRow} 
+            <div
+              className={styles.versionRow}
+              onClick={() => setVersion107Expanded(!version107Expanded)}
+            >
+              <div className={styles.versionLeft}>
+                <span className={styles.versionNum}>1.0.7</span>
+                <span className={styles.versionLatestBadge}>{t("download.latest", "Latest")}</span>
+              </div>
+              <svg
+                className={`${styles.versionCaret} ${version107Expanded ? styles.versionCaretOpen : ""}`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            {version107Expanded && (
+              <div className={styles.versionDetails}>
+                <p>
+                  {t("download.activeRelease", "Pheron Agent v{version} is the active, stable release for macOS (Apple Silicon).").replace("{version}", "1.0.7")}
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
+                  <a
+                    href="https://app.pheronagent.com/PheronAgent107.dmg"
+                    className={styles.versionDetailsLink}
+                    onClick={() => trackDownload("PheronAgent107.dmg", "1.0.7", "https://app.pheronagent.com/PheronAgent107.dmg", "Download PheronAgent107.dmg directly (v1.0.7)")}
+                  >
+                    {t("download.directDownload", "Download {file} directly (v{version})").replace("{file}", "PheronAgent107.dmg").replace("{version}", "1.0.7")}
+                  </a>
+                  <Link href="/changelog#v1.0.7" className={styles.versionDetailsLink}>
+                    {t("download.viewChangelog", "View Changelog")}
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className={styles.versionItem}>
+            <div
+              className={styles.versionRow}
               onClick={() => setVersion106Expanded(!version106Expanded)}
             >
               <div className={styles.versionLeft}>
                 <span className={styles.versionNum}>1.0.6</span>
-                <span className={styles.versionLatestBadge}>{t("download.latest", "Latest")}</span>
+                <span className={styles.versionLatestBadge} style={{ background: "rgba(255, 255, 255, 0.1)", color: "var(--text-secondary)", borderColor: "transparent" }}>{t("download.previous", "Previous")}</span>
               </div>
-              <svg 
-                className={`${styles.versionCaret} ${version106Expanded ? styles.versionCaretOpen : ""}`} 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2.5" 
-                strokeLinecap="round" 
+              <svg
+                className={`${styles.versionCaret} ${version106Expanded ? styles.versionCaretOpen : ""}`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               >
                 <polyline points="6 9 12 15 18 9" />
@@ -98,7 +141,7 @@ export default function DownloadPage() {
             {version106Expanded && (
               <div className={styles.versionDetails}>
                 <p>
-                  {t("download.activeRelease", "Pheron Agent v{version} is the active, stable release for macOS (Apple Silicon).").replace("{version}", "1.0.6")}
+                  {t("download.previousRelease", "Pheron Agent v{version} is a previous release for macOS (Apple Silicon).").replace("{version}", "1.0.6")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "8px" }}>
                   <a
@@ -117,8 +160,8 @@ export default function DownloadPage() {
           </div>
 
           <div className={styles.versionItem}>
-            <div 
-              className={styles.versionRow} 
+            <div
+              className={styles.versionRow}
               onClick={() => setVersionExpanded(!versionExpanded)}
             >
               <div className={styles.versionLeft}>

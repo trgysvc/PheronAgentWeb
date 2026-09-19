@@ -4,9 +4,10 @@ Tous les changements notables apportés à ce projet sont documentés dans ce fi
 
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), et ce projet adhère au [Versionnage sémantique](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.7] - 2026-09-17
+## [1.0.7] - 2026-09-19
 
 ### Ajouté
+- **Intégration Xcode/Simulator** — Se connecte au serveur MCP officiel d'Apple, intégré à Xcode : compilez/testez/lisez/écrivez un projet Xcode ou Swift Package, et pilotez un vrai Simulator (toucher/taper/glisser, boutons matériels) de bout en bout — aucune dépendance tierce.
 - **Intégration TikTok** — Connexion « apportez votre propre application » (Réglages > Connexions > TikTok) : publiez une vidéo ou un carrousel de photos directement, ou envoyez-le comme brouillon dans votre propre boîte de réception TikTok. Lit aussi votre profil/infos créateur, votre liste de vidéos et l'état de traitement d'une publication.
 - **X (Twitter) — Favoris, abonnements, sourdine, blocage, listes et messages directs** — Au-delà de publier/supprimer/aimer/retweeter : ajout des favoris, suivre/ne plus suivre, mettre en sourdine/bloquer, masquer une réponse, citer une publication, sondages, gestion de vos propres listes, et envoi/lecture de messages directs.
 - **LinkedIn — Repartage, articles, multi-images, sondages et documents** — Repartagez la publication de quelqu'un d'autre, partagez un lien avec titre/description, publiez jusqu'à 20 images, créez un sondage, joignez un document (PDF/PPT/DOC), ajoutez un bouton d'appel à l'action, et modifiez le texte d'une publication déjà publiée.
@@ -20,13 +21,22 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - **Dates d'échéance des rappels** — Un rappel créé avec une date/heure pouvait être enregistré silencieusement sans date d'échéance ; corrigé.
 - **Expiration des jetons Instagram et Facebook** — Les deux connexions pouvaient cesser de fonctionner silencieusement environ une heure après la connexion, le jeton de courte durée n'étant jamais échangé contre le vrai jeton de ~60 jours ; corrigé — reconnectez-vous une fois pour appliquer le correctif.
 - **Fiabilité de l'OAuth TikTok** — Trois causes distinctes d'une erreur générique « scope »/« malformed request », toutes corrigées.
+- **Connexion Notion** — Trois problèmes distincts rendaient la connexion à Notion totalement impossible (mauvais serveur OAuth, enregistrement manuel au lieu d'automatique, mauvais encodage de requête) ; corrigé — se connecter n'est plus qu'un simple clic sur « Se connecter via OAuth ».
 - **Mauvais routage des statistiques de réseaux sociaux** — Demander les statistiques de « performance » d'une page Facebook ou Instagram pouvait être répondu avec la télémétrie CPU/RAM du Mac lui-même ; corrigé.
 - **Désambiguïsation des outils X** — Les cinq outils X pouvaient être confondus entre eux sur une seule requête ; chaque requête est désormais résolue vers l'outil qui correspond réellement.
 - **Rappel de conversations et de compétences** — Des questions comme « qu'ai-je discuté avec X » pouvaient être répondues à partir de l'imagination du modèle plutôt que de vos données réelles ; corrigé.
 - **Scintillement de la disponibilité des connexions** — Une intégration connectée pouvait brièvement disparaître sous forte charge système même après avoir été confirmée fonctionnelle ; un résultat confirmé est désormais fait confiance beaucoup plus longtemps.
-- **Fiabilité de la recherche web et des citations** — Un nouveau lot de corrections de recherche/citation en plus de celles de la 1.0.6.
+- **Fiabilité de la recherche web** — La recherche est désormais une chaîne de secours à 5 niveaux (Serper → Brave → DuckDuckGo → Google → Safari) qui bascule réellement au niveau suivant en cas d'échec plutôt que de s'arrêter net ; une requête ambiguë d'un seul mot (ex. « Swift 6 ») est désormais désambiguïsée automatiquement ; et le niveau de secours Safari ne touche ni ne ferme plus aucune de vos propres fenêtres Safari déjà ouvertes.
+- **Délai d'expiration lors d'une analyse audio longue** — Une analyse `music_dna` très longue sur un gros fichier pouvait être interrompue en cours de route par une limite de sécurité qui ne vérifiait pas si elle progressait encore ; corrigé.
+- **Fiabilité de Jira** — Correction d'une boucle de nouvelles tentatives infinie sur certaines requêtes, et d'un changement de statut réussi qui pouvait quand même être signalé comme « échoué ».
+- **Boucle de nouvelles tentatives de Sentry** — Correction du blocage dans une boucle infinie quand Sentry n'était pas encore connecté — cela n'est désormais signalé qu'une seule fois.
 - **Cohérence du routage des intégrations** — Les requêtes mentionnant Jira, Sentry, Linear, Slack ou Postgres sont désormais routées de manière cohérente.
-- **Compatibilité Swift 6.4 / Xcode 27** — Adoption du support `defer` asynchrone pour fermer trois véritables fuites de ressources, plus un conflit d'empaquetage de shader Metal qui cassait la compilation.
+- **Mauvaise supposition de nom d'action** — Jira, Linear et Slack pouvaient chacun deviner dès la première tentative un nom d'action plausible mais inexistant ; chacun utilise désormais la véritable action confirmée pour les opérations courantes.
+- **Faux positif de citation fabriquée** — Un lien réel correctement cité pouvait quand même être rejeté comme source fabriquée à cause d'un saut de ligne intégré qui corrompait la comparaison ; corrigé.
+- **Échec de démarrage de Postgres** — Correction d'une incompatibilité de dépendance d'un paquet amont qui pouvait empêcher totalement une connexion Postgres de démarrer.
+- **Valeur par défaut des analyses** — Les analyses d'utilisation anonymes sont désormais réellement désactivées par défaut, conformément à ce que Réglages > Confidentialité a toujours indiqué.
+- **Service en arrière-plan d'Xcode** — L'application pouvait silencieusement lancer le service de développement en arrière-plan propre à Xcode à chaque démarrage (visible sous la forme d'une icône de marteau apparaissant d'elle-même dans la barre de menu), même sans jamais toucher à l'automatisation Xcode ; il ne démarre désormais qu'au moment où vous le demandez réellement.
+- **Fuite de ressources (suivi énergétique et cache KV)** — Le suivi de la consommation d'énergie et le cache KV du modèle local pouvaient ne pas être libérés/vidés si une tâche se terminait en erreur en cours de route, au lieu de seulement à une fin propre ; corrigé sur les trois emplacements concernés grâce au nouveau support `defer` asynchrone de Swift 6.4.
 
 ## [1.0.6] - 2026-08-01
 
