@@ -67,7 +67,7 @@ export default function PricingPage() {
               </div>
 
               <div style={{ borderTop: "1px solid var(--border-glass)", paddingTop: "24px", marginTop: "8px" }}>
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "16px", fontSize: "15px", color: "var(--text-secondary)", padding: 0, margin: 0 }}>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "16px", fontSize: "15px", color: "var(--text-secondary)", padding: 0, margin: 0, textAlign: "left" }}>
                   <li style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                     <span style={{ color: "var(--color-cyan)", fontSize: "18px" }}>✓</span>
                     <span>{t("pricing.guarantee", "14-day money-back guarantee — no questions asked")} (<Link href="/refund" style={{ color: "var(--color-cyan)", textDecoration: "none" }}>{t("footer.refund", "Refund Policy")}</Link>)</span>
