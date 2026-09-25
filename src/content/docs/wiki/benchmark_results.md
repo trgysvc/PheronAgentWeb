@@ -151,9 +151,34 @@ Only bug #1 is closed. Bugs #2 and #3, and the deeper evidence-matching gap #2 e
 
 ---
 
-## 7. Resources & Further Reading
+## 7. September 2026 Development Update — Exploratory, Not Certified
+
+> [!WARNING]
+> **The certified k=5 snapshot above (§1–§5, `autorun1732`) has not changed and remains the only certified benchmark number on this page.** Everything in this section is `k=1`/`k=3` **exploratory** data per the Minimum-k Rule (§4) — bug-hunting logs from an active development cycle, not a new certified result. It is published here for the same reason the certified run is: full transparency, including the messy middle of active development.
+
+Between 2026-09-16 and 2026-09-24, 16 exploratory runs (32 files) were recorded during a single, continuous refactor cycle and published as a batch to `AgentTestMethodology`. The headline pass@1 swings sharply across this window — this is disclosed as real signal, not smoothed into a single misleading average:
+
+| Date | Blocks | pass@1 | What was happening |
+| :--- | :---: | :---: | :--- |
+| 09-16 | 148 | 50.0% | Baseline before this cycle's refactor work started |
+| 09-17 → 09-18 | 22 / 1×4 | 0% / small debug probes | Targeted isolation debugging (social-media subset, Xcode MCP integration) |
+| 09-20 | 149 | 43.0% | A new `ResearchFastPath` shortcut had just landed, not yet fully scoped |
+| 09-21 | 96 | **3.1%** | Confirmed regression: the shortcut's over-broad trigger forced unrelated prompts into irrelevant web searches — this run's low point |
+| 09-21 | 4×4 / 17 | 25%→100% / 64.7% | Same-day fix-and-retest cycles (Office document handling, cross-session memory) converging to green |
+| 09-22 | 149 | 33.6% | `ResearchFastPath` regression fixed, but a larger role-isolation/tool-registry refactor was still mid-flight |
+| 09-23 | 150 | **16.0%** | Landed between that refactor and its own next-day follow-up fix (system-prompt bloat) — this batch's second low point, a different cause than 09-21's |
+| 09-24 | 150 | 54.7% | This batch's high point and most current snapshot — still k=1, not certified |
+
+**Why publish numbers this volatile:** a batch swinging from 50% to 3.1% and back to 54.7% inside 8 days is what an honest, in-progress bug hunt actually looks like. Smoothing this down to only the best number would misrepresent the development process this page exists to document truthfully — see the full breakdown, including two disclosed data-provenance gaps (two scratch datasets no longer available, one dataset's exact historical version not reconstructable) and a harness metadata-capture bug, in `CHANGELOG.md` Version 11 of the methodology repo.
+
+🔗 **[Full Version 11 breakdown, all 16 runs ↗](https://github.com/trgysvc/AgentTestMethodology/blob/main/CHANGELOG.md)**
+
+---
+
+## 8. Resources & Further Reading
 
 - [AgentTestMethodology Repository (GitHub)](https://github.com/trgysvc/AgentTestMethodology) — Full methodology specification, templates, and raw results
 - [Reference Result Files](https://github.com/trgysvc/AgentTestMethodology/tree/main/results/PheronAgent) — All `.json`, `.jsonl`, `.log`, and `.md` execution outputs, including `datasets/golden_dataset_126.json`
+- [September 2026 Exploratory Batch (16 runs)](https://github.com/trgysvc/AgentTestMethodology/blob/main/CHANGELOG.md#version-11--2026-09-25) — Not certified (§7 above); the raw k=1/k=3 bug-hunt logs behind the 148–150 block dataset's current development cycle
 - [Full Tool Inventory](full_tool_inventory.md) — List of all native & MCP tools evaluated
 - [Models & Hardware Tiers](models_and_hardware.md) — Hardware setup and RAM scaling recommendations
