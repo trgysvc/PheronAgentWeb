@@ -18,7 +18,7 @@ const en: Record<string, string> = {
   "nav.community": "Community",
 
   // Hero Section
-  "hero.badge": "v1.0.6 NOW AVAILABLE · SWIFT 6 & MLX ENGINE",
+  "hero.badge": "v1.0.7 NOW AVAILABLE · SWIFT 6 & MLX ENGINE",
   "hero.title": "Native Autonomous AI Agent for macOS",
   "hero.subtitle": "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 96 integrated native tools. Privacy by design, autonomy by nature.",
   "hero.ctaDownload": "Download for macOS",
