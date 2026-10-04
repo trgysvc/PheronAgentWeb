@@ -1,7 +1,14 @@
 :root {
-  --font-sans: 'Inter', var(--font-inter), var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-headings: 'Outfit', var(--font-outfit), var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  /* Font families (loaded via Google Fonts in layout.tsx).
+     These must be defined: an undefined var() without a fallback
+     invalidates the entire font-family declaration. */
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-outfit: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --font-sans: var(--font-inter);
+  --font-headings: var(--font-outfit);
+  --font-mono: var(--font-jetbrains-mono);
 
   /* Color Palette - Cosmic Dark & Neon */
   --bg-dark: #06060a;

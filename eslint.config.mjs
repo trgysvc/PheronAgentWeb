@@ -5,6 +5,11 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  // ESLint 10 removed context.getFilename(), which eslint-plugin-react's
+  // "detect" mode relies on. Pinning the version avoids that code path.
+  {
+    settings: { react: { version: "19.3" } },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

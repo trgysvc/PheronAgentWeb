@@ -43,24 +43,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async headers() {
-        const isDev = process.env.NODE_ENV === 'development';
-    const cspHeader = `
-      default-src 'none';
-      script-src 'self' https://vercel.live https://www.googletagmanager.com https://www.google-analytics.com${isDev ? " 'unsafe-eval' 'unsafe-inline'" : " 'unsafe-inline'"};
-      style-src 'self' 'unsafe-inline';
-      img-src 'self' blob: data: https://www.google-analytics.com https://www.googletagmanager.com;
-      font-src 'self' data:;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self';
-      frame-ancestors 'none';
-      connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net;
-      manifest-src 'self';
-      media-src 'self';
-      worker-src 'self';
-      upgrade-insecure-requests;
-    `.replace(/\n/g, '').replace(/\s+/g, ' ').trim();
-
+    // Content-Security-Policy is set per-request (with a nonce) in src/proxy.ts
     return [
       {
         source: '/(.*)',
@@ -80,10 +63,6 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: cspHeader,
           },
           {
             key: 'Strict-Transport-Security',

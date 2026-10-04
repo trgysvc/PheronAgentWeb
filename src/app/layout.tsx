@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import ClientProviders from "../context/ClientProviders";
@@ -35,11 +36,14 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Per-request CSP nonce generated in src/proxy.ts
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
@@ -54,8 +58,8 @@ export default function RootLayout({
         <ClientProviders>
           {children}
         </ClientProviders>
-        <GoogleAnalytics gaId="G-X27N6PXYTL" />
-        <GoogleTagManager gtmId="GTM-5HWMNTDM" />
+        <GoogleAnalytics gaId="G-X27N6PXYTL" nonce={nonce} />
+        <GoogleTagManager gtmId="GTM-5HWMNTDM" nonce={nonce} />
         <Analytics />
       </body>
     </html>
