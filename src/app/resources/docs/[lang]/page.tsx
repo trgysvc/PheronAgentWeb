@@ -11,6 +11,20 @@ interface PageProps {
 }
 
 import { LANGUAGES } from "../../../../i18n";
+import { docsMetadata } from "../../../../lib/seo";
+import type { Metadata } from "next";
+
+function readIndex(lang: string): string {
+  const docsDirectory = path.join(process.cwd(), "src/content/docs");
+  let filePath = path.join(docsDirectory, `index.${lang}.md`);
+  if (!fs.existsSync(filePath)) filePath = path.join(docsDirectory, "index.md");
+  return fs.readFileSync(/*turbopackIgnore: true*/ filePath, "utf8");
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
+  return docsMetadata(readIndex(lang), []);
+}
 
 export async function generateStaticParams() {
   return LANGUAGES.map((l) => ({ lang: l.code }));

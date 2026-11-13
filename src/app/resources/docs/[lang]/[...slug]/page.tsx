@@ -5,6 +5,8 @@ import ResourcesClientLayout from "../../../ResourcesClientLayout";
 import styles from "../../../../page.module.css";
 import { parseMarkdown } from "../../../../../utils/markdown";
 import { LANGUAGES } from "../../../../../i18n";
+import { docsMetadata } from "../../../../../lib/seo";
+import type { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{
@@ -68,17 +70,10 @@ export async function generateStaticParams() {
   return paramsList;
 }
 
-export default async function ResourcesDocsSlugPage({ params }: PageProps) {
-  const { lang, slug } = await params;
-  
-  if (!slug || slug.length === 0 || (slug.length === 1 && slug[0] === "index")) {
-    notFound();
-  }
-
+function resolveDocFile(lang: string, slug: string[]): string | null {
   const docsDirectory = path.join(process.cwd(), "src/content/docs");
-  
+
   // Build potential file paths for the requested slug
-  const slugPath = slug.join("/");
   const parentDirs = slug.slice(0, -1);
   const baseName = slug[slug.length - 1];
 
@@ -98,6 +93,25 @@ export default async function ResourcesDocsSlugPage({ params }: PageProps) {
   } else if (fs.existsSync(candidate3)) {
     targetFilePath = candidate3;
   }
+
+  return targetFilePath;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const file = resolveDocFile(lang, slug);
+  if (!file) return {};
+  return docsMetadata(fs.readFileSync(/*turbopackIgnore: true*/ file, "utf8"), slug);
+}
+
+export default async function ResourcesDocsSlugPage({ params }: PageProps) {
+  const { lang, slug } = await params;
+  
+  if (!slug || slug.length === 0 || (slug.length === 1 && slug[0] === "index")) {
+    notFound();
+  }
+
+  const targetFilePath = resolveDocFile(lang, slug);
 
   if (!targetFilePath) {
     notFound();
