@@ -118,7 +118,7 @@ export default async function ResourcesDocsSlugPage({ params }: PageProps) {
   }
 
   const fileContent = fs.readFileSync(/*turbopackIgnore: true*/ targetFilePath, "utf8");
-  const htmlContent = await parseMarkdown(fileContent, lang);
+  const htmlContent = await parseMarkdown(fileContent, lang, slug.slice(0, -1));
 
   return (
     <ResourcesClientLayout>

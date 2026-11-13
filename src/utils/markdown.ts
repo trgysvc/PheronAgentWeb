@@ -1,4 +1,24 @@
+import fs from "fs";
+import path from "path";
 import { marked } from "marked";
+
+const DOCS_ROOT = path.join(process.cwd(), "src/content/docs");
+
+/**
+ * Resolves a markdown link the way the file system does: relative to the directory of the page that contains it
+ * (`full_tool_inventory.md` inside wiki/ is wiki/full_tool_inventory, `../concepts/x.md` is concepts/x).
+ * Links written from the docs root (`wiki/x.md`) keep working: when the directory-relative target does not exist
+ * but the root-relative one does, the root-relative one is used.
+ */
+function resolveDocLink(target: string, docDir: string[]): string {
+  const exists = (rel: string) => fs.existsSync(path.join(DOCS_ROOT, `${rel}.md`));
+  if (target.startsWith("/")) return target.substring(1);
+  const resolved = path.posix.normalize([...docDir, target].join("/"));
+  const rootRelative = path.posix.normalize(target);
+  if (!resolved.startsWith("..") && exists(resolved)) return resolved;
+  if (!rootRelative.startsWith("..") && exists(rootRelative)) return rootRelative;
+  return resolved.startsWith("..") ? rootRelative.replace(/^(\.\.\/)+/, "") : resolved;
+}
 
 // Custom slugify to ensure GFM-like slugs
 export function slugify(text: string): string {
@@ -11,17 +31,14 @@ export function slugify(text: string): string {
 }
 
 // Rewrites markdown relative links (.md) and normalizes hash anchors (#)
-export function rewriteMarkdownLinks(html: string, lang: string = "en"): string {
+export function rewriteMarkdownLinks(html: string, lang: string = "en", docDir: string[] = []): string {
   // 1. Rewrite relative links ending with .md
   let cleaned = html.replace(/href="([^"]+)\.md"/g, (match, p1) => {
     if (p1.startsWith("http://") || p1.startsWith("https://") || p1.startsWith("mailto:") || p1.startsWith("#")) {
       return match;
     }
     
-    let cleanedPath = p1;
-    if (cleanedPath.startsWith("/")) {
-      cleanedPath = cleanedPath.substring(1);
-    }
+    const cleanedPath = resolveDocLink(p1, docDir);
     
     if (cleanedPath === "wiki/macos_onboarding_permissions_guide") {
       return 'href="/resources/help"';
@@ -54,7 +71,7 @@ export function rewriteMarkdownLinks(html: string, lang: string = "en"): string 
 }
 
 // Configures marked and parses markdown content to HTML
-export async function parseMarkdown(content: string, lang: string = "en"): Promise<string> {
+export async function parseMarkdown(content: string, lang: string = "en", docDir: string[] = []): Promise<string> {
   // Configure marked custom renderer for headings
   marked.use({
     renderer: {
@@ -68,5 +85,5 @@ export async function parseMarkdown(content: string, lang: string = "en"): Promi
   });
 
   const html = await marked.parse(content);
-  return rewriteMarkdownLinks(html, lang);
+  return rewriteMarkdownLinks(html, lang, docDir);
 }

@@ -40,6 +40,27 @@ const nextConfig: NextConfig = {
         destination: "/resources/docs/wiki/performance_optimization_report",
         permanent: true,
       },
+      // Old URLs Google still lists as 404 (earlier relative-link bug produced wiki/wiki/<doc>).
+      {
+        source: "/resources/docs/wiki/wiki/:slug",
+        destination: "/resources/docs/en/wiki/:slug",
+        permanent: true,
+      },
+      {
+        source: "/resources/docs/en/wiki/wiki/:slug",
+        destination: "/resources/docs/en/wiki/:slug",
+        permanent: true,
+      },
+      {
+        source: "/resources/docs/stability_hotfixes_2026-05-07",
+        destination: "/resources/docs/en/wiki/system_stability",
+        permanent: true,
+      },
+      {
+        source: "/resources/DECISIONS",
+        destination: "/resources/docs",
+        permanent: true,
+      },
     ];
   },
   async headers() {

@@ -54,7 +54,7 @@
 
 ## A.10 — `lark_tool` (UBID 112) — Official Lark/Feishu OpenAPI MCP Server
 - **Command:** `npx -y @larksuiteoapi/lark-mcp mcp -a <appID> -s <appSecret> --domain https://open.larksuite.com -t preset.im.default,preset.base.default,preset.doc.default,preset.task.default,preset.calendar.default`
-- **Auth:** Bring-your-own app (App ID + App Secret from a custom app at open.larksuite.com), tenant_access_token mode — no OAuth. See [Lark Suite Setup](../lark_suite_setup.md).
+- **Auth:** Bring-your-own app (App ID + App Secret from a custom app at open.larksuite.com), tenant_access_token mode — no OAuth. See [Lark Suite Setup](lark_suite_setup.md).
 - **Status:** ✅ Live-Verified (2026-08-07, real app credentials, 27 tools returned via `tools/list`).
 - **Actions:** `im_v1_message_create/list`, `im_v1_chat_create/list`, `im_v1_chatMembers_get`, `calendar_v4_calendarEvent_create/get/patch`, `calendar_v4_calendar_primary`, `calendar_v4_freebusy_list`, `contact_v3_user_batchGetId`, `bitable_v1_app_create`, `bitable_v1_appTable_create/list`, `bitable_v1_appTableField_list`, `bitable_v1_appTableRecord_create/search/update`, `docx_v1_document_rawContent`, `docx_builtin_search/import`, `task_v2_task_create/patch/addMembers/addReminders`, `wiki_v1_node_search`, `wiki_v2_space_getNode`, `drive_v1_permissionMember_create`.
 
@@ -68,13 +68,13 @@
 
 ## B.2 — `linkedin_post` (UBID 125) — LinkedIn REST API
 - **Endpoint:** `https://api.linkedin.com/rest/posts`
-- **Auth:** OAuth 2.0, bring-your-own app (Client ID + Secret from your own developer.linkedin.com app) — see [LinkedIn & X Setup](../linkedin_x_setup.md).
+- **Auth:** OAuth 2.0, bring-your-own app (Client ID + Secret from your own developer.linkedin.com app) — see [LinkedIn & X Setup](linkedin_x_setup.md).
 - **Status:** ✅ Live-Verified (2026-09-11, real post published and confirmed on the connected account).
 - **Scope:** publishes a text post to the connected member's own personal profile only (`w_member_social`). Company-page posting, messaging, connections, and search are outside LinkedIn's self-serve API and require separate partner approval — not available here.
 
 ## B.3 — `x_post` (UBID 126) — X (Twitter) REST API
 - **Endpoint:** `https://api.x.com/2/tweets`
-- **Auth:** OAuth 2.0 PKCE, bring-your-own app (Client ID from your own developer.x.com app) — see [LinkedIn & X Setup](../linkedin_x_setup.md).
+- **Auth:** OAuth 2.0 PKCE, bring-your-own app (Client ID from your own developer.x.com app) — see [LinkedIn & X Setup](linkedin_x_setup.md).
 - **Status:** ⚠️ OAuth connection live-verified (2026-09-11, real PKCE authorize + token exchange succeeded). Actual publish call still unverified — blocked on adding a payment method (X requires one before any write call, no free tier).
 - **Cost:** every successful post is billed by X (~$0.015, ~$0.20 if it contains a link) — no free tier.
 

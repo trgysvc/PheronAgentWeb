@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SITE_URL } from "../lib/seo";
 import ClientProviders from "../context/ClientProviders";
 import "./globals.css";
 
@@ -10,6 +11,9 @@ const inter = { variable: "font-inter" };
 const jetbrainsMono = { variable: "font-jetbrains-mono" };
 
 export const metadata: Metadata = {
+  // "./" = each page's own URL on the canonical origin (pages that set their own canonical override it); gives the client-rendered home page its canonical.
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "./" },
   title: "Pheron Agent | Native Autonomous AI Agent for macOS",
   description: "A fully autonomous, hardware-native AI agent running entirely on your Apple Silicon. Local MLX inference, ANE acceleration, and 96 integrated native tools. Privacy by design, autonomy by nature.",
   keywords: ["AI Agent", "macOS Agent", "Apple Silicon", "MLX Inference", "Local LLM", "Autonomous Agent", "Privacy AI", "Swift 6"],

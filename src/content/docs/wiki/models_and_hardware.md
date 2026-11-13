@@ -15,6 +15,7 @@ Pheron Agent relies on a local model catalog registered in `ModelRegistry` (spec
 | **Qwen3.5-9B-4bit** | `mlx-community/Qwen3.5-9B-MLX-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
 | **Qwen3.5-9B-OptiQ** | `mlx-community/Qwen3.5-9B-OptiQ-4bit` | 5.10 GB | 10 GB | ✓ | ✓ |
 | **Qwen3.5-27B-4bit** | `mlx-community/Qwen3.5-27B-4bit` | 15.2 GB | 18 GB | ✓ | ✓ |
+| **Qwen3.5-4B-3D-Coder-OptiQ** | `mlx-community/Qwen3.5-4B-3D-Coder-OptiQ-4bit` | 3.27 GB | 6 GB | ✓ | ✓ |
 
 ### Llama
 | Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
@@ -51,6 +52,18 @@ Pheron Agent relies on a local model catalog registered in `ModelRegistry` (spec
 | **Phi-4-mini-4bit** | `mlx-community/Phi-4-mini-instruct-4bit` | 2.18 GB | 3 GB | ✓ | — |
 | **Phi-4-14B-4bit** | `mlx-community/phi-4-4bit` | 8.25 GB | 10 GB | Partial | — |
 | **DeepSeek-Coder-V2-Lite-4bit** | `mlx-community/DeepSeek-Coder-V2-Lite-Instruct-4bit-mlx` | 8.84 GB | 11 GB | Partial | — |
+
+### LFM2.5 (Liquid AI)
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **LFM2.5-24B-A2B-OptiQ-4bit** | `mlx-community/LFM2.5-24B-A2B-OptiQ-4bit` | 16.7 GB | 24 GB | ✓ | ✓ |
+
+MoE model (about 2B of 24B parameters active). Released under the LFM Open License v1.0, not Apache/MIT: https://www.liquid.ai/lfm-license
+
+### MiniCPM
+| Model | HF Repo | Disk Size | Min. RAM | Tool Calling | Thinking Mode |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **MiniCPM5-2B-4bit** | `mlx-community/MiniCPM5-2B-chat-mlx-4bit` | 1.42 GB | 3 GB | ✓ | ✓ |
 
 ### Model Selection & Recommendation Logic
 
@@ -170,11 +183,13 @@ Each folder must contain the following verified files resolved from Hugging Face
    * Tokenizer parameters, templates, and instruction formats. Pheron Agent has self-healing bridge mechanisms (`UNOExternalBridge.patchTokenizerConfig`) to inject missing chat templates if not present in the downloaded repo.
 4. **`generation_config.json` (Highly Recommended)**
    * Outlines output parameters, bounds, and most importantly, stop tokens (necessary for Qwen3.5/MLX v3 architectures to prevent runaway token generation).
-5. **`special_tokens_map.json` (Recommended)**
+5. **`chat_template.jinja` / `chat_template.json` (Recommended)**
+   * Newer repos (Qwen3.5, LFM2.5, MiniCPM5, GLM-4.7) ship the chat template as a separate file instead of inside `tokenizer_config.json`. It takes precedence over the template in `tokenizer_config.json`; without it the model falls back to plain-text prompting.
+6. **`special_tokens_map.json` (Recommended)**
    * Configures map indexes for special tags like `<|im_start|>`, `<|im_end|>`, `<|endoftext|>`.
-6. **`preprocessor_config.json` (Vision Models Only)**
+7. **`preprocessor_config.json` (Vision Models Only)**
    * Configures the visual preprocessor grid parameters, normalisation, and patching size. **Absolutely required** for VLM execution (`Qwen2.5-VL-3B` and `Qwen3-VL-4B`).
-7. **Weights Files (`.safetensors`) (Required)**
+8. **Weights Files (`.safetensors`) (Required)**
    * **Single-file models:** Smaller models (<4B parameters) load a single `model.safetensors` weight file.
    * **Sharded models:** Large parameters are split into shards. They must be named precisely `model-00001-of-XXXXX.safetensors` up to `model-XXXXX-of-XXXXX.safetensors` (where `XXXXX` is the total shard count).
    * *Example (Qwen3-14B):* Must have `model-00001-of-00002.safetensors` and `model-00002-of-00002.safetensors`.

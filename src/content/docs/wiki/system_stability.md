@@ -14,7 +14,7 @@ Strategies to manage memory pressure and the context window:
   - **70% Capacity:** Warns the user and optimizes planning.
   - **85% Capacity:** Triggers the `ContextCompactionEngine`.
 - **ContextCompactionEngine:** Compresses context while preserving critical data (such as file paths, UUIDs, TODOs) marked in the "Must-Preserve" list.
-  - **[Memory Architecture v30.5](file:///Users/trgysvc/Developer/PheronAgent/Project_Wiki/wiki/memory_architecture.md):** Built on a **2,000 character base preservation limit** and a **Metal-accelerated Vector Search** infrastructure to prevent loss of technical context.
+  - **[Memory Architecture v30.5](memory_architecture.md):** Built on a **2,000 character base preservation limit** and a **Metal-accelerated Vector Search** infrastructure to prevent loss of technical context.
   - **Smart Truncation (Head+Tail):** Retains the beginning and end of the text when bounds are exceeded to prevent Context Tearing.
   - **Habit Discovery:** Automatically identifies recurring user preferences and seals them into long-term memory.
 - **AdaptiveTaskChunker:** Breaks down massive workloads (e.g., analyzing 100+ files) into small, manageable chunks based on the hardware state (`HardwareMonitor`) and `ContextBudget`. Each chunk carries a summary of the previous one to ensure context continuity.

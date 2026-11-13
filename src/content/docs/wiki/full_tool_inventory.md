@@ -256,7 +256,7 @@ Builds a Pages document and exports it to `.docx`. **Parameters:** `blocks` (req
 
 ## 16. Added 2026-09-11 — Social Media Publishing (2 tools)
 
-Replaces the earlier `browser_tool`-based "learn the page visually" approach for social posting, abandoned after a two-day live investigation proved it structurally unreliable (repeated click failures, hallucinated element references, false success claims the tool itself couldn't catch). Both tools below call the platform's own official REST API directly with a single fixed parameter (`text`) — no page interpretation, no free-form surface for the model to misuse. See [LinkedIn & X Setup](../linkedin_x_setup.md).
+Replaces the earlier `browser_tool`-based "learn the page visually" approach for social posting, abandoned after a two-day live investigation proved it structurally unreliable (repeated click failures, hallucinated element references, false success claims the tool itself couldn't catch). Both tools below call the platform's own official REST API directly with a single fixed parameter (`text`) — no page interpretation, no free-form surface for the model to misuse. See [LinkedIn & X Setup](linkedin_x_setup.md).
 
 | Tool | UBID | Verification status | What it does |
 |---|---|---|---|
