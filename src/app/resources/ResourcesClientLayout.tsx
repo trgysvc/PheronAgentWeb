@@ -25,7 +25,10 @@ export const RESOURCES_MENU = [
     items: [
       { nameKey: "docsmenu.permissionsSetup", name: "macOS Permissions & Setup", path: "/resources/docs/wiki/macos_onboarding_permissions_guide" },
       { nameKey: "docsmenu.modelsHardware", name: "Models & Hardware Tiers", path: "/resources/docs/wiki/models_and_hardware" },
-      { nameKey: "docsmenu.updating", name: "Updating Pheron Agent", path: "/resources/docs/wiki/updating_pheron_agent" }
+      { nameKey: "docsmenu.updating", name: "Updating Pheron Agent", path: "/resources/docs/wiki/updating_pheron_agent" },
+      { nameKey: "docsmenu.larkSetup", name: "Lark Suite Setup", path: "/resources/docs/wiki/lark_suite_setup" },
+      { nameKey: "docsmenu.lemonSqueezySetup", name: "LemonSqueezy & Kit Setup", path: "/resources/docs/wiki/lemonsqueezy_kit_setup" },
+      { nameKey: "docsmenu.linkedinXSetup", name: "LinkedIn & X Setup", path: "/resources/docs/wiki/linkedin_x_setup" }
     ]
   },
   {
@@ -39,6 +42,33 @@ export const RESOURCES_MENU = [
       { nameKey: "docsmenu.audioIntelligence", name: "AudioIntelligence DSP", path: "/resources/docs/wiki/audio_intelligence" },
       { nameKey: "docsmenu.systemStability", name: "System Stability & Self-Healing", path: "/resources/docs/wiki/system_stability" },
       { nameKey: "docsmenu.techStack", name: "Tech Stack & Learning", path: "/resources/learn" }
+    ]
+  },
+  {
+    titleKey: "docsmenu.groupConcepts",
+    title: "Concepts & Standards",
+    items: [
+      { nameKey: "docsmenu.mlxSwiftCore", name: "MLX for Swift - Core Concepts", path: "/resources/docs/concepts/MLX_Swift_Core" },
+      { nameKey: "docsmenu.mlxUnifiedMemory", name: "MLX Swift & Unified Memory", path: "/resources/docs/concepts/mlx_swift_unified_memory" },
+      { nameKey: "docsmenu.mlxMetalInternals", name: "MLX Metal Internals", path: "/resources/docs/concepts/mlx_metal_internals" },
+      { nameKey: "docsmenu.llmInference", name: "LLM Inference Standards", path: "/resources/docs/concepts/llm_inference_mechanics" },
+      { nameKey: "docsmenu.distributedActors", name: "Distributed Actors & UNO Isolation", path: "/resources/docs/concepts/distributed_actors" },
+      { nameKey: "docsmenu.xpcIpc", name: "XPC & Native IPC", path: "/resources/docs/concepts/xpc_native_ipc" },
+      { nameKey: "docsmenu.swiftApiStandards", name: "Swift API Design Standards", path: "/resources/docs/concepts/swift_api_standards" }
+    ]
+  },
+  {
+    titleKey: "docsmenu.groupDeepDives",
+    title: "Deep Dives",
+    items: [
+      { nameKey: "docsmenu.architectureDeepDive", name: "Architecture Deep Dive", path: "/resources/docs/wiki/architecture_deep_dive" },
+      { nameKey: "docsmenu.appleUnoReference", name: "Apple Ecosystem & UNO Reference", path: "/resources/docs/wiki/apple_ecosystem_uno_reference" },
+      { nameKey: "docsmenu.memoryArchitecture", name: "Memory Architecture", path: "/resources/docs/wiki/memory_architecture" },
+      { nameKey: "docsmenu.toolingLandscape", name: "Tooling Landscape Map", path: "/resources/docs/wiki/tooling_landscape" },
+      { nameKey: "docsmenu.performanceRoadmap", name: "Performance Roadmap", path: "/resources/docs/wiki/performance_roadmap" },
+      { nameKey: "docsmenu.powermetrics", name: "Energy Profiling (Powermetrics)", path: "/resources/docs/wiki/powermetrics_energy_tracking" },
+      { nameKey: "docsmenu.blenderBridge", name: "Blender Bridge Evolution", path: "/resources/docs/wiki/blender_bridge_evolution" },
+      { nameKey: "docsmenu.evolution", name: "Project Evolution History", path: "/resources/docs/wiki/evolution" }
     ]
   },
   {

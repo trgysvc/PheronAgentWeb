@@ -29,6 +29,27 @@ Pheron Agent is a fully autonomous AI agent for macOS, built entirely on Apple S
 - [AudioIntelligence DSP](wiki/audio_intelligence.md) — Music DNA and audio analysis
 - [System Stability & Self-Healing](wiki/system_stability.md) — AutoRecoveryEngine and context management
 
+## Concepts & Engineering Standards
+
+- [MLX for Swift - Core Concepts](concepts/MLX_Swift_Core.md) — MLX arrays, lazy evaluation and the Swift API surface
+- [MLX Swift and Unified Memory Management](concepts/mlx_swift_unified_memory.md) — How unified memory shapes model loading and caching
+- [MLX Metal Architecture & Internals](concepts/mlx_metal_internals.md) — Kernels, command buffers and GPU scheduling
+- [LLM Inference Standards](concepts/llm_inference_mechanics.md) — Prefill, decode and KV-cache mechanics
+- [Distributed Actors and UNO Isolation](concepts/distributed_actors.md) — Actor isolation inside the UNO architecture
+- [XPC and Native IPC Standards](concepts/xpc_native_ipc.md) — Process boundaries and native inter-process communication
+- [Swift API Design Standards](concepts/swift_api_standards.md) — Conventions used across the codebase
+
+## Deep Dives
+
+- [Triple-Threat Architecture Deep Dive](wiki/architecture_deep_dive.md) — How the three engines fit together
+- [Apple Ecosystem & UNO Reference](wiki/apple_ecosystem_uno_reference.md) — Native Apple frameworks used by UNO
+- [Memory Architecture](wiki/memory_architecture.md) — Short-term, long-term and procedural memory
+- [Tooling Landscape Map](wiki/tooling_landscape.md) — Where each tool family lives
+- [Performance & Optimization Roadmap](wiki/performance_roadmap.md) — Measured bottlenecks and planned work
+- [Energy Profiling via Powermetrics](wiki/powermetrics_energy_tracking.md) — Measuring power draw on Apple Silicon
+- [Blender Bridge Evolution](wiki/blender_bridge_evolution.md) — Stabilizing the Blender integration
+- [Project Evolution History](wiki/evolution.md) — How the project got to its current design
+
 ## Advanced & Reference
 
 - [Benchmark & Test Results](wiki/benchmark_results.md) — Universal AgentTestMethodology v7 evaluation metrics & OWASP security matrix
